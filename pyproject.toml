@@ -1,0 +1,120 @@
+[project]
+name = "nan-python-engineering-labs"
+version = "0.1.0"
+description = "Modular advanced Python learning system for 2026"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.23.0",
+    "hypothesis>=6.98.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.2.0",
+    "basedpyright>=1.10.0",
+    "pre-commit>=3.6.0",
+    "ipython>=8.20.0",
+    "ipdb>=0.13.13",
+]
+profiling = [
+    "py-spy>=0.3.14",
+    "memray>=1.11.0",
+    "viztracer>=0.16.0",
+]
+ai = [
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.20",
+    "langgraph>=0.0.20",
+    "pydantic>=2.6.0",
+]
+pyo3 = [
+    "maturin>=1.4.0",
+]
+security = [
+    "bandit[toml]>=1.7.6",
+    "safety>=3.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+fix = true
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "N",      # pep8-naming
+    "UP",     # pyupgrade
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "SIM",    # flake8-simplify
+    "TCH",    # flake8-type-checking
+    "PTH",    # flake8-use-pathlib
+    "RUF",    # Ruff-specific rules
+    "ASYNC",  # flake8-async
+    "S",      # flake8-bandit (security)
+    "T20",    # flake8-print
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "S101",   # use of assert (pytest needs it)
+    "T201",   # print statement (OK in learning code)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"examples/**/*.py" = ["T201", "S101"]
+"exercises/**/*.py" = ["T201", "S101"]
+"my_solution/**/*.py" = ["T201", "S101"]
+"tests/**/*.py" = ["S101"]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+pythonVersion = "3.13"
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
+reportUnknownVariableType = false
+reportUnknownArgumentType = false
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=my_solution",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-report=html",
+]
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+source = ["my_solution"]
+omit = [
+    "*/tests/*",
+    "*/examples/*",
+    "*/exercises/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
