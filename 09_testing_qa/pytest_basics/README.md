@@ -2,45 +2,95 @@
 
 Estimated time: 2-3 hours
 
-## Definition
+## 1. Definition
 
-Learn the core pytest workflow: test discovery, expressive assertions, and clear failure messages.
+**Pytest Basics** is an important Python topic for building maintainable, testable, and production-ready systems.
 
-## What You Practice
+In practice, this topic gives you a clear way to model behavior, reason about trade-offs, and implement reliable code.
 
-- Test discovery
-- Assert introspection
-- Arrange-act-assert
-- Exception testing
+### Key Characteristics
 
-## Practical Applications
+- **Clarity**: promotes readable code and explicit intent.
+- **Composability**: works well with other Python patterns and tools.
+- **Testability**: encourages behavior that can be validated with automated tests.
+- **Practical focus**: designed for real project scenarios, not only toy examples.
 
-- Refactoring utility functions
-- Writing fast feedback loops for data transformations
-- Replacing ad-hoc manual checks with executable tests
+## 2. Practical Application
 
-## Example Focus
+### Use Cases
 
-The runnable example in `examples/example_basic.py` shows one concrete way to apply pytest basics in a small, self-contained scenario.
+1. **Application development**: apply pytest basics patterns in backend services and internal tools.
+2. **Library design**: implement reusable building blocks with predictable behavior.
+3. **Automation workflows**: make scripts and jobs easier to evolve and verify over time.
 
-## Why It Matters
+### Code Example
 
-This topic helps you decide what kind of feedback you need from a test and how to keep that feedback trustworthy as the codebase grows.
+```python
+# See examples/example_basic.py for executable code
+# related to pytest basics
+```
 
-## Practice Task
+Run `examples/example_basic.py` to inspect the baseline behavior before solving the exercise.
 
-Goal: Implement a tiny calculator module with predictable behavior and robust error handling.
+## 3. Why Is It Important?
 
-Success criteria:
-- Implement `add`, `subtract`, and `divide`.
-- Raise `ValueError` when division by zero is requested.
-- Add `classify_number` returning `positive`, `negative`, or `zero`.
+### Problem It Solves
 
-## References
+Without a clear approach to pytest basics, teams often face:
 
-See `references/links.md` for official documentation, guides, and deeper reading.
+- hidden assumptions and fragile behavior,
+- difficult refactors,
+- low confidence in changes.
 
-## Reflection Prompt
+### Solution and Benefits
 
-After finishing the exercise, write down which parts of the workflow gave you the strongest confidence and which parts still feel too implicit.
+Working with **Pytest Basics** helps teams achieve:
+
+- cleaner code organization,
+- faster debugging and onboarding,
+- better test coverage and safer releases,
+- stronger long-term maintainability.
+
+## 4. References
+
+See [references/links.md](references/links.md) for official documentation and deeper reading.
+
+## 5. Practice Task
+
+Use `exercises/exercise_01.py` as the main task entry point.
+
+### Basic Level
+
+- Implement the core functionality requested by the exercise.
+- Make the baseline tests pass.
+
+### Intermediate Level
+
+- Cover edge cases and invalid inputs.
+- Improve naming and structure for readability.
+
+### Advanced Level
+
+- Add robust error handling and type hints where appropriate.
+- Extend tests with additional scenario coverage.
+
+### Success Criteria
+
+- The solution works correctly for nominal and edge cases.
+- Test suite in `tests/test_basic.py` passes.
+- The implementation is clear enough for another learner to review.
+
+## 6. Summary
+
+- Pytest Basics strengthens your Python engineering fundamentals.
+- It improves code quality, testability, and maintainability.
+- It is directly applicable to real-world backend and automation work.
+
+## 7. Reflection Prompt
+
+After completing this topic, reflect on:
+
+- Which design decisions made your solution easier to test?
+- Which edge case was most important to model?
+- How would you apply this topic in your current projects?
 
