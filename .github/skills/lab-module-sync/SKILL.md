@@ -17,6 +17,7 @@ The workflow ensures:
 - Identical `examples/example_basic.py` content in both repos
 - Executable examples with validation evidence
 - A homogeneous topic structure even when source modules are inconsistent
+- Pattern/topic-appropriate examples (no name-only template cloning)
 
 ## Inputs
 
@@ -61,6 +62,7 @@ The workflow ensures:
 - Replace placeholder examples with runnable Python code.
 - Keep examples practical and beginner-friendly for that module level.
 - Ensure examples in both repos are identical (same code, same language).
+- Each topic/pattern must have logic specific to its own concept (not the same skeleton with renamed labels).
 
 6. Sync to original repo
 - Copy generated/approved examples from NaNLABS module to matching module in `training-py`.
@@ -70,6 +72,8 @@ The workflow ensures:
 - Run every `*/examples/example_basic.py` in both repos for the module.
 - Report pass/fail counts and list failing files with traceback if any.
 - Fix failures before finishing.
+- Run a structural duplication audit for the module examples. If the module uses near-identical structures for most topics, fail the gate and regenerate examples with concept-specific logic.
+- If a module has nested topics (e.g., `category/topic/examples/example_basic.py`), include that layout in both execution and duplication audits.
 
 8. Commit hygiene
 - Show `git status --short` for both repos.
@@ -84,6 +88,8 @@ The workflow ensures:
 - No broken internal links in module readmes/references.
 - `examples/example_basic.py` files are identical in both repos.
 - Validation result is 100% passing for the target module.
+- Examples are concept-specific: no bulk copy/paste template where only names/labels change.
+- Structural clone audit passes (high diversity expected for conceptual modules like design patterns).
 - No unrelated file changes included in commits.
 
 ## Output Format
