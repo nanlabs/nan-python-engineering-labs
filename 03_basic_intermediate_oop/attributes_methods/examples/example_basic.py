@@ -1,0 +1,27 @@
+class BankAccount:
+    def __init__(self, owner: str, balance: float = 0.0) -> None:
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount: float) -> None:
+        if amount <= 0:
+            raise ValueError('Amount must be positive')
+        self.balance += amount
+
+    def withdraw(self, amount: float) -> None:
+        if amount <= 0:
+            raise ValueError('Amount must be positive')
+        if amount > self.balance:
+            raise ValueError('Insufficient funds')
+        self.balance -= amount
+
+
+def main() -> None:
+    account = BankAccount('Lin', 100)
+    account.deposit(50)
+    account.withdraw(30)
+    print(account.balance)
+
+
+if __name__ == '__main__':
+    main()
