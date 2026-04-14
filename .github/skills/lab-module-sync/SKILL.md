@@ -86,6 +86,29 @@ The workflow ensures:
 - For `nan-python-engineering-labs`, keep the same pedagogical depth but enforce English-only content.
 - If any section is missing, create it before continuing.
 
+4.2 README heading schema lock (NEW - strict)
+- All topic READMEs must have the exact same heading and subheading schema (same amount, same order) across all processed modules.
+- Required heading/subheading sequence:
+  1. `# <Topic Title>`
+  2. `Estimated time: ...`
+  3. `## 1. Definition`
+  4. `### Key Characteristics`
+  5. `## 2. Practical Application`
+  6. `### Use Cases`
+  7. `### Code Example`
+  8. `## 3. Why Is It Important?`
+  9. `### Problem It Solves`
+  10. `### Solution and Benefits`
+  11. `## 4. References`
+  12. `## 5. Practice Task`
+  13. `### Basic Level`
+  14. `### Intermediate Level`
+  15. `### Advanced Level`
+  16. `### Success Criteria`
+  17. `## 6. Summary`
+  18. `## 7. Reflection Prompt`
+- If a topic README deviates from this schema, rewrite it to match exactly.
+
 5. Complete examples
 - Replace placeholder examples with runnable Python code.
 - Keep examples practical and beginner-friendly for that module level.
@@ -106,6 +129,10 @@ The workflow ensures:
   - Scan every topic `README.md` and verify all required sections exist.
   - Verify a "Use Cases" subsection exists with at least 3 items.
   - If structure is incomplete in any topic, fail the gate and complete the README before commit.
+- **README heading-schema check (NEW)**:
+  - Validate heading/subheading count and order against the locked schema.
+  - If any topic README has extra/missing/reordered headings, fail the gate.
+  - Normalize all non-compliant READMEs before commit.
 - **Language compliance check (NEW)**: Scan ALL files in nan-python-engineering-labs repo for Spanish keywords:
   - If any Spanish content found in exercises, references, tests, or docs → FAIL gate and re-translate before committing
   - This ensures 100% English-only compliance for NaN repo
@@ -121,6 +148,7 @@ The workflow ensures:
 - All topic directories are in English.
 - All topics in both repos share the standard lab subfolder structure.
 - **README completeness**: Every topic README contains the full pedagogical structure with "Use Cases" and practice levels.
+- **README schema consistency**: Every topic README follows the exact same heading/subheading count and order.
 - **100% English-only compliance**: No Spanish content in ANY file (README, exercises, references, tests, code comments):
   - No "Módulo:", "Descripción", "Objetivo", "Ejercicio", "Referencias", "Instrucciones", etc.
   - All documentation files translated to English
@@ -174,5 +202,6 @@ Implement a language check before final commit to NaN repo:
 **Output**: Before final commit, show:
 - ✓ Language scan: 0 Spanish keywords found
 - ✓ README structure scan: all required sections present
+- ✓ README heading-schema scan: all topic READMEs match exactly
 - ✓ All files: English-only compliance verified
 - Ready for commit

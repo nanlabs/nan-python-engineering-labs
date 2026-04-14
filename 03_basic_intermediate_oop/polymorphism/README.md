@@ -1,57 +1,95 @@
 # Polymorphism
 
-⏱️ **Estimated time: 2-3 hours**
+Estimated time: 2-3 hours**
 
 ## 1. Definition
 
-**Polymorphism** is a core object-oriented programming concept in Python that improves code organization, reuse, and maintainability.
+**Polymorphism** is an important Python topic for building maintainable, testable, and production-ready systems.
 
-In Python, this concept helps model real-world behavior with classes and objects while keeping code explicit and readable.
+In practice, this topic gives you a clear way to model behavior, reason about trade-offs, and implement reliable code.
 
 ### Key Characteristics
 
-- **Pythonic design**: Aligns with readability and explicitness
-- **Reusable code**: Encourages modular and maintainable structures
-- **Scalable architecture**: Supports larger applications with clear boundaries
-- **Type-friendly**: Works well with modern type hints
+- **Clarity**: promotes readable code and explicit intent.
+- **Composability**: works well with other Python patterns and tools.
+- **Testability**: encourages behavior that can be validated with automated tests.
+- **Practical focus**: designed for real project scenarios, not only toy examples.
 
 ## 2. Practical Application
 
 ### Use Cases
 
-1. Domain modeling in business applications
-2. Reusable components in backend services
-3. Cleaner abstractions in medium and large codebases
+1. **Application development**: apply polymorphism patterns in backend services and internal tools.
+2. **Library design**: implement reusable building blocks with predictable behavior.
+3. **Automation workflows**: make scripts and jobs easier to evolve and verify over time.
 
 ### Code Example
 
 ```python
-# Working example of Polymorphism
 # See examples/example_basic.py for executable code
+# related to polymorphism
 ```
 
-**Note**: Check the `examples/` folder for practical, runnable code.
+Run `examples/example_basic.py` to inspect the baseline behavior before solving the exercise.
 
 ## 3. Why Is It Important?
 
 ### Problem It Solves
 
-Without this concept, projects often become hard to scale and maintain due to duplicated logic and unclear responsibilities.
+Without a clear approach to polymorphism, teams often face:
+
+- hidden assumptions and fragile behavior,
+- difficult refactors,
+- low confidence in changes.
 
 ### Solution and Benefits
 
-- **Better structure**: Encapsulates behavior and state in coherent models
-- **Improved readability**: Clear interfaces and responsibilities
-- **More reuse**: Reduces duplicated logic
-- **Easier testing**: Components are easier to isolate and validate
+Working with **Polymorphism** helps teams achieve:
+
+- cleaner code organization,
+- faster debugging and onboarding,
+- better test coverage and safer releases,
+- stronger long-term maintainability.
 
 ## 4. References
 
-See [references/links.md](references/links.md) for documentation and additional resources.
+See [references/links.md](references/links.md) for official documentation and deeper reading.
 
 ## 5. Practice Task
 
-### Basic Level ⭐
-**Goal**: Implement basic usage of Polymorphism
+Use `exercises/exercise_01.py` as the main task entry point.
 
-See `exercises/exercise_01.py` for the full instructions.
+### Basic Level
+
+- Implement the core functionality requested by the exercise.
+- Make the baseline tests pass.
+
+### Intermediate Level
+
+- Cover edge cases and invalid inputs.
+- Improve naming and structure for readability.
+
+### Advanced Level
+
+- Add robust error handling and type hints where appropriate.
+- Extend tests with additional scenario coverage.
+
+### Success Criteria
+
+- The solution works correctly for nominal and edge cases.
+- Test suite in `tests/test_basic.py` passes.
+- The implementation is clear enough for another learner to review.
+
+## 6. Summary
+
+- Polymorphism strengthens your Python engineering fundamentals.
+- It improves code quality, testability, and maintainability.
+- It is directly applicable to real-world backend and automation work.
+
+## 7. Reflection Prompt
+
+After completing this topic, reflect on:
+
+- Which design decisions made your solution easier to test?
+- Which edge case was most important to model?
+- How would you apply this topic in your current projects?

@@ -1,79 +1,95 @@
 # Basic Error Handling
 
-⏱️ **Estimated time: 1-2 hours**
+Estimated time: 1-2 hours**
 
 ## 1. Definition
 
-**Basic Error Handling** is a fundamental concept in Python that allows developers to write more expressive, maintainable, and efficient code.
+**Basic Error Handling** is an important Python topic for building maintainable, testable, and production-ready systems.
 
-In Python, this concept provides a clear and Pythonic interface for working with this pattern. The implementation is based on the principles of simplicity and readability that characterize the language.
+In practice, this topic gives you a clear way to model behavior, reason about trade-offs, and implement reliable code.
 
 ### Key Characteristics
 
-- **Clear syntax**: Designed to be easy to read and write
-- **Native integration**: Part of the Python core or standard library
-- **Type-safe**: Compatible with type hints for better static validation
-- **Efficient**: Optimized for performance without sacrificing readability
-
-The philosophy behind Basic Error Handling aligns with the Zen of Python: "Simple is better than complex", "Explicit is better than implicit".
+- **Clarity**: promotes readable code and explicit intent.
+- **Composability**: works well with other Python patterns and tools.
+- **Testability**: encourages behavior that can be validated with automated tests.
+- **Practical focus**: designed for real project scenarios, not only toy examples.
 
 ## 2. Practical Application
 
 ### Use Cases
 
-1. **Application development**: Widely used in modern frameworks like FastAPI, Django
-2. **Libraries**: Essential component in popular Python ecosystem libraries
-3. **Scripts and automation**: Simplifies common programming tasks
+1. **Application development**: apply basic error handling patterns in backend services and internal tools.
+2. **Library design**: implement reusable building blocks with predictable behavior.
+3. **Automation workflows**: make scripts and jobs easier to evolve and verify over time.
 
 ### Code Example
 
 ```python
-# Basic example of Basic Error Handling
-# See examples/ for complete executable code
-
-# TODO: See examples/example_basic.py
-# for detailed implementation with comments
+# See examples/example_basic.py for executable code
+# related to basic error handling
 ```
 
-**Note**: Check the `examples/` folder for functional and executable code.
+Run `examples/example_basic.py` to inspect the baseline behavior before solving the exercise.
 
 ## 3. Why Is It Important?
 
 ### Problem It Solves
 
-Before Basic Error Handling, developers faced challenges related to:
-- Unnecessary complexity in code
-- Lack of standardization
-- Difficulty maintaining and scaling applications
+Without a clear approach to basic error handling, teams often face:
+
+- hidden assumptions and fragile behavior,
+- difficult refactors,
+- low confidence in changes.
 
 ### Solution and Benefits
 
-Basic Error Handling provides:
-- ✅ **Cleaner code**: Expressive and readable syntax
-- ✅ **Better maintainability**: Standardized patterns the team understands
-- ✅ **Greater productivity**: Less boilerplate, more functionality
-- ✅ **Type safety**: Integration with Python's type system
+Working with **Basic Error Handling** helps teams achieve:
 
-### Inspiration and History
-
-Introduced as part of Python's continuous evolution toward a more modern and expressive language. The Python community has widely adopted this pattern, making it a standard best practice.
+- cleaner code organization,
+- faster debugging and onboarding,
+- better test coverage and safer releases,
+- stronger long-term maintainability.
 
 ## 4. References
 
-See [references/links.md](references/links.md) for complete documentation, tutorials, and resources.
-
-**Official Documentation**:
-- [Python Docs: Basic Error Handling](https://docs.python.org/3/tutorial/errors.html)
-
+See [references/links.md](references/links.md) for official documentation and deeper reading.
 
 ## 5. Practice Task
 
-### Basic Level ⭐
-**Goal**: Implement basic usage of Basic Error Handling
+Use `exercises/exercise_01.py` as the main task entry point.
 
-See `exercises/exercise_01.py` for the full instructions.
+### Basic Level
 
-**Success criteria**:
-- Code runs without errors
-- Correct implementation of basic concepts
-- Basic tests pass
+- Implement the core functionality requested by the exercise.
+- Make the baseline tests pass.
+
+### Intermediate Level
+
+- Cover edge cases and invalid inputs.
+- Improve naming and structure for readability.
+
+### Advanced Level
+
+- Add robust error handling and type hints where appropriate.
+- Extend tests with additional scenario coverage.
+
+### Success Criteria
+
+- The solution works correctly for nominal and edge cases.
+- Test suite in `tests/test_basic.py` passes.
+- The implementation is clear enough for another learner to review.
+
+## 6. Summary
+
+- Basic Error Handling strengthens your Python engineering fundamentals.
+- It improves code quality, testability, and maintainability.
+- It is directly applicable to real-world backend and automation work.
+
+## 7. Reflection Prompt
+
+After completing this topic, reflect on:
+
+- Which design decisions made your solution easier to test?
+- Which edge case was most important to model?
+- How would you apply this topic in your current projects?

@@ -27,7 +27,7 @@ In practice, this topic gives you a clear way to model behavior, reason about tr
 
 ```python
 # See examples/example_basic.py for executable code
-# related to bdd with behave (optional)
+# related to bdd with behave optional
 ```
 
 Run `examples/example_basic.py` to inspect the baseline behavior before solving the exercise.
@@ -93,4 +93,3 @@ After completing this topic, reflect on:
 - Which design decisions made your solution easier to test?
 - Which edge case was most important to model?
 - How would you apply this topic in your current projects?
-

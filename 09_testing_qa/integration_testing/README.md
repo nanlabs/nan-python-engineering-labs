@@ -93,4 +93,3 @@ After completing this topic, reflect on:
 - Which design decisions made your solution easier to test?
 - Which edge case was most important to model?
 - How would you apply this topic in your current projects?
-
