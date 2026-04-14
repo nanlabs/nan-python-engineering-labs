@@ -16,6 +16,7 @@ The workflow ensures:
 - English docs and examples
 - Identical `examples/example_basic.py` content in both repos
 - Executable examples with validation evidence
+- A homogeneous topic structure even when source modules are inconsistent
 
 ## Inputs
 
@@ -30,7 +31,18 @@ The workflow ensures:
 - Confirm naming conventions currently in use.
 - Confirm module/topic slug mapping.
 
-2. Copy structure
+2. Normalize structure
+- Inspect every topic directory in the source module.
+- If any topic is missing standard lab folders, create or restore them before proceeding:
+  - `examples/`
+  - `exercises/`
+  - `tests/`
+  - `references/`
+  - `my_solution/`
+- Ensure `my_solution/.gitkeep` exists.
+- If the source layout is inconsistent, fix it first so both repos end with the same standard structure.
+
+3. Copy structure
 - Create target module in NaNLABS repo with standard lab layout per topic:
   - `README.md`
   - `examples/example_basic.py`
@@ -39,27 +51,27 @@ The workflow ensures:
   - `references/links.md`
   - `my_solution/.gitkeep`
 
-3. Translate and normalize
+4. Translate and normalize
 - Translate module and topic docs to English.
 - Keep technical terms consistent across files.
 - Ensure folder names are English slugs.
 - Update all markdown/internal references after renames.
 
-4. Complete examples
+5. Complete examples
 - Replace placeholder examples with runnable Python code.
 - Keep examples practical and beginner-friendly for that module level.
 - Ensure examples in both repos are identical (same code, same language).
 
-5. Sync to original repo
+6. Sync to original repo
 - Copy generated/approved examples from NaNLABS module to matching module in `training-py`.
 - Preserve topic slug mapping exactly.
 
-6. Validate
+7. Validate
 - Run every `*/examples/example_basic.py` in both repos for the module.
 - Report pass/fail counts and list failing files with traceback if any.
 - Fix failures before finishing.
 
-7. Commit hygiene
+8. Commit hygiene
 - Show `git status --short` for both repos.
 - Use English commit messages.
 - Commit separately per repo.
@@ -68,6 +80,7 @@ The workflow ensures:
 ## Quality Gates (must pass)
 
 - All topic directories are in English.
+- All topics in both repos share the standard lab subfolder structure.
 - No broken internal links in module readmes/references.
 - `examples/example_basic.py` files are identical in both repos.
 - Validation result is 100% passing for the target module.
