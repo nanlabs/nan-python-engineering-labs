@@ -1,29 +1,34 @@
 """
-Ejercicio: Event Driven Arch
+Exercise: Event Driven Arch
 
-Objetivo: Implementar y practicar event_driven_arch
+Objective: Implement and practice event_driven_arch
 
-Instrucciones:
-1. Lee atentamente los requisitos
-2. Implementa las funciones/clases marcadas con TODO
-3. Ejecuta los tests: pytest tests/
-4. Tu solución debe ir en my_solution/
+Instructions:
+1. Read the requirements carefully
+2. Implement the functions/classes marked with TODO
+3. Run the tests:
+   pytest tests/test_basic.py -v
+4. Verify all tests pass
+5. Add any additional test cases in my_solution/
 
-NO MODIFIQUES ESTE ARCHIVO. Copia a my_solution/ y trabaja allí.
+Requirements:
+- Follow the patterns from examples/example_basic.py
+- Use type hints in your implementation
+- Add docstrings to functions and classes
+- Use descriptive variable names
+
+Hints:
+- Start with the simplest implementation
+- Test incrementally as you code
+- Review the example before starting
 """
 
-# TODO: Implementa tu solución aquí
-# Sigue las especificaciones de los docstrings
-
+# TODO: Implement the event_driven_arch pattern
+# Use the concepts from example_basic.py as a reference
 
 def main():
-    """
-    Función principal para probar tu implementación.
-    Añade tus propios casos de prueba.
-    """
-    # TODO: Añade código de prueba aquí
+    """Main implementation goes here."""
     pass
-
 
 if __name__ == "__main__":
     main()
