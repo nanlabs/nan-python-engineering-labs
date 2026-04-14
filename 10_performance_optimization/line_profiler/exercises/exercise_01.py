@@ -1,27 +1,27 @@
 """
-Ejercicio: Line Profiler
+Exercise: Line Profiler
 
-Objetivo: Implementar y practicar line_profiler
+Objective: Implementar y practicar line_profiler
 
-Instrucciones:
-1. Lee atentamente los requisitos
+Instructions:
+1. Lee atentamente los requirements
 2. Implementa las funciones/clases marcadas con TODO
 3. Ejecuta los tests: pytest tests/
-4. Tu solución debe ir en my_solution/
+4. Tu solution debe ir en my_solution/
 
-NO MODIFIQUES ESTE ARCHIVO. Copia a my_solution/ y trabaja allí.
+DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 """
 
-# TODO: Implementa tu solución aquí
-# Sigue las especificaciones de los docstrings
+# TODO: Implement tu solution aquí
+# Follow the specifications in the docstrings
 
 
 def main():
     """
-    Función principal para probar tu implementación.
-    Añade tus propios casos de prueba.
+    Main function to test your implementation.
+    Add your own test cases.
     """
-    # TODO: Añade código de prueba aquí
+    # TODO: Add test code here
     pass
 
 

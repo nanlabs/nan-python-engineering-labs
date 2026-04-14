@@ -16,17 +16,17 @@ class TestPypyIntro:
     
     def test_basic_functionality(self):
         """Test básico de funcionalidad."""
-        # TODO: Implementa test básico
+        # TODO: Implement test básico
         pass
     
     def test_edge_cases(self):
         """Test de casos límite."""
-        # TODO: Implementa tests de edge cases
+        # TODO: Implement tests de edge cases
         pass
     
     def test_error_handling(self):
         """Test de manejo de errores."""
-        # TODO: Implementa tests de errores
+        # TODO: Implement tests de errores
         pass
 
 
