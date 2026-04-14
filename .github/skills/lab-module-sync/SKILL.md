@@ -65,6 +65,27 @@ The workflow ensures:
 - Update all markdown/internal references after renames.
 - Result: 100% English-only content in NaNLABS repo (no Spanish text remains).
 
+4.1 README structure normalization (NEW - mandatory)
+- Every topic `README.md` must follow a complete teaching structure (not a short/sparse variant).
+- Required sections per topic README:
+  - Title (`# Topic Name`)
+  - Estimated time
+  - Definition
+  - Key characteristics
+  - Practical application
+  - Use cases (minimum 3 concrete cases)
+  - Code example section pointing to `examples/example_basic.py`
+  - Why it matters
+  - Problem it solves
+  - Solution and benefits
+  - References section (linked to `references/links.md`)
+  - Practice task with levels (basic, intermediate, advanced) and explicit success criteria
+  - Summary
+  - Reflection prompt
+- For `training-py`, preserve the pedagogical depth and structure even if source language is Spanish.
+- For `nan-python-engineering-labs`, keep the same pedagogical depth but enforce English-only content.
+- If any section is missing, create it before continuing.
+
 5. Complete examples
 - Replace placeholder examples with runnable Python code.
 - Keep examples practical and beginner-friendly for that module level.
@@ -81,6 +102,10 @@ The workflow ensures:
 - Fix failures before finishing.
 - Run a structural duplication audit for the module examples. If the module uses near-identical structures for most topics, fail the gate and regenerate examples with concept-specific logic.
 - If a module has nested topics (e.g., `category/topic/examples/example_basic.py`), include that layout in both execution and duplication audits.
+- **README structure compliance check (NEW)**:
+  - Scan every topic `README.md` and verify all required sections exist.
+  - Verify a "Use Cases" subsection exists with at least 3 items.
+  - If structure is incomplete in any topic, fail the gate and complete the README before commit.
 - **Language compliance check (NEW)**: Scan ALL files in nan-python-engineering-labs repo for Spanish keywords:
   - If any Spanish content found in exercises, references, tests, or docs → FAIL gate and re-translate before committing
   - This ensures 100% English-only compliance for NaN repo
@@ -95,6 +120,7 @@ The workflow ensures:
 
 - All topic directories are in English.
 - All topics in both repos share the standard lab subfolder structure.
+- **README completeness**: Every topic README contains the full pedagogical structure with "Use Cases" and practice levels.
 - **100% English-only compliance**: No Spanish content in ANY file (README, exercises, references, tests, code comments):
   - No "Módulo:", "Descripción", "Objetivo", "Ejercicio", "Referencias", "Instrucciones", etc.
   - All documentation files translated to English
@@ -147,5 +173,6 @@ Implement a language check before final commit to NaN repo:
 
 **Output**: Before final commit, show:
 - ✓ Language scan: 0 Spanish keywords found
+- ✓ README structure scan: all required sections present
 - ✓ All files: English-only compliance verified
 - Ready for commit
