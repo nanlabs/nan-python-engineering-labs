@@ -52,11 +52,18 @@ The workflow ensures:
   - `references/links.md`
   - `my_solution/.gitkeep`
 
-4. Translate and normalize
-- Translate module and topic docs to English.
+4. Translate and normalize (Complete English-only compliance)
+- Translate ALL files to English (not just README, but also exercises, references, tests):
+  - `README.md` (module and all topic READMEs)
+  - `exercises/exercise_01.py` (instructions and comments)
+  - `references/links.md` (documentation and descriptions)
+  - `tests/test_basic.py` (docstrings and comments)
+  - Any other markdown or documentation files
+- Validation: scan all files for Spanish keywords (Módulo, Descripción, Objetivo, Ejercicio, Referencias, Instrucciones, etc.) and translate before proceeding.
 - Keep technical terms consistent across files.
 - Ensure folder names are English slugs.
 - Update all markdown/internal references after renames.
+- Result: 100% English-only content in NaNLABS repo (no Spanish text remains).
 
 5. Complete examples
 - Replace placeholder examples with runnable Python code.
@@ -68,12 +75,15 @@ The workflow ensures:
 - Copy generated/approved examples from NaNLABS module to matching module in `training-py`.
 - Preserve topic slug mapping exactly.
 
-7. Validate
+7. Validate (Execution + Structure + Language)
 - Run every `*/examples/example_basic.py` in both repos for the module.
 - Report pass/fail counts and list failing files with traceback if any.
 - Fix failures before finishing.
 - Run a structural duplication audit for the module examples. If the module uses near-identical structures for most topics, fail the gate and regenerate examples with concept-specific logic.
 - If a module has nested topics (e.g., `category/topic/examples/example_basic.py`), include that layout in both execution and duplication audits.
+- **Language compliance check (NEW)**: Scan ALL files in nan-python-engineering-labs repo for Spanish keywords:
+  - If any Spanish content found in exercises, references, tests, or docs → FAIL gate and re-translate before committing
+  - This ensures 100% English-only compliance for NaN repo
 
 8. Commit hygiene
 - Show `git status --short` for both repos.
@@ -85,6 +95,11 @@ The workflow ensures:
 
 - All topic directories are in English.
 - All topics in both repos share the standard lab subfolder structure.
+- **100% English-only compliance**: No Spanish content in ANY file (README, exercises, references, tests, code comments):
+  - No "Módulo:", "Descripción", "Objetivo", "Ejercicio", "Referencias", "Instrucciones", etc.
+  - All documentation files translated to English
+  - All exercise and reference files in English
+  - All comments and docstrings in code are English
 - No broken internal links in module readmes/references.
 - `examples/example_basic.py` files are identical in both repos.
 - Validation result is 100% passing for the target module.
@@ -107,3 +122,30 @@ When done, return:
 - Do not revert unrelated user changes.
 - Avoid destructive git commands.
 - Keep changes minimal and scoped to the requested module.
+
+## Language Compliance Validation (NEW - Critical for NaN repo)
+
+Implement a language check before final commit to NaN repo:
+
+**Spanish content detection** - fail if ANY of these appear in NaN repo files:
+- "Módulo:", "Descripción", "Objetivo", "Ejercicio", "Practica", "Instrucciones"
+- "Referencias", "Enlaces", "Recursos", "Aprende", "Diseña", "Conceptos"
+- "Debes", "Requisitos", "Hints", "Ejemplo", "Solución"
+
+**Files to scan**:
+- All `README.md` files (module + topics)
+- All `exercises/exercise_*.py` files
+- All `references/links.md` files
+- All `tests/test_*.py` files (comments/docstrings)
+- Any `.md` or `.py` files in topics
+
+**Action if Spanish found**:
+1. Halt the commit workflow
+2. Translate all Spanish content to English
+3. Re-validate (scan again)
+4. Only proceed with commit when 100% English-only confirmed
+
+**Output**: Before final commit, show:
+- ✓ Language scan: 0 Spanish keywords found
+- ✓ All files: English-only compliance verified
+- Ready for commit
