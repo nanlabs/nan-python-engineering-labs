@@ -1,25 +1,24 @@
-from dataclasses import dataclass
+import time
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class RateLimiter:
+    def __init__(self, max_calls: int, window_seconds: float) -> None:
+        self.max_calls = max_calls
+        self.window = window_seconds
+        self.calls: list[float] = []
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Rate Limiter',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def allow(self) -> bool:
+        now = time.time()
+        self.calls = [t for t in self.calls if now - t <= self.window]
+        if len(self.calls) >= self.max_calls:
+            return False
+        self.calls.append(now)
+        return True
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    limiter = RateLimiter(2, 1.0)
+    print(limiter.allow(), limiter.allow(), limiter.allow())
 
 
 if __name__ == '__main__':

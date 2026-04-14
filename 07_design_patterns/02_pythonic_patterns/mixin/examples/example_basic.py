@@ -1,25 +1,15 @@
-from dataclasses import dataclass
+class JsonMixin:
+    def to_json(self) -> str:
+        return '{' + ', '.join(f'"{k}": "{v}"' for k, v in self.__dict__.items()) + '}'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Mixin',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Customer(JsonMixin):
+    def __init__(self, name: str) -> None:
+        self.name = name
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(Customer('Lin').to_json())
 
 
 if __name__ == '__main__':

@@ -1,25 +1,21 @@
-from dataclasses import dataclass
+class EventBus:
+    def __init__(self) -> None:
+        self.handlers: dict[str, list[callable]] = {}
 
+    def on(self, event: str, fn: callable) -> None:
+        self.handlers.setdefault(event, []).append(fn)
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Event Driven',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def emit(self, event: str, payload: str) -> None:
+        for fn in self.handlers.get(event, []):
+            fn(payload)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    out: list[str] = []
+    bus = EventBus()
+    bus.on('user_created', lambda x: out.append(x.upper()))
+    bus.emit('user_created', 'ada')
+    print(out)
 
 
 if __name__ == '__main__':

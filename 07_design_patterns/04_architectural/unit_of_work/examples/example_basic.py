@@ -1,25 +1,21 @@
-from dataclasses import dataclass
+class UnitOfWork:
+    def __init__(self) -> None:
+        self._ops: list[str] = []
 
+    def register(self, op: str) -> None:
+        self._ops.append(op)
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Unit Of Work',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def commit(self) -> list[str]:
+        applied = list(self._ops)
+        self._ops.clear()
+        return applied
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    uow = UnitOfWork()
+    uow.register('insert user')
+    uow.register('insert order')
+    print(uow.commit())
 
 
 if __name__ == '__main__':

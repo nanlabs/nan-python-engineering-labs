@@ -2,24 +2,14 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
+class User:
+    id: int
     name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Dataclass',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    active: bool = True
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(User(1, 'Ada'))
 
 
 if __name__ == '__main__':

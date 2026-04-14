@@ -1,25 +1,13 @@
-from dataclasses import dataclass
+def service(request: str) -> str:
+    return f'reply:{request}'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Request Reply',
-        category='07 Messaging',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def client(request: str) -> str:
+    return service(request)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(client('ping'))
 
 
 if __name__ == '__main__':

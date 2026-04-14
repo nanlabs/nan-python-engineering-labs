@@ -1,25 +1,21 @@
-from dataclasses import dataclass
+import threading
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class LazyCache:
+    _instance: 'LazyCache | None' = None
+    _lock = threading.Lock()
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Double Checked Locking',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    @classmethod
+    def instance(cls) -> 'LazyCache':
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    cls._instance = LazyCache()
+        return cls._instance
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(LazyCache.instance() is LazyCache.instance())
 
 
 if __name__ == '__main__':

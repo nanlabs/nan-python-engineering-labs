@@ -1,25 +1,18 @@
+import copy
 from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Prototype',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Report:
+    title: str
+    tags: list[str]
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    base = Report('weekly', ['ops'])
+    clone = copy.deepcopy(base)
+    clone.tags.append('infra')
+    print(base.tags, clone.tags)
 
 
 if __name__ == '__main__':

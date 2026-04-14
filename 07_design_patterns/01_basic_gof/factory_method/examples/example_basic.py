@@ -1,25 +1,28 @@
-from dataclasses import dataclass
+class PaymentProcessor:
+    def process(self, amount: float) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class CardProcessor(PaymentProcessor):
+    def process(self, amount: float) -> str:
+        return f"card:{amount:.2f}"
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Factory Method',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class PaypalProcessor(PaymentProcessor):
+    def process(self, amount: float) -> str:
+        return f"paypal:{amount:.2f}"
+
+
+class Checkout:
+    def create_processor(self, kind: str) -> PaymentProcessor:
+        if kind == 'card':
+            return CardProcessor()
+        return PaypalProcessor()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    checkout = Checkout()
+    print(checkout.create_processor('card').process(19.9))
 
 
 if __name__ == '__main__':

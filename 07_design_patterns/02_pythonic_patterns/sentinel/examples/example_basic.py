@@ -1,25 +1,15 @@
-from dataclasses import dataclass
+MISSING = object()
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Sentinel',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def read_setting(data: dict[str, str], key: str):
+    value = data.get(key, MISSING)
+    if value is MISSING:
+        return 'default'
+    return value
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(read_setting({}, 'region'))
 
 
 if __name__ == '__main__':

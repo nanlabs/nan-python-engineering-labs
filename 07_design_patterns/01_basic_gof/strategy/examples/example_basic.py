@@ -1,25 +1,24 @@
-from dataclasses import dataclass
+class SortStrategy:
+    def sort(self, items: list[int]) -> list[int]:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class AscSort(SortStrategy):
+    def sort(self, items: list[int]) -> list[int]:
+        return sorted(items)
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Strategy',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class DescSort(SortStrategy):
+    def sort(self, items: list[int]) -> list[int]:
+        return sorted(items, reverse=True)
+
+
+def run_sort(strategy: SortStrategy, values: list[int]) -> list[int]:
+    return strategy.sort(values)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(run_sort(DescSort(), [3, 1, 2]))
 
 
 if __name__ == '__main__':

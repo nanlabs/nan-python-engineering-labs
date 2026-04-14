@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+class UserApi:
+    def profile(self) -> dict[str, str]:
+        return {'name': 'Ada'}
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class BFF:
+    def __init__(self, api: UserApi) -> None:
+        self.api = api
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Backend For Frontend',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def mobile_payload(self) -> dict[str, str]:
+        user = self.api.profile()
+        return {'display_name': user['name']}
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(BFF(UserApi()).mobile_payload())
 
 
 if __name__ == '__main__':

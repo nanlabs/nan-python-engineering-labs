@@ -1,25 +1,29 @@
-from dataclasses import dataclass
+class Image:
+    def show(self) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class RealImage(Image):
+    def __init__(self, path: str) -> None:
+        self.path = path
+
+    def show(self) -> str:
+        return f'loaded:{self.path}'
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Proxy',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class LazyImageProxy(Image):
+    def __init__(self, path: str) -> None:
+        self.path = path
+        self._real: RealImage | None = None
+
+    def show(self) -> str:
+        if self._real is None:
+            self._real = RealImage(self.path)
+        return self._real.show()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(LazyImageProxy('chart.png').show())
 
 
 if __name__ == '__main__':

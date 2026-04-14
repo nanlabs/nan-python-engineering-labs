@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+class EmailClient:
+    def send(self, text: str) -> str:
+        return f'sent:{text}'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class NotificationService:
+    def __init__(self, client: EmailClient) -> None:
+        self.client = client
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Dependency Injection',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def notify(self, text: str) -> str:
+        return self.client.send(text)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    service = NotificationService(EmailClient())
+    print(service.notify('build complete'))
 
 
 if __name__ == '__main__':

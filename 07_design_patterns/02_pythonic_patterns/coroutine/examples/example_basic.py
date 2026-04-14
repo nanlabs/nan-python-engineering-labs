@@ -1,25 +1,15 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Coroutine',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def accumulator():
+    total = 0
+    while True:
+        value = yield total
+        total += value
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    coro = accumulator()
+    next(coro)
+    print(coro.send(3))
+    print(coro.send(4))
 
 
 if __name__ == '__main__':

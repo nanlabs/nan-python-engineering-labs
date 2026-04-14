@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+class WorkerPool:
+    def __init__(self) -> None:
+        self.free = ['w1', 'w2']
 
+    def acquire(self) -> str:
+        return self.free.pop() if self.free else 'none'
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Object Pool',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def release(self, worker: str) -> None:
+        self.free.append(worker)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    pool = WorkerPool()
+    worker = pool.acquire()
+    pool.release(worker)
+    print(pool.free)
 
 
 if __name__ == '__main__':

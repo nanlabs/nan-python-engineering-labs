@@ -1,25 +1,9 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Eager Initialization',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class EagerConfig:
+    instance = {'env': 'prod', 'region': 'us-east-1'}
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(EagerConfig.instance)
 
 
 if __name__ == '__main__':

@@ -2,24 +2,28 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Snapshot:
+    value: str
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Memento',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Editor:
+    def __init__(self) -> None:
+        self.value = ''
+
+    def save(self) -> Snapshot:
+        return Snapshot(self.value)
+
+    def restore(self, snapshot: Snapshot) -> None:
+        self.value = snapshot.value
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    editor = Editor()
+    editor.value = 'draft'
+    snap = editor.save()
+    editor.value = 'modified'
+    editor.restore(snap)
+    print(editor.value)
 
 
 if __name__ == '__main__':

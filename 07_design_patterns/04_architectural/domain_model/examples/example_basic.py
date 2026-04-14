@@ -2,24 +2,26 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class CartItem:
+    price: float
+    quantity: int
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Domain Model',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Cart:
+    def __init__(self) -> None:
+        self.items: list[CartItem] = []
+
+    def add(self, item: CartItem) -> None:
+        self.items.append(item)
+
+    def total(self) -> float:
+        return sum(i.price * i.quantity for i in self.items)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    cart = Cart()
+    cart.add(CartItem(10.0, 2))
+    print(cart.total())
 
 
 if __name__ == '__main__':

@@ -1,25 +1,29 @@
-from dataclasses import dataclass
+from queue import Queue
+import threading
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class ActiveObject:
+    def __init__(self) -> None:
+        self.queue: Queue[callable] = Queue()
+        self.worker = threading.Thread(target=self._loop, daemon=True)
+        self.worker.start()
 
+    def _loop(self) -> None:
+        while True:
+            job = self.queue.get()
+            job()
+            self.queue.task_done()
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Active Object',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def submit(self, fn: callable) -> None:
+        self.queue.put(fn)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    out: list[str] = []
+    ao = ActiveObject()
+    ao.submit(lambda: out.append('done'))
+    ao.queue.join()
+    print(out)
 
 
 if __name__ == '__main__':

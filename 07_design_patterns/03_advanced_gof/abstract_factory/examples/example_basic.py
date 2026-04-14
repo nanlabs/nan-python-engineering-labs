@@ -1,25 +1,35 @@
-from dataclasses import dataclass
+class Button:
+    def render(self) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class LinuxButton(Button):
+    def render(self) -> str:
+        return 'linux-button'
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Abstract Factory',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class WindowsButton(Button):
+    def render(self) -> str:
+        return 'windows-button'
+
+
+class UIFactory:
+    def button(self) -> Button:
+        raise NotImplementedError
+
+
+class LinuxFactory(UIFactory):
+    def button(self) -> Button:
+        return LinuxButton()
+
+
+class WindowsFactory(UIFactory):
+    def button(self) -> Button:
+        return WindowsButton()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(LinuxFactory().button().render())
 
 
 if __name__ == '__main__':

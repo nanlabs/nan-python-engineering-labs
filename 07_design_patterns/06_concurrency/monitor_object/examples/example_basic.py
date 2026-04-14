@@ -1,25 +1,24 @@
-from dataclasses import dataclass
+import threading
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class CounterMonitor:
+    def __init__(self) -> None:
+        self._value = 0
+        self._lock = threading.Lock()
 
+    def increment(self) -> None:
+        with self._lock:
+            self._value += 1
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Monitor Object',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def value(self) -> int:
+        with self._lock:
+            return self._value
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    monitor = CounterMonitor()
+    monitor.increment(); monitor.increment()
+    print(monitor.value())
 
 
 if __name__ == '__main__':

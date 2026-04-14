@@ -1,25 +1,15 @@
-from dataclasses import dataclass
+class Backlog:
+    def __init__(self, items: list[str]) -> None:
+        self.items = items
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Iterator',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def __iter__(self):
+        for item in self.items:
+            yield item
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    for task in Backlog(['design', 'build', 'test']):
+        print(task)
 
 
 if __name__ == '__main__':

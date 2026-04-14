@@ -2,24 +2,42 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Light:
+    on: bool = False
+
+    def turn_on(self) -> None:
+        self.on = True
+
+    def turn_off(self) -> None:
+        self.on = False
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Command',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Command:
+    def execute(self) -> None:
+        raise NotImplementedError
+
+
+class TurnOn(Command):
+    def __init__(self, light: Light) -> None:
+        self.light = light
+
+    def execute(self) -> None:
+        self.light.turn_on()
+
+
+class TurnOff(Command):
+    def __init__(self, light: Light) -> None:
+        self.light = light
+
+    def execute(self) -> None:
+        self.light.turn_off()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    light = Light()
+    TurnOn(light).execute()
+    TurnOff(light).execute()
+    print(light.on)
 
 
 if __name__ == '__main__':

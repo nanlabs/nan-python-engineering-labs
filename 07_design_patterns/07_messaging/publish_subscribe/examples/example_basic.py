@@ -1,25 +1,21 @@
-from dataclasses import dataclass
+class PubSub:
+    def __init__(self) -> None:
+        self.subs: list[callable] = []
 
+    def subscribe(self, fn: callable) -> None:
+        self.subs.append(fn)
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Publish Subscribe',
-        category='07 Messaging',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def publish(self, message: str) -> None:
+        for sub in self.subs:
+            sub(message)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    out: list[str] = []
+    ps = PubSub()
+    ps.subscribe(lambda m: out.append(m.upper()))
+    ps.publish('event')
+    print(out)
 
 
 if __name__ == '__main__':

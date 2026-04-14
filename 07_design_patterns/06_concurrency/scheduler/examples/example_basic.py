@@ -1,25 +1,11 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Scheduler',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+import heapq
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    schedule: list[tuple[int, str]] = []
+    heapq.heappush(schedule, (20, 'nightly-job'))
+    heapq.heappush(schedule, (10, 'health-check'))
+    print(heapq.heappop(schedule))
 
 
 if __name__ == '__main__':

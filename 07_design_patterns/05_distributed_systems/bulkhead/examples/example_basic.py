@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+from concurrent.futures import ThreadPoolExecutor
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+def critical_job() -> str:
+    return 'critical-ok'
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Bulkhead',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def non_critical_job() -> str:
+    return 'non-critical-ok'
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    with ThreadPoolExecutor(max_workers=1) as critical_pool, ThreadPoolExecutor(max_workers=1) as aux_pool:
+        a = critical_pool.submit(critical_job)
+        b = aux_pool.submit(non_critical_job)
+    print(a.result(), b.result())
 
 
 if __name__ == '__main__':

@@ -1,25 +1,20 @@
-from dataclasses import dataclass
+import threading
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+def with_timeout(fn, timeout_s: float):
+    result: dict[str, object] = {'value': None}
 
+    def run() -> None:
+        result['value'] = fn()
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Timeout',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    t = threading.Thread(target=run)
+    t.start()
+    t.join(timeout=timeout_s)
+    return 'timeout' if t.is_alive() else result['value']
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(with_timeout(lambda: 'ok', 0.1))
 
 
 if __name__ == '__main__':

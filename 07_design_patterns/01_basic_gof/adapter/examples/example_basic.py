@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+class LegacyTemperatureSensor:
+    def read_fahrenheit(self) -> float:
+        return 77.0
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class CelsiusSensorAdapter:
+    def __init__(self, legacy: LegacyTemperatureSensor) -> None:
+        self.legacy = legacy
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Adapter',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def read_celsius(self) -> float:
+        return (self.legacy.read_fahrenheit() - 32) * 5 / 9
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    sensor = CelsiusSensorAdapter(LegacyTemperatureSensor())
+    print(round(sensor.read_celsius(), 2))
 
 
 if __name__ == '__main__':

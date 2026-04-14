@@ -1,25 +1,11 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Message Queue',
-        category='07 Messaging',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+from queue import Queue
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    queue: Queue[str] = Queue()
+    queue.put('task-1')
+    queue.put('task-2')
+    print(queue.get(), queue.get())
 
 
 if __name__ == '__main__':

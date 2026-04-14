@@ -1,25 +1,23 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Retry Pattern',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def retry(fn, attempts: int):
+    last_err: Exception | None = None
+    for _ in range(attempts):
+        try:
+            return fn()
+        except Exception as err:
+            last_err = err
+    raise last_err if last_err else RuntimeError('unknown')
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    state = {'n': 0}
+
+    def flaky() -> str:
+        state['n'] += 1
+        if state['n'] < 2:
+            raise RuntimeError('temporary')
+        return 'ok'
+
+    print(retry(flaky, 3))
 
 
 if __name__ == '__main__':

@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class View:
+    def show(self, text: str) -> str:
+        return text
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Presenter:
+    def __init__(self, view: View) -> None:
+        self.view = view
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='MVP',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def present(self, data: str) -> str:
+        return self.view.show(f'presented:{data}')
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(Presenter(View()).present('stats'))
 
 
 if __name__ == '__main__':

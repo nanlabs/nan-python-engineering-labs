@@ -2,24 +2,27 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
+class User:
+    id: int
     name: str
-    category: str
-    purpose: str
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Clean Architecture',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class UserRepo:
+    def find(self, user_id: int) -> User:
+        return User(user_id, 'Ada')
+
+
+class GetUserUseCase:
+    def __init__(self, repo: UserRepo) -> None:
+        self.repo = repo
+
+    def execute(self, user_id: int) -> User:
+        return self.repo.find(user_id)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    use_case = GetUserUseCase(UserRepo())
+    print(use_case.execute(7))
 
 
 if __name__ == '__main__':

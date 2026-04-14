@@ -1,25 +1,27 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Half Sync Half Async',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+import queue
+import threading
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    q: queue.Queue[int] = queue.Queue()
+    out: list[int] = []
+
+    def producer() -> None:
+        for i in [1, 2, 3]:
+            q.put(i)
+        q.put(-1)
+
+    def consumer() -> None:
+        while True:
+            item = q.get()
+            if item == -1:
+                break
+            out.append(item * 2)
+
+    tp = threading.Thread(target=producer)
+    tc = threading.Thread(target=consumer)
+    tp.start(); tc.start(); tp.join(); tc.join()
+    print(out)
 
 
 if __name__ == '__main__':

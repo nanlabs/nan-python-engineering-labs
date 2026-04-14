@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class TaxService:
+    def calculate(self, amount: float) -> float:
+        return round(amount * 0.21, 2)
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class BillingService:
+    def __init__(self, tax_service: TaxService) -> None:
+        self.tax_service = tax_service
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Service Layer',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def invoice_total(self, subtotal: float) -> float:
+        return subtotal + self.tax_service.calculate(subtotal)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(BillingService(TaxService()).invoice_total(100))
 
 
 if __name__ == '__main__':

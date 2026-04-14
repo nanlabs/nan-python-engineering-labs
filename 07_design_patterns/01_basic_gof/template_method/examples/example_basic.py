@@ -1,25 +1,26 @@
-from dataclasses import dataclass
+class Exporter:
+    def export(self, payload: dict[str, object]) -> str:
+        header = self.build_header()
+        body = self.build_body(payload)
+        return f"{header}|{body}"
+
+    def build_header(self) -> str:
+        raise NotImplementedError
+
+    def build_body(self, payload: dict[str, object]) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class CsvExporter(Exporter):
+    def build_header(self) -> str:
+        return 'csv'
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Template Method',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def build_body(self, payload: dict[str, object]) -> str:
+        return ','.join(f"{k}={v}" for k, v in payload.items())
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(CsvExporter().export({'ok': True, 'count': 2}))
 
 
 if __name__ == '__main__':

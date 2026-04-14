@@ -1,25 +1,28 @@
-from dataclasses import dataclass
+class Device:
+    def enable(self) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class TV(Device):
+    def enable(self) -> str:
+        return 'tv:on'
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Bridge',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Radio(Device):
+    def enable(self) -> str:
+        return 'radio:on'
+
+
+class Remote:
+    def __init__(self, device: Device) -> None:
+        self.device = device
+
+    def turn_on(self) -> str:
+        return self.device.enable()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(Remote(Radio()).turn_on())
 
 
 if __name__ == '__main__':

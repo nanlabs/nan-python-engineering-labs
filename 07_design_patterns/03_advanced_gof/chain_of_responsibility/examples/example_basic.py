@@ -1,25 +1,30 @@
-from dataclasses import dataclass
+class Handler:
+    def __init__(self, nxt: 'Handler | None' = None) -> None:
+        self.nxt = nxt
+
+    def handle(self, level: int) -> str:
+        if self.nxt:
+            return self.nxt.handle(level)
+        return 'unhandled'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class WarnHandler(Handler):
+    def handle(self, level: int) -> str:
+        if level == 1:
+            return 'warn'
+        return super().handle(level)
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Chain Of Responsibility',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class ErrorHandler(Handler):
+    def handle(self, level: int) -> str:
+        if level >= 2:
+            return 'error'
+        return super().handle(level)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    chain = WarnHandler(ErrorHandler())
+    print(chain.handle(2))
 
 
 if __name__ == '__main__':

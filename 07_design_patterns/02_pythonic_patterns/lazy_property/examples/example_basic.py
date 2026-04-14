@@ -1,25 +1,17 @@
-from dataclasses import dataclass
+class Report:
+    def __init__(self, raw: list[int]) -> None:
+        self.raw = raw
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Lazy Property',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    @property
+    def total(self) -> int:
+        if not hasattr(self, '_cached_total'):
+            self._cached_total = sum(self.raw)
+        return self._cached_total
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    report = Report([1, 2, 3])
+    print(report.total, report.total)
 
 
 if __name__ == '__main__':

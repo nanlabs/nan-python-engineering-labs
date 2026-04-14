@@ -1,25 +1,27 @@
-from dataclasses import dataclass
+class Node:
+    def total(self) -> int:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Leaf(Node):
+    def __init__(self, value: int) -> None:
+        self.value = value
+
+    def total(self) -> int:
+        return self.value
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Composite',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Branch(Node):
+    def __init__(self, children: list[Node]) -> None:
+        self.children = children
+
+    def total(self) -> int:
+        return sum(child.total() for child in self.children)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    tree = Branch([Leaf(2), Branch([Leaf(3), Leaf(4)])])
+    print(tree.total())
 
 
 if __name__ == '__main__':

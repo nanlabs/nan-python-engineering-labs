@@ -1,25 +1,15 @@
-from dataclasses import dataclass
+class ViewModel:
+    def __init__(self) -> None:
+        self.title = 'dashboard'
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='MVVM',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    @property
+    def title_upper(self) -> str:
+        return self.title.upper()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    vm = ViewModel()
+    print(vm.title_upper)
 
 
 if __name__ == '__main__':

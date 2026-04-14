@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+class PaymentMethod:
+    def pay(self, amount: float) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class NullPayment(PaymentMethod):
+    def pay(self, amount: float) -> str:
+        return 'no-op'
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Null Object',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def checkout(method: PaymentMethod, amount: float) -> str:
+    return method.pay(amount)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(checkout(NullPayment(), 20))
 
 
 if __name__ == '__main__':

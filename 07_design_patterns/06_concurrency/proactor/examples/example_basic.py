@@ -1,25 +1,14 @@
-from dataclasses import dataclass
+from concurrent.futures import ThreadPoolExecutor
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Proactor',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def disk_write(payload: str) -> str:
+    return f'written:{payload}'
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        future = pool.submit(disk_write, 'event')
+        print(future.result())
 
 
 if __name__ == '__main__':

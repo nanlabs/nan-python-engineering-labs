@@ -1,25 +1,21 @@
-from dataclasses import dataclass
+HANDLERS: dict[str, callable] = {}
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+def register(name: str):
+    def deco(fn: callable):
+        HANDLERS[name] = fn
+        return fn
+
+    return deco
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Registry',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+@register('ping')
+def ping() -> str:
+    return 'pong'
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(HANDLERS['ping']())
 
 
 if __name__ == '__main__':

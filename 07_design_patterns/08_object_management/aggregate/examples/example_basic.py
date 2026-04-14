@@ -1,25 +1,19 @@
-from dataclasses import dataclass
+class OrderAggregate:
+    def __init__(self) -> None:
+        self.items: list[float] = []
 
+    def add_item(self, price: float) -> None:
+        self.items.append(price)
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Aggregate',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def total(self) -> float:
+        return sum(self.items)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    order = OrderAggregate()
+    order.add_item(10)
+    order.add_item(5)
+    print(order.total())
 
 
 if __name__ == '__main__':

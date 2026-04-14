@@ -1,25 +1,16 @@
-from dataclasses import dataclass
+import threading
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+local_data = threading.local()
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Thread Specific Storage',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def assign(value: str) -> str:
+    local_data.token = value
+    return local_data.token
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(assign('main-token'))
 
 
 if __name__ == '__main__':

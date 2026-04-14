@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class ConfigStore:
+    _instance: 'ConfigStore | None' = None
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Singleton',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.env = 'dev'
+        return cls._instance
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    a = ConfigStore()
+    b = ConfigStore()
+    b.env = 'prod'
+    print(a is b, a.env)
 
 
 if __name__ == '__main__':

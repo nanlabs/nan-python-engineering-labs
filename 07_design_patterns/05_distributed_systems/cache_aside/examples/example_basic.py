@@ -1,25 +1,23 @@
-from dataclasses import dataclass
+class Cache:
+    def __init__(self) -> None:
+        self.data: dict[str, str] = {}
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Store:
+    def get(self, key: str) -> str:
+        return f'db:{key}'
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Cache Aside',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def load(key: str, cache: Cache, store: Store) -> str:
+    if key not in cache.data:
+        cache.data[key] = store.get(key)
+    return cache.data[key]
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    cache = Cache()
+    store = Store()
+    print(load('u1', cache, store), load('u1', cache, store))
 
 
 if __name__ == '__main__':

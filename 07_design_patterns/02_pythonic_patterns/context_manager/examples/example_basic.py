@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class Timer:
+    def __enter__(self):
+        import time
+        self._time = time.perf_counter
+        self._start = self._time()
+        return self
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Context Manager',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def __exit__(self, exc_type, exc, tb):
+        self.elapsed = self._time() - self._start
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    with Timer() as timer:
+        sum(range(10000))
+    print(round(timer.elapsed, 6))
 
 
 if __name__ == '__main__':

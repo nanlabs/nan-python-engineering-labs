@@ -1,25 +1,21 @@
-from dataclasses import dataclass
+class Order:
+    def __init__(self) -> None:
+        self.state = 'draft'
 
+    def submit(self) -> None:
+        if self.state == 'draft':
+            self.state = 'submitted'
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='State',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def approve(self) -> None:
+        if self.state == 'submitted':
+            self.state = 'approved'
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    order = Order()
+    order.submit()
+    order.approve()
+    print(order.state)
 
 
 if __name__ == '__main__':

@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class Reactor:
+    def __init__(self) -> None:
+        self.handlers: dict[str, callable] = {}
 
+    def register(self, event: str, fn: callable) -> None:
+        self.handlers[event] = fn
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Reactor',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def dispatch(self, event: str, payload: str) -> str:
+        return self.handlers[event](payload)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    reactor = Reactor()
+    reactor.register('read', lambda p: f'read:{p}')
+    print(reactor.dispatch('read', 'socket-1'))
 
 
 if __name__ == '__main__':

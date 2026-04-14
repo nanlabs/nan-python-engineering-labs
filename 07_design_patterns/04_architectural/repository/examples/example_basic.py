@@ -1,25 +1,13 @@
-from dataclasses import dataclass
+class UserRepository:
+    def __init__(self) -> None:
+        self._items = {1: 'Ada'}
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Repository',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def get(self, user_id: int) -> str:
+        return self._items[user_id]
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(UserRepository().get(1))
 
 
 if __name__ == '__main__':

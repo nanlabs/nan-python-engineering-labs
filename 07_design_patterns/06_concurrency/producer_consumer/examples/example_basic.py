@@ -1,25 +1,14 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Producer Consumer',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+from queue import Queue
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    q: Queue[int] = Queue()
+    for item in [1, 2, 3]:
+        q.put(item)
+    out: list[int] = []
+    while not q.empty():
+        out.append(q.get() * 10)
+    print(out)
 
 
 if __name__ == '__main__':

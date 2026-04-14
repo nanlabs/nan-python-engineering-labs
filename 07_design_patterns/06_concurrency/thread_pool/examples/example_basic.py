@@ -1,25 +1,13 @@
-from dataclasses import dataclass
+from concurrent.futures import ThreadPoolExecutor
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Thread Pool',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+def work(x: int) -> int:
+    return x + 1
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        print(list(pool.map(work, [1, 2, 3])))
 
 
 if __name__ == '__main__':

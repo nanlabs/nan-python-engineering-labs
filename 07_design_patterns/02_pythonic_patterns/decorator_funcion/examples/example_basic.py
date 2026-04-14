@@ -1,25 +1,23 @@
-from dataclasses import dataclass
+from functools import wraps
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+def trace(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        result = fn(*args, **kwargs)
+        print(f"{fn.__name__} -> {result}")
+        return result
+
+    return wrapper
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Decorator Funcion',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+@trace
+def area(w: int, h: int) -> int:
+    return w * h
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    area(4, 5)
 
 
 if __name__ == '__main__':

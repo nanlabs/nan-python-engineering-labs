@@ -1,25 +1,24 @@
-from dataclasses import dataclass
+class Model:
+    def __init__(self) -> None:
+        self.value = 'hello'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class View:
+    def render(self, text: str) -> str:
+        return text.upper()
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='MVC',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Controller:
+    def __init__(self, model: Model, view: View) -> None:
+        self.model = model
+        self.view = view
+
+    def handle(self) -> str:
+        return self.view.render(self.model.value)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(Controller(Model(), View()).handle())
 
 
 if __name__ == '__main__':

@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class PluginRegistry:
+    def __init__(self) -> None:
+        self._plugins: dict[str, callable] = {}
 
+    def register(self, name: str, fn: callable) -> None:
+        self._plugins[name] = fn
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Plugin System',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def run(self, name: str, value: str) -> str:
+        return self._plugins[name](value)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    registry = PluginRegistry()
+    registry.register('upper', str.upper)
+    print(registry.run('upper', 'hello'))
 
 
 if __name__ == '__main__':

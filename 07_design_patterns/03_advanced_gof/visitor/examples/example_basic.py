@@ -1,25 +1,25 @@
-from dataclasses import dataclass
+class Number:
+    def __init__(self, value: int) -> None:
+        self.value = value
+
+    def accept(self, visitor) -> int:
+        return visitor.visit_number(self)
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class SumVisitor:
+    def __init__(self) -> None:
+        self.total = 0
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Visitor',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def visit_number(self, node: Number) -> int:
+        self.total += node.value
+        return self.total
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    visitor = SumVisitor()
+    for n in [Number(1), Number(4), Number(5)]:
+        n.accept(visitor)
+    print(visitor.total)
 
 
 if __name__ == '__main__':

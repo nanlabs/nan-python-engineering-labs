@@ -2,24 +2,37 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class HttpRequest:
+    method: str
+    path: str
+    headers: dict[str, str]
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Builder',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class RequestBuilder:
+    def __init__(self) -> None:
+        self._method = 'GET'
+        self._path = '/'
+        self._headers: dict[str, str] = {}
+
+    def method(self, value: str) -> 'RequestBuilder':
+        self._method = value
+        return self
+
+    def path(self, value: str) -> 'RequestBuilder':
+        self._path = value
+        return self
+
+    def header(self, key: str, value: str) -> 'RequestBuilder':
+        self._headers[key] = value
+        return self
+
+    def build(self) -> HttpRequest:
+        return HttpRequest(self._method, self._path, dict(self._headers))
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    req = RequestBuilder().method('POST').path('/users').header('x-id', '42').build()
+    print(req)
 
 
 if __name__ == '__main__':

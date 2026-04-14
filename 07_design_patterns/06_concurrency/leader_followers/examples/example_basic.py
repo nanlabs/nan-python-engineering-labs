@@ -1,25 +1,16 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Leader Followers',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+from collections import deque
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    tasks = deque(['a', 'b', 'c'])
+    leaders = ['l1', 'l2']
+    assignments: list[str] = []
+    while tasks:
+        for leader in leaders:
+            if not tasks:
+                break
+            assignments.append(f'{leader}->{tasks.popleft()}')
+    print(assignments)
 
 
 if __name__ == '__main__':

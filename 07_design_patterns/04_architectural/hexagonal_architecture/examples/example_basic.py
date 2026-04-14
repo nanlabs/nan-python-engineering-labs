@@ -1,25 +1,23 @@
-from dataclasses import dataclass
+class UserPort:
+    def get_name(self, user_id: int) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class InMemoryUserAdapter(UserPort):
+    def get_name(self, user_id: int) -> str:
+        return {1: 'Ada'}.get(user_id, 'Unknown')
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Hexagonal Architecture',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class UserService:
+    def __init__(self, port: UserPort) -> None:
+        self.port = port
+
+    def greet(self, user_id: int) -> str:
+        return f"Hello {self.port.get_name(user_id)}"
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(UserService(InMemoryUserAdapter()).greet(1))
 
 
 if __name__ == '__main__':

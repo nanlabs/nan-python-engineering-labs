@@ -1,25 +1,16 @@
-from dataclasses import dataclass
+class UserEntity:
+    def __init__(self, user_id: int, email: str) -> None:
+        self.user_id = user_id
+        self.email = email
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Entity',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def change_email(self, value: str) -> None:
+        self.email = value
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    user = UserEntity(1, 'a@example.com')
+    user.change_email('b@example.com')
+    print(user.user_id, user.email)
 
 
 if __name__ == '__main__':

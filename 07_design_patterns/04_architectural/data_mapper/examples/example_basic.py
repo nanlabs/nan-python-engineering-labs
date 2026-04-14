@@ -1,25 +1,22 @@
-from dataclasses import dataclass
+class User:
+    def __init__(self, user_id: int, name: str) -> None:
+        self.user_id = user_id
+        self.name = name
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class UserMapper:
+    @staticmethod
+    def to_row(user: User) -> dict[str, object]:
+        return {'id': user.user_id, 'name': user.name}
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Data Mapper',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    @staticmethod
+    def from_row(row: dict[str, object]) -> User:
+        return User(int(row['id']), str(row['name']))
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    row = UserMapper.to_row(User(2, 'Lin'))
+    print(UserMapper.from_row(row).name)
 
 
 if __name__ == '__main__':

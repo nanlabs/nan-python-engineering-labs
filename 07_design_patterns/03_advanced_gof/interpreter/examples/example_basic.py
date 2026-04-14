@@ -1,25 +1,32 @@
-from dataclasses import dataclass
+class Context(dict[str, int]):
+    pass
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Expression:
+    def interpret(self, ctx: Context) -> int:
+        raise NotImplementedError
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Interpreter',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Number(Expression):
+    def __init__(self, value: int) -> None:
+        self.value = value
+
+    def interpret(self, ctx: Context) -> int:
+        return self.value
+
+
+class Add(Expression):
+    def __init__(self, left: Expression, right: Expression) -> None:
+        self.left = left
+        self.right = right
+
+    def interpret(self, ctx: Context) -> int:
+        return self.left.interpret(ctx) + self.right.interpret(ctx)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    expr = Add(Number(2), Number(5))
+    print(expr.interpret(Context()))
 
 
 if __name__ == '__main__':

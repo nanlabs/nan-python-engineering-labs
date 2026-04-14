@@ -1,25 +1,15 @@
-from dataclasses import dataclass
+class Borg:
+    _state: dict[str, object] = {}
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Borg Monostate',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def __init__(self) -> None:
+        self.__dict__ = self._state
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    a = Borg()
+    b = Borg()
+    a.value = 10
+    print(getattr(b, 'value'))
 
 
 if __name__ == '__main__':

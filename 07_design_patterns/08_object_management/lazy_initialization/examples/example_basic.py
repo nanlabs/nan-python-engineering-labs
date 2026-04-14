@@ -1,25 +1,17 @@
-from dataclasses import dataclass
+class Connection:
+    def __init__(self) -> None:
+        self._resource: str | None = None
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Lazy Initialization',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    @property
+    def resource(self) -> str:
+        if self._resource is None:
+            self._resource = 'db-connection'
+        return self._resource
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    conn = Connection()
+    print(conn.resource)
 
 
 if __name__ == '__main__':

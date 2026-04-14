@@ -1,25 +1,14 @@
 from dataclasses import dataclass
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Value Object',
-        category='08 Object Management',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+@dataclass(frozen=True)
+class Money:
+    amount: int
+    currency: str
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(Money(100, 'USD') == Money(100, 'USD'))
 
 
 if __name__ == '__main__':

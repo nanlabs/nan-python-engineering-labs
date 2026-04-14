@@ -1,25 +1,22 @@
-from dataclasses import dataclass
+from typing import Protocol
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class SupportsClose(Protocol):
+    def close(self) -> str:
+        ...
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Protocol',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Connection:
+    def close(self) -> str:
+        return 'closed'
+
+
+def shutdown(resource: SupportsClose) -> str:
+    return resource.close()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(shutdown(Connection()))
 
 
 if __name__ == '__main__':

@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class App:
+    def handle(self, req: str) -> str:
+        return f'app:{req}'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Sidecar',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class Sidecar:
+    def enrich(self, req: str) -> str:
+        return f'{req}|trace=on'
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    app = App()
+    sidecar = Sidecar()
+    req = sidecar.enrich('get:/users')
+    print(app.handle(req))
 
 
 if __name__ == '__main__':

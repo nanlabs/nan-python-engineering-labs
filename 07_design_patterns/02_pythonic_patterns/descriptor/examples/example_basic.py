@@ -1,25 +1,25 @@
-from dataclasses import dataclass
+class NonEmpty:
+    def __set_name__(self, owner: type, name: str) -> None:
+        self.key = f"_{name}"
+
+    def __get__(self, instance, owner=None):
+        return getattr(instance, self.key)
+
+    def __set__(self, instance, value: str):
+        if not value.strip():
+            raise ValueError('empty value')
+        setattr(instance, self.key, value)
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class Article:
+    title = NonEmpty()
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Descriptor',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def __init__(self, title: str) -> None:
+        self.title = title
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(Article('Patterns').title)
 
 
 if __name__ == '__main__':

@@ -1,25 +1,27 @@
-from dataclasses import dataclass
+class Text:
+    def render(self) -> str:
+        return 'report'
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class BoldDecorator:
+    def __init__(self, inner: Text) -> None:
+        self.inner = inner
+
+    def render(self) -> str:
+        return f"<b>{self.inner.render()}</b>"
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Decorator Pattern',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class UpperDecorator:
+    def __init__(self, inner: Text) -> None:
+        self.inner = inner
+
+    def render(self) -> str:
+        return self.inner.render().upper()
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    decorated = UpperDecorator(BoldDecorator(Text()))
+    print(decorated.render())
 
 
 if __name__ == '__main__':

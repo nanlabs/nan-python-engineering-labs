@@ -1,25 +1,22 @@
-from dataclasses import dataclass
+class Topic:
+    def __init__(self) -> None:
+        self._subs: list[callable] = []
 
+    def subscribe(self, fn: callable) -> None:
+        self._subs.append(fn)
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Observer',
-        category='01 Basic GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def notify(self, event: str) -> None:
+        for sub in self._subs:
+            sub(event)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    events: list[str] = []
+    topic = Topic()
+    topic.subscribe(lambda e: events.append(f'a:{e}'))
+    topic.subscribe(lambda e: events.append(f'b:{e}'))
+    topic.notify('build_done')
+    print(events)
 
 
 if __name__ == '__main__':

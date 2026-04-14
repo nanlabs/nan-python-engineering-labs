@@ -1,25 +1,18 @@
-from dataclasses import dataclass
+class GlyphFactory:
+    def __init__(self) -> None:
+        self.cache: dict[str, str] = {}
 
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Flyweight',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def get(self, char: str) -> str:
+        if char not in self.cache:
+            self.cache[char] = f'glyph:{char}'
+        return self.cache[char]
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    factory = GlyphFactory()
+    a1 = factory.get('a')
+    a2 = factory.get('a')
+    print(a1 is a2, len(factory.cache))
 
 
 if __name__ == '__main__':

@@ -1,25 +1,27 @@
-from dataclasses import dataclass
+class WriteModel:
+    def __init__(self) -> None:
+        self.events: list[str] = []
+
+    def add_user(self, name: str) -> None:
+        self.events.append(f'user_added:{name}')
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class ReadModel:
+    def __init__(self) -> None:
+        self.users: list[str] = []
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='CQRS',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def project(self, event: str) -> None:
+        if event.startswith('user_added:'):
+            self.users.append(event.split(':', 1)[1])
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    write = WriteModel()
+    read = ReadModel()
+    write.add_user('Ada')
+    for event in write.events:
+        read.project(event)
+    print(read.users)
 
 
 if __name__ == '__main__':

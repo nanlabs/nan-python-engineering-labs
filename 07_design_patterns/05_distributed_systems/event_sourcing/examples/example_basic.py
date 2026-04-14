@@ -1,25 +1,23 @@
-from dataclasses import dataclass
+class Account:
+    def __init__(self) -> None:
+        self.events: list[tuple[str, int]] = []
 
+    def deposit(self, amount: int) -> None:
+        self.events.append(('deposit', amount))
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Event Sourcing',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def balance(self) -> int:
+        total = 0
+        for kind, amount in self.events:
+            if kind == 'deposit':
+                total += amount
+        return total
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    acc = Account()
+    acc.deposit(10)
+    acc.deposit(15)
+    print(acc.balance())
 
 
 if __name__ == '__main__':

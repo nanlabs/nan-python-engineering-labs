@@ -1,25 +1,21 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Barrier Pattern',
-        category='06 Concurrency',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+import threading
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    barrier = threading.Barrier(3)
+    out: list[str] = []
+
+    def worker(name: str) -> None:
+        out.append(f'ready:{name}')
+        barrier.wait()
+        out.append(f'run:{name}')
+
+    threads = [threading.Thread(target=worker, args=(f'w{i}',)) for i in range(3)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    print(sorted(out))
 
 
 if __name__ == '__main__':

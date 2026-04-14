@@ -1,25 +1,26 @@
-from dataclasses import dataclass
+class UserService:
+    def get_user(self, user_id: int) -> dict[str, object]:
+        return {'id': user_id, 'name': 'Ada'}
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class BillingService:
+    def get_balance(self, user_id: int) -> float:
+        return 42.0
 
 
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='API Gateway',
-        category='04 Architectural',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+class ApiGateway:
+    def __init__(self) -> None:
+        self.users = UserService()
+        self.billing = BillingService()
+
+    def profile(self, user_id: int) -> dict[str, object]:
+        data = self.users.get_user(user_id)
+        data['balance'] = self.billing.get_balance(user_id)
+        return data
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    print(ApiGateway().profile(1))
 
 
 if __name__ == '__main__':

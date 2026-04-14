@@ -1,25 +1,29 @@
-from dataclasses import dataclass
+class Saga:
+    def __init__(self) -> None:
+        self.steps: list[tuple[callable, callable]] = []
 
+    def add(self, action: callable, compensation: callable) -> None:
+        self.steps.append((action, compensation))
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Saga',
-        category='05 Distributed Systems',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def run(self) -> str:
+        done: list[callable] = []
+        try:
+            for action, compensation in self.steps:
+                action()
+                done.append(compensation)
+            return 'committed'
+        except Exception:
+            for comp in reversed(done):
+                comp()
+            return 'compensated'
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    events: list[str] = []
+    saga = Saga()
+    saga.add(lambda: events.append('reserve'), lambda: events.append('undo_reserve'))
+    saga.add(lambda: events.append('charge'), lambda: events.append('refund'))
+    print(saga.run(), events)
 
 
 if __name__ == '__main__':

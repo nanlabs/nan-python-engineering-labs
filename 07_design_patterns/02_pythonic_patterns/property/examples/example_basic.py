@@ -1,25 +1,22 @@
-from dataclasses import dataclass
+class Account:
+    def __init__(self) -> None:
+        self._balance = 0.0
 
+    @property
+    def balance(self) -> float:
+        return self._balance
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
-
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Property',
-        category='02 Pythonic Patterns',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    @balance.setter
+    def balance(self, value: float) -> None:
+        if value < 0:
+            raise ValueError('negative balance')
+        self._balance = value
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    acc = Account()
+    acc.balance = 10.5
+    print(acc.balance)
 
 
 if __name__ == '__main__':

@@ -1,25 +1,24 @@
-from dataclasses import dataclass
+class ChatMediator:
+    def __init__(self) -> None:
+        self.logs: list[str] = []
+
+    def send(self, sender: str, msg: str) -> None:
+        self.logs.append(f'{sender}:{msg}')
 
 
-@dataclass
-class PatternCard:
-    name: str
-    category: str
-    purpose: str
+class User:
+    def __init__(self, name: str, mediator: ChatMediator) -> None:
+        self.name = name
+        self.mediator = mediator
 
-
-def build_pattern_card() -> PatternCard:
-    return PatternCard(
-        name='Mediator',
-        category='03 Advanced GoF',
-        purpose='Demonstrate the core structure of the pattern in Python.'
-    )
+    def say(self, msg: str) -> None:
+        self.mediator.send(self.name, msg)
 
 
 def main() -> None:
-    card = build_pattern_card()
-    print(f"{card.name} | {card.category}")
-    print(card.purpose)
+    med = ChatMediator()
+    User('a', med).say('hello')
+    print(med.logs)
 
 
 if __name__ == '__main__':
