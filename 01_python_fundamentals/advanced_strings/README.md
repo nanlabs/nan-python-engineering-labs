@@ -42,6 +42,7 @@ The philosophy behind Advanced Strings aligns with the Zen of Python: "Simple is
 ### Problem It Solves
 
 Before Advanced Strings, developers faced challenges related to:
+
 - Unnecessary complexity in code
 - Lack of standardization
 - Difficulty maintaining and scaling applications
@@ -49,6 +50,7 @@ Before Advanced Strings, developers faced challenges related to:
 ### Solution and Benefits
 
 Advanced Strings provides:
+
 - ✅ **Cleaner code**: Expressive and readable syntax
 - ✅ **Better maintainability**: Standardized patterns the team understands
 - ✅ **Greater productivity**: Less boilerplate, more functionality
@@ -63,17 +65,20 @@ Introduced as part of Python's continuous evolution toward a more modern and exp
 See [references/links.md](references/links.md) for complete documentation, tutorials, and resources.
 
 **Official Documentation**:
+
 - [Python Docs: Advanced Strings](https://docs.python.org/3/library/stdtypes.html#str)
 
 
 ## 5. Practice Task
 
 ### Basic Level ⭐
+
 **Goal**: Implement basic usage of Advanced Strings
 
 See `exercises/exercise_01.py` for the full instructions.
 
 **Success criteria**:
+
 - Code runs without errors
 - Correct implementation of basic concepts
 - Basic tests pass
