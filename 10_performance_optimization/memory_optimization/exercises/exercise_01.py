@@ -1,18 +1,18 @@
 """
 Exercise: Memory Optimization
 
-Objective: Implementar y practicar memory_optimization
+Objective: Implement and practice memory_optimization
 
 Instructions:
-1. Lee atentamente los requirements
+1. Read the requirements carefully
 2. Implementa las funciones/clases marcadas con TODO
 3. Ejecuta los tests: pytest tests/
-4. Tu solution debe ir en my_solution/
+4. Your solution must go in my_solution/
 
 DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 """
 
-# TODO: Implement tu solution aquí
+# TODO: Implement your solution here
 # Follow the specifications in the docstrings
 
 
