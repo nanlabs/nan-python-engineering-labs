@@ -1,15 +1,16 @@
-"""
-Ejemplo básico de Cython Basics.
-"""
+"""Pure Python baseline before moving critical code to Cython."""
 
 
-def example_function():
-    """
-    Ejemplo funcional del concepto.
-    """
-    print("Ver referencias/ para documentación oficial")
-    # TODO: Añadir ejemplo específico
+def dot_product(a: list[float], b: list[float]) -> float:
+    return sum(x * y for x, y in zip(a, b, strict=True))
 
 
-if __name__ == "__main__":
-    example_function()
+def main() -> None:
+    a = [float(i) for i in range(1, 1001)]
+    b = [float(i) / 3.0 for i in range(1, 1001)]
+    print(f"Dot product baseline: {dot_product(a, b):.2f}")
+    print('This function is a good candidate for Cython acceleration.')
+
+
+if __name__ == '__main__':
+    main()

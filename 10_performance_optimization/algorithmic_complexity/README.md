@@ -14,9 +14,9 @@ In practice, this topic gives you a clear framework to model behavior, evaluate 
 - **Clarity**: promotes readable code and explicit intent.
 - **Composability**: works well alongside other Python patterns and tools.
 - **Testability**: facilitates validating behavior with automated tests.
-- **Pragmatic approach**: oriented toward real scenarios, not just toy examples.
+- **Practical approach**: oriented toward real scenarios, not just toy examples.
 
-## 2. Pragmatic Application
+## 2. Practical Application
 
 ### Use Cases
 

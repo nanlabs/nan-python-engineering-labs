@@ -1,10 +1,11 @@
 class Context(dict[str, int]):
-    pass
+    def lookup(self, name: str) -> int:
+        return self[name]
 
 
 class Expression:
     def interpret(self, ctx: Context) -> int:
-        raise NotImplementedError
+        raise NotImplementedError("Subclasses must implement interpret")
 
 
 class Number(Expression):
@@ -29,5 +30,5 @@ def main() -> None:
     print(expr.interpret(Context()))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

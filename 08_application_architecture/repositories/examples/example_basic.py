@@ -1,23 +1,36 @@
-"""Repository Pattern - abstract data access."""
+"""Repository pattern: isolate persistence behind a collection-like interface."""
 from abc import ABC, abstractmethod
 
+
 class Post:
-    def __init__(self, id, title):
-        self.id, self.title = id, title
+    def __init__(self, post_id: int, title: str):
+        self.id = post_id
+        self.title = title
+
 
 class PostRepo(ABC):
     @abstractmethod
-    def add(self, post): pass
-    @abstractmethod
-    def find(self, id): pass
+    def add(self, post: Post) -> None:
+        ...
 
-class Memory(PostRepo):
-    def __init__(self): self.posts = {}
-    def add(self, p): self.posts[p.id] = p
-    def find(self, id): return self.posts.get(id)
+    @abstractmethod
+    def find(self, post_id: int) -> Post | None:
+        ...
+
+
+class MemoryPostRepo(PostRepo):
+    def __init__(self) -> None:
+        self.posts: dict[int, Post] = {}
+
+    def add(self, post: Post) -> None:
+        self.posts[post.id] = post
+
+    def find(self, post_id: int) -> Post | None:
+        return self.posts.get(post_id)
+
 
 if __name__ == "__main__":
-    r = Memory()
-    r.add(Post(1, "Hello"))
-    p = r.find(1)
-    print(f"✓ Repository: {p.title}")
+    repo = MemoryPostRepo()
+    repo.add(Post(1, "Hello"))
+    found = repo.find(1)
+    print(found.title if found else "Post not found")

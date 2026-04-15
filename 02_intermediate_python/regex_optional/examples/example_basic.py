@@ -11,7 +11,7 @@ def extract_emails(text: str) -> list[str]:
 
 
 def anonymize_emails(text: str) -> str:
-    """Replace email addresses with a placeholder."""
+    """Replace email addresses with a masked marker."""
     return EMAIL_PATTERN.sub('[hidden-email]', text)
 
 

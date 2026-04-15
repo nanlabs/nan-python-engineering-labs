@@ -1,15 +1,19 @@
-"""
-Ejemplo básico de Caching Lru.
-"""
+"""Simple memoization example similar to LRU behavior."""
+
+from functools import lru_cache
 
 
-def example_function():
-    """
-    Ejemplo funcional del concepto.
-    """
-    print("Ver referencias/ para documentación oficial")
-    # TODO: Añadir ejemplo específico
+@lru_cache(maxsize=256)
+def fibonacci(n: int) -> int:
+    if n < 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-if __name__ == "__main__":
-    example_function()
+def main() -> None:
+    print(f"fib(35) = {fibonacci(35)}")
+    print(f"Cache stats: {fibonacci.cache_info()}")
+
+
+if __name__ == '__main__':
+    main()

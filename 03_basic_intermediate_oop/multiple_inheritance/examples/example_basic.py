@@ -9,14 +9,15 @@ class Saver:
 
 
 class ReportService(Printer, Saver):
-    pass
+    def publish(self, text: str) -> list[str]:
+        return [self.print_report(text), self.save_report(text)]
 
 
 def main() -> None:
     service = ReportService()
-    print(service.print_report('Q1 Results'))
-    print(service.save_report('Q1 Results'))
+    for action in service.publish("Q1 Results"):
+        print(action)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

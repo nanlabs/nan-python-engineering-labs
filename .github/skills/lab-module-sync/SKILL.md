@@ -122,6 +122,15 @@ The workflow ensures:
 - Ensure examples in both repos are identical (same code, same language).
 - Each topic/pattern must have logic specific to its own concept (not the same skeleton with renamed labels).
 
+5.1 Example language + completeness lock (NEW - strict)
+- Every `examples/example_basic.py` in `nan-python-engineering-labs` must be English-only in comments, docstrings, and printed messages.
+- Disallow placeholders in examples:
+  - No `TODO`
+  - No template comments like "add specific example"
+  - No empty demo placeholders intended to be completed later
+- Each example must contain runnable concept-specific logic and meaningful output.
+- Avoid trivial no-op stubs as final examples.
+
 6. Sync to original repo
 - Copy generated/approved examples from NaNLABS module to matching module in `training-py`.
 - Preserve topic slug mapping exactly.
@@ -145,6 +154,11 @@ The workflow ensures:
   - `nan-python-engineering-labs`: scan ALL files for Spanish keywords:
   - If any Spanish content found in exercises, references, tests, or docs → FAIL gate and re-translate before committing
   - This ensures 100% English-only compliance for NaN repo
+- **Example completeness + language check (NEW)**:
+  - Scan every `examples/example_basic.py` in the processed module.
+  - Fail if any example contains placeholder markers (`TODO`, template text, incomplete scaffolding).
+  - Fail if any comments/docstrings/messages in examples are Spanish.
+  - Execute every example and require zero runtime failures.
 
 8. Commit hygiene
 - Show `git status --short` for both repos.
@@ -164,6 +178,10 @@ The workflow ensures:
   - All documentation files translated to English
   - All exercise and reference files in English
   - All comments and docstrings in code are English
+- **Example quality gate (NEW)**:
+  - Every `examples/example_basic.py` is English-only and free of placeholders.
+  - No `TODO` markers in examples.
+  - Examples execute successfully in module validation.
 - No broken internal links in module readmes/references.
 - `examples/example_basic.py` files are identical in both repos.
 - Validation result is 100% passing for the target module.
@@ -201,6 +219,7 @@ Implement a language check before final commit to NaN repo:
 - All `exercises/exercise_*.py` files
 - All `references/links.md` files
 - All `tests/test_*.py` files (comments/docstrings)
+- All `examples/example_basic.py` files (comments/docstrings/print messages)
 - Any `.md` or `.py` files in topics
 
 **Action if Spanish found**:

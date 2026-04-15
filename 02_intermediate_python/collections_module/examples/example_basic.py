@@ -4,7 +4,7 @@ from collections import Counter, defaultdict, deque
 
 
 def main() -> None:
-    tickets = Counter(['todo', 'done', 'todo', 'review'])
+    tickets = Counter(['open', 'done', 'open', 'review'])
     grouped = defaultdict(list)
     grouped['backend'].append('FastAPI')
     grouped['data'].append('Polars')

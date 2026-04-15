@@ -18,7 +18,7 @@ def unique_languages(teams: dict[str, set[str]]) -> set[str]:
 
 
 def main() -> None:
-    print(count_statuses(["todo", "done", "todo", "review"]))
+    print(count_statuses(["open", "done", "open", "review"]))
     print(unique_languages({"backend": {"python", "sql"}, "data": {"python", "rust"}}))
 
 

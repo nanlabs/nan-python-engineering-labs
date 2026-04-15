@@ -1,27 +1,33 @@
-"""Ports & Adapters - swap implementations."""
+"""Ports and adapters: swap infrastructure implementations via a port."""
 from abc import ABC, abstractmethod
+
 
 class PaymentPort(ABC):
     @abstractmethod
-    def charge(self, amt): pass
+    def charge(self, amount: float) -> bool:
+        ...
 
-class Stripe(PaymentPort):
-    def charge(self, amt):
-        print(f"Stripe: ${amt}")
+
+class StripeAdapter(PaymentPort):
+    def charge(self, amount: float) -> bool:
+        print(f"Stripe charged: ${amount:.2f}")
         return True
 
-class PPal(PaymentPort):
-    def charge(self, amt):
-        print(f"PayPal: ${amt}")
+
+class PayPalAdapter(PaymentPort):
+    def charge(self, amount: float) -> bool:
+        print(f"PayPal charged: ${amount:.2f}")
         return True
+
 
 class Checkout:
-    def __init__(self, payment):
+    def __init__(self, payment: PaymentPort):
         self.payment = payment
-    def process(self, amt):
-        return self.payment.charge(amt)
+
+    def process(self, amount: float) -> bool:
+        return self.payment.charge(amount)
+
 
 if __name__ == "__main__":
-    Checkout(Stripe()).process(50)
-    Checkout(PPal()).process(30)
-    print("✓ Ports&Adapters")
+    Checkout(StripeAdapter()).process(50)
+    Checkout(PayPalAdapter()).process(30)

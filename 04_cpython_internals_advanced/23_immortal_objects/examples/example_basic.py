@@ -1,11 +1,15 @@
 def maybe_immortal(value: object) -> bool:
-    # In CPython, some singletons/objects may be immortalized internally.
     return value in (None, True, False, (), "")
 
 
+def classify_values(values: list[object]) -> list[tuple[object, bool]]:
+    return [(value, maybe_immortal(value)) for value in values]
+
+
 def main() -> None:
-    for candidate in [None, True, 10, "", "python"]:
-        print(candidate, maybe_immortal(candidate))
+    sample = [None, True, 10, "", "python"]
+    for candidate, immortal in classify_values(sample):
+        print(candidate, immortal)
 
 
 if __name__ == "__main__":

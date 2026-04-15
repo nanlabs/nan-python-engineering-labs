@@ -3,22 +3,23 @@ class RegistryMeta(type):
 
     def __new__(mcls, name, bases, namespace):
         cls = super().__new__(mcls, name, bases, namespace)
-        if name != 'Base':
+        if name != "Base":
             mcls.registry[name] = cls
         return cls
 
 
 class Base(metaclass=RegistryMeta):
-    pass
+    kind = "base"
 
 
 class Service(Base):
-    pass
+    kind = "service"
 
 
 def main() -> None:
-    print(sorted(RegistryMeta.registry.keys()))
+    summary = {name: cls.kind for name, cls in RegistryMeta.registry.items()}
+    print(summary)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

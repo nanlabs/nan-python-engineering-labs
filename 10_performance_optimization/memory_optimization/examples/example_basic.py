@@ -1,15 +1,28 @@
-"""
-Ejemplo básico de Memory Optimization.
-"""
+"""Compare memory usage with and without __slots__."""
+
+import sys
 
 
-def example_function():
-    """
-    Ejemplo funcional del concepto.
-    """
-    print("Ver referencias/ para documentación oficial")
-    # TODO: Añadir ejemplo específico
+class RegularPoint:
+    def __init__(self, x: int, y: int) -> None:
+        self.x = x
+        self.y = y
 
 
-if __name__ == "__main__":
-    example_function()
+class SlottedPoint:
+    __slots__ = ('x', 'y')
+
+    def __init__(self, x: int, y: int) -> None:
+        self.x = x
+        self.y = y
+
+
+def main() -> None:
+    regular = RegularPoint(1, 2)
+    slotted = SlottedPoint(1, 2)
+    print(f"Regular object size: {sys.getsizeof(regular)}")
+    print(f"Slotted object size: {sys.getsizeof(slotted)}")
+
+
+if __name__ == '__main__':
+    main()

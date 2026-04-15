@@ -1,19 +1,27 @@
-"""Liskov Substitution - subtypes substitutable."""
+"""Liskov substitution: every subtype can replace the base contract."""
 from abc import ABC, abstractmethod
+
 
 class Bird(ABC):
     @abstractmethod
-    def move(self): pass
+    def move(self) -> str:
+        ...
+
 
 class Sparrow(Bird):
-    def move(self): return "Flying 20mph"
+    def move(self) -> str:
+        return "Flying at 20 mph"
+
 
 class Penguin(Bird):
-    def move(self): return "Swimming 10mph"
+    def move(self) -> str:
+        return "Swimming at 10 mph"
 
-def describe_bird(bird: Bird): print(bird.move())
+
+def describe_bird(bird: Bird) -> str:
+    return bird.move()
+
 
 if __name__ == "__main__":
-    describe_bird(Sparrow())
-    describe_bird(Penguin())
-    print("✓ Liskov Substitution")
+    print(describe_bird(Sparrow()))
+    print(describe_bird(Penguin()))

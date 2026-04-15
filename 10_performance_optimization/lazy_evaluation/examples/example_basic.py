@@ -1,15 +1,22 @@
-"""
-Ejemplo básico de Lazy Evaluation.
-"""
+"""Lazy data pipeline using generators."""
 
 
-def example_function():
-    """
-    Ejemplo funcional del concepto.
-    """
-    print("Ver referencias/ para documentación oficial")
-    # TODO: Añadir ejemplo específico
+def source(limit: int):
+    for i in range(limit):
+        yield i
 
 
-if __name__ == "__main__":
-    example_function()
+def even_squares(values):
+    for v in values:
+        if v % 2 == 0:
+            yield v * v
+
+
+def main() -> None:
+    pipeline = even_squares(source(20))
+    first_five = [next(pipeline) for _ in range(5)]
+    print(f"First lazy results: {first_five}")
+
+
+if __name__ == '__main__':
+    main()

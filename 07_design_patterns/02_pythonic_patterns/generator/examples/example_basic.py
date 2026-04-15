@@ -1,11 +1,17 @@
 def chunked(values: list[int], size: int):
     for idx in range(0, len(values), size):
-        yield values[idx: idx + size]
+        yield values[idx : idx + size]
+
+
+def flatten(chunks: list[list[int]]) -> list[int]:
+    return [item for chunk in chunks for item in chunk]
 
 
 def main() -> None:
-    print(list(chunked([1, 2, 3, 4, 5], 2)))
+    chunks = list(chunked([1, 2, 3, 4, 5], 2))
+    print(chunks)
+    print(flatten(chunks))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

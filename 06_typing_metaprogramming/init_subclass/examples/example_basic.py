@@ -7,16 +7,17 @@ class Base:
 
 
 class ChildA(Base):
-    pass
+    role = "validator"
 
 
 class ChildB(Base):
-    pass
+    role = "serializer"
 
 
 def main() -> None:
-    print([cls.__name__ for cls in Base.registry])
+    pairs = [(cls.__name__, cls.role) for cls in Base.registry]
+    print(pairs)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
