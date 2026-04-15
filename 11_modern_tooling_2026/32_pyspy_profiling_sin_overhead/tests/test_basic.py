@@ -1,18 +1,18 @@
 """
-Tests for 32 pyspy profiling sin overhead
+Tests for 32 pyspy profiling no overhead
 """
 
 import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test32PyspyProfilingSinOverhead:
-    """Test suite for 32 pyspy profiling sin overhead."""
+class Test32PyspyProfilingNoOverhead:
+    """Test suite for 32 pyspy profiling no overhead."""
     
     def test_basic_functionality(self):
         """Basic functionality test."""

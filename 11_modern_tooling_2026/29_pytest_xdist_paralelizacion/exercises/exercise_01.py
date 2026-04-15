@@ -1,7 +1,7 @@
 """
 Exercise: pytest-xdist: Test Parallelization
 
-Objective: Implement and practice 29_pytest_xdist_paralelizacion
+Objective: Implement and practice pytest-xdist parallelization
 
 Instructions:
 1. Read the requirements carefully

@@ -1,6 +1,6 @@
 # References
 
-## Documentación Oficial
+## Official Documentation
 - [Python Documentation](https://docs.python.org/3/)
 
 ## Recommended Resources

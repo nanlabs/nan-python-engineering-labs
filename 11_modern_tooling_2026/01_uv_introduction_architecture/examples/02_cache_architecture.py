@@ -8,9 +8,9 @@ from pathlib import Path
 
 def get_cache_info():
     """Obtiene información sobre la caché de uv."""
-    print("📦 Información de la Caché Global de uv\n")
+    print("📦 uv Global Cache Information\n")
     
-    # Directorio de caché
+    # Cache directory
     result = subprocess.run(
         ["uv", "cache", "dir"],
         capture_output=True,
@@ -59,7 +59,7 @@ def demonstrate_cache_reuse():
             subprocess.run(["rm", "-rf", str(project)], check=False)
         project.mkdir(parents=True)
     
-    # Proyecto 1: First installation (descarga)
+    # Project 1: First installation (download)
     print("\n1️⃣  Project 1: First requests installation")
     subprocess.run(["uv", "venv", str(projects[0] / ".venv")], check=True)
     
@@ -73,7 +73,7 @@ def demonstrate_cache_reuse():
     )
     print(result.stdout)
     
-    # Proyecto 2: Segunda installation (desde caché)
+    # Project 2: Second installation (from cache)
     print("\n2️⃣  Project 2: Requests installation (from cache)")
     subprocess.run(["uv", "venv", str(projects[1] / ".venv")], check=True)
     
@@ -130,7 +130,7 @@ Advantages vs Backtracking (pip):
 if __name__ == "__main__":
     print("🏗️  uv: Architecture and Cache\n")
     
-    # Verificar installation
+    # Verify installation
     try:
         subprocess.run(["uv", "version"], capture_output=True, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError):

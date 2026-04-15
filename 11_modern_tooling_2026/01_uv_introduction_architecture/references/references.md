@@ -1,15 +1,15 @@
 # References - uv: Introduction and Architecture
 
-## Documentación Oficial
+## Official Documentation
 
 ### Principal
 - [uv Documentation](https://docs.astral.sh/uv/) - Complete official documentation
-- [uv GitHub Repository](https://github.com/astral-sh/uv) - Código fuente y issues
+- [uv GitHub Repository](https://github.com/astral-sh/uv) - Source code and issues
 - [Astral Blog - Announcing uv](https://astral.sh/blog/uv) - Anuncio original con detalles técnicos
 
 ### Guías y Tutoriales
 - [uv Quick Start](https://docs.astral.sh/uv/getting-started/) - Guía de inicio rápido
-- [uv vs pip](https://docs.astral.sh/uv/pip/compatibility/) - Compatibilidad y diferencias
+- [uv vs pip](https://docs.astral.sh/uv/pip/compatibility/) - Compatibility and differences
 - [uv Configuration](https://docs.astral.sh/uv/configuration/) - Configuration options
 
 ## Algoritmo PubGrub
@@ -34,7 +34,7 @@
 
 - [Understanding Package Resolution](https://blog.orhun.dev/python-package-resolution/) - Dependency resolution
 - [Python Wheels Explained](https://realpython.com/python-wheels/) - Formato wheel
-- [Virtual Environments Deep Dive](https://docs.python.org/3/library/venv.html) - Entornos virtuales
+- [Virtual Environments Deep Dive](https://docs.python.org/3/library/venv.html) - Virtual environments
 
 ## Videos y Presentaciones
 
@@ -42,20 +42,20 @@
 - [Python Packaging in 2026](https://www.youtube.com/watch?v=example) - Estado actual del packaging
 - [Rust for Python Developers](https://www.youtube.com/watch?v=example) - Rust introduction
 
-## Herramientas Relacionadas
+## Related Tools
 
 ### Other Python Package Managers
-- [Poetry](https://python-poetry.org/) - Gestor de dependencias tradicional
+- [Poetry](https://python-poetry.org/) - Traditional dependency manager
 - [Pipenv](https://pipenv.pypa.io/) - Wrapper de pip y virtualenv
-- [PDM](https://pdm.fming.dev/) - Gestor moderno siguiendo PEPs
+- [PDM](https://pdm.fming.dev/) - Modern manager following PEPs
 
-### Herramientas de Astral
+### Astral Tools
 - [Ruff](https://docs.astral.sh/ruff/) - Linter y formatter ultrarrápido
 - [Ruff LSP](https://github.com/astral-sh/ruff-lsp) - Language Server Protocol
 
 ## Comunidad
 
-- [uv Discord](https://discord.gg/astral-sh) - Chat de la comunidad
+- [uv Discord](https://discord.gg/astral-sh) - Community chat
 - [uv Discussions](https://github.com/astral-sh/uv/discussions) - GitHub Discussions
 - [r/Python - uv threads](https://www.reddit.com/r/Python/search?q=uv) - Discusiones Reddit
 
@@ -65,7 +65,7 @@
 - [PEP 621 – Storing project metadata in pyproject.toml](https://peps.python.org/pep-0621/) - Metadata en pyproject.toml
 - [PEP 660 – Editable installs for pyproject.toml](https://peps.python.org/pep-0660/) - Editable install
 
-## Casos de Uso y Ejemplos
+## Use Cases and Examples
 
 - [Using uv in Docker](https://docs.astral.sh/uv/guides/docker/) - Dockerfiles optimizados
 - [uv in CI/CD](https://docs.astral.sh/uv/guides/ci/) - GitHub Actions, GitLab CI

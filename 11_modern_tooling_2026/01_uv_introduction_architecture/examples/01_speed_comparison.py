@@ -34,7 +34,7 @@ def compare_installation():
     """Compare installation speed between pip and uv."""
     print("🔬 Benchmark: pip vs uv - installing requests")
     
-    # Crear directorios temporales
+    # Create temporary directories
     pip_venv = Path("/tmp/pip_test_venv")
     uv_venv = Path("/tmp/uv_test_venv")
     
@@ -47,7 +47,7 @@ def compare_installation():
     pip_time = 0
     pip_time += measure_command(
         ["python", "-m", "venv", str(pip_venv)],
-        "pip: crear entorno virtual"
+        "pip: create virtual environment"
     )
     pip_time += measure_command(
         [str(pip_venv / "bin" / "pip"), "install", "requests"],
@@ -58,7 +58,7 @@ def compare_installation():
     uv_time = 0
     uv_time += measure_command(
         ["uv", "venv", str(uv_venv)],
-        "uv: crear entorno virtual"
+        "uv: create virtual environment"
     )
     uv_time += measure_command(
         ["uv", "pip", "install", "--python", str(uv_venv / "bin" / "python"), "requests"],
@@ -71,7 +71,7 @@ def compare_installation():
     print("="*60)
     print(f"pip: {pip_time:.2f} seconds")
     print(f"uv:  {uv_time:.2f} seconds")
-    print(f"uv es {pip_time/uv_time:.1f}x más rápido")
+    print(f"uv is {pip_time/uv_time:.1f}x faster")
     print("="*60)
     
     # Cleanup
@@ -108,23 +108,23 @@ def show_architecture():
         check=False
     )
     print(f"\nInformación de caché:")
-    print(result.stdout if result.returncode == 0 else "No hay caché")
+    print(result.stdout if result.returncode == 0 else "No cache found")
 
 
 if __name__ == "__main__":
     print("🚀 uv: Introduction and Architecture - Practical Examples\n")
     
-    # Verificar que uv está instalado
+    # Verify uv is installed
     try:
         subprocess.run(["uv", "version"], capture_output=True, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError):
-        print("❌ uv no está instalado. Instálalo con:")
+        print("❌ uv is not installed. Install it with:")
         print("   curl -LsSf https://astral.sh/uv/install.sh | sh")
         exit(1)
     
     show_architecture()
     
-    # Preguntar si ejecutar benchmark
+    # Ask whether to run benchmark
     print("\n" + "="*60)
     response = input("Run speed benchmark? (y/n): ")
     if response.lower() == 's':

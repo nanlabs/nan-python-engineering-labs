@@ -1,7 +1,7 @@
 """
 Exercise: Advanced Type Narrowing and Type Guards
 
-Objective: Implement and practice 23_type_narrowing_guards_avanzados
+Objective: Implement and practice type narrowing and advanced type guards
 
 Instructions:
 1. Read the requirements carefully

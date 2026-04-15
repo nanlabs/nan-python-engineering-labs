@@ -1,5 +1,5 @@
 """
-Example: installation y verificación de uv en diferentes entornos
+Example: installation and verification of uv in different environments
 """
 import subprocess
 import platform
@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 def check_uv_installation():
-    """verify si uv está instalado correctamente."""
+    """Verify whether uv is installed correctly."""
     print("🔍 Checking uv installation\n")
     
     try:
@@ -39,7 +39,7 @@ def check_uv_installation():
         return True
     
     except (subprocess.CalledProcessError, FileNotFoundError):
-        print("❌ uv no está instalado")
+        print("❌ uv is not installed")
         return False
 
 
@@ -104,8 +104,8 @@ def show_configuration():
 
 
 def show_available_commands():
-    """Lista comandos disponibles en uv."""
-    print(f"\n📚 Comandos Disponibles\n")
+    """List available uv commands."""
+    print(f"\n📚 Available Commands\n")
     
     result = subprocess.run(
         ["uv", "--help"],
@@ -114,7 +114,7 @@ def show_available_commands():
         check=True
     )
     
-    # Parsear comandos
+    # Parse commands
     lines = result.stdout.split('\n')
     in_commands = False
     
@@ -165,13 +165,13 @@ prerelease = "disallow"
     
     print(config_content)
     
-    # Preguntar si crear el archivo
-    response = input("¿Crear este archivo en el directorio actual? (s/n): ")
+    # Ask whether to create the file
+    response = input("Create this file in the current directory? (y/n): ")
     if response.lower() == 's':
         config_path = Path.cwd() / ".uv" / "config.toml"
         config_path.parent.mkdir(exist_ok=True)
         config_path.write_text(config_content.strip())
-        print(f"✅ Archivo creado en: {config_path}")
+        print(f"✅ File created at: {config_path}")
 
 
 if __name__ == "__main__":

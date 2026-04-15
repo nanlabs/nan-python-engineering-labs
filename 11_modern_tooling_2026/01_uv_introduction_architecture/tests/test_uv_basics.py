@@ -1,5 +1,5 @@
 """
-Tests for validar la comprensión de uv
+Tests for validating uv comprehension
 """
 import subprocess
 import pytest
@@ -23,7 +23,7 @@ def test_uv_is_installed():
         capture_output=True,
         text=True
     )
-    assert result.returncode == 0, "uv no está instalado"
+    assert result.returncode == 0, "uv is not installed"
     assert "uv" in result.stdout.lower()
 
 
@@ -50,16 +50,16 @@ def test_uv_venv_creation(temp_project):
         text=True
     )
     
-    assert result.returncode == 0, f"Error creando venv: {result.stderr}"
-    assert venv_path.exists(), "Directorio .venv no fue creado"
-    assert (venv_path / "bin" / "python").exists(), "Python no está en .venv"
+    assert result.returncode == 0, f"Error creating venv: {result.stderr}"
+    assert venv_path.exists(), ".venv directory was not created"
+    assert (venv_path / "bin" / "python").exists(), "Python is not in .venv"
 
 
 def test_uv_pip_install_simple_package(temp_project):
     """Verify uv can install packages."""
     venv_path = temp_project / ".venv"
     
-    # Crear venv
+    # Create venv
     subprocess.run(["uv", "venv", str(venv_path)], check=True)
     
     # Install simple package
@@ -73,17 +73,17 @@ def test_uv_pip_install_simple_package(temp_project):
         text=True
     )
     
-    assert result.returncode == 0, f"Error instalando six: {result.stderr}"
+    assert result.returncode == 0, f"Error installing six: {result.stderr}"
     
-    # Verificar que se puede importar
+    # Verify that import works
     import_result = subprocess.run(
         [str(venv_path / "bin" / "python"), "-c", "import six; print(six.__version__)"],
         capture_output=True,
         text=True
     )
     
-    assert import_result.returncode == 0, "No se puede importar six"
-    assert import_result.stdout.strip(), "six no tiene versión"
+    assert import_result.returncode == 0, "Cannot import six"
+    assert import_result.stdout.strip(), "six has no version"
 
 
 def test_uv_is_faster_than_pip(temp_project):
@@ -111,8 +111,8 @@ def test_uv_is_faster_than_pip(temp_project):
     
     assert result.returncode == 0
     # If cached, it should be very fast
-    # Este threshold es conservador
-    assert elapsed < 30, f"uv tomó {elapsed}s, debería ser más rápido"
+    # This threshold is conservative
+    assert elapsed < 30, f"uv took {elapsed}s, should be faster"
 
 
 def test_uv_cache_reuse(temp_project):
@@ -151,9 +151,9 @@ def test_uv_cache_reuse(temp_project):
     elapsed = time.time() - start
     
     # The second installation should be much faster (from cache)
-    assert elapsed < 5, f"installation desde caché tomó {elapsed}s, should be <5s"
+    assert elapsed < 5, f"installation from cache took {elapsed}s, should be <5s"
     
-    # Verificar que ambas tienen click
+    # Verify that both environments have click
     for venv in [venv1, venv2]:
         check = subprocess.run(
             [str(venv / "bin" / "python"), "-c", "import click"],
@@ -169,7 +169,7 @@ def test_uv_handles_dependencies():
         venv_path = temp_dir / ".venv"
         subprocess.run(["uv", "venv", str(venv_path)], check=True)
         
-        # flask tiene varias dependencias
+        # flask has several dependencies
         result = subprocess.run(
             [
                 "uv", "pip", "install",
@@ -181,7 +181,7 @@ def test_uv_handles_dependencies():
             check=True
         )
         
-        # Verificar que las dependencias están instaladas
+        # Verify that dependencies are installed
         list_result = subprocess.run(
             [
                 "uv", "pip", "list",
@@ -192,7 +192,7 @@ def test_uv_handles_dependencies():
             check=True
         )
         
-        # flask depende de werkzeug, jinja2, click, etc.
+        # flask depends on werkzeug, jinja2, click, etc.
         assert "werkzeug" in list_result.stdout.lower()
         assert "jinja2" in list_result.stdout.lower()
         assert "click" in list_result.stdout.lower()
@@ -211,14 +211,14 @@ class TestUVArchitecture:
         
         if solution_dir.exists():
             docs = list(solution_dir.glob("*.md"))
-            # Si hay documentación, debería mencionar PubGrub
+            # If there is documentation, it should mention PubGrub
             if docs:
                 content = ""
                 for doc in docs:
                     content += doc.read_text().lower()
                 
                 assert "pubgrub" in content, \
-                    "La documentación debería mencionar PubGrub"
+                    "Documentation should mention PubGrub"
     
     def test_student_understands_rust_benefits(self):
         """Verify Rust documentation exists."""
@@ -236,7 +236,7 @@ class TestUVArchitecture:
                 mentions = sum(1 for benefit in rust_benefits if benefit in content)
                 
                 assert mentions >= 2, \
-                    "La documentación debería explicar ventajas de Rust"
+                    "Documentation should explain Rust advantages"
 
 
 if __name__ == "__main__":

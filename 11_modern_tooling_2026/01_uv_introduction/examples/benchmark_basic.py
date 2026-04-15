@@ -21,7 +21,7 @@ def create_test_requirements():
 
 def benchmark_pip(requirements_file: Path) -> float:
     """Measure installation time with pip."""
-    # Crear venv temporal
+    # Create temporary venv
     subprocess.run(["python", "-m", "venv", "temp_venv_pip"], check=True)
     
     pip_path = "temp_venv_pip/bin/pip"
@@ -41,7 +41,7 @@ def benchmark_pip(requirements_file: Path) -> float:
 
 def benchmark_uv(requirements_file: Path) -> float:
     """Measure installation time with uv."""
-    # Crear venv con uv
+    # Create venv with uv
     subprocess.run(["uv", "venv", "temp_venv_uv"], check=True)
     
     start = time.perf_counter()
@@ -61,18 +61,18 @@ if __name__ == "__main__":
     print("🚀 Benchmark: pip vs uv\n")
     
     req_file = create_test_requirements()
-    print(f"📦 Instalando 5 packages populares...\n")
+    print(f"📦 Installing 5 popular packages...\n")
     
-    print("⏱️  Midiendo pip...")
+    print("⏱️  Measuring pip...")
     pip_time = benchmark_pip(req_file)
     print(f"   pip: {pip_time:.2f}s\n")
     
-    print("⏱️  Midiendo uv...")
+    print("⏱️  Measuring uv...")
     uv_time = benchmark_uv(req_file)
     print(f"   uv:  {uv_time:.2f}s\n")
     
     speedup = pip_time / uv_time
-    print(f"✨ Speedup: {speedup:.1f}x más rápido con uv!")
+    print(f"✨ Speedup: {speedup:.1f}x faster with uv!")
     
     # Cleanup
     req_file.unlink()

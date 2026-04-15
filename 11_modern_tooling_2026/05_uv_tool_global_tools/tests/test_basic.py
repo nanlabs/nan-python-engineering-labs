@@ -1,18 +1,18 @@
 """
-Tests for 05 uv tool herramientas globales
+Tests for 05 uv tool global tools
 """
 
 import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test05UvToolHerramientasGlobales:
-    """Test suite for 05 uv tool herramientas globales."""
+class Test05UvToolGlobalTools:
+    """Test suite for 05 uv tool global tools."""
     
     def test_basic_functionality(self):
         """Basic functionality test."""

@@ -1,18 +1,18 @@
 """
-Tests for 21 comparacion type checkers
+Tests for 21 type checkers comparison
 """
 
 import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test21ComparacionTypeCheckers:
-    """Test suite for 21 comparacion type checkers."""
+class Test21TypeCheckersComparison:
+    """Test suite for 21 type checkers comparison."""
     
     def test_basic_functionality(self):
         """Basic functionality test."""

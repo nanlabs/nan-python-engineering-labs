@@ -1,7 +1,7 @@
 """
 Exercise: Pre-commit Security Hooks
 
-Objective: Implement and practice 25_precommit_hooks_seguridad
+Objective: Implement and practice pre-commit security hooks
 
 Instructions:
 1. Read the requirements carefully

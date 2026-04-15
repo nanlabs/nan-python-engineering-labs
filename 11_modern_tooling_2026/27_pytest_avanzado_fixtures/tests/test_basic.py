@@ -6,12 +6,12 @@ import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test27PytestAvanzadoFixtures:
+class Test27PytestAdvancedFixtures:
     """Test suite for 27 pytest advanced fixtures."""
     
     def test_basic_functionality(self):

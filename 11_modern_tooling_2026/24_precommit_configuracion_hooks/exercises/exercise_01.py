@@ -1,7 +1,7 @@
 """
 Exercise: Pre-commit: Configuration and Essential Hooks
 
-Objective: Implement and practice 24_precommit_configuracion_hooks
+Objective: Implement and practice pre-commit configuration and hooks
 
 Instructions:
 1. Read the requirements carefully

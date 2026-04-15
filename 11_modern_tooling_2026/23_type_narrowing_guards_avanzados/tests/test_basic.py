@@ -1,18 +1,18 @@
 """
-Tests for 23 type narrowing guards avanzados
+Tests for 23 type narrowing advanced guards
 """
 
 import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test23TypeNarrowingGuardsAvanzados:
-    """Test suite for 23 type narrowing guards avanzados."""
+class Test23TypeNarrowingAdvancedGuards:
+    """Test suite for 23 type narrowing advanced guards."""
     
     def test_basic_functionality(self):
         """Basic functionality test."""

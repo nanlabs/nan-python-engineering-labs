@@ -1,18 +1,18 @@
 """
-Tests for 03 uv pip instalacion packages
+Tests for 03 uv pip package installation
 """
 
 import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test03UvPipInstalacionPaquetes:
-    """Test suite for 03 uv pip instalacion packages."""
+class Test03UvPipPackageInstallation:
+    """Test suite for 03 uv pip package installation."""
     
     def test_basic_functionality(self):
         """Basic functionality test."""

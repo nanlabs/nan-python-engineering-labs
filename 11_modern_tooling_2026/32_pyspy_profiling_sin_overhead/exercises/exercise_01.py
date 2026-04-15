@@ -1,7 +1,7 @@
 """
 Exercise: py-spy: Profiling Without Overhead
 
-Objective: Implement and practice 32_pyspy_profiling_sin_overhead
+Objective: Implement and practice py-spy profiling without overhead
 
 Instructions:
 1. Read the requirements carefully

@@ -1,7 +1,7 @@
 """
 Exercise: Strict Type Configuration
 
-Objective: Implement and practice 22_configuracion_tipado_estricto
+Objective: Implement and practice strict typing configuration
 
 Instructions:
 1. Read the requirements carefully

@@ -1,7 +1,7 @@
 """
 Exercise: Type Checkers Comparison: mypy vs Pyright vs Pylyzer
 
-Objective: Implement and practice 21_comparacion_type_checkers
+Objective: Implement and practice type checkers comparison
 
 Instructions:
 1. Read the requirements carefully

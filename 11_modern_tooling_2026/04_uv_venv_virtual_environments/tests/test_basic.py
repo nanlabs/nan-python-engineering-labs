@@ -1,18 +1,18 @@
 """
-Tests for 04 uv venv entornos virtuales
+Tests for 04 uv venv virtual environments
 """
 
 import pytest
 from pathlib import Path
 import sys
 
-# Añadir directorio padre al path para imports
+# Add parent directory to path for imports
 parent_dir = Path(__file__).parent.parent / "my_solution"
 sys.path.insert(0, str(parent_dir))
 
 
-class Test04UvVenvEntornosVirtuales:
-    """Test suite for 04 uv venv entornos virtuales."""
+class Test04UvVenvVirtualEnvironments:
+    """Test suite for 04 uv venv virtual environments."""
     
     def test_basic_functionality(self):
         """Basic functionality test."""

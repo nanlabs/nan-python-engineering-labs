@@ -28,11 +28,11 @@ Investigate and understand uv internal architecture and compare it with other to
    file $(which pip)
    ```
 
-## Parte 2: Exploración de la Caché (25 min)
+## Part 2: Cache Exploration (25 min)
 
-### Estructura de la Caché
+### Cache Structure
 
-5. Explora la estructura de directorios de la caché:
+5. Explore the cache directory structure:
    ```bash
    tree -L 2 $(uv cache dir)
    # O si no tienes tree:
@@ -55,7 +55,7 @@ Investigate and understand uv internal architecture and compare it with other to
 
 ## Part 3: Resolver Comparison (30 min)
 
-### Crear Escenario Complejo
+### Create Complex Scenario
 
 8. Create a `requirements.txt` file with complex dependencies:
    ```
@@ -83,11 +83,11 @@ Investigate and understand uv internal architecture and compare it with other to
 11. Compara:
     - Resolution time
     - Claridad de mensajes
-    - Orden de dependencias resueltas
+    - Order of resolved dependencies
 
 ## Parte 4: Implementción en Rust (25 min)
 
-### Investigación de Código
+### Code Investigation
 
 12. Clona el repositorio de uv (opcional):
     ```bash
@@ -95,9 +95,9 @@ Investigate and understand uv internal architecture and compare it with other to
     cd /tmp/uv-repo
     ```
 
-13. Explora la estructura del proyecto:
+13. Explore the project structure:
     - ¿Qué crates (librerías Rust) se utilizan?
-    - ¿Cómo está organizado el código?
+    - How is the code organized?
 
 14. Lee sobre las optimizaciones:
     - Visita: https://astral.sh/blog/uv
@@ -113,7 +113,7 @@ Implement en `my_solution/cache_analyzer.py`:
 """
 Analizador de caché de uv
 It should show:
-- Tamaño total de la caché
+- Total cache size
 - Number of cached packages
 - Top 10 largest packages
 - Antigüedad de artefactos
@@ -134,7 +134,7 @@ Script que compara pip vs uv en diferentes escenarios:
 """
 ```
 
-### Tarea 3: Visualizador de Grafo de Dependencias
+### Task 3: Dependency Graph Visualizer
 
 Implement en `my_solution/dep_graph.py`:
 
@@ -146,7 +146,7 @@ Genera un grafo con graphviz o similar
 """
 ```
 
-## Preguntas Avanzadas
+## Advanced Questions
 
 1. Why is Rust better than Python for a package manager?
 2. ¿Qué trade-offs tiene el algoritmo PubGrub?
@@ -162,7 +162,7 @@ En `my_solution/`:
 - `dep_graph.py` - Script funcional
 - `ANALISIS.md` - Documento con:
   - Resultados de comparaciones
-  - Respuestas a preguntas avanzadas
+  - Answers to advanced questions
   - uv architecture diagram
   - Conclusiones personales
 

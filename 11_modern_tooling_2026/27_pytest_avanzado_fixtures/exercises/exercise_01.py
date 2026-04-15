@@ -1,7 +1,7 @@
 """
 Exercise: Advanced pytest: Fixtures and Parametrize
 
-Objective: Implement and practice 27_pytest_avanzado_fixtures
+Objective: Implement and practice advanced pytest fixtures
 
 Instructions:
 1. Read the requirements carefully
