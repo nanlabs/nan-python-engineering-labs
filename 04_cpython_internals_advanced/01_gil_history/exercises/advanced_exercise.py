@@ -1,7 +1,7 @@
 """
-EJERCICIO AVANZADO: Custom GIL Implementation
+ADVANCED EXERCISE: Custom GIL Implementation
 
-Objetivo:
+Objective:
 Implementar un sistema de "cooperative multitasking" que imite el comportamiento
 del GIL pero con control fino sobre políticas de scheduling. Crear una clase
 CustomGIL que soporte múltiples políticas intercambiables.
@@ -16,7 +16,7 @@ Tareas:
 3. Simular 10+ hilos con diferentes prioridades compitiendo
 4. Recolectar métricas: fairness, throughput, latency, starvation
 5. Detectar y prevenir deadlocks
-6. Comparar con GIL real de CPython
+6. Compare con GIL real de CPython
 7. Documentar tradeoffs de cada política
 
 Políticas requeridas:
@@ -40,7 +40,7 @@ Criterios de éxito:
 ✅ FairShareScheduler logra fairness index > 0.9
 ✅ LotteryScheduler converge a distribución esperada
 ✅ Tests exhaustivos con pytest
-✅ Documentación completa de tradeoffs
+✅ Complete tradeoff documentation
 
 Tiempo estimado: 4-6 horas
 """
@@ -332,7 +332,7 @@ def run_simulation(
 
 def compare_policies():
     """
-    TODO: Comparar todas las políticas con la misma configuración.
+    TODO: Compare all policies with the same configuration.
     
     Mostrar:
     - Fairness index de cada política
@@ -351,7 +351,7 @@ def main():
     1. Ejecutar cada política con diferentes configuraciones
     2. Mostrar métricas y análisis
     3. Generar conclusiones sobre tradeoffs
-    4. Comparar con GIL real de CPython (conceptualmente)
+    4. Compare con GIL real de CPython (conceptualmente)
     """
     pass  # TU CÓDIGO AQUÍ
 

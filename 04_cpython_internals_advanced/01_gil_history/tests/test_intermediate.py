@@ -1,5 +1,5 @@
 """
-Tests para el ejercicio intermedio: GIL Contention Profiler
+Tests for the intermediate exercise: GIL Contention Profiler
 
 Ejecutar con: pytest test_intermediate.py -v
 """

@@ -1,5 +1,5 @@
 """
-Demostración avanzada del comportamiento del GIL en CPython.
+Advanced demonstration of GIL behavior in CPython.
 
 Este script demuestra:
 1. Contención del GIL en operaciones CPU-bound
@@ -68,7 +68,7 @@ def cpu_intensive_work(iterations: int, monitor: GILMonitor):
         # Operaciones CPU-intensive que mantienen el GIL
         result += math.sqrt(i) * math.sin(i) * math.cos(i)
         
-        # Python hace gil switching cada ~5ms o cada ~100 instrucciones
+        # Python switches the GIL about every ~5ms or ~100 instructions
         # de bytecode (check_interval en Python 2, switchinterval en Python 3)
         if i % 10000 == 0:
             # Forzar un checkpoint donde Python podría hacer gil switch
@@ -267,13 +267,13 @@ def main():
     print("="*60)
     print("""
     1. CPU-bound: El GIL serializa la ejecución. No hay speedup real con threading.
-       ➜ Solución: Usar multiprocessing o extensiones C que liberan el GIL.
+       ➜ Solution: Use multiprocessing or C extensions that release the GIL.
     
     2. I/O-bound: El GIL se libera durante operaciones I/O. Threading es efectivo.
-       ➜ Solución: Threading es apropiado. asyncio también es buena alternativa.
+       ➜ Solution: Threading is appropriate. asyncio is also a good alternative.
     
     3. Mixed: Comportamiento intermedio. Beneficio depende del ratio CPU/IO.
-       ➜ Solución: Analizar el workload y elegir la mejor estrategia.
+       ➜ Solution: Analyze the workload and choose the best strategy.
     
     4. Free-threading (Python 3.13+): Permite verdadero paralelismo CPU-bound.
        ➜ Requiere compilar Python con --disable-gil flag.

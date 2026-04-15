@@ -1,7 +1,7 @@
 """
-EJERCICIO BÁSICO: Comparación Threading vs Multiprocessing
+BASIC EXERCISE: Comparison Threading vs Multiprocessing
 
-Objetivo:
+Objective:
 Implementar un programa que encuentre números primos en un rango usando:
 1. Ejecución secuencial
 2. Threading (múltiples hilos)
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     main()
 
 
-# SECCIÓN DE AUTO-VERIFICACIÓN
+# SELF-VERIFICATION SECTION
 # Descomenta para verificar tu implementación:
 
 # def test_is_prime():

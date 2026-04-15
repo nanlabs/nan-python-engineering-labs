@@ -1,7 +1,7 @@
 """
-EJERCICIO INTERMEDIO: GIL Contention Profiler
+INTERMEDIATE EXERCISE: GIL Contention Profiler
 
-Objetivo:
+Objective:
 Desarrollar una herramienta de profiling que analice la contención del GIL
 entre múltiples hilos, mostrando métricas como tiempo de espera, fairness,
 y utilización del GIL.
@@ -11,7 +11,7 @@ Tareas:
 2. Implementar GILProfiler class con métricas de contención
 3. Simular múltiples hilos compitiendo por el GIL
 4. Visualizar contención mediante reporte detallado o gráfico
-5. Comparar diferentes patrones: CPU-bound vs I/O-bound vs mixto
+5. Compare diferentes patrones: CPU-bound vs I/O-bound vs mixto
 
 Métricas a calcular:
 - Tiempo total de ejecución por hilo
@@ -222,7 +222,7 @@ if __name__ == "__main__":
     main()
 
 
-# SECCIÓN DE AUTO-VERIFICACIÓN
+# SELF-VERIFICATION SECTION
 
 def test_thread_stats():
     """TODO: Verificar cálculos de ThreadStats."""

@@ -1,5 +1,5 @@
 """
-Comparación exhaustiva: Threading (GIL) vs Multiprocessing.
+Comprehensive comparison: Threading (GIL) vs Multiprocessing.
 
 Demuestra cuándo usar cada enfoque y los tradeoffs involucrados.
 """
@@ -145,7 +145,7 @@ def main():
     ⚠️  Los resultados son similares. Considerar:
     
     • El overhead de multiprocessing puede dominar en tareas pequeñas
-    • Para tareas CPU-bound grandes, multiprocessing debería ganar
+    • For large CPU-bound tasks, multiprocessing should win
     • Para tareas I/O-bound, threading es suficiente y más eficiente
         """)
     

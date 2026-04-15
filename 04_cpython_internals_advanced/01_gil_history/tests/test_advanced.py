@@ -1,5 +1,5 @@
 """
-Tests para el ejercicio avanzado: Custom GIL Implementation
+Tests for the advanced exercise: Custom GIL Implementation
 
 Ejecutar con: pytest test_advanced.py -v
 """
@@ -132,7 +132,7 @@ class TestPriorityScheduler:
             )
             scheduler.enqueue(high_priority)
         
-        # El thread de baja prioridad debería eventualmente
+        # El thread de baja prioridad should eventualmente
         # tener prioridad suficiente debido al aging
         # (este test es conceptual, el comportamiento exacto depende de la implementación)
 
@@ -356,7 +356,7 @@ class TestMetrics:
         metrics = gil.get_metrics()
         fairness = metrics['fairness_index']
         
-        # FairShare debería lograr alta fairness
+        # FairShare should lograr alta fairness
         assert fairness > 0.85, f"Fairness too low: {fairness}"
 
 
@@ -365,7 +365,7 @@ class TestComparison:
     
     @pytest.mark.slow
     def test_fifo_vs_fair_share(self):
-        """Comparar FIFO vs FairShare en términos de fairness."""
+        """Compare FIFO vs FairShare en términos de fairness."""
         
         def run_with_policy(policy: SchedulerPolicy) -> float:
             gil = CustomGIL(policy=policy)
