@@ -1,5 +1,5 @@
 """
-Tests para el ejercicio avanzado de type hints - decorador validate_types.
+Tests for the advanced type hints exercise - validate_types decorator.
 """
 
 import pytest
@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from typing import Optional, Union
 
-# Añadir el directorio de ejercicios al path
+# Add exercises directory to path
 exercises_dir = Path(__file__).parent.parent / "exercises"
 sys.path.insert(0, str(exercises_dir))
 
@@ -18,7 +18,7 @@ except (ImportError, AttributeError):
     SOLUTION_EXISTS = False
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesBasic:
     """Tests básicos del decorador validate_types."""
     
@@ -67,7 +67,7 @@ class TestValidateTypesBasic:
         assert calculate(3) == 6
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesOptional:
     """Tests para Optional types."""
     
@@ -101,7 +101,7 @@ class TestValidateTypesOptional:
         assert create_user("Bob") == "Bob"
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesUnion:
     """Tests para Union types."""
     
@@ -146,7 +146,7 @@ class TestValidateTypesUnion:
         assert process("hello") == "hello"
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesCollections:
     """Tests para tipos de colecciones."""
     
@@ -185,7 +185,7 @@ class TestValidateTypesCollections:
             process_pair([1, 2])
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesEdgeCases:
     """Tests para casos especiales."""
     
@@ -221,7 +221,7 @@ class TestValidateTypesEdgeCases:
             complex_func("1", "test", 3.14, True)
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesErrorMessages:
     """Tests para mensajes de error descriptivos."""
     
@@ -249,12 +249,12 @@ class TestValidateTypesErrorMessages:
         assert "int" in error_msg or "str" in error_msg
 
 
-@pytest.mark.skipif(SOLUTION_EXISTS, reason="Solo mostrar cuando no hay solución")
+@pytest.mark.skipif(SOLUTION_EXISTS, reason="Show only when there is no solution")
 def test_solution_not_implemented():
-    """Mensaje informativo cuando no hay solución."""
+    """Informational message when there is no solution."""
     pytest.skip(
-        "La solución aún no está implementada. "
-        "Completa advanced_exercise.py en el directorio exercises/"
+        "The solution is not implemented yet. "
+        "Complete advanced_exercise.py in the exercises/ directory"
     )
 
 

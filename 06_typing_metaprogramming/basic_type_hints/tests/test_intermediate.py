@@ -1,12 +1,12 @@
 """
-Tests para el ejercicio intermedio de type hints.
+Tests for the intermediate type hints exercise.
 """
 
 import pytest
 import sys
 from pathlib import Path
 
-# Añadir el directorio de ejercicios al path
+# Add exercises directory to path
 exercises_dir = Path(__file__).parent.parent / "exercises"
 sys.path.insert(0, str(exercises_dir))
 
@@ -17,7 +17,7 @@ except (ImportError, AttributeError):
     SOLUTION_EXISTS = False
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestAddBook:
     """Tests para la función add_book."""
     
@@ -41,7 +41,7 @@ class TestAddBook:
         assert book["year"] == 1965
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestSearchBooks:
     """Tests para la función search_books."""
     
@@ -89,7 +89,7 @@ class TestSearchBooks:
         assert results == [], "Debe retornar lista vacía"
 
 
-@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solución no implementada aún")
+@pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestGetBooksByYear:
     """Tests para la función get_books_by_year."""
     
@@ -113,7 +113,7 @@ class TestGetBooksByYear:
     
     def test_get_books_multiple_results(self, sample_books):
         """Puede haber múltiples libros del mismo año."""
-        # Añadir otro libro de 1950
+        # Add another book from 1950
         sample_books.append({"title": "Another Book", "author": "Someone", "year": 1950})
         results = get_books_by_year(sample_books, 1950)
         assert results is not None
@@ -137,12 +137,12 @@ class TestGetBooksByYear:
         assert results[0]["title"] == "Animal Farm"
 
 
-@pytest.mark.skipif(SOLUTION_EXISTS, reason="Solo mostrar cuando no hay solución")
+@pytest.mark.skipif(SOLUTION_EXISTS, reason="Show only when there is no solution")
 def test_solution_not_implemented():
-    """Mensaje informativo cuando no hay solución."""
+    """Informational message when there is no solution."""
     pytest.skip(
-        "La solución aún no está implementada. "
-        "Completa intermediate_exercise.py en el directorio exercises/"
+        "The solution is not implemented yet. "
+        "Complete intermediate_exercise.py in the exercises/ directory"
     )
 
 

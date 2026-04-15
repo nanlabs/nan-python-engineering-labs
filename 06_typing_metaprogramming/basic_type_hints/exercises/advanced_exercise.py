@@ -1,7 +1,7 @@
 """
-Ejercicio Avanzado: Type Hints - Decorador de Validación de Tipos
+Advanced Exercise: Type Hints - Type Validation Decorator
 
-OBJETIVO:
+OBJECTIVE:
 Crear un decorador @validate_types que verifique en runtime que los argumentos
 pasados a una función coincidan con sus type hints.
 
@@ -18,10 +18,10 @@ REQUISITOS:
    - Funciones sin type hints (no validar)
    - Funciones que retornan None
 
-DESAFÍOS:
-- Usar el módulo inspect para obtener la signature de la función
+CHALLENGES:
+- Use the inspect module to obtain the function signature
 - Usar typing.get_type_hints() para extraer los type hints
-- Manejar tipos especiales del módulo typing (Union, Optional, etc)
+- Handle special types from the typing module (Union, Optional, etc)
 - Usar typing.get_origin() y typing.get_args() para descomponer tipos genéricos
 
 EJEMPLO DE USO:

@@ -1,8 +1,8 @@
 """
-Patrones avanzados de type hints.
+Advanced type hints patterns.
 
-Demuestra casos más complejos incluyendo callbacks,
-types anidados y técnicas modernas de tipado.
+Demonstrates more complex cases including callbacks,
+nested types and modern typing techniques.
 """
 
 from typing import (

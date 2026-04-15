@@ -1,7 +1,7 @@
 """
-Ejercicio Básico: Type Hints - Descuentos de Productos
+Basic Exercise: Type Hints - Product Discounts
 
-OBJETIVO:
+OBJECTIVE:
 Crear una función que calcule el precio final de un producto
 después de aplicar un descuento porcentual.
 

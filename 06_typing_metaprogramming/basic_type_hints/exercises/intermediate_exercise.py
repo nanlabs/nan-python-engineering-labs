@@ -1,7 +1,7 @@
 """
-Ejercicio Intermedio: Type Hints - Sistema de Gestión de Biblioteca
+Intermediate Exercise: Type Hints - Library Management System
 
-OBJETIVO:
+OBJECTIVE:
 Implementar un sistema básico para gestionar libros en una biblioteca
 usando type hints para garantizar type safety.
 
