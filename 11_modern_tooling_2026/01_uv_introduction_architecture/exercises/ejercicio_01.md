@@ -1,104 +1,104 @@
-# Exercise 1: Explorando uv
+# Exercise 1: Exploring uv
 
 ## Objective
-Familiarizarse con los comandos básicos de uv y entender su arquitectura.
+Become familiar with uv basic commands and understand its architecture.
 
 ## Instructions
 
-### Parte 1: Instalación y Verificación (10 min)
+### Part 1: Installation and Verification (10 min)
 
-1. Verifica si uv está instalado:
+1. Check whether uv is installed:
    ```bash
    uv version
    ```
 
-2. Si no está instalado, instálalo:
+2. If it is not installed, install it:
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-3. Verifica la ubicación de la caché:
+3. Check the cache location:
    ```bash
    uv cache dir
    ```
 
-4. Explora el contenido de la caché (si existe):
+4. Explore cache contents (if present):
    ```bash
    ls -lh $(uv cache dir)
    ```
 
-### Parte 2: Comparación de Velocidad (15 min)
+### Part 2: Speed Comparison (15 min)
 
-5. Crea dos directorios de prueba:
+5. Create two test directories:
    ```bash
    mkdir -p /tmp/test-pip /tmp/test-uv
    ```
 
-6. Con pip tradicional:
+6. Using traditional pip:
    ```bash
    cd /tmp/test-pip
    time python3 -m venv .venv
    time .venv/bin/pip install requests beautifulsoup4 pandas
    ```
 
-7. Con uv:
+7. Using uv:
    ```bash
    cd /tmp/test-uv
    time uv venv
    time uv pip install requests beautifulsoup4 pandas
    ```
 
-8. Compara los tiempos. ¿Cuánto más rápido es uv?
+8. Compare timings. How much faster is uv?
 
-### Parte 3: Entendiendo la Caché (15 min)
+### Part 3: Understanding Cache Behavior (15 min)
 
-9. Instala el mismo paquete en dos proyectos diferentes con uv:
+9. Install the same package in two different projects with uv:
    ```bash
    mkdir -p /tmp/project-a /tmp/project-b
    cd /tmp/project-a && uv venv && uv pip install flask==3.0.0
    cd /tmp/project-b && uv venv && uv pip install flask==3.0.0
    ```
 
-10. Observa la salida de la segunda instalación. ¿Fue instantánea?
+10. Check the output of the second installation. Was it instant?
 
-11. Revisa el tamaño de la caché:
+11. Check cache size:
     ```bash
     du -sh $(uv cache dir)
     ```
 
-### Parte 4: Investigación (20 min)
+### Part 4: Research (20 min)
 
-12. Lee sobre el algoritmo PubGrub:
+12. Read about the PubGrub algorithm:
     - Visita: https://github.com/dart-lang/pub/blob/master/doc/solver.md
-    - Resume en 3 puntos cómo difiere del backtracking
+    - Summarize in 3 points how it differs from backtracking
 
-13. Experimenta con conflictos de dependencias:
+13. Experiment with dependency conflicts:
     ```bash
     mkdir /tmp/conflict-test && cd /tmp/conflict-test
     uv venv
-    # Intenta instalar versiones incompatibles
+    # Try to install incompatible versions
     uv pip install "requests==2.25.0" "urllib3==2.0.0"
     ```
 
-14. Compara el mensaje de error de uv vs pip. ¿Cuál es más claro?
+14. Compare uv vs pip error messages. Which one is clearer?
 
-## Preguntas de Reflexión
+## Reflection Questions
 
-1. ¿Por qué uv es más rápido que pip?
-2. ¿Qué ventajas ofrece la caché global?
-3. ¿En qué escenarios sería más beneficioso usar uv?
-4. ¿Qué desventajas o riesgos podrías identificar?
+1. Why is uv faster than pip?
+2. What benefits does the global cache provide?
+3. In which scenarios is uv most beneficial?
+4. What drawbacks or risks can you identify?
 
-## Entregables
+## Deliverables
 
-Crea un archivo `RESPUESTAS.md` en `my_solution/` con:
-- Capturas de tiempo de las comparaciones
-- Respuestas a las preguntas de reflexión
-- Un resumen de 3-5 líneas sobre PubGrub
+Create a file named `RESPUESTAS.md` in `my_solution/` including:
+- Timing captures from comparisons
+- Answers to reflection questions
+- A 3-5 line summary about PubGrub
 
-## Criterios de Éxito
+## Success Criteria
 
-- ✅ uv instalado y funcionando
-- ✅ Comparación de velocidad realizada y documentada
-- ✅ Comprensión de la caché global
-- ✅ Entendimiento básico de PubGrub
+- ✅ uv installed and working
+- ✅ Speed comparison executed and documented
+- ✅ Understanding of global cache behavior
+- ✅ Basic understanding of PubGrub

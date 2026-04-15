@@ -78,18 +78,18 @@
 
 ## Actualizaciones 2026
 
-- [uv 1.0 Release Notes](https://astral.sh/blog/uv-1.0) - Cambios en versión estable
-- [uv Roadmap 2026](https://github.com/astral-sh/uv/milestones) - Próximas features
-- [Python 3.13 Compatibility](https://docs.astral.sh/uv/python-versions/) - Soporte de versiones
+- [uv 1.0 Release Notes](https://astral.sh/blog/uv-1.0) - Stable release changes
+- [uv Roadmap 2026](https://github.com/astral-sh/uv/milestones) - Upcoming features
+- [Python 3.13 Compatibility](https://docs.astral.sh/uv/python-versions/) - Version support
 
-## Alternativas y Contexto
+## Alternatives and Context
 
-- [Why not pip?](https://pradyunsg.me/blog/2023/01/21/pip-is-not-a-package-manager/) - Limitaciones de pip
-- [Conda vs pip](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) - Diferencias
-- [The State of Python Packaging](https://packaging.python.org/en/latest/discussions/the-state-of-packaging/) - Visión general
+- [Why not pip?](https://pradyunsg.me/blog/2023/01/21/pip-is-not-a-package-manager/) - pip limitations
+- [Conda vs pip](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) - Key differences
+- [The State of Python Packaging](https://packaging.python.org/en/latest/discussions/the-state-of-packaging/) - General overview
 
 ---
 
-**Última actualización:** Enero 2026  
-**Mantenido por:** Comunidad py-erudito  
-**Contributions:** Abre un PR para agregar references útiles
+**Last updated:** January 2026  
+**Maintained by:** py-erudito community  
+**Contributions:** Open a PR to add useful references

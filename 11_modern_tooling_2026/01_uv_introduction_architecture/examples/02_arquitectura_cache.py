@@ -87,7 +87,7 @@ def demonstrate_cache_reuse():
     )
     print(result.stdout)
     
-    print("\n✓ Nota: La segunda instalación es instantánea gracias a la caché")
+    print("\n✓ Note: The second installation is instant thanks to cache reuse")
     
     # Cleanup
     for project in projects:
@@ -95,15 +95,15 @@ def demonstrate_cache_reuse():
 
 
 def show_pubgrub_example():
-    """Muestra un example conceptual del algoritmo PubGrub."""
+    """Show a conceptual example of the PubGrub algorithm."""
     print("\n" + "="*60)
-    print("🧮 Algoritmo PubGrub - Example Conceptual")
+    print("🧮 PubGrub Algorithm - Conceptual Example")
     print("="*60)
     
     print("""
-PubGrub construye un grafo de decisiones incrementalmente:
+PubGrub builds a decision graph incrementally:
 
-Supongamos que instalamos un paquete con estas dependencias:
+Suppose we install a package with these dependencies:
 
     my-app
     ├── requests >=2.28.0
@@ -111,30 +111,30 @@ Supongamos que instalamos un paquete con estas dependencias:
         └── werkzeug >=2.0.0
             └── markupsafe >=2.0.0
 
-Proceso de Resolución (simplificado):
+Resolution Process (simplified):
 
-1. Seleccionar: my-app (root)
-2. Agregar: requests >=2.28.0 → seleccionar 2.31.0
-3. Agregar: flask >=2.0.0 → seleccionar 3.0.0
-4. Agregar: werkzeug >=2.0.0 (dep de flask) → seleccionar 3.0.0
-5. Agregar: markupsafe >=2.0.0 (dep de werkzeug) → seleccionar 2.1.3
+1. Select: my-app (root)
+2. Add: requests >=2.28.0 → select 2.31.0
+3. Add: flask >=2.0.0 → select 3.0.0
+4. Add: werkzeug >=2.0.0 (dependency of flask) → select 3.0.0
+5. Add: markupsafe >=2.0.0 (dependency of werkzeug) → select 2.1.3
 
-Ventajas vs Backtracking (pip):
-✓ Detecta conflictos tempranamente
-✓ Mensajes de error más claros
-✓ No necesita retroceder en decisiones
-✓ Más rápido en grafos complejos
+Advantages vs Backtracking (pip):
+✓ Detects conflicts early
+✓ Produces clearer error messages
+✓ Avoids costly backtracking steps
+✓ Faster on complex dependency graphs
 """)
 
 
 if __name__ == "__main__":
-    print("🏗️  uv: Arquitectura y Caché\n")
+    print("🏗️  uv: Architecture and Cache\n")
     
     # Verificar instalación
     try:
         subprocess.run(["uv", "version"], capture_output=True, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError):
-        print("❌ uv no está instalado.")
+        print("❌ uv is not installed.")
         exit(1)
     
     get_cache_info()

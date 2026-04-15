@@ -1,67 +1,67 @@
 """
-Exercise Básico: Comparar pip vs uv en tu máquina
+Basic Exercise: Compare pip vs uv on your machine
 
-Objective: Instalar uv y medir el speedup en tu sistema.
+Objective: Install uv and measure the speedup on your system.
 
 TODO:
-1. Instala uv:
-   curl -LsSf https://astral.sh/uv/install.sh | sh
+1. Install uv:
+    curl -LsSf https://astral.sh/uv/install.sh | sh
 
-2. Crea un archivo requirements.txt con 10 paquetes:
-   - requests
-   - pandas
-   - numpy
-   - pytest
-   - flask
-   - (añade 5 más que uses comúnmente)
+2. Create a requirements.txt file with 10 packages:
+    - requests
+    - pandas
+    - numpy
+    - pytest
+    - flask
+    - (add 5 more that you commonly use)
 
-3. Implement función measure_install_time() que:
-   - Cree un venv temporal
-   - Instale los paquetes
-   - Mida el tiempo total
-   - Limpie el venv
+3. Implement measure_install_time() to:
+    - Create a temporary virtual environment
+    - Install packages
+    - Measure total elapsed time
+    - Clean up the virtual environment
 
-4. Ejecuta el benchmark con pip y con uv (sin cache)
+4. Run the benchmark with pip and with uv (without cache)
 
-5. Genera un reporte:
-   - Tiempo pip: X segundos
-   - Tiempo uv: Y segundos
-   - Speedup: Z veces
-   - Conclusión
+5. Generate a report:
+    - pip time: X seconds
+    - uv time: Y seconds
+    - Speedup: Z times
+    - Conclusion
 
-Criterios de éxito:
-- uv instalado correctamente (verifica con: uv --version)
-- Benchmark ejecutado sin errores
+Success criteria:
+- uv installed successfully (verify with: uv --version)
+- Benchmark runs without errors
 - Speedup > 5x
-- Reporte escrito en resultados.md
+- Report written in results.md
 """
 
 def measure_install_time(tool: str, requirements_file: str) -> float:
     """
-    Mide el tiempo de instalación de paquetes.
+    Measure package installation time.
     
     Args:
-        tool: "pip" o "uv"
-        requirements_file: Path al archivo requirements.txt
+        tool: "pip" or "uv"
+        requirements_file: Path to requirements.txt
     
     Returns:
-        Tiempo en segundos
+        Time in seconds
     """
-    # TODO: Implementr
+    # TODO: Implement
     pass
 
 def generate_report(pip_time: float, uv_time: float) -> None:
     """
-    Genera reporte markdown con resultados.
+    Generate a markdown report with benchmark results.
     
     Args:
-        pip_time: Tiempo de pip en segundos
-        uv_time: Tiempo de uv en segundos
+        pip_time: pip time in seconds
+        uv_time: uv time in seconds
     """
-    # TODO: Implementr
+    # TODO: Implement
     pass
 
 if __name__ == "__main__":
-    # TODO: Implementr lógica principal
+    # TODO: Implement the main workflow
     print("Exercise: Benchmark pip vs uv")
-    print("Completa las funciones TODO arriba")
+    print("Complete the TODO functions above")
