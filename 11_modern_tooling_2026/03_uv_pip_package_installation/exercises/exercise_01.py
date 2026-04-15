@@ -1,7 +1,7 @@
 """
-Exercise: 03 Uv Pip Package Installation
+Exercise: uv pip: Ultra-Fast Package Installation
 
-Objective: Implementar y practicar 03_uv_pip_package_installation
+Objective: Implement and practice 03_uv_pip_package_installation
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

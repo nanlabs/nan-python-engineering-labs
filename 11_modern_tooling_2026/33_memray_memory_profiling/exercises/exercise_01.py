@@ -1,7 +1,7 @@
 """
-Exercise: 33 Memray Memory Profiling
+Exercise: memray: Modern Memory Profiling
 
-Objective: Implementar y practicar 33_memray_memory_profiling
+Objective: Implement and practice 33_memray_memory_profiling
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

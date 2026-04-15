@@ -1,5 +1,5 @@
 """
-Tests para ejercicio básico de uv
+Tests para exercise básico de uv
 """
 import pytest
 from pathlib import Path
@@ -23,12 +23,12 @@ def test_requirements_file_exists():
         assert len(lines) >= 10, "requirements.txt debe tener al menos 10 paquetes"
 
 @pytest.mark.skipif(not Path("my_solution/basic_exercise.py").exists(), 
-                   reason="Solución no implementada aún")
+                   reason="Solution no implementda aún")
 def test_measure_install_time():
     """Verifica que la función measure_install_time() funcione."""
     from basic_exercise import measure_install_time
     
-    # Este test asume que has implementado la función
+    # Este test asume que has implementdo la función
     # Debe retornar un float positivo
     # (No ejecutamos realmente para no demorar los tests)
     pass

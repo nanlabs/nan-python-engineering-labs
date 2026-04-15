@@ -1,7 +1,7 @@
 """
-Exercise: 13 Ruff Import Sorter Isort
+Exercise: Ruff as Import Sorter: isort Replacement
 
-Objective: Implementar y practicar 13_ruff_import_sorter_isort
+Objective: Implement and practice 13_ruff_import_sorter_isort
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

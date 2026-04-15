@@ -1,5 +1,5 @@
 """
-Ejemplo 2: Explorando la caché global de uv
+Example 2: Explorando la caché global de uv
 Demuestra cómo uv reutiliza paquetes entre proyectos
 """
 import subprocess
@@ -95,9 +95,9 @@ def demonstrate_cache_reuse():
 
 
 def show_pubgrub_example():
-    """Muestra un ejemplo conceptual del algoritmo PubGrub."""
+    """Muestra un example conceptual del algoritmo PubGrub."""
     print("\n" + "="*60)
-    print("🧮 Algoritmo PubGrub - Ejemplo Conceptual")
+    print("🧮 Algoritmo PubGrub - Example Conceptual")
     print("="*60)
     
     print("""

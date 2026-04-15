@@ -1,6 +1,6 @@
-# Ejercicio 2: Arquitectura Profunda
+# Exercise 2: Arquitectura Profunda
 
-## Objetivo
+## Objective
 Investigar y comprender la arquitectura interna de uv y compararla con otras herramientas.
 
 ## Parte 1: Análisis del Binario (20 min)
@@ -81,11 +81,11 @@ Investigar y comprender la arquitectura interna de uv y compararla con otras her
     ```
 
 11. Compara:
-    - Tiempo de resolución
+    - Resolution time
     - Claridad de mensajes
     - Orden de dependencias resueltas
 
-## Parte 4: Implementación en Rust (25 min)
+## Parte 4: Implementción en Rust (25 min)
 
 ### Investigación de Código
 
@@ -103,11 +103,11 @@ Investigar y comprender la arquitectura interna de uv y compararla con otras her
     - Visita: https://astral.sh/blog/uv
     - Identifica 3 optimizaciones técnicas clave
 
-## Tareas de Implementación
+## Tareas de Implementción
 
 ### Tarea 1: Script de Análisis de Caché
 
-Implementa en `my_solution/cache_analyzer.py`:
+Implement en `my_solution/cache_analyzer.py`:
 
 ```python
 """
@@ -122,7 +122,7 @@ Debe mostrar:
 
 ### Tarea 2: Benchmark Automatizado
 
-Implementa en `my_solution/benchmark.py`:
+Implement en `my_solution/benchmark.py`:
 
 ```python
 """
@@ -130,17 +130,17 @@ Script que compara pip vs uv en diferentes escenarios:
 - Instalación desde cero
 - Instalación con caché fría
 - Instalación con caché caliente
-- Resolución de dependencias complejas
+- Dependency resolution complejas
 """
 ```
 
 ### Tarea 3: Visualizador de Grafo de Dependencias
 
-Implementa en `my_solution/dep_graph.py`:
+Implement en `my_solution/dep_graph.py`:
 
 ```python
 """
-Visualiza el grafo de resolución de uv
+Visualize the uv resolution graph
 Usa uv pip compile y parsea la salida
 Genera un grafo con graphviz o similar
 """
@@ -168,7 +168,7 @@ En `my_solution/`:
 
 ## Criterios de Evaluación
 
-- ✅ Scripts implementados y funcionales
+- ✅ Scripts implementdos y funcionales
 - ✅ Análisis técnico profundo
 - ✅ Comparaciones documentadas con evidencia
 - ✅ Comprensión de trade-offs y limitaciones

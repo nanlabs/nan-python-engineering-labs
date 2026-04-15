@@ -1,7 +1,7 @@
 """
-Ejercicio Básico: Comparar pip vs uv en tu máquina
+Exercise Básico: Comparar pip vs uv en tu máquina
 
-Objetivo: Instalar uv y medir el speedup en tu sistema.
+Objective: Instalar uv y medir el speedup en tu sistema.
 
 TODO:
 1. Instala uv:
@@ -15,7 +15,7 @@ TODO:
    - flask
    - (añade 5 más que uses comúnmente)
 
-3. Implementa función measure_install_time() que:
+3. Implement función measure_install_time() que:
    - Cree un venv temporal
    - Instale los paquetes
    - Mida el tiempo total
@@ -47,7 +47,7 @@ def measure_install_time(tool: str, requirements_file: str) -> float:
     Returns:
         Tiempo en segundos
     """
-    # TODO: Implementar
+    # TODO: Implementr
     pass
 
 def generate_report(pip_time: float, uv_time: float) -> None:
@@ -58,10 +58,10 @@ def generate_report(pip_time: float, uv_time: float) -> None:
         pip_time: Tiempo de pip en segundos
         uv_time: Tiempo de uv en segundos
     """
-    # TODO: Implementar
+    # TODO: Implementr
     pass
 
 if __name__ == "__main__":
-    # TODO: Implementar lógica principal
-    print("Ejercicio: Benchmark pip vs uv")
+    # TODO: Implementr lógica principal
+    print("Exercise: Benchmark pip vs uv")
     print("Completa las funciones TODO arriba")

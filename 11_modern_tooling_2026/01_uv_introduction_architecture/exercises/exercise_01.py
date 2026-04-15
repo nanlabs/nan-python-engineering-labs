@@ -1,7 +1,7 @@
 """
-Exercise: 01 Uv Introduction Architecture
+Exercise: uv: Architecture and Internal Design
 
-Objective: Implementar y practicar 01_uv_introduction_architecture
+Objective: Implement and practice 01_uv_introduction_architecture
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

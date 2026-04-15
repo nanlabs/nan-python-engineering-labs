@@ -1,7 +1,7 @@
 """
-Exercise: 23 Type Narrowing Guards Avanzados
+Exercise: Advanced Type Narrowing and Type Guards
 
-Objective: Implementar y practicar 23_type_narrowing_guards_avanzados
+Objective: Implement and practice 23_type_narrowing_guards_avanzados
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

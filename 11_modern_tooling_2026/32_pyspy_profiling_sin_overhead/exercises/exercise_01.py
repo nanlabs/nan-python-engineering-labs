@@ -1,7 +1,7 @@
 """
-Exercise: 32 Pyspy Profiling Sin Overhead
+Exercise: py-spy: Profiling Without Overhead
 
-Objective: Implementar y practicar 32_pyspy_profiling_sin_overhead
+Objective: Implement and practice 32_pyspy_profiling_sin_overhead
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

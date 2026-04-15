@@ -1,7 +1,7 @@
 """
-Exercise: 20 Pylyzer Type Checker Rust
+Exercise: Pylyzer: Type Checker Written in Rust
 
-Objective: Implementar y practicar 20_pylyzer_type_checker_rust
+Objective: Implement and practice 20_pylyzer_type_checker_rust
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

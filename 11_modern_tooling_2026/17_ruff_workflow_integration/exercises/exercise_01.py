@@ -1,7 +1,7 @@
 """
-Exercise: 17 Ruff Workflow Integration
+Exercise: Ruff Workflow Integration (pre-commit and CI/CD)
 
-Objective: Implementar y practicar 17_ruff_workflow_integration
+Objective: Implement and practice 17_ruff_workflow_integration
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

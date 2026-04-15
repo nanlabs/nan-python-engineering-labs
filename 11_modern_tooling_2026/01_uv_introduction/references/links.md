@@ -22,11 +22,11 @@
 - [Real Python: Modern Python Packaging with uv (2025)](https://realpython.com/python-uv/)
   - Tutorial completo para principiantes
   - Migración desde pip/poetry
-  - Mejores prácticas
+  - Best practices
 
 - [Why uv is 100x faster than pip](https://astral.sh/blog/uv-internals)
   - Deep dive técnico
-  - Explicación de algoritmos de resolución
+  - Explanation of resolution algorithms
   - Comparación con otras herramientas
 
 - [Python Packaging in 2026: The uv Revolution](https://lwn.net/Articles/python-uv-2026/)
@@ -46,7 +46,7 @@
   - 30 minutos
   - Live demos de uv y Ruff
 
-## Repositorios de Ejemplo
+## Repositorios de Example
 
 - [astral-sh/uv-examples](https://github.com/astral-sh/uv-examples)
   - Ejemplos oficiales de uso
@@ -66,7 +66,7 @@
 ## PEPs Relacionados
 
 - [PEP 621: Storing project metadata in pyproject.toml](https://peps.python.org/pep-0621/)
-  - Estándar que uv implementa
+  - Standard que uv implement
   
 - [PEP 517: A build-system independent format](https://peps.python.org/pep-0517/)
   - Build backends

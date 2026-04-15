@@ -1,5 +1,5 @@
 """
-Ejemplo 1: Comparación de velocidad entre pip y uv
+Example 1: Comparación de velocidad entre pip y uv
 Demuestra la diferencia de rendimiento en operaciones comunes
 """
 import subprocess

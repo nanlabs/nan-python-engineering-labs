@@ -1,7 +1,7 @@
 """
-Exercise: 11 Ruff Linter Rules
+Exercise: Ruff Linter: Rule Categories and Selectors
 
-Objective: Implementar y practicar 11_ruff_linter_rules
+Objective: Implement and practice 11_ruff_linter_rules
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

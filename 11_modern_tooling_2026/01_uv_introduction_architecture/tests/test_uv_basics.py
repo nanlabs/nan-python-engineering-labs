@@ -89,7 +89,7 @@ def test_uv_pip_install_simple_package(temp_project):
 def test_uv_is_faster_than_pip(temp_project):
     """Test conceptual: uv debe ser más rápido que pip."""
     # Este es un test de concepto que verifica la instalación
-    # En la práctica, la velocidad depende de muchos factores
+    # En la practice, la velocidad depende de muchos factores
     
     venv_path = temp_project / ".venv"
     subprocess.run(["uv", "venv", str(venv_path)], check=True)

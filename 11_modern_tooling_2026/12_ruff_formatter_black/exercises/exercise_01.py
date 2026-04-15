@@ -1,7 +1,7 @@
 """
-Exercise: 12 Ruff Formatter Black
+Exercise: Ruff as Formatter: Black Replacement
 
-Objective: Implementar y practicar 12_ruff_formatter_black
+Objective: Implement and practice 12_ruff_formatter_black
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

@@ -1,7 +1,7 @@
 """
-Exercise: 24 Precommit Configuracion Hooks
+Exercise: Pre-commit: Configuration and Essential Hooks
 
-Objective: Implementar y practicar 24_precommit_configuracion_hooks
+Objective: Implement and practice 24_precommit_configuracion_hooks
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

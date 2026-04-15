@@ -1,7 +1,7 @@
 """
-Exercise: 09 Uv Scripts Entry Points
+Exercise: Scripts and Entry Points with uv
 
-Objective: Implementar y practicar 09_uv_scripts_entry_points
+Objective: Implement and practice 09_uv_scripts_entry_points
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

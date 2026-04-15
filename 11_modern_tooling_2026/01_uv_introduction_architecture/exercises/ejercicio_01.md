@@ -1,9 +1,9 @@
-# Ejercicio 1: Explorando uv
+# Exercise 1: Explorando uv
 
-## Objetivo
+## Objective
 Familiarizarse con los comandos básicos de uv y entender su arquitectura.
 
-## Instrucciones
+## Instructions
 
 ### Parte 1: Instalación y Verificación (10 min)
 

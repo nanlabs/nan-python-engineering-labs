@@ -1,5 +1,5 @@
 """
-Ejemplo: Instalación y verificación de uv en diferentes entornos
+Example: Instalación y verificación de uv en diferentes entornos
 """
 import subprocess
 import platform
@@ -136,7 +136,7 @@ def show_available_commands():
 
 def demonstrate_config_file():
     """Demuestra la creación de un archivo de configuración."""
-    print(f"\n📝 Ejemplo de Archivo de Configuración\n")
+    print(f"\n📝 Example de Archivo de Configuración\n")
     
     config_content = """
 # .uv/config.toml - Configuración local del proyecto
@@ -145,7 +145,7 @@ def demonstrate_config_file():
 # Índice principal de paquetes
 index-url = "https://pypi.org/simple"
 
-# Índices adicionales (por ejemplo, índices privados)
+# Additional indexes (por example, índices privados)
 # extra-index-url = ["https://private.pypi.org/simple"]
 
 [tool.uv.pip]
@@ -159,7 +159,7 @@ index-url = "https://pypi.org/simple"
 # No permitir pre-releases
 prerelease = "disallow"
 
-# Estrategia de resolución
+# Resolution strategy
 # resolution = "highest"  # o "lowest" o "lowest-direct"
 """
     

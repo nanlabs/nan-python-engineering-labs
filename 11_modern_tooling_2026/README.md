@@ -62,7 +62,7 @@ This module covers the modern Python tooling ecosystem in 2026, focused on the f
 
 ## 🚀 Highlighted Tools 2026
 
-### uv - El Nuevo Estándar
+### uv - El Nuevo Standard
 - **10-100x más rápido** que pip y pip-tools
 - Escrito en Rust por Astral (creadores de Ruff)
 - Compatible con pip pero con arquitectura moderna
@@ -89,12 +89,12 @@ This module covers the modern Python tooling ecosystem in 2026, focused on the f
 Cada tema incluye:
 - **README.md**: Teoría y conceptos (200-300 palabras)
 - **examples/**: Código funcional y casos de uso reales
-- **exercises/**: Ejercicios progresivos con instrucciones claras
+- **exercises/**: Ejercicios progresivos con instructions claras
 - **my_solution/**: Espacio para tus soluciones
 - **tests/**: Tests automatizados con pytest
-- **references/**: Enlaces a documentación oficial 2026
+- **references/**: Links a documentación oficial 2026
 
-## 🔗 Referencias Principales
+## 🔗 References Principales
 
 - [uv Documentation](https://docs.astral.sh/uv/) - Astral
 - [Ruff Documentation](https://docs.astral.sh/ruff/) - Astral
@@ -105,7 +105,7 @@ Cada tema incluye:
 
 ## 💡 Por Qué Estas Herramientas en 2026
 
-El ecosistema Python ha experimentado una revolución con herramientas escritas en Rust que son **órdenes de magnitud más rápidas** que sus predecesoras en Python. Este módulo se centra en las herramientas que se han convertido en el estándar de facto en 2026:
+El ecosistema Python ha experimentado una revolución con herramientas escritas en Rust que son **órdenes de magnitud más rápidas** que sus predecesoras en Python. Este module se centra en las herramientas que se han convertido en el standard de facto en 2026:
 
 - **uv** está reemplazando pip, pip-tools, poetry, virtualenv
 - **Ruff** ha reemplazado black, isort, flake8, pylint para muchos equipos
@@ -114,4 +114,4 @@ El ecosistema Python ha experimentado una revolución con herramientas escritas 
 
 ---
 
-**Módulo actualizado a Enero 2026** - Herramientas y prácticas del estado del arte actual.
+**Module actualizado a Enero 2026** - Herramientas y prácticas del estado del arte actual.

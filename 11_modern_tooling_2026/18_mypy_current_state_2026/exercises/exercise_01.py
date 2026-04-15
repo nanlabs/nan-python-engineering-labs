@@ -1,7 +1,7 @@
 """
-Exercise: 18 Mypy Current State 2026
+Exercise: mypy: Current State in 2026
 
-Objective: Implementar y practicar 18_mypy_current_state_2026
+Objective: Implement and practice 18_mypy_current_state_2026
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here

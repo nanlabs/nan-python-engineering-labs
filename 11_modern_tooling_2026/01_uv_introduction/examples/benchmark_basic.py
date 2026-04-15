@@ -1,5 +1,5 @@
 """
-Ejemplo 1: Benchmark básico pip vs uv
+Example 1: Benchmark básico pip vs uv
 """
 import subprocess
 import time

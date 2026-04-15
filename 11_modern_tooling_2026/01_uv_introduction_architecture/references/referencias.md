@@ -1,4 +1,4 @@
-# Referencias - uv: Introducción y Arquitectura
+# References - uv: Introducción y Arquitectura
 
 ## Documentación Oficial
 
@@ -15,7 +15,7 @@
 ## Algoritmo PubGrub
 
 - [PubGrub: Next-Generation Version Solving](https://nex3.medium.com/pubgrub-2fb6470504f) - Artículo original
-- [Dart Package Manager - Solver Documentation](https://github.com/dart-lang/pub/blob/master/doc/solver.md) - Implementación en Dart
+- [Dart Package Manager - Solver Documentation](https://github.com/dart-lang/pub/blob/master/doc/solver.md) - Implementción en Dart
 - [PubGrub Algorithm Explanation](https://github.com/dart-lang/pub/blob/master/doc/solver.md#the-algorithm) - Detalles del algoritmo
 
 ## Rust y Performance
@@ -32,7 +32,7 @@
 
 ## Artículos Técnicos
 
-- [Understanding Package Resolution](https://blog.orhun.dev/python-package-resolution/) - Resolución de dependencias
+- [Understanding Package Resolution](https://blog.orhun.dev/python-package-resolution/) - Dependency resolution
 - [Python Wheels Explained](https://realpython.com/python-wheels/) - Formato wheel
 - [Virtual Environments Deep Dive](https://docs.python.org/3/library/venv.html) - Entornos virtuales
 
@@ -92,4 +92,4 @@
 
 **Última actualización:** Enero 2026  
 **Mantenido por:** Comunidad py-erudito  
-**Contribuciones:** Abre un PR para agregar referencias útiles
+**Contributions:** Abre un PR para agregar references útiles

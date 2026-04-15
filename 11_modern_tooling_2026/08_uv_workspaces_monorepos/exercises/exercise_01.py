@@ -1,7 +1,7 @@
 """
-Exercise: 08 Uv Workspaces Monorepos
+Exercise: uv Workspaces and Monorepos
 
-Objective: Implementar y practicar 08_uv_workspaces_monorepos
+Objective: Implement and practice 08_uv_workspaces_monorepos
 
 Instructions:
 1. Read the requirements carefully
@@ -16,9 +16,9 @@ DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
 # Follow the specifications in the docstrings
 
 
-def main():
+def main() -> None:
     """
-    Main function to test your implementation.
+    Main function to test your implementtion.
     Add your own test cases.
     """
     # TODO: Add test code here
