@@ -1,6 +1,6 @@
 """
 Example 2: Explorando la caché global de uv
-Demuestra cómo uv reutiliza paquetes entre proyectos
+Demonstrates how uv reuses packages across projects
 """
 import subprocess
 from pathlib import Path
@@ -32,12 +32,12 @@ def get_cache_info():
             size = result.stdout.split()[0]
             print(f"💾 Tamaño: {size}")
     
-    # Listar algunos paquetes en caché
+    # List some cached packages
     wheels_dir = cache_dir / "wheels-v1"
     if wheels_dir.exists():
         wheels = list(wheels_dir.rglob("*.whl"))[:10]
         if wheels:
-            print(f"\n📚 Algunos paquetes en caché ({len(wheels)} mostrados):")
+            print(f"\n📚 Some cached packages in cache ({len(wheels)} mostrados):")
             for wheel in wheels:
                 print(f"   • {wheel.name}")
 
@@ -59,8 +59,8 @@ def demonstrate_cache_reuse():
             subprocess.run(["rm", "-rf", str(project)], check=False)
         project.mkdir(parents=True)
     
-    # Proyecto 1: Primera instalación (descarga)
-    print("\n1️⃣  Proyecto 1: Primera instalación de requests")
+    # Proyecto 1: First installation (descarga)
+    print("\n1️⃣  Project 1: First requests installation")
     subprocess.run(["uv", "venv", str(projects[0] / ".venv")], check=True)
     
     result = subprocess.run(
@@ -73,8 +73,8 @@ def demonstrate_cache_reuse():
     )
     print(result.stdout)
     
-    # Proyecto 2: Segunda instalación (desde caché)
-    print("\n2️⃣  Proyecto 2: Instalación de requests (desde caché)")
+    # Proyecto 2: Segunda installation (desde caché)
+    print("\n2️⃣  Project 2: Requests installation (from cache)")
     subprocess.run(["uv", "venv", str(projects[1] / ".venv")], check=True)
     
     result = subprocess.run(
@@ -130,7 +130,7 @@ Advantages vs Backtracking (pip):
 if __name__ == "__main__":
     print("🏗️  uv: Architecture and Cache\n")
     
-    # Verificar instalación
+    # Verificar installation
     try:
         subprocess.run(["uv", "version"], capture_output=True, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError):

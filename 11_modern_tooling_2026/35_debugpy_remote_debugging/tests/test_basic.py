@@ -1,5 +1,5 @@
 """
-Tests para 35 debugpy remote debugging
+Tests for 35 debugpy remote debugging
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test35DebugpyRemoteDebugging:
-    """Suite de tests para 35 debugpy remote debugging."""
+    """Test suite for 35 debugpy remote debugging."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test35DebugpyRemoteDebugging:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

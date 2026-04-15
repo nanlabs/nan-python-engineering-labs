@@ -1,5 +1,5 @@
 """
-Tests para 16 ruff performance benchmarks
+Tests for 16 ruff performance benchmarks
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test16RuffPerformanceBenchmarks:
-    """Suite de tests para 16 ruff performance benchmarks."""
+    """Test suite for 16 ruff performance benchmarks."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test16RuffPerformanceBenchmarks:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

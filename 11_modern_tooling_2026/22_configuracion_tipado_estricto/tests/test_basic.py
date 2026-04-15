@@ -1,5 +1,5 @@
 """
-Tests para 22 configuracion tipado estricto
+Tests for 22 configuracion tipado estricto
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test22ConfiguracionTipadoEstricto:
-    """Suite de tests para 22 configuracion tipado estricto."""
+    """Test suite for 22 configuracion tipado estricto."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test22ConfiguracionTipadoEstricto:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

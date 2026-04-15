@@ -1,5 +1,5 @@
 """
-Tests para 20 pylyzer type checker rust
+Tests for 20 pylyzer type checker rust
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test20PylyzerTypeCheckerRust:
-    """Suite de tests para 20 pylyzer type checker rust."""
+    """Test suite for 20 pylyzer type checker rust."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test20PylyzerTypeCheckerRust:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

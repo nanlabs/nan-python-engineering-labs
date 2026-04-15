@@ -1,5 +1,5 @@
 """
-Tests para 21 comparacion type checkers
+Tests for 21 comparacion type checkers
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test21ComparacionTypeCheckers:
-    """Suite de tests para 21 comparacion type checkers."""
+    """Test suite for 21 comparacion type checkers."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test21ComparacionTypeCheckers:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

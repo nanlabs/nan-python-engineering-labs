@@ -1,5 +1,5 @@
 """
-Tests para 14 ruff configuracion pyproject
+Tests for 14 ruff configuracion pyproject
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test14RuffConfiguracionPyproject:
-    """Suite de tests para 14 ruff configuracion pyproject."""
+    """Test suite for 14 ruff configuracion pyproject."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test14RuffConfiguracionPyproject:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

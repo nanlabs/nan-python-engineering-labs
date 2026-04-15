@@ -1,5 +1,5 @@
 """
-Tests para 10 ruff introduccion velocidad
+Tests for 10 ruff introduccion speed
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test10RuffIntroduccionVelocidad:
-    """Suite de tests para 10 ruff introduccion velocidad."""
+    """Test suite for 10 ruff introduccion speed."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test10RuffIntroduccionVelocidad:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

@@ -1,5 +1,5 @@
 """
-Tests para 08 uv workspaces monorepos
+Tests for 08 uv workspaces monorepos
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test08UvWorkspacesMonorepos:
-    """Suite de tests para 08 uv workspaces monorepos."""
+    """Test suite for 08 uv workspaces monorepos."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test08UvWorkspacesMonorepos:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

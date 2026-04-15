@@ -1,5 +1,5 @@
 """
-Basic Exercise: Compare pip vs uv on your machine
+Exercise: Compare pip vs uv on your machine
 
 Objective: Install uv and measure the speedup on your system.
 

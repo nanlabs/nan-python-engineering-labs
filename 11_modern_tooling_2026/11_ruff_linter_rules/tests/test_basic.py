@@ -1,5 +1,5 @@
 """
-Tests para 11 ruff linter reglas
+Tests for 11 ruff linter reglas
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test11RuffLinterReglas:
-    """Suite de tests para 11 ruff linter reglas."""
+    """Test suite for 11 ruff linter reglas."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test11RuffLinterReglas:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

@@ -1,5 +1,5 @@
 """
-Tests para 27 pytest avanzado fixtures
+Tests for 27 pytest advanced fixtures
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test27PytestAvanzadoFixtures:
-    """Suite de tests para 27 pytest avanzado fixtures."""
+    """Test suite for 27 pytest advanced fixtures."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test27PytestAvanzadoFixtures:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

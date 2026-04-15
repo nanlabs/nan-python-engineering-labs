@@ -1,5 +1,5 @@
 """
-Example 1: Comparación de velocidad entre pip y uv
+Example 1: Speed comparison between pip and uv
 Demuestra la diferencia de rendimiento en operaciones comunes
 """
 import subprocess
@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 def measure_command(cmd: list[str], description: str) -> float:
-    """Mide el tiempo de ejecución de un comando."""
+    """Measure command execution time."""
     print(f"\n{'='*60}")
     print(f"Ejecutando: {description}")
     print(f"Comando: {' '.join(cmd)}")
@@ -23,7 +23,7 @@ def measure_command(cmd: list[str], description: str) -> float:
     )
     elapsed = time.time() - start
     
-    print(f"✓ Completado en {elapsed:.2f} segundos")
+    print(f"✓ Completed in {elapsed:.2f} seconds")
     if result.returncode != 0:
         print(f"⚠️  Error: {result.stderr[:200]}")
     
@@ -31,8 +31,8 @@ def measure_command(cmd: list[str], description: str) -> float:
 
 
 def compare_installation():
-    """Compara la velocidad de instalación entre pip y uv."""
-    print("🔬 Benchmark: pip vs uv - Instalación de requests")
+    """Compare installation speed between pip and uv."""
+    print("🔬 Benchmark: pip vs uv - installing requests")
     
     # Crear directorios temporales
     pip_venv = Path("/tmp/pip_test_venv")
@@ -51,7 +51,7 @@ def compare_installation():
     )
     pip_time += measure_command(
         [str(pip_venv / "bin" / "pip"), "install", "requests"],
-        "pip: instalar requests"
+        "pip: install requests"
     )
     
     # Test con uv
@@ -62,15 +62,15 @@ def compare_installation():
     )
     uv_time += measure_command(
         ["uv", "pip", "install", "--python", str(uv_venv / "bin" / "python"), "requests"],
-        "uv: instalar requests"
+        "uv: install requests"
     )
     
     # Resultados
     print("\n" + "="*60)
     print("📊 RESULTADOS")
     print("="*60)
-    print(f"pip: {pip_time:.2f} segundos")
-    print(f"uv:  {uv_time:.2f} segundos")
+    print(f"pip: {pip_time:.2f} seconds")
+    print(f"uv:  {uv_time:.2f} seconds")
     print(f"uv es {pip_time/uv_time:.1f}x más rápido")
     print("="*60)
     
@@ -79,8 +79,8 @@ def compare_installation():
 
 
 def show_architecture():
-    """Muestra información sobre la arquitectura de uv."""
-    print("\n🏗️  Arquitectura de uv\n")
+    """Show information about uv architecture."""
+    print("\n🏗️  uv architecture\n")
     
     # Versión
     result = subprocess.run(
@@ -112,7 +112,7 @@ def show_architecture():
 
 
 if __name__ == "__main__":
-    print("🚀 uv: Introducción y Arquitectura - Ejemplos Prácticos\n")
+    print("🚀 uv: Introduction and Architecture - Practical Examples\n")
     
     # Verificar que uv está instalado
     try:
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     
     # Preguntar si ejecutar benchmark
     print("\n" + "="*60)
-    response = input("¿Ejecutar benchmark de velocidad? (s/n): ")
+    response = input("Run speed benchmark? (y/n): ")
     if response.lower() == 's':
         compare_installation()
     else:

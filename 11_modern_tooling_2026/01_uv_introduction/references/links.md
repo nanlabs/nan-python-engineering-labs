@@ -1,9 +1,9 @@
-# References: uv - Introducción y Arquitectura
+# References: uv - Introduction and Architecture
 
 ## Documentación Oficial
 
 - [uv GitHub Repository](https://github.com/astral-sh/uv)
-  - Repositorio principal con documentación completa
+  - Main repository with complete documentation
   - README técnico detallado
   - Roadmap y features planeadas
 
@@ -14,7 +14,7 @@
 
 - [uv Blog Post - Announcing uv](https://astral.sh/blog/uv)
   - Post de lanzamiento oficial
-  - Explicación de arquitectura
+  - Architecture explanation
   - Benchmarks oficiales
 
 ## Artículos Técnicos
@@ -27,11 +27,11 @@
 - [Why uv is 100x faster than pip](https://astral.sh/blog/uv-internals)
   - Deep dive técnico
   - Explanation of resolution algorithms
-  - Comparación con otras herramientas
+  - Comparison with other tools
 
 - [Python Packaging in 2026: The uv Revolution](https://lwn.net/Articles/python-uv-2026/)
   - Análisis del impacto en el ecosistema
-  - Comparación histórica
+  - Historical comparison
   - Tendencias futuras
 
 ## Videos

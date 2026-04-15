@@ -1,5 +1,5 @@
 """
-Example: Instalación y verificación de uv en diferentes entornos
+Example: installation y verificación de uv en diferentes entornos
 """
 import subprocess
 import platform
@@ -8,8 +8,8 @@ from pathlib import Path
 
 
 def check_uv_installation():
-    """Verifica si uv está instalado correctamente."""
-    print("🔍 Verificando instalación de uv\n")
+    """verify si uv está instalado correctamente."""
+    print("🔍 Checking uv installation\n")
     
     try:
         # Versión
@@ -48,14 +48,14 @@ def show_system_info():
     print(f"\n📊 Información del Sistema")
     print(f"{'='*50}")
     print(f"OS: {platform.system()} {platform.release()}")
-    print(f"Arquitectura: {platform.machine()}")
+    print(f"Architecture: {platform.machine()}")
     print(f"Python: {sys.version.split()[0]}")
     print(f"{'='*50}\n")
 
 
 def show_configuration():
-    """Muestra configuración actual de uv."""
-    print("⚙️  Configuración de uv\n")
+    """Show the current uv configuration."""
+    print("⚙️  uv configuration\n")
     
     # Cache directory
     try:
@@ -80,10 +80,10 @@ def show_configuration():
                 size = result.stdout.split()[0]
                 print(f"💾 Tamaño de caché: {size}")
         else:
-            print("   (Caché aún no existe)")
+            print("   (Caché yet no existe)")
     
     except subprocess.CalledProcessError as e:
-        print(f"⚠️  Error obteniendo configuración: {e}")
+        print(f"⚠️  Error getting configuration: {e}")
     
     # Variables de entorno relevantes
     print(f"\n🔧 Variables de Entorno Relevantes:")
@@ -135,21 +135,21 @@ def show_available_commands():
 
 
 def demonstrate_config_file():
-    """Demuestra la creación de un archivo de configuración."""
-    print(f"\n📝 Example de Archivo de Configuración\n")
+    """Demonstrate creating a configuration file."""
+    print(f"\n📝 Example Configuration File\n")
     
     config_content = """
-# .uv/config.toml - Configuración local del proyecto
+# .uv/config.toml - Project local configuration
 
 [tool.uv]
-# Índice principal de paquetes
+# Main package index
 index-url = "https://pypi.org/simple"
 
 # Additional indexes (por example, índices privados)
 # extra-index-url = ["https://private.pypi.org/simple"]
 
 [tool.uv.pip]
-# No usar binarios pre-compilados para estos paquetes
+# Do not use prebuilt binaries for these packages
 # no-binary = ["scipy"]
 
 # Solo usar wheels (no compilar desde source)
@@ -175,12 +175,12 @@ prerelease = "disallow"
 
 
 if __name__ == "__main__":
-    print("🚀 uv: Instalación y Configuración\n")
+    print("🚀 uv: Installation and Configuration\n")
     
     show_system_info()
     
     if not check_uv_installation():
-        print("\n💡 Para instalar uv, ejecuta:")
+        print("\n💡 To install uv, run:")
         print("   curl -LsSf https://astral.sh/uv/install.sh | sh")
         sys.exit(1)
     
@@ -188,4 +188,4 @@ if __name__ == "__main__":
     show_available_commands()
     demonstrate_config_file()
     
-    print(f"\n✨ ¡Configuración completa!")
+    print(f"\n✨ Configuration complete!")

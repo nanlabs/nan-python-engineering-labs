@@ -1,5 +1,5 @@
 """
-Tests para 33 memray memory profiling
+Tests for 33 memray memory profiling
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test33MemrayMemoryProfiling:
-    """Suite de tests para 33 memray memory profiling."""
+    """Test suite for 33 memray memory profiling."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test33MemrayMemoryProfiling:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

@@ -1,5 +1,5 @@
 """
-Tests para 23 type narrowing guards avanzados
+Tests for 23 type narrowing guards avanzados
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test23TypeNarrowingGuardsAvanzados:
-    """Suite de tests para 23 type narrowing guards avanzados."""
+    """Test suite for 23 type narrowing guards avanzados."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test23TypeNarrowingGuardsAvanzados:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

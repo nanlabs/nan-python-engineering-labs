@@ -1,5 +1,5 @@
 """
-Tests para 04 uv venv entornos virtuales
+Tests for 04 uv venv entornos virtuales
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test04UvVenvEntornosVirtuales:
-    """Suite de tests para 04 uv venv entornos virtuales."""
+    """Test suite for 04 uv venv entornos virtuales."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test04UvVenvEntornosVirtuales:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

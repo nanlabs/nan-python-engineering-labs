@@ -1,7 +1,7 @@
-# Exercise 2: Arquitectura Profunda
+# Exercise 2: Deep Architecture
 
 ## Objective
-Investigar y comprender la arquitectura interna de uv y compararla con otras herramientas.
+Investigate and understand uv internal architecture and compare it with other tools.
 
 ## Parte 1: Análisis del Binario (20 min)
 
@@ -12,12 +12,12 @@ Investigar y comprender la arquitectura interna de uv y compararla con otras her
    which uv
    ```
 
-2. Verifica que es un binario compilado (no Python):
+2. Verify it is a compiled binary (not Python):
    ```bash
    file $(which uv)
    ```
 
-3. Verifica el tamaño del binario:
+3. Verify binary size:
    ```bash
    ls -lh $(which uv)
    ```
@@ -53,11 +53,11 @@ Investigar y comprender la arquitectura interna de uv y compararla con otras her
    unzip -l <ruta-al-wheel>
    ```
 
-## Parte 3: Comparación de Resolvedores (30 min)
+## Part 3: Resolver Comparison (30 min)
 
 ### Crear Escenario Complejo
 
-8. Crea un archivo `requirements.txt` con dependencias complejas:
+8. Create a `requirements.txt` file with complex dependencies:
    ```
    django>=4.0,<5.0
    celery>=5.0
@@ -66,7 +66,7 @@ Investigar y comprender la arquitectura interna de uv y compararla con otras her
    psycopg2-binary>=2.9
    ```
 
-9. Resuelve con pip (sin instalar):
+9. Resolve with pip (without installing):
    ```bash
    mkdir /tmp/pip-resolve && cd /tmp/pip-resolve
    python3 -m venv .venv
@@ -112,10 +112,10 @@ Implement en `my_solution/cache_analyzer.py`:
 ```python
 """
 Analizador de caché de uv
-Debe mostrar:
+It should show:
 - Tamaño total de la caché
-- Número de paquetes cacheados
-- Top 10 paquetes más grandes
+- Number of cached packages
+- Top 10 largest packages
 - Antigüedad de artefactos
 """
 ```
@@ -127,9 +127,9 @@ Implement en `my_solution/benchmark.py`:
 ```python
 """
 Script que compara pip vs uv en diferentes escenarios:
-- Instalación desde cero
-- Instalación con caché fría
-- Instalación con caché caliente
+- Installation from scratch
+- Installation with cold cache
+- Installation with warm cache
 - Dependency resolution complejas
 """
 ```
@@ -148,7 +148,7 @@ Genera un grafo con graphviz o similar
 
 ## Preguntas Avanzadas
 
-1. ¿Por qué Rust es mejor que Python para un gestor de paquetes?
+1. Why is Rust better than Python for a package manager?
 2. ¿Qué trade-offs tiene el algoritmo PubGrub?
 3. ¿Cómo maneja uv las plataformas cruzadas (wheels)?
 4. ¿Qué estrategia usa uv para paralelizar descargas?
@@ -163,10 +163,10 @@ En `my_solution/`:
 - `ANALISIS.md` - Documento con:
   - Resultados de comparaciones
   - Respuestas a preguntas avanzadas
-  - Diagrama de arquitectura de uv
+  - uv architecture diagram
   - Conclusiones personales
 
-## Criterios de Evaluación
+## Evaluation Criteria
 
 - ✅ Scripts implementdos y funcionales
 - ✅ Análisis técnico profundo

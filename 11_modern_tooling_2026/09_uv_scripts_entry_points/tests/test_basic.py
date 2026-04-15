@@ -1,5 +1,5 @@
 """
-Tests para 09 uv scripts entry points
+Tests for 09 uv scripts entry points
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test09UvScriptsEntryPoints:
-    """Suite de tests para 09 uv scripts entry points."""
+    """Test suite for 09 uv scripts entry points."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test09UvScriptsEntryPoints:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

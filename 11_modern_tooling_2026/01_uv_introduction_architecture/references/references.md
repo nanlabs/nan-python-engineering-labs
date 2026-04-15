@@ -1,16 +1,16 @@
-# References - uv: Introducción y Arquitectura
+# References - uv: Introduction and Architecture
 
 ## Documentación Oficial
 
 ### Principal
-- [uv Documentation](https://docs.astral.sh/uv/) - Documentación oficial completa
+- [uv Documentation](https://docs.astral.sh/uv/) - Complete official documentation
 - [uv GitHub Repository](https://github.com/astral-sh/uv) - Código fuente y issues
 - [Astral Blog - Announcing uv](https://astral.sh/blog/uv) - Anuncio original con detalles técnicos
 
 ### Guías y Tutoriales
 - [uv Quick Start](https://docs.astral.sh/uv/getting-started/) - Guía de inicio rápido
 - [uv vs pip](https://docs.astral.sh/uv/pip/compatibility/) - Compatibilidad y diferencias
-- [uv Configuration](https://docs.astral.sh/uv/configuration/) - Opciones de configuración
+- [uv Configuration](https://docs.astral.sh/uv/configuration/) - Configuration options
 
 ## Algoritmo PubGrub
 
@@ -40,11 +40,11 @@
 
 - [Astral: The Company Behind Ruff and uv](https://www.youtube.com/watch?v=x_example) - Charla de Charlie Marsh
 - [Python Packaging in 2026](https://www.youtube.com/watch?v=example) - Estado actual del packaging
-- [Rust for Python Developers](https://www.youtube.com/watch?v=example) - Introducción a Rust
+- [Rust for Python Developers](https://www.youtube.com/watch?v=example) - Rust introduction
 
 ## Herramientas Relacionadas
 
-### Otros Gestores de Paquetes Python
+### Other Python Package Managers
 - [Poetry](https://python-poetry.org/) - Gestor de dependencias tradicional
 - [Pipenv](https://pipenv.pypa.io/) - Wrapper de pip y virtualenv
 - [PDM](https://pdm.fming.dev/) - Gestor moderno siguiendo PEPs
@@ -63,7 +63,7 @@
 
 - [PEP 665 – Specifying Installation Requirements](https://peps.python.org/pep-0665/) - Lock files (rechazado pero influyente)
 - [PEP 621 – Storing project metadata in pyproject.toml](https://peps.python.org/pep-0621/) - Metadata en pyproject.toml
-- [PEP 660 – Editable installs for pyproject.toml](https://peps.python.org/pep-0660/) - Instalación editable
+- [PEP 660 – Editable installs for pyproject.toml](https://peps.python.org/pep-0660/) - Editable install
 
 ## Casos de Uso y Ejemplos
 

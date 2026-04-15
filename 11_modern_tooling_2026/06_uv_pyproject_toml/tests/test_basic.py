@@ -1,5 +1,5 @@
 """
-Tests para 06 uv pyproject toml
+Tests for 06 uv pyproject toml
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test06UvPyprojectToml:
-    """Suite de tests para 06 uv pyproject toml."""
+    """Test suite for 06 uv pyproject toml."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test06UvPyprojectToml:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

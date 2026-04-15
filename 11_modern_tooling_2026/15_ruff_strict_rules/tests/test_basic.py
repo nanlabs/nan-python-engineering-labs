@@ -1,5 +1,5 @@
 """
-Tests para 15 ruff reglas estrictas
+Tests for 15 ruff reglas estrictas
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test15RuffReglasEstrictas:
-    """Suite de tests para 15 ruff reglas estrictas."""
+    """Test suite for 15 ruff reglas estrictas."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test15RuffReglasEstrictas:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

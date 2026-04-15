@@ -1,5 +1,5 @@
 """
-Tests para validar la comprensión de uv
+Tests for validar la comprensión de uv
 """
 import subprocess
 import pytest
@@ -10,14 +10,14 @@ import shutil
 
 @pytest.fixture
 def temp_project():
-    """Crea un directorio temporal para pruebas."""
+    """Create a temporary directory for tests."""
     temp_dir = Path(tempfile.mkdtemp())
     yield temp_dir
     shutil.rmtree(temp_dir, ignore_errors=True)
 
 
 def test_uv_is_installed():
-    """Verifica que uv está instalado y accesible."""
+    """Verify uv is installed and accessible."""
     result = subprocess.run(
         ["uv", "version"],
         capture_output=True,
@@ -28,7 +28,7 @@ def test_uv_is_installed():
 
 
 def test_uv_cache_directory_exists():
-    """Verifica que el directorio de caché existe."""
+    """Verify cache directory exists."""
     result = subprocess.run(
         ["uv", "cache", "dir"],
         capture_output=True,
@@ -36,13 +36,13 @@ def test_uv_cache_directory_exists():
         check=True
     )
     cache_dir = Path(result.stdout.strip())
-    # El directorio puede no existir hasta la primera instalación
-    # pero el comando debe funcionar
-    assert cache_dir.as_posix(), "Cache dir debe retornar una ruta válida"
+    # The directory may not exist until first installation
+    # but the command should work
+    assert cache_dir.as_posix(), "Cache dir must return a valid path"
 
 
 def test_uv_venv_creation(temp_project):
-    """Verifica que uv puede crear entornos virtuales."""
+    """Verify uv can create virtual environments."""
     venv_path = temp_project / ".venv"
     result = subprocess.run(
         ["uv", "venv", str(venv_path)],
@@ -56,13 +56,13 @@ def test_uv_venv_creation(temp_project):
 
 
 def test_uv_pip_install_simple_package(temp_project):
-    """Verifica que uv puede instalar paquetes."""
+    """Verify uv can install packages."""
     venv_path = temp_project / ".venv"
     
     # Crear venv
     subprocess.run(["uv", "venv", str(venv_path)], check=True)
     
-    # Instalar paquete simple
+    # Install simple package
     result = subprocess.run(
         [
             "uv", "pip", "install",
@@ -87,9 +87,9 @@ def test_uv_pip_install_simple_package(temp_project):
 
 
 def test_uv_is_faster_than_pip(temp_project):
-    """Test conceptual: uv debe ser más rápido que pip."""
-    # Este es un test de concepto que verifica la instalación
-    # En la practice, la velocidad depende de muchos factores
+    """Conceptual test: uv should be faster than pip."""
+    # This is a conceptual test that checks installation
+    # In practice, speed depends on many factors
     
     venv_path = temp_project / ".venv"
     subprocess.run(["uv", "venv", str(venv_path)], check=True)
@@ -110,17 +110,17 @@ def test_uv_is_faster_than_pip(temp_project):
     elapsed = time.time() - start
     
     assert result.returncode == 0
-    # Si está en caché, debe ser muy rápido
+    # If cached, it should be very fast
     # Este threshold es conservador
     assert elapsed < 30, f"uv tomó {elapsed}s, debería ser más rápido"
 
 
 def test_uv_cache_reuse(temp_project):
-    """Verifica que uv reutiliza la caché entre instalaciones."""
+    """Verify uv reuses cache across installations."""
     venv1 = temp_project / "venv1"
     venv2 = temp_project / "venv2"
     
-    # Primera instalación
+    # First installation
     subprocess.run(["uv", "venv", str(venv1)], check=True)
     result1 = subprocess.run(
         [
@@ -133,7 +133,7 @@ def test_uv_cache_reuse(temp_project):
         check=True
     )
     
-    # Segunda instalación (debería usar caché)
+    # Second installation (should use cache)
     subprocess.run(["uv", "venv", str(venv2)], check=True)
     
     import time
@@ -150,8 +150,8 @@ def test_uv_cache_reuse(temp_project):
     )
     elapsed = time.time() - start
     
-    # La segunda instalación debe ser mucho más rápida (desde caché)
-    assert elapsed < 5, f"Instalación desde caché tomó {elapsed}s, debería ser <5s"
+    # The second installation should be much faster (from cache)
+    assert elapsed < 5, f"installation desde caché tomó {elapsed}s, should be <5s"
     
     # Verificar que ambas tienen click
     for venv in [venv1, venv2]:
@@ -163,7 +163,7 @@ def test_uv_cache_reuse(temp_project):
 
 
 def test_uv_handles_dependencies():
-    """Verifica que uv maneja dependencias transitivas correctamente."""
+    """Verify uv handles transitive dependencies correctly."""
     temp_dir = Path(tempfile.mkdtemp())
     try:
         venv_path = temp_dir / ".venv"
@@ -202,11 +202,11 @@ def test_uv_handles_dependencies():
 
 
 class TestUVArchitecture:
-    """Tests sobre comprensión de la arquitectura."""
+    """Tests on architecture understanding."""
     
     def test_student_understands_pubgrub(self):
-        """Verifica que existe documentación sobre PubGrub."""
-        # Este test verifica que el estudiante ha creado documentación
+        """Verify PubGrub documentation exists."""
+        # This test verifies the student created documentation
         solution_dir = Path(__file__).parent.parent / "my_solution"
         
         if solution_dir.exists():
@@ -221,7 +221,7 @@ class TestUVArchitecture:
                     "La documentación debería mencionar PubGrub"
     
     def test_student_understands_rust_benefits(self):
-        """Verifica que existe documentación sobre Rust."""
+        """Verify Rust documentation exists."""
         solution_dir = Path(__file__).parent.parent / "my_solution"
         
         if solution_dir.exists():
@@ -231,8 +231,8 @@ class TestUVArchitecture:
                 for doc in docs:
                     content += doc.read_text().lower()
                 
-                # Debe mencionar algunas ventajas de Rust
-                rust_benefits = ["velocidad", "concurrencia", "memoria", "rust"]
+                # Should mention some Rust advantages
+                rust_benefits = ["speed", "concurrency", "memory", "rust"]
                 mentions = sum(1 for benefit in rust_benefits if benefit in content)
                 
                 assert mentions >= 2, \

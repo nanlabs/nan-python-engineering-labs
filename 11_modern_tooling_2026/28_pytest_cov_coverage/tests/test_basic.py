@@ -1,5 +1,5 @@
 """
-Tests para 28 pytest cov coverage
+Tests for 28 pytest cov coverage
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test28PytestCovCoverage:
-    """Suite de tests para 28 pytest cov coverage."""
+    """Test suite for 28 pytest cov coverage."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test28PytestCovCoverage:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

@@ -1,5 +1,5 @@
 """
-Tests para 17 ruff integracion workflow
+Tests for 17 ruff integracion workflow
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test17RuffIntegracionWorkflow:
-    """Suite de tests para 17 ruff integracion workflow."""
+    """Test suite for 17 ruff integracion workflow."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test17RuffIntegracionWorkflow:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

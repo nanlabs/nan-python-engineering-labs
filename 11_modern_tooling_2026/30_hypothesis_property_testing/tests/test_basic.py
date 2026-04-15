@@ -1,5 +1,5 @@
 """
-Tests para 30 hypothesis property testing
+Tests for 30 hypothesis property testing
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test30HypothesisPropertyTesting:
-    """Suite de tests para 30 hypothesis property testing."""
+    """Test suite for 30 hypothesis property testing."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test30HypothesisPropertyTesting:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

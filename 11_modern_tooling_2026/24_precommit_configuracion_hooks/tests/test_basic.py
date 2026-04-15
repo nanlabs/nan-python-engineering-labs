@@ -1,5 +1,5 @@
 """
-Tests para 24 precommit configuracion hooks
+Tests for 24 precommit configuracion hooks
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test24PrecommitConfiguracionHooks:
-    """Suite de tests para 24 precommit configuracion hooks."""
+    """Test suite for 24 precommit configuracion hooks."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test24PrecommitConfiguracionHooks:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

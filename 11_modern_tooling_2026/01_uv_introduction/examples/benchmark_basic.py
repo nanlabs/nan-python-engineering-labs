@@ -1,12 +1,12 @@
 """
-Example 1: Benchmark básico pip vs uv
+Example 1: Basic pip vs uv benchmark
 """
 import subprocess
 import time
 from pathlib import Path
 
 def create_test_requirements():
-    """Crea archivo requirements.txt de prueba."""
+    """Create a test requirements.txt file."""
     requirements = [
         "requests==2.31.0",
         "pandas==2.2.0",
@@ -20,7 +20,7 @@ def create_test_requirements():
     return req_file
 
 def benchmark_pip(requirements_file: Path) -> float:
-    """Mide tiempo de instalación con pip."""
+    """Measure installation time with pip."""
     # Crear venv temporal
     subprocess.run(["python", "-m", "venv", "temp_venv_pip"], check=True)
     
@@ -40,7 +40,7 @@ def benchmark_pip(requirements_file: Path) -> float:
     return elapsed
 
 def benchmark_uv(requirements_file: Path) -> float:
-    """Mide tiempo de instalación con uv."""
+    """Measure installation time with uv."""
     # Crear venv con uv
     subprocess.run(["uv", "venv", "temp_venv_uv"], check=True)
     
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     print("🚀 Benchmark: pip vs uv\n")
     
     req_file = create_test_requirements()
-    print(f"📦 Instalando 5 paquetes populares...\n")
+    print(f"📦 Instalando 5 packages populares...\n")
     
     print("⏱️  Midiendo pip...")
     pip_time = benchmark_pip(req_file)

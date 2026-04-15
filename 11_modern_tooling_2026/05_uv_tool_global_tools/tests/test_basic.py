@@ -1,5 +1,5 @@
 """
-Tests para 05 uv tool herramientas globales
+Tests for 05 uv tool herramientas globales
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test05UvToolHerramientasGlobales:
-    """Suite de tests para 05 uv tool herramientas globales."""
+    """Test suite for 05 uv tool herramientas globales."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test05UvToolHerramientasGlobales:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

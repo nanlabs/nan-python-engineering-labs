@@ -1,5 +1,5 @@
 """
-Tests para 34 viztracer tracing visual
+Tests for 34 viztracer tracing visual
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test34ViztracerTracingVisual:
-    """Suite de tests para 34 viztracer tracing visual."""
+    """Test suite for 34 viztracer tracing visual."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test34ViztracerTracingVisual:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

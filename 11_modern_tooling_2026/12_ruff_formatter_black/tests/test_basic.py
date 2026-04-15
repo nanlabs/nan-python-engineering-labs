@@ -1,5 +1,5 @@
 """
-Tests para 12 ruff formatter black
+Tests for 12 ruff formatter black
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test12RuffFormatterBlack:
-    """Suite de tests para 12 ruff formatter black."""
+    """Test suite for 12 ruff formatter black."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test12RuffFormatterBlack:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

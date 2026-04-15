@@ -1,5 +1,5 @@
 """
-Tests para 31 mutation testing mutmut
+Tests for 31 mutation testing mutmut
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test31MutationTestingMutmut:
-    """Suite de tests para 31 mutation testing mutmut."""
+    """Test suite for 31 mutation testing mutmut."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test31MutationTestingMutmut:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

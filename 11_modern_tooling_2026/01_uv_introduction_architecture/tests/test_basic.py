@@ -1,5 +1,5 @@
 """
-Tests para 01 uv introduccion arquitectura
+Tests for 01 uv introduction architecture
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test01UvIntroduccionArquitectura:
-    """Suite de tests para 01 uv introduccion arquitectura."""
+    """Test suite for 01 uv introduction architecture."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test01UvIntroduccionArquitectura:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

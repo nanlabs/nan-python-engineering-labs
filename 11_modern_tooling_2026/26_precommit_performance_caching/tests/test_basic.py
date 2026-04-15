@@ -1,5 +1,5 @@
 """
-Tests para 26 precommit performance caching
+Tests for 26 precommit performance caching
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test26PrecommitPerformanceCaching:
-    """Suite de tests para 26 precommit performance caching."""
+    """Test suite for 26 precommit performance caching."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test26PrecommitPerformanceCaching:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

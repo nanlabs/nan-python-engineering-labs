@@ -1,5 +1,5 @@
 """
-Tests para 19 pyright basedpyright
+Tests for 19 pyright basedpyright
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test19PyrightBasedpyright:
-    """Suite de tests para 19 pyright basedpyright."""
+    """Test suite for 19 pyright basedpyright."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test19PyrightBasedpyright:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

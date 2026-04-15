@@ -1,5 +1,5 @@
 """
-Tests para 13 ruff import sorter isort
+Tests for 13 ruff import sorter isort
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test13RuffImportSorterIsort:
-    """Suite de tests para 13 ruff import sorter isort."""
+    """Test suite for 13 ruff import sorter isort."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test13RuffImportSorterIsort:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 

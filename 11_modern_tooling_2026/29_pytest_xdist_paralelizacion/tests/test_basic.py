@@ -1,5 +1,5 @@
 """
-Tests para 29 pytest xdist paralelizacion
+Tests for 29 pytest xdist paralelizacion
 """
 
 import pytest
@@ -12,10 +12,10 @@ sys.path.insert(0, str(parent_dir))
 
 
 class Test29PytestXdistParalelizacion:
-    """Suite de tests para 29 pytest xdist paralelizacion."""
+    """Test suite for 29 pytest xdist paralelizacion."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Basic functionality test."""
         # TODO: Implement basic test
         pass
     
@@ -31,7 +31,7 @@ class Test29PytestXdistParalelizacion:
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work."""
     assert True  # Placeholder
 
 
