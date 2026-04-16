@@ -1,5 +1,5 @@
 """
-Example 2: Explorando la caché global de uv
+Example 2: Exploring the global uv cache
 Demonstrates how uv reuses packages across projects
 """
 import subprocess
@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 def get_cache_info():
-    """Obtiene información sobre la caché de uv."""
+    """Get information about the uv cache."""
     print("📦 uv Global Cache Information\n")
     
     # Cache directory
@@ -18,9 +18,9 @@ def get_cache_info():
         check=True
     )
     cache_dir = Path(result.stdout.strip())
-    print(f"📁 Ubicación: {cache_dir}")
+    print(f"📁 Location: {cache_dir}")
     
-    # Tamaño de caché si existe
+    # Cache size if it exists
     if cache_dir.exists():
         result = subprocess.run(
             ["du", "-sh", str(cache_dir)],
@@ -30,22 +30,22 @@ def get_cache_info():
         )
         if result.returncode == 0:
             size = result.stdout.split()[0]
-            print(f"💾 Tamaño: {size}")
+            print(f"💾 Size: {size}")
     
     # List some cached packages
     wheels_dir = cache_dir / "wheels-v1"
     if wheels_dir.exists():
         wheels = list(wheels_dir.rglob("*.whl"))[:10]
         if wheels:
-            print(f"\n📚 Some cached packages in cache ({len(wheels)} mostrados):")
+            print(f"\n📚 Some cached packages in cache ({len(wheels)} shown):")
             for wheel in wheels:
                 print(f"   • {wheel.name}")
 
 
 def demonstrate_cache_reuse():
-    """Demuestra la reutilización de caché entre proyectos."""
+    """Demonstrate cache reuse across projects."""
     print("\n" + "="*60)
-    print("🔄 Demostración de Reutilización de Caché")
+    print("🔄 Cache Reuse Demonstration")
     print("="*60)
     
     projects = [
@@ -53,7 +53,7 @@ def demonstrate_cache_reuse():
         Path("/tmp/uv_project_2"),
     ]
     
-    # Limpiar proyectos anteriores
+    # Clean up previous projects
     for project in projects:
         if project.exists():
             subprocess.run(["rm", "-rf", str(project)], check=False)
@@ -141,6 +141,6 @@ if __name__ == "__main__":
     show_pubgrub_example()
     
     print("\n" + "="*60)
-    response = input("¿Demostrar reutilización de caché? (s/n): ")
-    if response.lower() == 's':
+    response = input("Demonstrate cache reuse? (y/n): ")
+    if response.lower() == 'y':
         demonstrate_cache_reuse()

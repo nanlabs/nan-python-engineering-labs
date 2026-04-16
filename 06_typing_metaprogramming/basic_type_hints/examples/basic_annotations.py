@@ -1,60 +1,60 @@
 """
-Ejemplos básicos de type hints en Python.
+Basic examples of type hints in Python.
 
-Este archivo demuestra el uso fundamental de anotaciones de tipo
-para variables, funciones y colecciones.
+This file demonstrates the fundamental use of type annotations
+for variables, functions, and collections.
 """
 
 from typing import Optional, List, Dict, Tuple, Set, Union, Callable, Any
 
 
 # ============================================================================
-# 1. TIPOS PRIMITIVOS
+# 1. PRIMITIVE TYPES
 # ============================================================================
 
 def add_numbers(a: int, b: int) -> int:
     """
-    Suma dos números enteros.
+    Add two integer numbers.
     
     Args:
-        a: Primer número entero
-        b: Segundo número entero
+        a: First integer number
+        b: Second integer number
         
     Returns:
-        La suma de a y b
+        The sum of a and b
     """
     return a + b
 
 
 def format_greeting(name: str, age: int) -> str:
-    """Formatea un saludo personalizado."""
+    """Format a custom greeting."""
     return f"Hola {name}, tienes {age} años"
 
 
 def calculate_average(numbers: List[float]) -> float:
-    """Calcula el promedio de una lista de números."""
+    """Calculate the average of a list of numbers."""
     return sum(numbers) / len(numbers) if numbers else 0.0
 
 
 # ============================================================================
-# 2. OPTIONAL Y VALORES POR DEFECTO
+# 2. OPTIONAL AND DEFAULT VALUES
 # ============================================================================
 
 def find_user_by_id(user_id: int, users: Dict[int, str]) -> Optional[str]:
     """
-    Busca un usuario por ID.
+    Find a user by ID.
     
     Returns:
-        El nombre del usuario si existe, None en caso contrario.
+        The user name if it exists, otherwise None.
     """
     return users.get(user_id)
 
 
 def create_user(name: str, email: str, age: Optional[int] = None) -> Dict[str, Any]:
     """
-    Crea un diccionario de usuario.
+    Create a user dictionary.
     
-    La edad es opcional y puede ser None.
+    Age is optional and can be None.
     """
     user = {"name": name, "email": email}
     if age is not None:
@@ -63,35 +63,35 @@ def create_user(name: str, email: str, age: Optional[int] = None) -> Dict[str, A
 
 
 # ============================================================================
-# 3. COLECCIONES GENÉRICAS
+# 3. GENERIC COLLECTIONS
 # ============================================================================
 
 def merge_dictionaries(
     dict1: Dict[str, int],
     dict2: Dict[str, int]
 ) -> Dict[str, int]:
-    """Fusiona dos diccionarios, dict2 sobrescribe valores de dict1."""
+    """Merge two dictionaries; dict2 overrides values from dict1."""
     result = dict1.copy()
     result.update(dict2)
     return result
 
 
 def filter_even_numbers(numbers: List[int]) -> List[int]:
-    """Retorna solo los números pares de la lista."""
+    """Return only the even numbers from the list."""
     return [n for n in numbers if n % 2 == 0]
 
 
 def get_unique_values(items: List[str]) -> Set[str]:
-    """Convierte una lista en un conjunto de valores únicos."""
+    """Convert a list into a set of unique values."""
     return set(items)
 
 
 def split_name(full_name: str) -> Tuple[str, str]:
     """
-    Divide un nombre completo en nombre y apellido.
+    Split a full name into first name and last name.
     
     Returns:
-        Una tupla (nombre, apellido)
+        A tuple (first_name, last_name)
     """
     parts = full_name.split(maxsplit=1)
     if len(parts) == 2:
@@ -100,14 +100,14 @@ def split_name(full_name: str) -> Tuple[str, str]:
 
 
 # ============================================================================
-# 4. UNIONES DE TIPOS (Python 3.10+)
+# 4. TYPE UNIONS (Python 3.10+)
 # ============================================================================
 
 def parse_id(value: int | str) -> int:
     """
-    Convierte un ID a entero desde int o str.
+    Convert an ID to an integer from int or str.
     
-    Equivalente a Union[int, str] en Python < 3.10
+    Equivalent to Union[int, str] in Python < 3.10
     """
     if isinstance(value, str):
         return int(value)
@@ -116,57 +116,57 @@ def parse_id(value: int | str) -> int:
 
 def process_data(data: list[int] | list[str]) -> int:
     """
-    Procesa datos que pueden ser lista de enteros o strings.
+    Process data that can be a list of integers or strings.
     
     Returns:
-        El número de elementos procesados
+        The number of processed elements
     """
     return len(data)
 
 
 # ============================================================================
-# 5. CALLABLES (FUNCIONES COMO PARÁMETROS)
+# 5. CALLABLES (FUNCTIONS AS PARAMETERS)
 # ============================================================================
 
 def apply_to_all(items: List[int], func: Callable[[int], int]) -> List[int]:
     """
-    Aplica una función a cada elemento de la lista.
+    Apply a function to each item in the list.
     
     Args:
-        items: Lista de enteros
-        func: Función que toma un int y retorna un int
+        items: List of integers
+        func: Function that takes an int and returns an int
         
     Returns:
-        Nueva lista con la función aplicada
+        New list with the function applied
     """
     return [func(item) for item in items]
 
 
 def double(x: int) -> int:
-    """Duplica un número."""
+    """Double a number."""
     return x * 2
 
 
 def square(x: int) -> int:
-    """Eleva un número al cuadrado."""
+    """Square a number."""
     return x * x
 
 
 # ============================================================================
-# 6. TIPOS ANIDADOS COMPLEJOS
+# 6. COMPLEX NESTED TYPES
 # ============================================================================
 
 def group_by_key(
     items: List[Dict[str, Any]]
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
-    Agrupa diccionarios por un key específico.
+    Group dictionaries by a specific key.
     
     Args:
-        items: Lista de diccionarios con al menos la key "category"
+        items: List of dictionaries with at least the key "category"
         
     Returns:
-        Diccionario donde cada key es una categoría y el value es la lista de items
+        Dictionary where each key is a category and the value is the list of items
     """
     grouped: Dict[str, List[Dict[str, Any]]] = {}
     for item in items:
@@ -181,7 +181,7 @@ def group_by_key(
 # 7. VARIABLES ANOTADAS
 # ============================================================================
 
-# Anotaciones de variables (Python 3.6+)
+# Variable annotations (Python 3.6+)
 user_count: int = 0
 active_users: List[str] = []
 configuration: Dict[str, str | int | bool] = {
@@ -192,11 +192,11 @@ configuration: Dict[str, str | int | bool] = {
 
 
 # ============================================================================
-# EJEMPLOS DE USO
+# USAGE EXAMPLES
 # ============================================================================
 
 if __name__ == "__main__":
-    # Tipos básicos
+    # Basic types
     result = add_numbers(5, 3)
     print(f"5 + 3 = {result}")
     
@@ -206,43 +206,43 @@ if __name__ == "__main__":
     # Optional
     users = {1: "Alice", 2: "Bob", 3: "Charlie"}
     user = find_user_by_id(2, users)
-    print(f"Usuario encontrado: {user}")
+    print(f"User found: {user}")
     
     user = find_user_by_id(999, users)
-    print(f"Usuario no encontrado: {user}")
+    print(f"User not found: {user}")
     
-    # Colecciones
+    # Collections
     numbers = [1, 2, 3, 4, 5, 6]
     even = filter_even_numbers(numbers)
-    print(f"Números pares: {even}")
+    print(f"Even numbers: {even}")
     
     names = ["Ana", "Bob", "Ana", "Charlie", "Bob"]
     unique = get_unique_values(names)
-    print(f"Nombres únicos: {unique}")
+    print(f"Unique names: {unique}")
     
     # Callables
     numbers = [1, 2, 3, 4, 5]
     doubled = apply_to_all(numbers, double)
     squared = apply_to_all(numbers, square)
-    print(f"Duplicados: {doubled}")
-    print(f"Cuadrados: {squared}")
+    print(f"Doubled: {doubled}")
+    print(f"Squared: {squared}")
     
-    # Lambda con type hint inferido
+    # Lambda with inferred type hints
     tripled = apply_to_all(numbers, lambda x: x * 3)
-    print(f"Triplicados: {tripled}")
+    print(f"Tripled: {tripled}")
     
     # Union types
     id1 = parse_id(123)
     id2 = parse_id("456")
-    print(f"IDs parseados: {id1}, {id2}")
+    print(f"Parsed IDs: {id1}, {id2}")
     
-    # Tipos anidados
+    # Nested types
     products = [
         {"name": "Laptop", "category": "Electronics", "price": 999},
         {"name": "Mouse", "category": "Electronics", "price": 25},
         {"name": "Desk", "category": "Furniture", "price": 299},
     ]
     grouped = group_by_key(products)
-    print(f"Productos agrupados por categoría:")
+    print(f"Products grouped by category:")
     for category, items in grouped.items():
         print(f"  {category}: {len(items)} items")

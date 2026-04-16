@@ -20,12 +20,12 @@ class Test05UvToolGlobalTools:
         pass
     
     def test_edge_cases(self):
-        """Test de casos límite."""
+        """Edge case test."""
         # TODO: Implement edge case tests
         pass
     
     def test_error_handling(self):
-        """Test de manejo de errores."""
+        """Error handling test."""
         # TODO: Implement error handling tests
         pass
 

@@ -1,6 +1,6 @@
 """
 Example 1: Speed comparison between pip and uv
-Demuestra la diferencia de rendimiento en operaciones comunes
+Demonstrates the performance difference in common operations.
 """
 import subprocess
 import time
@@ -10,8 +10,8 @@ from pathlib import Path
 def measure_command(cmd: list[str], description: str) -> float:
     """Measure command execution time."""
     print(f"\n{'='*60}")
-    print(f"Ejecutando: {description}")
-    print(f"Comando: {' '.join(cmd)}")
+    print(f"Running: {description}")
+    print(f"Command: {' '.join(cmd)}")
     print('='*60)
     
     start = time.time()
@@ -38,12 +38,12 @@ def compare_installation():
     pip_venv = Path("/tmp/pip_test_venv")
     uv_venv = Path("/tmp/uv_test_venv")
     
-    # Limpiar si existen
+    # Clean up if they exist
     for venv in [pip_venv, uv_venv]:
         if venv.exists():
             subprocess.run(["rm", "-rf", str(venv)], check=True)
     
-    # Test con pip (tradicional)
+    # Test with pip (traditional)
     pip_time = 0
     pip_time += measure_command(
         ["python", "-m", "venv", str(pip_venv)],
@@ -54,7 +54,7 @@ def compare_installation():
         "pip: install requests"
     )
     
-    # Test con uv
+    # Test with uv
     uv_time = 0
     uv_time += measure_command(
         ["uv", "venv", str(uv_venv)],
@@ -65,9 +65,9 @@ def compare_installation():
         "uv: install requests"
     )
     
-    # Resultados
+    # Results
     print("\n" + "="*60)
-    print("📊 RESULTADOS")
+    print("📊 RESULTS")
     print("="*60)
     print(f"pip: {pip_time:.2f} seconds")
     print(f"uv:  {uv_time:.2f} seconds")
@@ -82,14 +82,14 @@ def show_architecture():
     """Show information about uv architecture."""
     print("\n🏗️  uv architecture\n")
     
-    # Versión
+    # Version
     result = subprocess.run(
         ["uv", "version"],
         capture_output=True,
         text=True,
         check=True
     )
-    print(f"Versión: {result.stdout.strip()}")
+    print(f"Version: {result.stdout.strip()}")
     
     # Cache location
     result = subprocess.run(
@@ -107,7 +107,7 @@ def show_architecture():
         text=True,
         check=False
     )
-    print(f"\nInformación de caché:")
+    print(f"\nCache information:")
     print(result.stdout if result.returncode == 0 else "No cache found")
 
 
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     # Ask whether to run benchmark
     print("\n" + "="*60)
     response = input("Run speed benchmark? (y/n): ")
-    if response.lower() == 's':
+    if response.lower() == 'y':
         compare_installation()
     else:
-        print("Benchmark omitido.")
+        print("Benchmark skipped.")

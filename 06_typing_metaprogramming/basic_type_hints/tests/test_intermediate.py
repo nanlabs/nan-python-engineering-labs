@@ -19,22 +19,22 @@ except (ImportError, AttributeError):
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestAddBook:
-    """Tests para la función add_book."""
+    """Tests for the add_book function."""
     
     def test_add_book_creates_dict(self):
-        """Verifica que add_book crea un diccionario."""
+        """Verify that add_book creates a dictionary."""
         book = add_book("1984", "George Orwell", 1949)
-        assert isinstance(book, dict), "add_book debe retornar un diccionario"
+        assert isinstance(book, dict), "add_book must return a dictionary"
     
     def test_add_book_has_correct_keys(self):
-        """Verifica que el diccionario tiene las keys correctas."""
+        """Verify that the dictionary has the correct keys."""
         book = add_book("1984", "George Orwell", 1949)
-        assert "title" in book, "Debe tener key 'title'"
-        assert "author" in book, "Debe tener key 'author'"
-        assert "year" in book, "Debe tener key 'year'"
+        assert "title" in book, "Must have key 'title'"
+        assert "author" in book, "Must have key 'author'"
+        assert "year" in book, "Must have key 'year'"
     
     def test_add_book_correct_values(self):
-        """Verifica que los valores son correctos."""
+        """Verify that the values are correct."""
         book = add_book("Dune", "Frank Herbert", 1965)
         assert book["title"] == "Dune"
         assert book["author"] == "Frank Herbert"
@@ -43,11 +43,11 @@ class TestAddBook:
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestSearchBooks:
-    """Tests para la función search_books."""
+    """Tests for the search_books function."""
     
     @pytest.fixture
     def sample_books(self):
-        """Fixture con libros de ejemplo."""
+        """Fixture with example books."""
         return [
             {"title": "1984", "author": "George Orwell", "year": 1949},
             {"title": "Animal Farm", "author": "George Orwell", "year": 1945},
@@ -56,46 +56,46 @@ class TestSearchBooks:
         ]
     
     def test_search_by_author_lowercase(self, sample_books):
-        """Busca por autor en minúsculas."""
+        """Search by author in lowercase."""
         results = search_books(sample_books, "orwell")
-        assert len(results) == 2, "Debe encontrar 2 libros de Orwell"
+        assert len(results) == 2, "It must find 2 Orwell books"
         assert all("Orwell" in book["author"] for book in results)
     
     def test_search_by_author_uppercase(self, sample_books):
-        """Busca por autor en mayúsculas (case-insensitive)."""
+        """Search by author in uppercase (case-insensitive)."""
         results = search_books(sample_books, "ORWELL")
-        assert len(results) == 2, "Búsqueda debe ser case-insensitive"
+        assert len(results) == 2, "Search must be case-insensitive"
     
     def test_search_by_title(self, sample_books):
-        """Busca por título."""
+        """Search by title."""
         results = search_books(sample_books, "dune")
         assert len(results) == 1
         assert results[0]["title"] == "Dune"
     
     def test_search_partial_match(self, sample_books):
-        """Busca con coincidencia parcial."""
+        """Search with a partial match."""
         results = search_books(sample_books, "farm")
         assert len(results) == 1
         assert results[0]["title"] == "Animal Farm"
     
     def test_search_no_results(self, sample_books):
-        """Busca sin resultados."""
+        """Search with no results."""
         results = search_books(sample_books, "tolkien")
-        assert results == [], "Debe retornar lista vacía si no hay resultados"
+        assert results == [], "It must return an empty list when there are no results"
     
     def test_search_empty_list(self):
-        """Busca en lista vacía."""
+        """Search in an empty list."""
         results = search_books([], "orwell")
-        assert results == [], "Debe retornar lista vacía"
+        assert results == [], "It must return an empty list"
 
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestGetBooksByYear:
-    """Tests para la función get_books_by_year."""
+    """Tests for the get_books_by_year function."""
     
     @pytest.fixture
     def sample_books(self):
-        """Fixture con libros de ejemplo."""
+        """Fixture with example books."""
         return [
             {"title": "1984", "author": "George Orwell", "year": 1949},
             {"title": "Animal Farm", "author": "George Orwell", "year": 1945},
@@ -105,14 +105,14 @@ class TestGetBooksByYear:
         ]
     
     def test_get_books_single_result(self, sample_books):
-        """Obtiene libros con un solo resultado."""
+        """Get books with a single result."""
         results = get_books_by_year(sample_books, 1949)
-        assert results is not None, "No debe retornar None si hay resultados"
+        assert results is not None, "It must not return None when there are results"
         assert len(results) == 1
         assert results[0]["title"] == "1984"
     
     def test_get_books_multiple_results(self, sample_books):
-        """Puede haber múltiples libros del mismo año."""
+        """There can be multiple books from the same year."""
         # Add another book from 1950
         sample_books.append({"title": "Another Book", "author": "Someone", "year": 1950})
         results = get_books_by_year(sample_books, 1950)
@@ -120,17 +120,17 @@ class TestGetBooksByYear:
         assert len(results) == 2
     
     def test_get_books_no_results(self, sample_books):
-        """Retorna None si no hay libros de ese año."""
+        """Return None if there are no books from that year."""
         results = get_books_by_year(sample_books, 2000)
-        assert results is None, "Debe retornar None si no hay resultados"
+        assert results is None, "It must return None when there are no results"
     
     def test_get_books_empty_list(self):
-        """Con lista vacía retorna lista vacía."""
+        """With an empty list it returns an empty list."""
         results = get_books_by_year([], 1949)
-        assert results == [], "Con lista vacía debe retornar []"
+        assert results == [], "With an empty list it must return []"
     
     def test_get_books_old_year(self, sample_books):
-        """Busca con año antiguo."""
+        """Search by an old year."""
         results = get_books_by_year(sample_books, 1945)
         assert results is not None
         assert len(results) == 1

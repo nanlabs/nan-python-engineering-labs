@@ -2,42 +2,42 @@
 Advanced Exercise: Type Hints - Type Validation Decorator
 
 OBJECTIVE:
-Crear un decorador @validate_types que verifique en runtime que los argumentos
-pasados a una función coincidan con sus type hints.
+Create a @validate_types decorator that verifies at runtime that the arguments
+passed to a function match its type hints.
 
-REQUISITOS:
-1. El decorador debe funcionar con cualquier función que tenga type hints
-2. Debe validar tipos de parámetros antes de ejecutar la función
-3. Debe validar el tipo del valor de retorno después de ejecutar
-4. Si hay un mismatch de tipos, debe lanzar TypeError con mensaje descriptivo
-5. Debe manejar:
-   - Tipos básicos: int, str, float, bool
-   - Optional[T] (acepta T o None)
-   - Union[T1, T2, ...] o T1 | T2 (acepta cualquiera de los tipos)
-   - List[T], Dict[K, V] (validar el tipo del contenedor, no los elementos)
-   - Funciones sin type hints (no validar)
-   - Funciones que retornan None
+REQUIREMENTS:
+1. The decorator must work with any function that has type hints
+2. It must validate parameter types before executing the function
+3. It must validate the return value type after execution
+4. If there is a type mismatch, it must raise TypeError with a descriptive message
+5. It must handle:
+   - Basic types: int, str, float, bool
+   - Optional[T] (accepts T or None)
+   - Union[T1, T2, ...] o T1 | T2 (accepts any of the types)
+   - List[T], Dict[K, V] (validate the container type, not the elements)
+   - Functions without type hints (do not validate)
+   - Functions that return None
 
 CHALLENGES:
 - Use the inspect module to obtain the function signature
-- Usar typing.get_type_hints() para extraer los type hints
+- Use typing.get_type_hints() to extract type hints
 - Handle special types from the typing module (Union, Optional, etc)
-- Usar typing.get_origin() y typing.get_args() para descomponer tipos genéricos
+- Use typing.get_origin() and typing.get_args() to decompose generic types
 
-EJEMPLO DE USO:
+USAGE EXAMPLE:
 @validate_types
 def add(a: int, b: int) -> int:
     return a + b
 
-add(1, 2)      # OK: retorna 3
-add("1", "2")  # ERROR: TypeError - esperaba int, recibió str
+add(1, 2)      # OK: returns 3
+add("1", "2")  # ERROR: TypeError - expected int, got str
 
 @validate_types
 def find_user(user_id: int) -> Optional[str]:
     return "Alice" if user_id == 1 else None
 
-find_user(1)   # OK: retorna "Alice"
-find_user(2)   # OK: retorna None
+find_user(1)   # OK: returns "Alice"
+find_user(2)   # OK: returns None
 find_user("1") # ERROR: TypeError
 """
 
@@ -48,19 +48,19 @@ from typing import Any, Callable, get_type_hints, Union, get_origin, get_args
 
 def validate_types(func: Callable) -> Callable:
     """
-    Decorador que valida types hints en runtime.
+    Decorator that validates type hints at runtime.
     
-    Verifica que los argumentos pasados y el valor de retorno
-    coincidan con los type hints declarados en la función.
+    Verify that passed arguments and the return value
+    match the type hints declared on the function.
     
     Args:
-        func: Función a decorar (debe tener type hints)
+        func: Function to decorate (must have type hints)
         
     Returns:
-        Función decorada con validación de tipos
+        Function decorated with type validation
         
     Raises:
-        TypeError: Si hay un mismatch entre tipos esperados y recibidos
+        TypeError: If there is a mismatch between expected and received types
     
     Examples:
         >>> @validate_types
@@ -75,31 +75,31 @@ def validate_types(func: Callable) -> Callable:
     
     @functools.wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
-        """Wrapper que ejecuta la validación."""
+        """Wrapper that performs validation."""
         
-        # TODO: Paso 1 - Obtener type hints de la función
-        # Usar: type_hints = get_type_hints(func)
-        # Esto retorna un dict: {"param_name": type, "return": return_type}
+        # TODO: Step 1 - Get function type hints
+        # Use: type_hints = get_type_hints(func)
+        # This returns a dict: {"param_name": type, "return": return_type}
         
-        # TODO: Paso 2 - Obtener la signature de la función
-        # Usar: sig = inspect.signature(func)
-        # Usar: bound = sig.bind(*args, **kwargs)
-        # bound.arguments es un dict de {param_name: value}
+        # TODO: Step 2 - Get the function signature
+        # Use: sig = inspect.signature(func)
+        # Use: bound = sig.bind(*args, **kwargs)
+        # bound.arguments is a dict of {param_name: value}
         
-        # TODO: Paso 3 - Validar cada parámetro
-        # Para cada parámetro en bound.arguments:
-        #   - Obtener el type hint esperado de type_hints
-        #   - Obtener el valor actual
-        #   - Llamar a _check_type(param_name, value, expected_type)
+        # TODO: Step 3 - Validate each parameter
+        # For each parameter in bound.arguments:
+        #   - Get the expected type hint from type_hints
+        #   - Get the current value
+        #   - Call _check_type(param_name, value, expected_type)
         
-        # TODO: Paso 4 - Ejecutar la función original
+        # TODO: Step 4 - Execute the original function
         # result = func(*args, **kwargs)
         
-        # TODO: Paso 5 - Validar el tipo de retorno si existe
-        # Si "return" está en type_hints:
-        #   - Llamar a _check_type("return", result, type_hints["return"])
+        # TODO: Step 5 - Validate the return type if it exists
+        # If "return" is in type_hints:
+        #   - Call _check_type("return", result, type_hints["return"])
         
-        # TODO: Paso 6 - Retornar el resultado
+        # TODO: Step 6 - Return the result
         # return result
         
         pass
@@ -109,53 +109,53 @@ def validate_types(func: Callable) -> Callable:
 
 def _check_type(param_name: str, value: Any, expected_type: Any) -> None:
     """
-    Verifica que un valor coincida con el tipo esperado.
+    Verify that a value matches the expected type.
     
-    Esta función auxiliar maneja la lógica compleja de validación
-    incluyendo Optional, Union, y tipos genéricos.
+    This helper function handles complex validation logic
+    including Optional, Union, and generic types.
     
     Args:
-        param_name: Nombre del parámetro (para mensajes de error)
-        value: Valor a validar
-        expected_type: Tipo esperado (puede ser Union, Optional, etc)
+        param_name: Parameter name (for error messages)
+        value: Value to validate
+        expected_type: Expected type (can be Union, Optional, etc)
         
     Raises:
-        TypeError: Si el valor no coincide con el tipo esperado
+        TypeError: If the value does not match the expected type
     """
-    # TODO: Implementar validación de tipos
+    # TODO: Implement type validation
     
-    # Casos especiales:
-    # 1. Si expected_type es None o type(None), solo aceptar None
-    # 2. Si expected_type es Union o tiene __origin__ == Union:
-    #    - Obtener los tipos con get_args(expected_type)
-    #    - Validar que value sea instancia de alguno de ellos
-    # 3. Si expected_type es Optional (Union[T, None]):
-    #    - Aceptar None o el tipo T
-    # 4. Si expected_type es un tipo genérico (List, Dict, etc):
-    #    - Validar solo el tipo del contenedor con get_origin()
-    #    - Ejemplo: List[int] -> validar isinstance(value, list)
-    # 5. Para tipos básicos, usar isinstance(value, expected_type)
+    # Special cases:
+    # 1. If expected_type is None or type(None), only accept None
+    # 2. If expected_type is Union or has __origin__ == Union:
+    #    - Get the types with get_args(expected_type)
+    #    - Validate that value is an instance of one of them
+    # 3. If expected_type is Optional (Union[T, None]):
+    #    - Accept None or type T
+    # 4. If expected_type is a generic type (List, Dict, etc):
+    #    - Validate only the container type with get_origin()
+    #    - Example: List[int] -> validate isinstance(value, list)
+    # 5. For basic types, use isinstance(value, expected_type)
     
-    # Pistas:
-    # - get_origin(List[int]) retorna list
-    # - get_args(Union[int, str]) retorna (int, str)
-    # - get_args(Optional[int]) retorna (int, type(None))
-    # - type(None) es la clase NoneType
+    # Hints:
+    # - get_origin(List[int]) returns list
+    # - get_args(Union[int, str]) returns (int, str)
+    # - get_args(Optional[int]) returns (int, type(None))
+    # - type(None) is the NoneType class
     
     pass
 
 
 # ============================================================================
-# TESTS AUXILIARES (NO MODIFICAR)
+# AUXILIARY TESTS (DO NOT MODIFY)
 # ============================================================================
 
 if __name__ == "__main__":
-    # Estos tests son para verificar tu implementación
-    # NO los modifiques, implementa las funciones arriba
+    # These tests are used to verify your implementation
+    # DO NOT modify them; implement the functions above
     
     print("Testing validate_types decorator...")
     
-    # Test 1: Tipos básicos
+    # Test 1: Basic types
     @validate_types
     def add(a: int, b: int) -> int:
         return a + b
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     except TypeError as e:
         print(f"✗ Test 3.2 failed: {e}")
     
-    # Test 4: Colecciones genéricas
+    # Test 4: Generic collections
     @validate_types
     def sum_list(numbers: list[int]) -> int:
         return sum(numbers)

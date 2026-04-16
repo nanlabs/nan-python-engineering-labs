@@ -2,26 +2,26 @@
 Intermediate Exercise: Type Hints - Library Management System
 
 OBJECTIVE:
-Implementar un sistema básico para gestionar libros en una biblioteca
-usando type hints para garantizar type safety.
+Implement a basic system to manage books in a library
+using type hints to guarantee type safety.
 
-REQUISITOS:
-Implementar tres funciones con type hints completos:
+REQUIREMENTS:
+Implement three functions with complete type hints:
 
 1. add_book(title: str, author: str, year: int) -> Dict[str, str | int]
-   - Crea un diccionario con la información del libro
+   - Create a dictionary with the book information
    - Keys: "title", "author", "year"
    
 2. search_books(books: List[Dict[str, str | int]], keyword: str) -> List[Dict[str, str | int]]
-   - Busca libros donde el keyword aparezca en title o author (case-insensitive)
-   - Retorna lista de libros que coincidan
+   - Search books where the keyword appears in title or author (case-insensitive)
+   - Return a list of matching books
    
 3. get_books_by_year(books: List[Dict[str, str | int]], year: int) -> Optional[List[Dict[str, str | int]]]
-   - Retorna libros publicados en un año específico
-   - Retorna None si no hay libros de ese año
-   - Retorna lista vacía si books está vacío
+   - Return books published in a specific year
+   - Return None if there are no books for that year
+   - Return an empty list if books is empty
 
-EJEMPLO DE USO:
+USAGE EXAMPLE:
 >>> book1 = add_book("1984", "George Orwell", 1949)
 >>> book2 = add_book("Animal Farm", "George Orwell", 1945)
 >>> books = [book1, book2]
@@ -35,22 +35,22 @@ from typing import Dict, List, Optional
 
 def add_book(title: str, author: str, year: int) -> Dict[str, str | int]:
     """
-    Crea un diccionario representando un libro.
+    Create a dictionary representing a book.
     
     Args:
-        title: Título del libro
-        author: Autor del libro
-        year: Año de publicación
+        title: Book title
+        author: Book author
+        year: Publication year
         
     Returns:
-        Diccionario con keys "title", "author", "year"
+        Dictionary with keys "title", "author", "year"
     
     Examples:
         >>> add_book("1984", "George Orwell", 1949)
         {'title': '1984', 'author': 'George Orwell', 'year': 1949}
     """
-    # TODO: Implementar
-    # Retornar un diccionario con las tres keys
+    # TODO: Implement
+    # Return a dictionary with the three keys
     pass
 
 
@@ -59,16 +59,16 @@ def search_books(
     keyword: str
 ) -> List[Dict[str, str | int]]:
     """
-    Busca libros por palabra clave en título o autor.
+    Search books by keyword in title or author.
     
-    La búsqueda debe ser case-insensitive (ignorar mayúsculas/minúsculas).
+    The search must be case-insensitive.
     
     Args:
-        books: Lista de diccionarios de libros
-        keyword: Palabra a buscar en title o author
+        books: List of book dictionaries
+        keyword: Word to search in title or author
         
     Returns:
-        Lista de libros que contengan el keyword en title o author
+        List of books containing the keyword in title or author
     
     Examples:
         >>> books = [
@@ -78,12 +78,12 @@ def search_books(
         >>> search_books(books, "orwell")
         [{'title': '1984', 'author': 'George Orwell', 'year': 1949}]
     """
-    # TODO: Implementar
-    # 1. Convertir keyword a lowercase
-    # 2. Iterar sobre books
-    # 3. Para cada book, verificar si keyword está en title.lower() o author.lower()
-    # 4. Acumular los libros que coincidan en una lista
-    # 5. Retornar la lista de resultados
+    # TODO: Implement
+    # 1. Convert keyword to lowercase
+    # 2. Iterate over books
+    # 3. For each book, check whether keyword is in title.lower() or author.lower()
+    # 4. Accumulate matching books in a list
+    # 5. Return the result list
     pass
 
 
@@ -92,16 +92,16 @@ def get_books_by_year(
     year: int
 ) -> Optional[List[Dict[str, str | int]]]:
     """
-    Obtiene libros publicados en un año específico.
+    Get books published in a specific year.
     
     Args:
-        books: Lista de diccionarios de libros
-        year: Año de publicación a filtrar
+        books: List of book dictionaries
+        year: Publication year to filter by
         
     Returns:
-        Lista de libros del año especificado.
-        None si no hay ningún libro de ese año.
-        Lista vacía [] si books está vacío.
+        List of books from the specified year.
+        None if there are no books from that year.
+        Empty list [] if books is empty.
     
     Examples:
         >>> books = [
@@ -114,18 +114,18 @@ def get_books_by_year(
         >>> get_books_by_year(books, 2000)
         None
     """
-    # TODO: Implementar
-    # 1. Si books está vacío, retornar []
-    # 2. Filtrar books donde book["year"] == year
-    # 3. Si hay resultados, retornar la lista
-    # 4. Si no hay resultados, retornar None
+    # TODO: Implement
+    # 1. If books is empty, return []
+    # 2. Filter books where book["year"] == year
+    # 3. If there are results, return the list
+    # 4. If there are no results, return None
     pass
 
 
 if __name__ == "__main__":
-    # Pruebas manuales - descomentar para probar tu implementación
+    # Manual tests - uncomment to test your implementation
     
-    # # Crear libros
+    # # Create books
     # book1 = add_book("1984", "George Orwell", 1949)
     # book2 = add_book("Animal Farm", "George Orwell", 1945)
     # book3 = add_book("Dune", "Frank Herbert", 1965)
@@ -133,19 +133,19 @@ if __name__ == "__main__":
     # 
     # books = [book1, book2, book3, book4]
     # 
-    # # Buscar por autor
-    # print("Libros de Orwell:")
+    # # Search by author
+    # print("Orwell books:")
     # print(search_books(books, "orwell"))
     # 
-    # # Buscar por título
-    # print("\nLibros con 'Dune' en el título:")
+    # # Search by title
+    # print("\nBooks with 'Dune' in the title:")
     # print(search_books(books, "dune"))
     # 
-    # # Buscar por año
-    # print("\nLibros de 1949:")
+    # # Search by year
+    # print("\nBooks from 1949:")
     # print(get_books_by_year(books, 1949))
     # 
-    # print("\nLibros de 2000:")
+    # print("\nBooks from 2000:")
     # print(get_books_by_year(books, 2000))
     
     pass

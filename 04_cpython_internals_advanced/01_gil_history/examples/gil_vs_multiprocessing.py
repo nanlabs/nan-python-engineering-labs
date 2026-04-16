@@ -1,7 +1,7 @@
 """
 Comprehensive comparison: Threading (GIL) vs Multiprocessing.
 
-Demuestra cuándo usar cada enfoque y los tradeoffs involucrados.
+Demonstrates when to use each approach and the tradeoffs involved.
 """
 
 import threading
@@ -12,24 +12,24 @@ from typing import Callable, List
 import sys
 
 def fibonacci(n: int) -> int:
-    """Cálculo recursivo de Fibonacci (CPU-intensive)."""
+    """Recursive Fibonacci calculation (CPU-intensive)."""
     if n <= 1:
         return n
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 def heavy_computation(numbers: List[int]) -> List[int]:
-    """Simula computación pesada CPU-bound."""
+    """Simulate heavy CPU-bound computation."""
     return [fibonacci(n) for n in numbers]
 
 def benchmark_sequential(func: Callable, data_chunks: List[List[int]]) -> float:
-    """Ejecuta función secuencialmente."""
+    """Run a function sequentially."""
     start = time.perf_counter()
     results = [func(chunk) for chunk in data_chunks]
     end = time.perf_counter()
     return end - start
 
 def benchmark_threading(func: Callable, data_chunks: List[List[int]]) -> float:
-    """Ejecuta función con threading (afectado por GIL)."""
+    """Run a function with threading (affected by the GIL)."""
     start = time.perf_counter()
     
     results = []
@@ -51,7 +51,7 @@ def benchmark_threading(func: Callable, data_chunks: List[List[int]]) -> float:
     return end - start
 
 def benchmark_multiprocessing(func: Callable, data_chunks: List[List[int]]) -> float:
-    """Ejecuta función con multiprocessing (sin GIL)."""
+    """Run a function with multiprocessing (without the GIL)."""
     start = time.perf_counter()
     
     with mp.Pool(processes=len(data_chunks)) as pool:
@@ -69,8 +69,8 @@ def main():
     print(f"PID: {os.getpid()}")
     print("="*70)
     
-    # Datos de prueba: calcular Fibonacci para estos números
-    # Dividimos en chunks para paralelizar
+    # Test data: calculate Fibonacci for these numbers
+    # Split into chunks for parallelization
     test_numbers = [30, 31, 32, 33]
     num_workers = 4
     data_chunks = [[n] for n in test_numbers]
@@ -83,7 +83,7 @@ def main():
     print("\n1️⃣  EJECUCIÓN SECUENCIAL (Baseline)")
     print("-"*70)
     time_seq = benchmark_sequential(heavy_computation, data_chunks)
-    print(f"   Tiempo: {time_seq:.4f}s")
+    print(f"   Time: {time_seq:.4f}s")
     print(f"   Speedup: 1.00x (baseline)")
     
     # Benchmark 2: Threading
@@ -91,30 +91,30 @@ def main():
     print("-"*70)
     time_threading = benchmark_threading(heavy_computation, data_chunks)
     speedup_threading = time_seq / time_threading
-    print(f"   Tiempo: {time_threading:.4f}s")
+    print(f"   Time: {time_threading:.4f}s")
     print(f"   Speedup: {speedup_threading:.2f}x")
     
     if speedup_threading < 1.2:
-        print("   ❌ Sin mejora significativa - GIL serializa ejecución")
+        print("   ❌ No significant improvement - the GIL serializes execution")
     else:
-        print("   ⚠️  Mejora inesperada - puede ser variabilidad del sistema")
+        print("   ⚠️  Unexpected improvement - this may be system variability")
     
     # Benchmark 3: Multiprocessing
     print("\n3️⃣  MULTIPROCESSING (Sin GIL)")
     print("-"*70)
     time_mp = benchmark_multiprocessing(heavy_computation, data_chunks)
     speedup_mp = time_seq / time_mp
-    print(f"   Tiempo: {time_mp:.4f}s")
+    print(f"   Time: {time_mp:.4f}s")
     print(f"   Speedup: {speedup_mp:.2f}x")
     
     if speedup_mp > 2.0:
-        print("   ✅ Paralelismo real efectivo")
+        print("   ✅ Effective real parallelism")
     else:
-        print("   ⚠️  Overhead de serialización/comunicación")
+        print("   ⚠️  Serialization/communication overhead")
     
-    # Análisis comparativo
+    # Comparative analysis
     print("\n" + "="*70)
-    print("ANÁLISIS COMPARATIVO")
+    print("COMPARATIVE ANALYSIS")
     print("="*70)
     
     print(f"""
@@ -130,55 +130,55 @@ def main():
     
     if speedup_mp > speedup_threading * 1.5:
         print("""
-    ✅ Para esta tarea CPU-bound, MULTIPROCESSING es claramente superior.
+    ✅ For this CPU-bound task, MULTIPROCESSING is clearly superior.
     
-    El GIL previene que threading aproveche múltiples cores.
-    Multiprocessing crea procesos separados, cada uno con su propio GIL.
+    The GIL prevents threading from using multiple cores.
+    Multiprocessing creates separate processes, each with its own GIL.
     
-    Tradeoffs:
-    • Multiprocessing: Mayor overhead de memoria (procesos completos)
-    • Multiprocessing: Serialización de datos (pickle)
-    • Threading: Menor overhead, pero sin paralelismo real en CPU-bound
+    Trade-offs:
+    • Multiprocessing: Higher memory overhead (full processes)
+    • Multiprocessing: Data serialization (pickle)
+    • Threading: Lower overhead, but no real parallelism for CPU-bound work
         """)
     else:
         print("""
-    ⚠️  Los resultados son similares. Considerar:
+    ⚠️  Results are similar. Consider:
     
-    • El overhead de multiprocessing puede dominar en tareas pequeñas
+    • Multiprocessing overhead can dominate small tasks
     • For large CPU-bound tasks, multiprocessing should win
-    • Para tareas I/O-bound, threading es suficiente y más eficiente
+    • For I/O-bound tasks, threading is sufficient and more efficient
         """)
     
-    # Cuándo usar cada uno
+    # When to use each one
     print("\n" + "="*70)
-    print("GUÍA DE DECISIÓN")
+    print("DECISION GUIDE")
     print("="*70)
     print("""
-    📊 USA THREADING cuando:
-    • Operaciones I/O-bound (network, disk, database)
-    • Necesitas compartir memoria entre workers fácilmente
-    • Overhead de procesos es prohibitivo
-    • Ejemplo: Web scraping, API calls, file I/O
+    📊 USE THREADING when:
+    • I/O-bound operations (network, disk, database)
+    • You need to share memory across workers easily
+    • Process overhead is prohibitive
+    • Example: Web scraping, API calls, file I/O
     
-    🚀 USA MULTIPROCESSING cuando:
-    • Operaciones CPU-bound (cálculos, procesamiento de datos)
-    • Necesitas verdadero paralelismo en múltiples cores
-    • Los datos pueden serializarse eficientemente
-    • Ejemplo: Image processing, data analysis, simulations
+    🚀 USE MULTIPROCESSING when:
+    • CPU-bound operations (calculations, data processing)
+    • You need true parallelism across multiple cores
+    • Data can be serialized efficiently
+    • Example: Image processing, data analysis, simulations
     
-    ⚡ USA ASYNCIO cuando:
-    • Muchas operaciones I/O concurrentes (1000s)
+    ⚡ USE ASYNCIO when:
+    • Many concurrent I/O operations (1000s)
     • Event-driven architecture
-    • Single-threaded pero altamente eficiente para I/O
-    • Ejemplo: Chat servers, real-time apps, microservices
+    • Single-threaded but highly efficient for I/O
+    • Example: Chat servers, real-time apps, microservices
     
-    🔥 USA EXTENSIONES NATIVAS cuando:
-    • Necesitas máximo rendimiento
-    • Bibliotecas como NumPy, TensorFlow liberan el GIL internamente
-    • Ejemplo: Machine learning, scientific computing
+    🔥 USE NATIVE EXTENSIONS when:
+    • You need maximum performance
+    • Libraries like NumPy and TensorFlow release the GIL internally
+    • Example: Machine learning, scientific computing
     """)
 
 if __name__ == "__main__":
-    # Necesario para multiprocessing en Windows
+    # Required for multiprocessing on Windows
     mp.freeze_support()
     main()

@@ -1,7 +1,7 @@
 """
 Tests for the advanced exercise: Custom GIL Implementation
 
-Ejecutar con: pytest test_advanced.py -v
+Run with: pytest test_advanced.py -v
 """
 
 import pytest
@@ -26,10 +26,10 @@ from exercises.advanced_exercise import (
 
 
 class TestThreadRequest:
-    """Tests para ThreadRequest dataclass."""
+    """Tests for the ThreadRequest dataclass."""
     
     def test_creation(self):
-        """Verificar creación de ThreadRequest."""
+        """Verify ThreadRequest creation."""
         request = ThreadRequest(
             thread_id=1,
             thread_name="Thread-1",
@@ -43,13 +43,13 @@ class TestThreadRequest:
 
 
 class TestFIFOScheduler:
-    """Tests para FIFOScheduler."""
+    """Tests for FIFOScheduler."""
     
     def test_fifo_order(self):
-        """Verificar orden FIFO estricto."""
+        """Verify strict FIFO ordering."""
         scheduler = FIFOScheduler()
         
-        # Encolar 5 requests
+        # Enqueue 5 requests
         for i in range(5):
             request = ThreadRequest(
                 thread_id=i,
@@ -57,15 +57,15 @@ class TestFIFOScheduler:
                 arrival_time=time.time()
             )
             scheduler.enqueue(request)
-            time.sleep(0.01)  # Asegurar orden temporal
+            time.sleep(0.01)  # Ensure temporal ordering
         
-        # Desencolar en orden
+        # Dequeue in order
         for i in range(5):
             request = scheduler.dequeue()
             assert request.thread_id == i, f"Expected thread {i}, got {request.thread_id}"
     
     def test_empty(self):
-        """Verificar comportamiento con cola vacía."""
+        """Verify behavior with an empty queue."""
         scheduler = FIFOScheduler()
         assert scheduler.is_empty()
         
@@ -76,20 +76,20 @@ class TestFIFOScheduler:
         assert scheduler.is_empty()
     
     def test_dequeue_empty(self):
-        """Verificar dequeue de cola vacía."""
+        """Verify dequeue on an empty queue."""
         scheduler = FIFOScheduler()
         result = scheduler.dequeue()
         assert result is None
 
 
 class TestPriorityScheduler:
-    """Tests para PriorityScheduler."""
+    """Tests for PriorityScheduler."""
     
     def test_priority_order(self):
-        """Verificar que respeta prioridades."""
-        scheduler = PriorityScheduler(aging_factor=0.0)  # Sin aging
+        """Verify that it respects priorities."""
+        scheduler = PriorityScheduler(aging_factor=0.0)  # No aging
         
-        # Encolar con diferentes prioridades
+        # Enqueue with different priorities
         priorities = [3, 7, 1, 9, 5]
         for i, priority in enumerate(priorities):
             request = ThreadRequest(
@@ -100,17 +100,17 @@ class TestPriorityScheduler:
             )
             scheduler.enqueue(request)
         
-        # Desencolar debe dar orden: 9, 7, 5, 3, 1
+        # Dequeue should produce the order: 9, 7, 5, 3, 1
         expected_order = [3, 1, 4, 0, 2]  # thread_ids
         for expected_id in expected_order:
             request = scheduler.dequeue()
             assert request.thread_id == expected_id
     
     def test_aging_prevents_starvation(self):
-        """Verificar que aging previene starvation."""
-        scheduler = PriorityScheduler(aging_factor=1.0)  # Aging agresivo
+        """Verify that aging prevents starvation."""
+        scheduler = PriorityScheduler(aging_factor=1.0)  # Aggressive aging
         
-        # Agregar thread de baja prioridad
+        # Add a low-priority thread
         low_priority = ThreadRequest(
             thread_id=0,
             thread_name="LowPriority",
@@ -119,10 +119,10 @@ class TestPriorityScheduler:
         )
         scheduler.enqueue(low_priority)
         
-        # Esperar para que acumule aging
+        # Wait so it accumulates aging
         time.sleep(0.1)
         
-        # Agregar threads de alta prioridad
+        # Add high-priority threads
         for i in range(1, 4):
             high_priority = ThreadRequest(
                 thread_id=i,
@@ -132,47 +132,47 @@ class TestPriorityScheduler:
             )
             scheduler.enqueue(high_priority)
         
-        # El thread de baja prioridad should eventualmente
-        # tener prioridad suficiente debido al aging
-        # (este test es conceptual, el comportamiento exacto depende de la implementación)
+        # The low-priority thread should eventually
+        # reach enough priority because of aging
+        # (this test is conceptual; exact behavior depends on the implementation)
 
 
 class TestFairShareScheduler:
-    """Tests para FairShareScheduler."""
+    """Tests for FairShareScheduler."""
     
     def test_fair_distribution(self):
-        """Verificar distribución equitativa."""
+        """Verify fair distribution."""
         scheduler = FairShareScheduler()
         
-        # Simular varios threads ejecutando
+        # Simulate several executing threads
         thread_ids = [1, 2, 3]
         execution_counts = {tid: 0 for tid in thread_ids}
         
-        # Encolar requests
+        # Enqueue requests
         for tid in thread_ids:
             scheduler.enqueue(ThreadRequest(tid, f"Thread-{tid}"))
         
-        # Ejecutar 30 veces
+        # Execute 30 times
         for _ in range(30):
             request = scheduler.dequeue()
             execution_counts[request.thread_id] += 1
             
-            # Registrar ejecución
+            # Record execution
             scheduler.record_execution(request.thread_id, 0.01)
             
-            # Re-encolar
+            # Re-enqueue
             scheduler.enqueue(request)
         
-        # Cada thread debe haber ejecutado ~10 veces (±2)
+        # Each thread should have executed about 10 times (±2)
         for tid, count in execution_counts.items():
             assert 8 <= count <= 12, f"Thread {tid} executed {count} times (expected ~10)"
 
 
 class TestLotteryScheduler:
-    """Tests para LotteryScheduler."""
+    """Tests for LotteryScheduler."""
     
     def test_probabilistic_selection(self):
-        """Verificar selección probabilística basada en tickets."""
+        """Verify ticket-based probabilistic selection."""
         scheduler = LotteryScheduler()
         
         # Thread-1: 100 tickets (50%)
@@ -187,7 +187,7 @@ class TestLotteryScheduler:
                 tickets=tickets
             ))
         
-        # Ejecutar muchas veces y verificar distribución
+        # Execute many times and verify the distribution
         execution_counts = {1: 0, 2: 0, 3: 0}
         num_iterations = 1000
         
@@ -195,23 +195,23 @@ class TestLotteryScheduler:
             request = scheduler.dequeue()
             execution_counts[request.thread_id] += 1
             
-            # Re-encolar
+            # Re-enqueue
             scheduler.enqueue(request)
         
-        # Verificar que la distribución se aproxima a la esperada
-        # Thread-1 debe tener ~50% (500 ± 100)
+        # Verify that the distribution approximates the expected one
+        # Thread-1 should have about 50% (500 ± 100)
         assert 400 <= execution_counts[1] <= 600
         
-        # Thread-2 y Thread-3 deben tener ~25% cada uno (250 ± 75)
+        # Thread-2 and Thread-3 should have about 25% each (250 ± 75)
         assert 175 <= execution_counts[2] <= 325
         assert 175 <= execution_counts[3] <= 325
 
 
 class TestCustomGIL:
-    """Tests para CustomGIL."""
+    """Tests for CustomGIL."""
     
     def test_mutual_exclusion(self):
-        """Verificar que solo un hilo puede tener el GIL a la vez."""
+        """Verify that only one thread can hold the GIL at a time."""
         gil = CustomGIL(policy=SchedulerPolicy.FIFO)
         active_threads = []
         lock = threading.Lock()
@@ -220,12 +220,12 @@ class TestCustomGIL:
             for _ in range(5):
                 gil.acquire(tid, f"Thread-{tid}")
                 
-                # Verificar mutual exclusion
+                # Verify mutual exclusion
                 with lock:
                     active_threads.append(tid)
                     assert len(active_threads) == 1, "Multiple threads have GIL simultaneously!"
                 
-                time.sleep(0.01)  # Simular trabajo
+                time.sleep(0.01)  # Simulate work
                 
                 with lock:
                     active_threads.remove(tid)
@@ -242,7 +242,7 @@ class TestCustomGIL:
             t.join()
     
     def test_no_deadlock(self):
-        """Verificar que no hay deadlocks."""
+        """Verify that there are no deadlocks."""
         gil = CustomGIL(policy=SchedulerPolicy.FIFO)
         
         def worker(tid: int):
@@ -263,18 +263,18 @@ class TestCustomGIL:
             assert not t.is_alive(), "Thread did not finish (deadlock?)"
     
     def test_timeout(self):
-        """Verificar que timeout funciona correctamente."""
+        """Verify that timeout works correctly."""
         gil = CustomGIL(policy=SchedulerPolicy.FIFO)
         
-        # Thread-1 adquiere el GIL y no lo libera
+        # Thread-1 acquires the GIL and does not release it
         gil.acquire(1, "Thread-1")
         
-        # Thread-2 intenta adquirir con timeout corto
+        # Thread-2 tries to acquire it with a short timeout
         acquired = gil.acquire(2, "Thread-2", timeout=0.1)
         
         assert not acquired, "Acquire should have timed out"
         
-        # Limpiar
+        # Clean up
         gil.release(1)
     
     @pytest.mark.parametrize("policy", [
@@ -284,7 +284,7 @@ class TestCustomGIL:
         SchedulerPolicy.LOTTERY
     ])
     def test_all_policies(self, policy):
-        """Verificar que todas las políticas funcionan."""
+        """Verify that all policies work."""
         gil = CustomGIL(policy=policy)
         
         def worker(tid: int):
@@ -302,14 +302,14 @@ class TestCustomGIL:
         for t in threads:
             t.join()
         
-        # Verificar que se completó sin errores
+        # Verify that execution completed without errors
 
 
 class TestMetrics:
-    """Tests para métricas del CustomGIL."""
+    """Tests for CustomGIL metrics."""
     
     def test_basic_metrics(self):
-        """Verificar que se recopilan métricas básicas."""
+        """Verify that basic metrics are collected."""
         gil = CustomGIL(policy=SchedulerPolicy.FIFO)
         
         def worker(tid: int):
@@ -335,7 +335,7 @@ class TestMetrics:
         assert 'context_switches' in metrics
     
     def test_fairness_metric(self):
-        """Verificar cálculo de fairness."""
+        """Verify fairness calculation."""
         gil = CustomGIL(policy=SchedulerPolicy.FAIR_SHARE)
         
         def worker(tid: int):
@@ -356,16 +356,16 @@ class TestMetrics:
         metrics = gil.get_metrics()
         fairness = metrics['fairness_index']
         
-        # FairShare should lograr alta fairness
+        # FairShare should achieve high fairness
         assert fairness > 0.85, f"Fairness too low: {fairness}"
 
 
 class TestComparison:
-    """Tests comparativos entre políticas."""
+    """Comparative tests across policies."""
     
     @pytest.mark.slow
     def test_fifo_vs_fair_share(self):
-        """Compare FIFO vs FairShare en términos de fairness."""
+        """Compare FIFO vs FairShare in terms of fairness."""
         
         def run_with_policy(policy: SchedulerPolicy) -> float:
             gil = CustomGIL(policy=policy)
@@ -390,7 +390,7 @@ class TestComparison:
         fairness_fifo = run_with_policy(SchedulerPolicy.FIFO)
         fairness_fair = run_with_policy(SchedulerPolicy.FAIR_SHARE)
         
-        # FairShare debe tener mejor fairness que FIFO
+        # FairShare should have better fairness than FIFO
         assert fairness_fair >= fairness_fifo * 0.95
 
 
@@ -398,12 +398,12 @@ class TestComparison:
 
 @pytest.fixture
 def sample_gil():
-    """CustomGIL con política FIFO para tests."""
+    """CustomGIL with FIFO policy for tests."""
     return CustomGIL(policy=SchedulerPolicy.FIFO)
 
 
 def test_with_fixture(sample_gil):
-    """Test usando fixture."""
+    """Test using a fixture."""
     sample_gil.acquire(1, "Test-Thread")
     sample_gil.release(1)
     
@@ -414,9 +414,9 @@ def test_with_fixture(sample_gil):
 # Markers
 
 def pytest_configure(config):
-    """Configurar markers personalizados."""
+    """Configure custom markers."""
     config.addinivalue_line(
-        "markers", "slow: marca tests que son lentos"
+        "markers", "slow: marks tests that are slow"
     )
 
 

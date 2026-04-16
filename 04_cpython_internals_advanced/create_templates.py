@@ -59,7 +59,7 @@ if __name__ == "__main__":
 - {summary_point_2}
 - {summary_point_3}
 
-## Tiempo Estimado
+## Estimated Time
 
 ⏱️ **{time_estimate}**
 
@@ -80,7 +80,7 @@ topics_data = [
         "use_case_3": "Testing y validation de instalación",
         "importance": "Dominar la compilación e instalación es el primer paso práctico para experimentar con free-threading. Sin una instalación correcta, no puedes aprovechar PEP 703.",
         "specific_refs": "[Building Python from Source](https://devguide.python.org/getting-started/setup-building/)",
-        "basic_task": "Compilar Python 3.13+ con --disable-gil. Verificar con sys._is_gil_enabled(). Ejecutar test suite básico.",
+        "basic_task": "Compile Python 3.13+ with --disable-gil. Verify with sys._is_gil_enabled(). Run the basic test suite.",
         "intermediate_task": "Crear script de instalación automatizada que compile Python free-threaded, configure venvs, e instale dependencies comunes.",
         "advanced_task": "Configurar CI/CD pipeline que teste código en ambos modos (GIL/no-GIL) automáticamente.",
         "summary_point_1": "🔧 Python 3.13+ se compila con --disable-gil flag durante ./configure",
@@ -101,8 +101,8 @@ topics_data = [
         "use_case_3": "Debugging de race conditions a nivel de intérprete",
         "importance": "Conocer la arquitectura interna es crucial para escribir código performante y thread-safe, y para contribuir al desarrollo de CPython o extensiones complejas.",
         "specific_refs": "[CPython Source: Include/internal/pycore_lock.h](https://github.com/python/cpython)",
-        "basic_task": "Leer código source de Python/ceval.c y Python/lock.c. Documentar diferencias vs versión con GIL.",
-        "intermediate_task": "Implementar un 'mini-intérprete' que simule per-object locking y demuestre cómo múltiples threads acceden objetos de forma segura.",
+        "basic_task": "Read Python source code in Python/ceval.c and Python/lock.c. Document differences vs the GIL-enabled version.",
+        "intermediate_task": "Implement a 'mini-interpreter' that simulates per-object locking and demonstrates how multiple threads access objects safely.",
         "advanced_task": "Contribuir patch a CPython que mejore performance de algún aspecto del per-object locking scheme.",
         "summary_point_1": "🔓 Per-object locks reemplazan el GIL global",
         "summary_point_2": "🧵 Cada PyObject puede tener su propio mutex para protección granular",

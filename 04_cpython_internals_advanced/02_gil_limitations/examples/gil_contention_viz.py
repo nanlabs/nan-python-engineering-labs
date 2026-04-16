@@ -1,7 +1,7 @@
 """
-Ejemplo: Visualización de GIL Contention en diferentes escenarios.
+Example: Visualization of GIL contention in different scenarios.
 
-Demuestra convoy effect, priority inversion, y otros problemas del GIL tradicional.
+Demonstrates convoy effect, priority inversion, and other traditional GIL issues.
 """
 
 import threading
@@ -13,7 +13,7 @@ from collections import defaultdict
 
 @dataclass
 class GILEvent:
-    """Registro de evento de adquisición/liberación de GIL."""
+    """Record of a GIL acquire/release event."""
     timestamp: float
     thread_name: str
     event_type: str  # 'acquire' o 'release'
@@ -21,7 +21,7 @@ class GILEvent:
 
 class GILTracer:
     """
-    Simula y rastrea eventos del GIL para visualizar contención.
+    Simulates and tracks GIL events to visualize contention.
     """
     
     def __init__(self):
@@ -31,14 +31,14 @@ class GILTracer:
         self.lock = threading.Lock()
     
     def acquire(self, thread_name: str):
-        """Simula adquisición del GIL."""
+        """Simulate GIL acquisition."""
         wait_start = time.perf_counter()
         
         with self.lock:
-            # Si alguien más tiene el GIL, debemos esperar
+            # If someone else has the GIL, we must wait
             while self.current_holder is not None:
                 self.lock.release()
-                time.sleep(0.001)  # Simular espera
+                time.sleep(0.001)  # Simulate waiting
                 self.lock.acquire()
             
             wait_time = time.perf_counter() - wait_start
@@ -51,7 +51,7 @@ class GILTracer:
             ))
     
     def release(self, thread_name: str):
-        """Simula liberación del GIL."""
+        """Simulate GIL release."""
         with self.lock:
             if self.current_holder == thread_name:
                 self.current_holder = None
@@ -62,18 +62,18 @@ class GILTracer:
                 ))
     
     def generate_timeline_report(self) -> str:
-        """Genera reporte ASCII de timeline de GIL."""
+        """Generate an ASCII report of the GIL timeline."""
         if not self.events:
-            return "No hay eventos registrados"
+            return "No events recorded"
         
-        # Agrupar por thread
+        # Group by thread
         thread_events = defaultdict(list)
         for event in self.events:
             thread_events[event.thread_name].append(event)
         
         report = ["\nGIL TIMELINE"]
         report.append("="*70)
-        report.append("Leyenda: [A]=Acquire, [R]=Release, [W]=Waiting\n")
+        report.append("Legend: [A]=Acquire, [R]=Release, [W]=Waiting\n")
         
         for thread_name in sorted(thread_events.keys()):
             events = thread_events[thread_name]
@@ -89,9 +89,9 @@ class GILTracer:
             
             report.append("")
         
-        # Métricas
+        # Metrics
         report.append("\n" + "="*70)
-        report.append("MÉTRICAS DE CONTENCIÓN")
+        report.append("CONTENTION METRICS")
         report.append("="*70)
         
         for thread_name in sorted(thread_events.keys()):
@@ -107,7 +107,7 @@ class GILTracer:
 
 
 def demo_convoy_effect():
-    """Demostración de convoy effect con múltiples hilos CPU-bound."""
+    """Demonstration of convoy effect with multiple CPU-bound threads."""
     print("\n🔴 CONVOY EFFECT DEMO")
     print("="*70)
     
@@ -116,7 +116,7 @@ def demo_convoy_effect():
     def cpu_worker(name: str, iterations: int):
         for _ in range(iterations):
             tracer.acquire(name)
-            # Simular trabajo CPU
+            # Simulate CPU work
             _ = sum(range(1000))
             tracer.release(name)
     
@@ -134,11 +134,11 @@ def demo_convoy_effect():
         t.join()
     
     print(tracer.generate_timeline_report())
-    print("\n💡 Observa: Muchos [W] (waiting) indican convoy effect severo")
+    print("\n💡 Observe: Many [W] (waiting) markers indicate severe convoy effect")
 
 
 def demo_priority_inversion():
-    """Demostración de priority inversion: I/O bloqueado por CPU."""
+    """Demonstration of priority inversion: I/O blocked by CPU work."""
     print("\n🟡 PRIORITY INVERSION DEMO")
     print("="*70)
     
@@ -146,14 +146,14 @@ def demo_priority_inversion():
     response_times = []
     
     def io_worker():
-        """Worker I/O que necesita baja latencia."""
+        """I/O worker that needs low latency."""
         for i in range(5):
             start = time.perf_counter()
             
-            # Simular I/O (libera GIL)
+            # Simulate I/O (releases the GIL)
             time.sleep(0.01)
             
-            # Necesita GIL para procesar
+            # Needs the GIL to process
             tracer.acquire("IO-Worker")
             _ = sum(range(100))
             tracer.release("IO-Worker")
@@ -161,26 +161,26 @@ def demo_priority_inversion():
             response_times.append(time.perf_counter() - start)
     
     def cpu_hog():
-        """Worker CPU que monopoliza GIL."""
+        """CPU worker that monopolizes the GIL."""
         for _ in range(20):
             tracer.acquire("CPU-Hog")
             _ = sum(range(5000))
             tracer.release("CPU-Hog")
     
-    # Ejecutar simultáneamente
+    # Run simultaneously
     io_thread = threading.Thread(target=io_worker, daemon=True)
     cpu_thread = threading.Thread(target=cpu_hog, daemon=True)
     
     io_thread.start()
-    time.sleep(0.005)  # Dar ventaja a I/O
+    time.sleep(0.005)  # Give I/O a head start
     cpu_thread.start()
     
     io_thread.join()
     cpu_thread.join()
     
     print(tracer.generate_timeline_report())
-    print(f"\nResponse times de I/O worker: {[f'{t*1000:.2f}ms' for t in response_times]}")
-    print("💡 Observa: I/O worker sufre delays cuando CPU-Hog retiene el GIL")
+    print(f"\nI/O worker response times: {[f'{t*1000:.2f}ms' for t in response_times]}")
+    print("💡 Observe: The I/O worker experiences delays while CPU-Hog holds the GIL")
 
 
 def main():

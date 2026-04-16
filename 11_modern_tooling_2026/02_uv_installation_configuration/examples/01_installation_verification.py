@@ -12,7 +12,7 @@ def check_uv_installation():
     print("🔍 Checking uv installation\n")
     
     try:
-        # Versión
+        # Version
         result = subprocess.run(
             ["uv", "version"],
             capture_output=True,
@@ -20,9 +20,9 @@ def check_uv_installation():
             check=True
         )
         version = result.stdout.strip()
-        print(f"✅ uv instalado: {version}")
+        print(f"✅ uv installed: {version}")
         
-        # Ubicación
+        # Location
         result = subprocess.run(
             ["which", "uv"],
             capture_output=True,
@@ -30,11 +30,11 @@ def check_uv_installation():
             check=True
         )
         location = result.stdout.strip()
-        print(f"📍 Ubicación: {location}")
+        print(f"📍 Location: {location}")
         
-        # Tamaño del binario
+        # Binary size
         size_mb = Path(location).stat().st_size / (1024 * 1024)
-        print(f"💾 Tamaño: {size_mb:.2f} MB")
+        print(f"💾 Size: {size_mb:.2f} MB")
         
         return True
     
@@ -44,8 +44,8 @@ def check_uv_installation():
 
 
 def show_system_info():
-    """Muestra información del sistema."""
-    print(f"\n📊 Información del Sistema")
+    """Show system information."""
+    print(f"\n📊 System Information")
     print(f"{'='*50}")
     print(f"OS: {platform.system()} {platform.release()}")
     print(f"Architecture: {platform.machine()}")
@@ -69,7 +69,7 @@ def show_configuration():
         print(f"📁 Cache directory: {cache_dir}")
         
         if cache_dir.exists():
-            # Tamaño de caché
+            # Cache size
             result = subprocess.run(
                 ["du", "-sh", str(cache_dir)],
                 capture_output=True,
@@ -78,15 +78,15 @@ def show_configuration():
             )
             if result.returncode == 0:
                 size = result.stdout.split()[0]
-                print(f"💾 Tamaño de caché: {size}")
+                print(f"💾 Cache size: {size}")
         else:
-            print("   (Caché yet no existe)")
+            print("   (Cache does not exist yet)")
     
     except subprocess.CalledProcessError as e:
         print(f"⚠️  Error getting configuration: {e}")
     
-    # Variables de entorno relevantes
-    print(f"\n🔧 Variables de Entorno Relevantes:")
+    # Relevant environment variables
+    print(f"\n🔧 Relevant Environment Variables:")
     env_vars = [
         "UV_CACHE_DIR",
         "UV_INDEX_URL",
@@ -100,7 +100,7 @@ def show_configuration():
         if value:
             print(f"   {var}={value}")
         else:
-            print(f"   {var}=(no configurada)")
+            print(f"   {var}=(not configured)")
 
 
 def show_available_commands():
@@ -125,7 +125,7 @@ def show_available_commands():
         
         if in_commands and line.strip():
             if line.startswith('  ') and not line.startswith('   '):
-                # Es un comando
+                # This is a command
                 parts = line.strip().split(maxsplit=1)
                 if len(parts) == 2:
                     cmd, desc = parts
@@ -145,29 +145,29 @@ def demonstrate_config_file():
 # Main package index
 index-url = "https://pypi.org/simple"
 
-# Additional indexes (por example, índices privados)
+# Additional indexes (for example, private indexes)
 # extra-index-url = ["https://private.pypi.org/simple"]
 
 [tool.uv.pip]
 # Do not use prebuilt binaries for these packages
 # no-binary = ["scipy"]
 
-# Solo usar wheels (no compilar desde source)
+# Use wheels only (do not compile from source)
 # only-binary = [":all:"]
 
 [tool.uv.resolution]
-# No permitir pre-releases
+# Do not allow pre-releases
 prerelease = "disallow"
 
 # Resolution strategy
-# resolution = "highest"  # o "lowest" o "lowest-direct"
+# resolution = "highest"  # or "lowest" or "lowest-direct"
 """
     
     print(config_content)
     
     # Ask whether to create the file
     response = input("Create this file in the current directory? (y/n): ")
-    if response.lower() == 's':
+    if response.lower() == 'y':
         config_path = Path.cwd() / ".uv" / "config.toml"
         config_path.parent.mkdir(exist_ok=True)
         config_path.write_text(config_content.strip())

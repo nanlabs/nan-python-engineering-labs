@@ -1,7 +1,7 @@
 """
 Tests for the intermediate exercise: GIL Contention Profiler
 
-Ejecutar con: pytest test_intermediate.py -v
+Run with: pytest test_intermediate.py -v
 """
 
 import pytest
@@ -24,15 +24,15 @@ from exercises.intermediate_exercise import (
 
 
 class TestThreadStats:
-    """Tests para ThreadStats dataclass."""
+    """Tests for the ThreadStats dataclass."""
     
     def test_total_time(self):
-        """Verificar cálculo de total_time."""
+        """Verify total_time calculation."""
         stats = ThreadStats(name="test", execution_time=80.0, wait_time=20.0)
         assert stats.total_time == 100.0
     
     def test_efficiency(self):
-        """Verificar cálculo de efficiency."""
+        """Verify efficiency calculation."""
         stats = ThreadStats(name="test", execution_time=80.0, wait_time=20.0)
         assert stats.efficiency == 80.0
         
@@ -40,22 +40,22 @@ class TestThreadStats:
         assert stats2.efficiency == 50.0
     
     def test_efficiency_zero_division(self):
-        """Verificar que efficiency maneja división por cero."""
+        """Verify that efficiency handles division by zero."""
         stats = ThreadStats(name="test", execution_time=0.0, wait_time=0.0)
         assert stats.efficiency == 0.0
 
 
 class TestGILProfiler:
-    """Tests para GILProfiler class."""
+    """Tests for the GILProfiler class."""
     
     def test_initialization(self):
-        """Verificar inicialización correcta."""
+        """Verify correct initialization."""
         profiler = GILProfiler()
         assert profiler is not None
         assert profiler.get_stats() is not None
     
     def test_single_thread_acquisition(self):
-        """Test con un solo hilo adquiriendo el GIL."""
+        """Test with a single thread acquiring the GIL."""
         profiler = GILProfiler()
         
         profiler.acquire_gil("Thread-1")
@@ -69,7 +69,7 @@ class TestGILProfiler:
         assert stats["Thread-1"].execution_time > 0
     
     def test_multiple_threads_contention(self):
-        """Test con múltiples hilos compitiendo por el GIL."""
+        """Test with multiple threads competing for the GIL."""
         profiler = GILProfiler()
         
         def worker(thread_name: str):
@@ -89,19 +89,19 @@ class TestGILProfiler:
         
         stats = profiler.get_stats()
         
-        # Verificar que todos los hilos tienen estadísticas
+        # Verify that all threads have statistics
         assert len(stats) == 3
         
-        # Verificar que cada hilo hizo 3 adquisiciones/liberaciones
+        # Verify that each thread made 3 acquisitions/releases
         for thread_name in ["Thread-0", "Thread-1", "Thread-2"]:
             assert stats[thread_name].gil_acquisitions == 3
             assert stats[thread_name].gil_releases == 3
     
     def test_fairness_calculation(self):
-        """Verificar cálculo de fairness index."""
+        """Verify fairness index calculation."""
         profiler = GILProfiler()
         
-        # Simular ejecución perfectamente fair (todos ejecutan igual tiempo)
+        # Simulate perfectly fair execution (all threads run for the same time)
         for i in range(4):
             thread_name = f"Thread-{i}"
             profiler.acquire_gil(thread_name)
@@ -110,14 +110,14 @@ class TestGILProfiler:
         
         fairness = profiler.calculate_fairness()
         
-        # Fairness debe estar cerca de 1.0 (perfectamente fair)
+        # Fairness should be close to 1.0 (perfectly fair)
         assert 0.95 <= fairness <= 1.0
     
     def test_unfair_execution(self):
-        """Verificar detección de ejecución injusta."""
+        """Verify detection of unfair execution."""
         profiler = GILProfiler()
         
-        # Thread-0 ejecuta mucho más que los demás
+        # Thread-0 executes much more than the others
         profiler.acquire_gil("Thread-0")
         time.sleep(0.4)
         profiler.release_gil("Thread-0")
@@ -129,11 +129,11 @@ class TestGILProfiler:
         
         fairness = profiler.calculate_fairness()
         
-        # Fairness debe ser bajo (< 0.8)
+        # Fairness should be low (< 0.8)
         assert fairness < 0.8
     
     def test_generate_report(self):
-        """Verificar generación de reporte."""
+        """Verify report generation."""
         profiler = GILProfiler()
         
         profiler.acquire_gil("Thread-1")
@@ -148,10 +148,10 @@ class TestGILProfiler:
 
 
 class TestProfileGilDecorator:
-    """Tests para el decorador @profile_gil."""
+    """Tests for the @profile_gil decorator."""
     
     def test_decorator_basic(self):
-        """Verificar funcionamiento básico del decorador."""
+        """Verify basic decorator behavior."""
         profiler = GILProfiler()
         
         @profile_gil(profiler)
@@ -166,7 +166,7 @@ class TestProfileGilDecorator:
         assert len(stats) > 0
     
     def test_decorator_with_exception(self):
-        """Verificar que el decorador maneja excepciones correctamente."""
+        """Verify that the decorator handles exceptions correctly."""
         profiler = GILProfiler()
         
         @profile_gil(profiler)
@@ -176,15 +176,15 @@ class TestProfileGilDecorator:
         with pytest.raises(ValueError):
             failing_func()
         
-        # El GIL debe haberse liberado incluso con excepción
-        # (verificar que no queda en estado inconsistente)
+        # The GIL should have been released even with an exception
+        # (verify that it does not remain in an inconsistent state)
 
 
 class TestWorkloadTasks:
-    """Tests para las funciones de workload."""
+    """Tests for workload functions."""
     
     def test_cpu_intensive_task(self):
-        """Verificar tarea CPU-intensive."""
+        """Verify the CPU-intensive task."""
         profiler = GILProfiler()
         
         cpu_intensive_task(0.2, profiler)
@@ -196,17 +196,17 @@ class TestWorkloadTasks:
         assert stats[thread_name].execution_time > 0
     
     def test_io_intensive_task(self):
-        """Verificar tarea I/O-intensive."""
+        """Verify the I/O-intensive task."""
         profiler = GILProfiler()
         
         io_intensive_task(0.2, profiler)
         
         stats = profiler.get_stats()
-        # I/O task debe liberar el GIL, así que execution_time debe ser bajo
-        # comparado con el tiempo total
+        # The I/O task should release the GIL, so execution_time should be low
+        # compared with total time
     
     def test_mixed_task(self):
-        """Verificar tarea mixta."""
+        """Verify the mixed task."""
         profiler = GILProfiler()
         
         mixed_task(0.1, 0.1, profiler)
@@ -216,10 +216,10 @@ class TestWorkloadTasks:
 
 
 class TestContention:
-    """Tests de contención del GIL."""
+    """Tests for GIL contention."""
     
     def test_high_contention_cpu_bound(self):
-        """Verificar alta contención en workload CPU-bound."""
+        """Verify high contention in a CPU-bound workload."""
         profiler = GILProfiler()
         
         def worker():
@@ -236,15 +236,15 @@ class TestContention:
         
         stats = profiler.get_stats()
         
-        # En CPU-bound, esperamos alto wait_time
+        # In CPU-bound workloads, we expect high wait_time
         total_wait = sum(s.wait_time for s in stats.values())
         total_exec = sum(s.execution_time for s in stats.values())
         
-        # Wait time debe ser significativo
-        assert total_wait > total_exec * 0.1  # Al menos 10% del exec time
+        # Wait time should be significant
+        assert total_wait > total_exec * 0.1  # At least 10% of execution time
     
     def test_low_contention_io_bound(self):
-        """Verificar baja contención en workload I/O-bound."""
+        """Verify low contention in an I/O-bound workload."""
         profiler = GILProfiler()
         
         def worker():
@@ -261,25 +261,25 @@ class TestContention:
         
         stats = profiler.get_stats()
         
-        # En I/O-bound, esperamos bajo wait_time
-        # (porque el GIL se libera durante I/O)
+        # In I/O-bound workloads, we expect low wait_time
+        # (because the GIL is released during I/O)
         fairness = profiler.calculate_fairness()
         
-        # Fairness debe ser alta en I/O-bound
+        # Fairness should be high for I/O-bound work
         assert fairness > 0.7
 
 
 class TestConcurrentAccess:
-    """Tests de acceso concurrente al profiler."""
+    """Tests for concurrent access to the profiler."""
     
     def test_thread_safety(self):
-        """Verificar que el profiler es thread-safe."""
+        """Verify that the profiler is thread-safe."""
         profiler = GILProfiler()
         
         def worker(thread_id: int):
             for _ in range(100):
                 profiler.acquire_gil(f"Thread-{thread_id}")
-                # Simular trabajo mínimo
+                # Simulate minimal work
                 profiler.release_gil(f"Thread-{thread_id}")
         
         threads = []
@@ -293,7 +293,7 @@ class TestConcurrentAccess:
         
         stats = profiler.get_stats()
         
-        # Verificar que no hay race conditions en los contadores
+        # Verify that there are no race conditions in the counters
         for i in range(10):
             thread_name = f"Thread-{i}"
             assert stats[thread_name].gil_acquisitions == 100
@@ -304,10 +304,10 @@ class TestConcurrentAccess:
 
 @pytest.fixture
 def sample_profiler():
-    """Profiler con datos de muestra."""
+    """Profiler with sample data."""
     profiler = GILProfiler()
     
-    # Simular algunos hilos
+    # Simulate a few threads
     for i in range(3):
         thread_name = f"Sample-Thread-{i}"
         profiler.acquire_gil(thread_name)
@@ -318,7 +318,7 @@ def sample_profiler():
 
 
 def test_with_fixture(sample_profiler):
-    """Test usando fixture."""
+    """Test using a fixture."""
     stats = sample_profiler.get_stats()
     assert len(stats) == 3
 

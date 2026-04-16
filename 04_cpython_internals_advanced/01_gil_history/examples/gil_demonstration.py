@@ -1,11 +1,11 @@
 """
 Advanced demonstration of GIL behavior in CPython.
 
-Este script demuestra:
-1. Contención del GIL en operaciones CPU-bound
-2. Liberación del GIL en operaciones I/O-bound
-3. Switching del GIL entre hilos
-4. Impacto en rendimiento real
+This script demonstrates:
+1. GIL contention in CPU-bound operations
+2. GIL release in I/O-bound operations
+3. GIL switching between threads
+4. Real performance impact
 """
 
 import threading
@@ -17,8 +17,8 @@ import math
 
 class GILMonitor:
     """
-    Monitorea el comportamiento aproximado del GIL rastreando
-    qué hilos están ejecutando código Python.
+    Monitor approximate GIL behavior by tracking
+    which threads are executing Python code.
     """
     
     def __init__(self):
@@ -27,12 +27,12 @@ class GILMonitor:
         self.lock = threading.Lock()
     
     def start_execution(self, thread_name: str):
-        """Registra cuando un hilo comienza a ejecutar."""
+        """Record when a thread starts executing."""
         with self.lock:
             self.start_times[thread_name] = time.perf_counter()
     
     def end_execution(self, thread_name: str):
-        """Registra cuando un hilo termina de ejecutar."""
+        """Record when a thread finishes executing."""
         with self.lock:
             if thread_name in self.start_times:
                 elapsed = time.perf_counter() - self.start_times[thread_name]
@@ -40,7 +40,7 @@ class GILMonitor:
                 del self.start_times[thread_name]
     
     def get_report(self) -> str:
-        """Genera un reporte de tiempo de ejecución por hilo."""
+        """Generate an execution time report by thread."""
         total = sum(self.thread_times.values())
         report = ["\n" + "="*60]
         report.append("GIL EXECUTION TIME REPORT")
@@ -57,21 +57,21 @@ class GILMonitor:
 
 def cpu_intensive_work(iterations: int, monitor: GILMonitor):
     """
-    Trabajo intensivo en CPU que mantiene el GIL.
-    Calcula operaciones matemáticas complejas.
+    CPU-intensive work that keeps the GIL.
+    Compute complex mathematical operations.
     """
     thread_name = threading.current_thread().name
     monitor.start_execution(thread_name)
     
     result = 0
     for i in range(iterations):
-        # Operaciones CPU-intensive que mantienen el GIL
+        # CPU-intensive operations that keep the GIL
         result += math.sqrt(i) * math.sin(i) * math.cos(i)
         
         # Python switches the GIL about every ~5ms or ~100 instructions
-        # de bytecode (check_interval en Python 2, switchinterval en Python 3)
+        # of bytecode (check_interval in Python 2, switchinterval in Python 3)
         if i % 10000 == 0:
-            # Forzar un checkpoint donde Python podría hacer gil switch
+            # Force a checkpoint where Python could switch the GIL
             pass
     
     monitor.end_execution(thread_name)
@@ -80,13 +80,13 @@ def cpu_intensive_work(iterations: int, monitor: GILMonitor):
 
 def io_intensive_work(duration: float, monitor: GILMonitor):
     """
-    Trabajo intensivo en I/O que libera el GIL.
-    Simula operaciones de red/disco.
+    I/O-intensive work that releases the GIL.
+    Simulate network/disk operations.
     """
     thread_name = threading.current_thread().name
     monitor.start_execution(thread_name)
     
-    # time.sleep() libera el GIL, permitiendo que otros hilos ejecuten
+    # time.sleep() releases the GIL, allowing other threads to execute
     time.sleep(duration)
     
     monitor.end_execution(thread_name)
@@ -94,8 +94,8 @@ def io_intensive_work(duration: float, monitor: GILMonitor):
 
 def mixed_workload(cpu_iterations: int, io_duration: float, monitor: GILMonitor):
     """
-    Workload mixto que alterna entre CPU e I/O.
-    Demuestra el comportamiento de gil switching.
+    Mixed workload that alternates between CPU and I/O.
+    Demonstrates GIL switching behavior.
     """
     thread_name = threading.current_thread().name
     
@@ -105,7 +105,7 @@ def mixed_workload(cpu_iterations: int, io_duration: float, monitor: GILMonitor)
         result = sum(math.sqrt(i) for i in range(cpu_iterations))
         monitor.end_execution(thread_name)
         
-        # I/O work (libera GIL)
+        # I/O work (releases the GIL)
         time.sleep(io_duration)
     
     return result
@@ -113,8 +113,8 @@ def mixed_workload(cpu_iterations: int, io_duration: float, monitor: GILMonitor)
 
 def run_cpu_bound_test(num_threads: int):
     """
-    Test de operaciones CPU-bound con múltiples hilos.
-    Demuestra que el GIL previene paralelismo real.
+    Test CPU-bound operations with multiple threads.
+    Demonstrates that the GIL prevents real parallelism.
     """
     print(f"\n{'='*60}")
     print(f"CPU-BOUND TEST: {num_threads} thread(s)")
@@ -141,16 +141,16 @@ def run_cpu_bound_test(num_threads: int):
     end = time.perf_counter()
     elapsed = end - start
     
-    print(f"Tiempo total: {elapsed:.4f}s")
-    print(f"Tiempo esperado con paralelismo perfecto: {elapsed/num_threads:.4f}s")
+    print(f"Total time: {elapsed:.4f}s")
+    print(f"Expected time with perfect parallelism: {elapsed/num_threads:.4f}s")
     print(f"Speedup real: {1.0/(elapsed/(iterations*num_threads/500000)):.2f}x")
     print(monitor.get_report())
 
 
 def run_io_bound_test(num_threads: int):
     """
-    Test de operaciones I/O-bound con múltiples hilos.
-    Demuestra que el GIL se libera durante I/O.
+    Test I/O-bound operations with multiple threads.
+    Demonstrates that the GIL is released during I/O.
     """
     print(f"\n{'='*60}")
     print(f"I/O-BOUND TEST: {num_threads} thread(s)")
@@ -177,16 +177,16 @@ def run_io_bound_test(num_threads: int):
     end = time.perf_counter()
     elapsed = end - start
     
-    print(f"Tiempo total: {elapsed:.4f}s")
-    print(f"Tiempo esperado secuencial: {io_duration * num_threads:.4f}s")
+    print(f"Total time: {elapsed:.4f}s")
+    print(f"Expected sequential time: {io_duration * num_threads:.4f}s")
     print(f"Speedup: {(io_duration * num_threads) / elapsed:.2f}x")
     print(monitor.get_report())
 
 
 def run_mixed_test(num_threads: int):
     """
-    Test de workload mixto (CPU + I/O).
-    Muestra comportamiento real de aplicaciones.
+    Test mixed workload (CPU + I/O).
+    Shows real application behavior.
     """
     print(f"\n{'='*60}")
     print(f"MIXED WORKLOAD TEST: {num_threads} thread(s)")
@@ -214,13 +214,13 @@ def run_mixed_test(num_threads: int):
     end = time.perf_counter()
     elapsed = end - start
     
-    print(f"Tiempo total: {elapsed:.4f}s")
+    print(f"Total time: {elapsed:.4f}s")
     print(monitor.get_report())
 
 
 def main():
     """
-    Ejecuta batería completa de tests para demostrar el GIL.
+    Run the full set of tests to demonstrate the GIL.
     """
     print("="*60)
     print("DEMOSTRACIÓN DEL GLOBAL INTERPRETER LOCK (GIL)")
@@ -238,7 +238,7 @@ def main():
     print("\n" + "🔴 "*30)
     print("TEST 1: CPU-BOUND OPERATIONS")
     print("🔴 "*30)
-    print("Hipótesis: Threading NO mejorará rendimiento debido al GIL")
+    print("Hypothesis: Threading will NOT improve performance due to the GIL")
     
     for num_threads in [1, 2, 4]:
         run_cpu_bound_test(num_threads)
@@ -247,7 +247,7 @@ def main():
     print("\n" + "🟢 "*30)
     print("TEST 2: I/O-BOUND OPERATIONS")
     print("🟢 "*30)
-    print("Hipótesis: Threading SÍ mejorará rendimiento (GIL se libera)")
+    print("Hypothesis: Threading WILL improve performance (the GIL is released)")
     
     for num_threads in [1, 2, 4]:
         run_io_bound_test(num_threads)
@@ -256,7 +256,7 @@ def main():
     print("\n" + "🟡 "*30)
     print("TEST 3: MIXED WORKLOAD")
     print("🟡 "*30)
-    print("Hipótesis: Mejora parcial, dependiendo del ratio CPU/IO")
+    print("Hypothesis: Partial improvement, depending on the CPU/IO ratio")
     
     for num_threads in [1, 2, 4]:
         run_mixed_test(num_threads)
@@ -266,17 +266,17 @@ def main():
     print("CONCLUSIONES")
     print("="*60)
     print("""
-    1. CPU-bound: El GIL serializa la ejecución. No hay speedup real con threading.
+    1. CPU-bound: The GIL serializes execution. There is no real speedup with threading.
        ➜ Solution: Use multiprocessing or C extensions that release the GIL.
     
-    2. I/O-bound: El GIL se libera durante operaciones I/O. Threading es efectivo.
+    2. I/O-bound: The GIL is released during I/O operations. Threading is effective.
        ➜ Solution: Threading is appropriate. asyncio is also a good alternative.
     
-    3. Mixed: Comportamiento intermedio. Beneficio depende del ratio CPU/IO.
+    3. Mixed: Intermediate behavior. Benefit depends on the CPU/IO ratio.
        ➜ Solution: Analyze the workload and choose the best strategy.
     
-    4. Free-threading (Python 3.13+): Permite verdadero paralelismo CPU-bound.
-       ➜ Requiere compilar Python con --disable-gil flag.
+    4. Free-threading (Python 3.13+): Enables true CPU-bound parallelism.
+       ➜ Requires compiling Python with the --disable-gil flag.
     """)
 
 

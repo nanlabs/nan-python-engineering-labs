@@ -20,23 +20,23 @@ except (ImportError, AttributeError):
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesBasic:
-    """Tests básicos del decorador validate_types."""
+    """Basic tests for the validate_types decorator."""
     
     def test_validates_int_parameter(self):
-        """Valida parámetros de tipo int."""
+        """Validate int parameters."""
         @validate_types
         def add(a: int, b: int) -> int:
             return a + b
         
-        # Debe funcionar con ints
+        # Should work with ints
         assert add(1, 2) == 3
         
-        # Debe fallar con strings
+        # Should fail with strings
         with pytest.raises(TypeError):
             add("1", "2")
     
     def test_validates_str_parameter(self):
-        """Valida parámetros de tipo str."""
+        """Validate str parameters."""
         @validate_types
         def greet(name: str) -> str:
             return f"Hello {name}"
@@ -47,32 +47,32 @@ class TestValidateTypesBasic:
             greet(123)
     
     def test_validates_return_type(self):
-        """Valida el tipo de retorno."""
+        """Validate the return type."""
         @validate_types
         def get_number() -> int:
-            return "not a number"  # Retorna tipo incorrecto
+            return "not a number"  # Returns incorrect type
         
         with pytest.raises(TypeError):
             get_number()
     
     def test_validates_float_parameter(self):
-        """Valida parámetros float."""
+        """Validate float parameters."""
         @validate_types
         def calculate(value: float) -> float:
             return value * 2
         
         assert calculate(3.14) == 6.28
         
-        # int puede ser promovido a float en Python
+        # int can be promoted to float in Python
         assert calculate(3) == 6
 
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesOptional:
-    """Tests para Optional types."""
+    """Tests for Optional types."""
     
     def test_optional_accepts_none(self):
-        """Optional acepta None."""
+        """Optional accepts None."""
         @validate_types
         def find_user(user_id: int) -> Optional[str]:
             return None if user_id != 1 else "Alice"
@@ -81,7 +81,7 @@ class TestValidateTypesOptional:
         assert find_user(2) is None
     
     def test_optional_accepts_value(self):
-        """Optional acepta el tipo especificado."""
+        """Optional accepts the specified type."""
         @validate_types
         def get_age(name: str) -> Optional[int]:
             return 30 if name == "Alice" else None
@@ -90,7 +90,7 @@ class TestValidateTypesOptional:
         assert get_age("Bob") is None
     
     def test_optional_parameter(self):
-        """Parámetro opcional."""
+        """Optional parameter."""
         @validate_types
         def create_user(name: str, age: Optional[int] = None) -> str:
             if age:
@@ -103,10 +103,10 @@ class TestValidateTypesOptional:
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesUnion:
-    """Tests para Union types."""
+    """Tests for Union types."""
     
     def test_union_accepts_first_type(self):
-        """Union acepta el primer tipo."""
+        """Union accepts the first type."""
         @validate_types
         def process_id(value: Union[int, str]) -> int:
             if isinstance(value, str):
@@ -116,7 +116,7 @@ class TestValidateTypesUnion:
         assert process_id(123) == 123
     
     def test_union_accepts_second_type(self):
-        """Union acepta el segundo tipo."""
+        """Union accepts the second type."""
         @validate_types
         def process_id(value: Union[int, str]) -> int:
             if isinstance(value, str):
@@ -126,7 +126,7 @@ class TestValidateTypesUnion:
         assert process_id("456") == 456
     
     def test_union_rejects_other_types(self):
-        """Union rechaza tipos no incluidos."""
+        """Union rejects unsupported types."""
         @validate_types
         def process_id(value: Union[int, str]) -> int:
             if isinstance(value, str):
@@ -137,7 +137,7 @@ class TestValidateTypesUnion:
             process_id(3.14)
     
     def test_pipe_union_syntax(self):
-        """Sintaxis moderna de union con |."""
+        """Modern union syntax with |."""
         @validate_types
         def process(value: int | str) -> str:
             return str(value)
@@ -148,10 +148,10 @@ class TestValidateTypesUnion:
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesCollections:
-    """Tests para tipos de colecciones."""
+    """Tests for collection types."""
     
     def test_validates_list_container(self):
-        """Valida que el contenedor sea una lista."""
+        """Validate that the container is a list."""
         @validate_types
         def sum_numbers(numbers: list[int]) -> int:
             return sum(numbers)
@@ -162,7 +162,7 @@ class TestValidateTypesCollections:
             sum_numbers("123")
     
     def test_validates_dict_container(self):
-        """Valida que el contenedor sea un dict."""
+        """Validate that the container is a dict."""
         @validate_types
         def get_keys(data: dict[str, int]) -> list:
             return list(data.keys())
@@ -174,7 +174,7 @@ class TestValidateTypesCollections:
             get_keys([("a", 1), ("b", 2)])
     
     def test_validates_tuple_container(self):
-        """Valida que el contenedor sea una tupla."""
+        """Validate that the container is a tuple."""
         @validate_types
         def process_pair(pair: tuple[int, int]) -> int:
             return pair[0] + pair[1]
@@ -187,10 +187,10 @@ class TestValidateTypesCollections:
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesEdgeCases:
-    """Tests para casos especiales."""
+    """Tests for special cases."""
     
     def test_none_return_type(self):
-        """Función que retorna None."""
+        """Function that returns None."""
         @validate_types
         def print_message(msg: str) -> None:
             print(msg)
@@ -199,17 +199,17 @@ class TestValidateTypesEdgeCases:
         assert result is None
     
     def test_function_without_type_hints(self):
-        """Función sin type hints no debe fallar."""
+        """Function without type hints should not fail."""
         @validate_types
         def no_hints(a, b):
             return a + b
         
-        # No debe validar si no hay type hints
+        # It should not validate when there are no type hints
         assert no_hints(1, 2) == 3
         assert no_hints("a", "b") == "ab"
     
     def test_multiple_parameters(self):
-        """Función con múltiples parámetros."""
+        """Function with multiple parameters."""
         @validate_types
         def complex_func(a: int, b: str, c: float, d: bool) -> str:
             return f"{a}-{b}-{c}-{d}"
@@ -223,10 +223,10 @@ class TestValidateTypesEdgeCases:
 
 @pytest.mark.skipif(not SOLUTION_EXISTS, reason="Solution not implemented yet")
 class TestValidateTypesErrorMessages:
-    """Tests para mensajes de error descriptivos."""
+    """Tests for descriptive error messages."""
     
     def test_error_message_includes_parameter_name(self):
-        """El error debe incluir el nombre del parámetro."""
+        """The error must include the parameter name."""
         @validate_types
         def greet(name: str) -> str:
             return f"Hello {name}"
@@ -237,7 +237,7 @@ class TestValidateTypesErrorMessages:
         assert "name" in str(exc_info.value).lower()
     
     def test_error_message_includes_expected_type(self):
-        """El error debe incluir el tipo esperado."""
+        """The error must include the expected type."""
         @validate_types
         def add(a: int, b: int) -> int:
             return a + b
