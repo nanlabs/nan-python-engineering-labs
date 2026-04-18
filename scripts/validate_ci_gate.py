@@ -18,6 +18,7 @@ SUMMARY_RE = re.compile(r"^SUMMARY:\s+(\d+)/(\d+)\s+modules passed")
 REQUIRED_PASS_MODULES = {
     "09_testing_qa",
     "14_advanced_python_2026",
+    "15_basic_data_science",
 }
 
 
@@ -69,8 +70,8 @@ def main() -> int:
             print(f"- {module}")
         return 1
 
-    if summary[1] < 14:
-        print(f"\nCI gate failure: expected at least 14 modules in scope, got {summary[1]}")
+    if summary[1] < 15:
+        print(f"\nCI gate failure: expected at least 15 modules in scope, got {summary[1]}")
         return 1
 
     print("\nCI gate passed: required modules are green; legacy module debt tolerated temporarily.")

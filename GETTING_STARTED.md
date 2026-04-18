@@ -105,7 +105,7 @@ uv venv
 source .venv/bin/activate  # Linux/Mac
 
 # 4. Install dependencies
-uv pip install -e ".[dev,profiling,ai,pyo3,security]"
+uv pip install -e ".[dev,profiling,ai,pyo3,security,data]"
 
 # 5. Install pre-commit hooks
 pre-commit install
