@@ -19,31 +19,29 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Run validation
-        id: run-validation
+      - name: Run full validation report
+        id: full-validation
         shell: bash
         run: |
           python scripts/validate_all_modules.py 2>&1 | tee validation_output.txt
-          exit_code=${PIPESTATUS[0]}
-          echo "exit_code=${exit_code}" >> "$GITHUB_OUTPUT"
-          echo "Validation exit code: ${exit_code}"
+          true
+
+      - name: Run CI gate
+        shell: bash
+        run: |
+          python scripts/validate_ci_gate.py 2>&1 | tee ci_gate_output.txt
 
       - name: Upload validation output
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: nan-python-engineering-labs-validate-all-modules
-          path: validation_output.txt
+          path: |
+            validation_output.txt
+            ci_gate_output.txt
 
       - name: Print summary
         if: always()
         shell: bash
         run: |
           grep -E "^(✅|❌)|^SUMMARY|^Note" validation_output.txt || true
-
-      - name: Fail workflow on validation errors
-        if: steps.run-validation.outputs.exit_code != '0'
-        shell: bash
-        run: |
-          echo "::error::Validation failed. See validation_output.txt artifact for details."
-          exit 1
