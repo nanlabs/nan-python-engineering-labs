@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Run validation (advisory)
+      - name: Run validation
         id: run-validation
         shell: bash
         run: |
@@ -40,6 +40,10 @@ jobs:
         shell: bash
         run: |
           grep -E "^(✅|❌)|^SUMMARY|^Note" validation_output.txt || true
-          if [ "${{ steps.run-validation.outputs.exit_code }}" != "0" ]; then
-            echo "::warning::Validation reported failing modules (expected while technical debt in exercises remains)."
-          fi
+
+      - name: Fail workflow on validation errors
+        if: steps.run-validation.outputs.exit_code != '0'
+        shell: bash
+        run: |
+          echo "::error::Validation failed. See validation_output.txt artifact for details."
+          exit 1
