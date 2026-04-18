@@ -1,12 +1,22 @@
-def safe_divide(a: float, b: float) -> float:
-    if b == 0:
-        raise ValueError('b must be non-zero')
-    return a / b
+"""Model typed data structures in a mypy-friendly style."""
+
+from typing import TypedDict
+
+
+class User(TypedDict):
+    username: str
+    age: int
+    active: bool
+
+
+def can_access_dashboard(user: User) -> bool:
+    return user["active"] and user["age"] >= 18
 
 
 def main() -> None:
-    print(safe_divide(10.0, 2.0))
+    user: User = {"username": "ana", "age": 28, "active": True}
+    print(can_access_dashboard(user))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

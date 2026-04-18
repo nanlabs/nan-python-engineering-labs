@@ -1,34 +1,53 @@
-class Context(dict[str, int]):
-    def lookup(self, name: str) -> int:
-        return self[name]
+"""Interpreter pattern example: evaluate simple boolean expressions."""
+from __future__ import annotations
+from abc import ABC, abstractmethod
 
+class Expression(ABC):
+    @abstractmethod
+    def interpret(self, context: dict[str, bool]) -> bool: ...
 
-class Expression:
-    def interpret(self, ctx: Context) -> int:
-        raise NotImplementedError("Subclasses must implement interpret")
-
-
-class Number(Expression):
-    def __init__(self, value: int) -> None:
+class Literal(Expression):
+    def __init__(self, value: bool) -> None:
         self.value = value
-
-    def interpret(self, ctx: Context) -> int:
+    def interpret(self, context: dict[str, bool]) -> bool:
         return self.value
 
+class Variable(Expression):
+    def __init__(self, name: str) -> None:
+        self.name = name
+    def interpret(self, context: dict[str, bool]) -> bool:
+        return context[self.name]
 
-class Add(Expression):
+class And(Expression):
     def __init__(self, left: Expression, right: Expression) -> None:
         self.left = left
         self.right = right
+    def interpret(self, context: dict[str, bool]) -> bool:
+        return self.left.interpret(context) and self.right.interpret(context)
 
-    def interpret(self, ctx: Context) -> int:
-        return self.left.interpret(ctx) + self.right.interpret(ctx)
+class Or(Expression):
+    def __init__(self, left: Expression, right: Expression) -> None:
+        self.left = left
+        self.right = right
+    def interpret(self, context: dict[str, bool]) -> bool:
+        return self.left.interpret(context) or self.right.interpret(context)
 
+class Not(Expression):
+    def __init__(self, expression: Expression) -> None:
+        self.expression = expression
+    def interpret(self, context: dict[str, bool]) -> bool:
+        return not self.expression.interpret(context)
 
 def main() -> None:
-    expr = Add(Number(2), Number(5))
-    print(expr.interpret(Context()))
-
+    expr = And(Or(Variable("is_admin"), Variable("is_support")), Not(Variable("is_suspended")))
+    users = {
+        "Alice": {"is_admin": True, "is_support": False, "is_suspended": False},
+        "Bob": {"is_admin": False, "is_support": True, "is_suspended": True},
+        "Carol": {"is_admin": False, "is_support": False, "is_suspended": False},
+    }
+    for name, ctx in users.items():
+        print(f"{name}: access={expr.interpret(ctx)}")
+    print("Literal check:", Literal(True).interpret({}))
 
 if __name__ == "__main__":
     main()

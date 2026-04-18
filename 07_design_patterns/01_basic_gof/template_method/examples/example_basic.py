@@ -1,27 +1,41 @@
-class Exporter:
-    def export(self, payload: dict[str, object]) -> str:
-        header = self.build_header()
-        body = self.build_body(payload)
-        return f"{header}|{body}"
+"""Template Method example: fixed parsing pipeline with custom steps."""
+from __future__ import annotations
+from abc import ABC, abstractmethod
 
-    def build_header(self) -> str:
-        raise NotImplementedError
+class DataParser(ABC):
+    def parse(self, raw: str) -> list[dict[str, str]]:
+        lines = [line.strip() for line in raw.strip().splitlines() if line.strip()]
+        header = self._extract_header(lines[0])
+        rows = [self._extract_values(line) for line in lines[1:]]
+        return [dict(zip(header, row, strict=True)) for row in rows]
 
-    def build_body(self, payload: dict[str, object]) -> str:
-        raise NotImplementedError
+    @abstractmethod
+    def _extract_header(self, line: str) -> list[str]: ...
 
+    @abstractmethod
+    def _extract_values(self, line: str) -> list[str]: ...
 
-class CsvExporter(Exporter):
-    def build_header(self) -> str:
-        return 'csv'
+class CsvParser(DataParser):
+    def _extract_header(self, line: str) -> list[str]:
+        return [item.strip() for item in line.split(",")]
+    def _extract_values(self, line: str) -> list[str]:
+        return [item.strip() for item in line.split(",")]
 
-    def build_body(self, payload: dict[str, object]) -> str:
-        return ','.join(f"{k}={v}" for k, v in payload.items())
-
+class PipeParser(DataParser):
+    def _extract_header(self, line: str) -> list[str]:
+        return [item.strip().lower() for item in line.split("|")]
+    def _extract_values(self, line: str) -> list[str]:
+        return [item.strip() for item in line.split("|")]
 
 def main() -> None:
-    print(CsvExporter().export({'ok': True, 'count': 2}))
+    csv_data = """name, role
+Alice, Engineer
+Bob, Designer"""
+    pipe_data = """Name | Team
+Carol | Platform
+Dan | Security"""
+    print("CSV :", CsvParser().parse(csv_data))
+    print("PIPE:", PipeParser().parse(pipe_data))
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

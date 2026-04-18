@@ -1,31 +1,39 @@
-"""
-Implementing Python classes with Rust.
-Shows how to create class-like objects from Rust code.
-"""
+"""Mimic a Python class that could be backed by Rust for fast numeric operations."""
 
-class DataProcessor:
-    """Mock Rust-based data processor."""
-    def __init__(self, name: str):
-        self.name = name
-        self.data = []
-    
-    def add_value(self, value: int):
-        """Add value to internal buffer."""
-        self.data.append(value)
-    
-    def get_stats(self) -> dict:
-        """Compute statistics on stored data."""
-        if not self.data:
-            return {"count": 0, "sum": 0, "avg": 0}
-        return {
-            "count": len(self.data),
-            "sum": sum(self.data),
-            "avg": sum(self.data) / len(self.data),
-        }
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(slots=True)
+class Vector2D:
+    """Small vector type with methods often delegated to native extensions."""
+
+    x: float
+    y: float
+
+    def magnitude(self) -> float:
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+
+    def dot(self, other: "Vector2D") -> float:
+        return self.x * other.x + self.y * other.y
+
+    def normalized(self) -> "Vector2D":
+        mag = self.magnitude()
+        if mag == 0:
+            raise ValueError("Cannot normalize zero vector")
+        return Vector2D(self.x / mag, self.y / mag)
+
+
+def main() -> None:
+    a = Vector2D(3.0, 4.0)
+    b = Vector2D(1.5, -2.0)
+
+    print(f"a={a}, magnitude={a.magnitude():.2f}")
+    print(f"b={b}, magnitude={b.magnitude():.2f}")
+    print(f"dot(a, b)={a.dot(b):.2f}")
+    print(f"normalized(a)={a.normalized()}")
+
 
 if __name__ == "__main__":
-    proc = DataProcessor("test")
-    proc.add_value(10)
-    proc.add_value(20)
-    proc.add_value(30)
-    print(proc.get_stats())
+    main()

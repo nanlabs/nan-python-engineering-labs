@@ -1,27 +1,30 @@
-class Notification:
-    def send(self, message: str) -> str:
-        raise NotImplementedError
+"""Use polymorphism to calculate area for multiple shapes."""
+
+from dataclasses import dataclass
+from math import pi
 
 
-class EmailNotification(Notification):
-    def send(self, message: str) -> str:
-        return f"Email sent: {message}"
+@dataclass
+class Rectangle:
+    width: float
+    height: float
+
+    def area(self) -> float:
+        return self.width * self.height
 
 
-class SmsNotification(Notification):
-    def send(self, message: str) -> str:
-        return f"SMS sent: {message}"
+@dataclass
+class Circle:
+    radius: float
 
-
-def dispatch(notification: Notification, message: str) -> str:
-    return notification.send(message)
+    def area(self) -> float:
+        return pi * self.radius ** 2
 
 
 def main() -> None:
-    channels: list[Notification] = [EmailNotification(), SmsNotification()]
-    for channel in channels:
-        print(dispatch(channel, 'Build completed'))
+    shapes = [Rectangle(4, 5), Circle(2), Rectangle(3, 1.5)]
+    print([round(s.area(), 2) for s in shapes])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

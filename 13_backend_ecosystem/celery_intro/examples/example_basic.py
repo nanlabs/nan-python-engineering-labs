@@ -1,10 +1,61 @@
-"""Basic example: task dispatch simulation."""
-from time import sleep
+"""Demonstrate a Celery-like background task queue with the standard library."""
 
-def delay(name, payload):
-    print('dispatched', name, payload)
-    sleep(0.01)
-    return {'task': name, 'status': 'SUCCESS', 'payload': payload}
+from __future__ import annotations
 
-print(delay('send_email', {'to': 'alice@example.com'}))
-print(delay('generate_invoice', {'order_id': 91}))
+from dataclasses import dataclass
+from queue import Empty, Queue
+from threading import Thread
+import time
+
+
+@dataclass
+class Task:
+    """A small unit of work."""
+
+    name: str
+    value: int
+
+
+class Worker(Thread):
+    """Consumes tasks from a queue and stores results."""
+
+    def __init__(self, tasks: Queue[Task], results: Queue[str]) -> None:
+        super().__init__(daemon=True)
+        self.tasks = tasks
+        self.results = results
+        self._running = True
+
+    def stop(self) -> None:
+        self._running = False
+
+    def run(self) -> None:
+        while self._running:
+            try:
+                task = self.tasks.get(timeout=0.2)
+            except Empty:
+                continue
+            doubled = task.value * 2
+            time.sleep(0.05)
+            self.results.put(f"{task.name} -> {doubled}")
+            self.tasks.task_done()
+
+
+def main() -> None:
+    tasks: Queue[Task] = Queue()
+    results: Queue[str] = Queue()
+    worker = Worker(tasks, results)
+    worker.start()
+
+    for i in range(5):
+        tasks.put(Task(name=f"task-{i}", value=i + 1))
+
+    tasks.join()
+    worker.stop()
+
+    print("Background task results:")
+    while not results.empty():
+        print("-", results.get())
+
+
+if __name__ == "__main__":
+    main()

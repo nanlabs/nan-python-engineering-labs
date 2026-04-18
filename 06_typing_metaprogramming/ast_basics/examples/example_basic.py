@@ -1,14 +1,24 @@
+"""Inspect Python code with the ast module."""
+
 import ast
 
 
-def count_nodes(source: str) -> int:
-    tree = ast.parse(source)
-    return sum(1 for _ in ast.walk(tree))
+class BinOpCounter(ast.NodeVisitor):
+    def __init__(self) -> None:
+        self.count = 0
+
+    def visit_BinOp(self, node: ast.BinOp) -> None:
+        self.count += 1
+        self.generic_visit(node)
 
 
 def main() -> None:
-    print(count_nodes('x = 1\nprint(x)'))
+    code = "result = (a + b) * (c - d) / 2"
+    tree = ast.parse(code)
+    counter = BinOpCounter()
+    counter.visit(tree)
+    print(counter.count)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

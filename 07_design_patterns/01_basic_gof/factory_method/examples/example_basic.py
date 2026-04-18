@@ -1,29 +1,37 @@
-class PaymentProcessor:
-    def process(self, amount: float) -> str:
-        raise NotImplementedError
+"""Factory Method example: create transport objects through creators."""
+from __future__ import annotations
+from abc import ABC, abstractmethod
 
+class Transport(ABC):
+    @abstractmethod
+    def deliver(self, cargo: str) -> str: ...
 
-class CardProcessor(PaymentProcessor):
-    def process(self, amount: float) -> str:
-        return f"card:{amount:.2f}"
+class Truck(Transport):
+    def deliver(self, cargo: str) -> str:
+        return f"Delivering {cargo} by road with a truck"
 
+class Ship(Transport):
+    def deliver(self, cargo: str) -> str:
+        return f"Delivering {cargo} by sea with a ship"
 
-class PaypalProcessor(PaymentProcessor):
-    def process(self, amount: float) -> str:
-        return f"paypal:{amount:.2f}"
+class Logistics(ABC):
+    @abstractmethod
+    def create_transport(self) -> Transport: ...
 
+    def plan_delivery(self, cargo: str) -> str:
+        return self.create_transport().deliver(cargo)
 
-class Checkout:
-    def create_processor(self, kind: str) -> PaymentProcessor:
-        if kind == 'card':
-            return CardProcessor()
-        return PaypalProcessor()
+class RoadLogistics(Logistics):
+    def create_transport(self) -> Transport:
+        return Truck()
 
+class SeaLogistics(Logistics):
+    def create_transport(self) -> Transport:
+        return Ship()
 
 def main() -> None:
-    checkout = Checkout()
-    print(checkout.create_processor('card').process(19.9))
+    print(RoadLogistics().plan_delivery("electronics"))
+    print(SeaLogistics().plan_delivery("containers"))
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,36 +1,55 @@
-class Button:
+"""Abstract Factory example: build matching UI components for each theme."""
+from __future__ import annotations
+from abc import ABC, abstractmethod
+
+class Button(ABC):
+    @abstractmethod
+    def render(self) -> str: ...
+
+class Checkbox(ABC):
+    @abstractmethod
+    def render(self) -> str: ...
+
+class LightButton(Button):
     def render(self) -> str:
-        raise NotImplementedError
+        return "[Light Button]"
 
-
-class LinuxButton(Button):
+class DarkButton(Button):
     def render(self) -> str:
-        return 'linux-button'
+        return "[Dark Button]"
 
-
-class WindowsButton(Button):
+class LightCheckbox(Checkbox):
     def render(self) -> str:
-        return 'windows-button'
+        return "[Light Checkbox]"
 
+class DarkCheckbox(Checkbox):
+    def render(self) -> str:
+        return "[Dark Checkbox]"
 
-class UIFactory:
-    def button(self) -> Button:
-        raise NotImplementedError
+class UIFactory(ABC):
+    @abstractmethod
+    def create_button(self) -> Button: ...
+    @abstractmethod
+    def create_checkbox(self) -> Checkbox: ...
 
+class LightThemeFactory(UIFactory):
+    def create_button(self) -> Button:
+        return LightButton()
+    def create_checkbox(self) -> Checkbox:
+        return LightCheckbox()
 
-class LinuxFactory(UIFactory):
-    def button(self) -> Button:
-        return LinuxButton()
+class DarkThemeFactory(UIFactory):
+    def create_button(self) -> Button:
+        return DarkButton()
+    def create_checkbox(self) -> Checkbox:
+        return DarkCheckbox()
 
-
-class WindowsFactory(UIFactory):
-    def button(self) -> Button:
-        return WindowsButton()
-
+def render_screen(factory: UIFactory) -> str:
+    return f"{factory.create_button().render()} {factory.create_checkbox().render()}"
 
 def main() -> None:
-    print(LinuxFactory().button().render())
+    print("Light:", render_screen(LightThemeFactory()))
+    print("Dark :", render_screen(DarkThemeFactory()))
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
