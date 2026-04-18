@@ -142,6 +142,19 @@ The workflow ensures:
   - Preserve the "copy to `my_solution/`" workflow
   - Avoid deleting learner workspace content
 
+5.3 References completeness lock (NEW - strict)
+- Every `references/links.md` in both repos must be non-empty and contain at least 3 real `https://` URLs.
+- Disallow placeholder-only references:
+  - No `Add relevant documentation links here.`
+  - No empty files
+  - No files with a title-only header and no links
+- Required structure:
+  - A title heading (`# References: <Topic>` or `# Referencias: <Topic>`)
+  - At least one `## Official Documentation` / `## Documentación Oficial` section
+  - At least 2 links in the official section
+  - At least 1 article/guide link
+- Links must be topic-specific (not the same generic set for every topic in the module).
+
 6. Sync to original repo
 - Copy generated/approved examples from NaNLABS module to matching module in `training-py`.
 - Preserve topic slug mapping exactly.
@@ -175,6 +188,12 @@ The workflow ensures:
   - Fail if any exercise contains Spanish comments/docstrings/instructions.
   - Fail if any exercise contains placeholder markers (`TODO`, template scaffolding, untranslated helper comments).
   - Require all exercise files to exist and be syntactically valid Python.
+- **References completeness check (NEW)**:
+  - Scan every `references/links.md` in the processed module.
+  - Fail if any file contains fewer than 3 `https://` URLs.
+  - Fail if any file contains `Add relevant documentation links here.` placeholder text.
+  - Fail if all references files are identical (indicates a copy-paste fallback instead of topic-specific content).
+  - For NaN repo: fail if any references file contains Spanish-language section headers.
 
 8. Commit hygiene
 - Show `git status --short` for both repos.
@@ -202,6 +221,11 @@ The workflow ensures:
   - Every `exercises/exercise_01.py` is English-only and free of placeholders.
   - No `TODO` markers in exercises.
   - Exercise statements are complete and usable without translation follow-up.
+- **References quality gate (NEW)**:
+  - Every `references/links.md` contains at least 3 real `https://` URLs.
+  - No placeholder-only references files (e.g., `Add relevant documentation links here.` stubs).
+  - Links must be topic-specific (not the same generic fallback for all topics).
+  - NaN repo references must be in English; training-py references may use Spanish headers.
 - No broken internal links in module readmes/references.
 - `examples/example_basic.py` files are identical in both repos.
 - Validation result is 100% passing for the target module.
