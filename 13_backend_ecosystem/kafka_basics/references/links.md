@@ -1,10 +1,10 @@
-# Kafka Basics - References
+# Kafka Basics — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Apache Kafka — Official Documentation](https://kafka.apache.org/documentation/)
+- [aiokafka — Async Kafka Client](https://aiokafka.readthedocs.io/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Confluent — What is Apache Kafka?](https://www.confluent.io/what-is-apache-kafka/)

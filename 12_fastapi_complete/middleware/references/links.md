@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Middleware](https://fastapi.tiangolo.com/tutorial/middleware/)
+- [Starlette — Middleware Reference](https://www.starlette.io/middleware/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Middleware.
+- [FastAPI — CORS Middleware](https://fastapi.tiangolo.com/tutorial/cors/)

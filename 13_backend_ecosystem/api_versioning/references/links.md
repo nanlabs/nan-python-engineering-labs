@@ -1,10 +1,10 @@
-# API Versioning - References
+# Api Versioning — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [RESTful API — Versioning Strategies](https://restfulapi.net/versioning/)
+- [FastAPI — Bigger Applications](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Semantic Versioning Specification](https://semver.org/)

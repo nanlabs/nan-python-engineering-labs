@@ -1,10 +1,10 @@
-# Structured Logging - References
+# Structured Logging — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Python — logging Module](https://docs.python.org/3/library/logging.html)
+- [structlog — Structured Logging](https://www.structlog.org/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [12-Factor App — Logs](https://12factor.net/logs)

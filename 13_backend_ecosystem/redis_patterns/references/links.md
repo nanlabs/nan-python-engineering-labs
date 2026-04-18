@@ -1,10 +1,10 @@
-# Redis Patterns - References
+# Redis Patterns — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Redis — Common Patterns](https://redis.io/docs/manual/patterns/)
+- [Redis — Keyspace Notifications](https://redis.io/docs/manual/keyspace-notifications/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [redis-py — Python Client](https://redis-py.readthedocs.io/en/stable/)

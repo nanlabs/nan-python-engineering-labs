@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Deployment Guide](https://fastapi.tiangolo.com/deployment/)
+- [Docker — Getting Started](https://docs.docker.com/get-started/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Deployment.
+- [FastAPI — Docker Deployment](https://fastapi.tiangolo.com/deployment/docker/)

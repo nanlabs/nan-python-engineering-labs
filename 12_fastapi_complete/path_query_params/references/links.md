@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Path Parameters](https://fastapi.tiangolo.com/tutorial/path-params/)
+- [FastAPI — Query Parameters](https://fastapi.tiangolo.com/tutorial/query-params/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Path Query Params.
+- [MDN — HTTP Resource Identification](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web)

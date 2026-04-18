@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Debugging](https://fastapi.tiangolo.com/tutorial/debugging/)
+- [Python — logging Module](https://docs.python.org/3/library/logging.html)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Logging Monitoring.
+- [OpenTelemetry — Observability Framework](https://opentelemetry.io/docs/)

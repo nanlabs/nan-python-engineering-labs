@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [Alembic — Official Documentation](https://alembic.sqlalchemy.org/en/latest/)
+- [Alembic — Tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Alembic Migrations.
+- [SQLAlchemy — Metadata and Schema](https://docs.sqlalchemy.org/en/20/core/metadata.html)

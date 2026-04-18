@@ -1,10 +1,10 @@
-# Elasticsearch (Optional) - References
+# Elasticsearch Optional — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Elasticsearch — Reference Docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
+- [elasticsearch-py — Python Client](https://elasticsearch-py.readthedocs.io/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Elasticsearch — Getting Started](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)

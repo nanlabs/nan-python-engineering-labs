@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — CORS](https://fastapi.tiangolo.com/tutorial/cors/)
+- [MDN — Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Cors.
+- [Starlette — CORSMiddleware](https://www.starlette.io/middleware/#corsmiddleware)

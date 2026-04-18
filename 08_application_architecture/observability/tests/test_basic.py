@@ -1,5 +1,5 @@
 """
-Tests para observability
+Tests for observability
 """
 
 import pytest
@@ -12,26 +12,26 @@ sys.path.insert(0, str(parent_dir))
 
 
 class TestObservability:
-    """Suite de tests para observability."""
+    """Test suite for observability."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
-        # TODO: Implementa test básico
+        """Test basic functionality."""
+        # TODO: Implement basic functionality test
         pass
     
     def test_edge_cases(self):
-        """Test de casos límite."""
-        # TODO: Implementa tests de edge cases
+        """Test edge cases."""
+        # TODO: Implement edge case tests
         pass
     
     def test_error_handling(self):
-        """Test de manejo de errores."""
-        # TODO: Implementa tests de errores
+        """Test error handling."""
+        # TODO: Implement error handling tests
         pass
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work correctly."""
     assert True  # Placeholder
 
 

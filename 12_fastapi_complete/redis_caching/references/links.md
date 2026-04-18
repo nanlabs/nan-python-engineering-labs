@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [Redis — Official Documentation](https://redis.io/docs/)
+- [redis-py — Python Client](https://redis-py.readthedocs.io/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Redis Caching.
+- [FastAPI — Settings and Environment](https://fastapi.tiangolo.com/advanced/settings/)

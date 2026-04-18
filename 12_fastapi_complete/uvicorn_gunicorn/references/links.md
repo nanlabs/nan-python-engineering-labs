@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [Uvicorn — Official Documentation](https://www.uvicorn.org/)
+- [Gunicorn — Python WSGI HTTP Server](https://gunicorn.org/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Uvicorn Gunicorn.
+- [FastAPI — Server Workers with Gunicorn](https://fastapi.tiangolo.com/deployment/server-workers/)

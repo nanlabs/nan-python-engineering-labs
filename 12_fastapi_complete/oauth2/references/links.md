@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — OAuth2 with JWT](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/)
+- [OAuth 2.0 — Official Overview](https://oauth.net/2/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Oauth2.
+- [FastAPI — HTTP Basic Auth](https://fastapi.tiangolo.com/tutorial/security/http-basic-auth/)

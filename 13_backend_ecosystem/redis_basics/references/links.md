@@ -1,10 +1,10 @@
-# Redis Basics - References
+# Redis Basics — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Redis — Official Documentation](https://redis.io/docs/)
+- [redis-py — Python Client](https://redis-py.readthedocs.io/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Redis — Data Types Guide](https://redis.io/docs/data-types/)

@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Response Model](https://fastapi.tiangolo.com/tutorial/response-model/)
+- [FastAPI — Extra Models](https://fastapi.tiangolo.com/tutorial/extra-models/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Response Models.
+- [Pydantic — Serialization](https://docs.pydantic.dev/latest/concepts/serialization/)

@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — WebSockets](https://fastapi.tiangolo.com/advanced/websockets/)
+- [websockets — Python Library](https://websockets.readthedocs.io/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Websockets.
+- [MDN — WebSockets API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)

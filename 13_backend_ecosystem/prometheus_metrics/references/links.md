@@ -1,10 +1,10 @@
-# Prometheus Metrics - References
+# Prometheus Metrics — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Prometheus — Official Documentation](https://prometheus.io/docs/)
+- [prometheus_client — Python Library](https://github.com/prometheus/client_python)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Prometheus — Metric Types](https://prometheus.io/docs/concepts/metric_types/)

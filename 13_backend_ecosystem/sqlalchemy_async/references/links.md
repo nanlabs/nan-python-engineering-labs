@@ -1,10 +1,10 @@
-# SQLAlchemy Async - References
+# Sqlalchemy Async — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [SQLAlchemy — Async IO Extension](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)
+- [SQLAlchemy — Session API](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [AnyIO — Async Concurrency Library](https://anyio.readthedocs.io/en/stable/)

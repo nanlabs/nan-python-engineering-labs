@@ -1,10 +1,10 @@
-# RabbitMQ Basics - References
+# Rabbitmq Basics — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [RabbitMQ — Official Documentation](https://www.rabbitmq.com/documentation.html)
+- [aio-pika — Async RabbitMQ Client](https://aio-pika.readthedocs.io/en/latest/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [RabbitMQ — Python Tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-python.html)

@@ -5,8 +5,8 @@ Objective: Implement and practice optimization_techniques
 
 Instructions:
 1. Read the requirements carefully
-2. Implementa las funciones/clases marcadas con TODO
-3. Ejecuta los tests: pytest tests/
+2. Implement the functions/classes marked with TODO
+3. Run tests: pytest tests/
 4. Your solution must go in my_solution/
 
 DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.

@@ -1,10 +1,10 @@
-# PostgreSQL Advanced - References
+# Postgresql Advanced — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [PostgreSQL — Official Documentation](https://www.postgresql.org/docs/current/)
+- [PostgreSQL — Indexes](https://www.postgresql.org/docs/current/indexes.html)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [explain.dalibo — EXPLAIN ANALYZE Visualizer](https://explain.dalibo.com/)

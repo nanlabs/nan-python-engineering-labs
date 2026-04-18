@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — SQL Databases](https://fastapi.tiangolo.com/tutorial/sql-databases/)
+- [SQLAlchemy 2.0 — Official Docs](https://docs.sqlalchemy.org/en/20/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Sqlalchemy Integration.
+- [Alembic — Database Migrations](https://alembic.sqlalchemy.org/en/latest/)

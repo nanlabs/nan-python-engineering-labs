@@ -1,10 +1,10 @@
-# Redis Pub/Sub - References
+# Redis Pubsub — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Redis — Pub/Sub](https://redis.io/docs/manual/pubsub/)
+- [redis-py — Pub/Sub Commands](https://redis-py.readthedocs.io/en/stable/commands.html#publish-subscribe)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Redis — Pub/Sub Deep Dive](https://redis.io/docs/interact/pubsub/)

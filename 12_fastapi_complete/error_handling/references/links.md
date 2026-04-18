@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Handling Errors](https://fastapi.tiangolo.com/tutorial/handling-errors/)
+- [FastAPI — Custom Exception Handlers](https://fastapi.tiangolo.com/tutorial/handling-errors/#install-custom-exception-handlers)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Error Handling.
+- [Starlette — Exceptions Reference](https://www.starlette.io/exceptions/)

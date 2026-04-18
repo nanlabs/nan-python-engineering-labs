@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [Pydantic v2 — Official Documentation](https://docs.pydantic.dev/latest/)
+- [FastAPI — Body with Pydantic](https://fastapi.tiangolo.com/tutorial/body/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Pydantic Models.
+- [Pydantic — Validators](https://docs.pydantic.dev/latest/concepts/validators/)

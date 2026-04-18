@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [Strawberry — GraphQL for Python](https://strawberry.rocks/)
+- [GraphQL — Official Learning Guide](https://graphql.org/learn/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Graphql Optional.
+- [Ariadne — Schema-First GraphQL](https://ariadnegraphql.org/)

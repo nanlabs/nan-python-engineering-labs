@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Async Testing](https://fastapi.tiangolo.com/advanced/async-tests/)
+- [Uvicorn — Performance Settings](https://www.uvicorn.org/settings/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Fastapi Performance.
+- [Real Python — Python Async Features](https://realpython.com/python-async-features/)

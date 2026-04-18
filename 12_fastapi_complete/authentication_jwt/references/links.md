@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Security and Auth](https://fastapi.tiangolo.com/tutorial/security/)
+- [JWT.io — JSON Web Token Introduction](https://jwt.io/introduction/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Authentication Jwt.
+- [python-jose — JWT Library](https://python-jose.readthedocs.io/en/latest/)

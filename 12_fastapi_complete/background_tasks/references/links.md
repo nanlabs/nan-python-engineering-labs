@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Background Tasks](https://fastapi.tiangolo.com/tutorial/background-tasks/)
+- [Starlette — BackgroundTask](https://www.starlette.io/background/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Background Tasks.
+- [Celery — Distributed Task Queue](https://celery.io/)

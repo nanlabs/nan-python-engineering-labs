@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Async SQL Databases](https://fastapi.tiangolo.com/tutorial/async-sql-databases/)
+- [Databases — Async Database Support](https://www.encode.io/databases/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Async Databases.
+- [SQLAlchemy — Async IO](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)

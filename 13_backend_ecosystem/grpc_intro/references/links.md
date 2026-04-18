@@ -1,10 +1,10 @@
-# gRPC Introduction - References
+# Grpc Intro — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [gRPC — Python Documentation](https://grpc.io/docs/languages/python/)
+- [gRPC — Introduction](https://grpc.io/docs/what-is-grpc/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Protocol Buffers — Official Documentation](https://protobuf.dev/)

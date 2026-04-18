@@ -1,10 +1,10 @@
-# OpenTelemetry - References
+# Opentelemetry — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [OpenTelemetry — Official Documentation](https://opentelemetry.io/docs/)
+- [OpenTelemetry Python — SDK](https://opentelemetry-python.readthedocs.io/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [OpenTelemetry — Signals Overview](https://opentelemetry.io/docs/concepts/signals/)

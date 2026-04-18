@@ -73,7 +73,7 @@ Investigate and understand uv internal architecture and compare it with other to
    time .venv/bin/pip download -r requirements.txt --dry-run 2>&1 | tee pip-output.txt
    ```
 
-10. Resuelve con uv:
+10. Solve with uv:
     ```bash
     mkdir /tmp/uv-resolve && cd /tmp/uv-resolve
     uv venv

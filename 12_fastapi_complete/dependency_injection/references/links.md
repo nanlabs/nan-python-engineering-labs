@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Dependencies](https://fastapi.tiangolo.com/tutorial/dependencies/)
+- [FastAPI — Classes as Dependencies](https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Dependency Injection.
+- [Wikipedia — Dependency Injection Pattern](https://en.wikipedia.org/wiki/Dependency_injection)

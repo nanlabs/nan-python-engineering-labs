@@ -1,10 +1,10 @@
-# ARQ Async Tasks - References
+# Arq Async Tasks — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [arq — Async Job Queue Documentation](https://arq-docs.helpmanual.io/)
+- [Redis — arq Backend](https://redis.io/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Python — asyncio](https://docs.python.org/3/library/asyncio.html)

@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Security](https://fastapi.tiangolo.com/tutorial/security/)
+- [OWASP Top 10 — Security Risks](https://owasp.org/www-project-top-ten/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Security Best Practices.
+- [OWASP — REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)

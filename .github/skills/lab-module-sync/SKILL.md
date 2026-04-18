@@ -21,6 +21,21 @@ The workflow ensures:
 - A homogeneous topic structure even when source modules are inconsistent
 - Pattern/topic-appropriate examples (no name-only template cloning)
 
+## Repository Policy Matrix
+
+The table below is the **authoritative source** for language and content rules per file type and repo. When in doubt, refer here first.
+
+| File / Asset | `training-py` | `nan-python-engineering-labs` |
+|---|---|---|
+| `README.md` | **Spanish** content + 18-heading schema | **English** content + 18-heading schema |
+| `exercises/exercise_01.py` | **English** instructions, goal, comments | **English** instructions, goal, comments |
+| `references/links.md` | Spanish section headers OK; real `https://` URLs | **English** section headers; real `https://` URLs |
+| `examples/example_basic.py` | **English** comments, docstrings, output | **English** comments, docstrings, output |
+| `tests/test_basic.py` | **English** docstrings and comments | **English** docstrings and comments |
+| Directory / file names | **English** slugs | **English** slugs |
+
+> **Key rule**: Only `README.md` files in `training-py` are written in Spanish. Every other asset (exercises, examples, tests, references) uses English in **both** repos. This is because technical instructions and code are universally English; only the pedagogical narrative stays in Spanish for `training-py` learners.
+
 ## Inputs
 
 - Module number and source path (for example: `03_basic_intermediate_oop`)
@@ -132,7 +147,8 @@ The workflow ensures:
 - Avoid trivial no-op stubs as final examples.
 
 5.2 Exercise language + completeness lock (NEW - strict)
-- Every `exercises/exercise_01.py` in `nan-python-engineering-labs` must be English-only in comments, docstrings, instructions, and task descriptions.
+- Every `exercises/exercise_01.py` in **both repos** must be English-only in comments, docstrings, instructions, and task descriptions.
+- This applies equally to `training-py` and `nan-python-engineering-labs`. Only `README.md` files stay in Spanish for `training-py`; exercises are English in both.
 - Disallow placeholders in exercises:
   - No `TODO`
   - No template comments in Spanish (for example: "Implementa", "Añade", "Resuelve")
@@ -201,6 +217,45 @@ The workflow ensures:
 - Commit separately per repo.
 - Push only when requested (or when already agreed in session).
 
+## Validation Commands
+
+Use these exact commands to run validation checks. Always use the project venv:
+
+```bash
+PYTHON=/media/nquiroga/SSDedo/Documents/projects/NanLabs/labs/.venv/bin/python
+
+# ── NaN repo (from nan-python-engineering-labs/) ──────────────────────────────
+# Full cross-module audit (C1 Spanish content, C2 filenames, C3 dirs, C4 dups, C5 canonical)
+$PYTHON scripts/audit_nan_modules.py
+
+# Language scan for a specific module
+$PYTHON scripts/validate_nan_language.py --module 11_modern_tooling_2026
+
+# Unified validation: all checks (L1, S1, R1, X1, E1, M1) across all modules
+$PYTHON scripts/validate_all_modules.py
+
+# Single module
+$PYTHON scripts/validate_all_modules.py --module 14_advanced_python_2026
+
+# ── training-py (from training-py/) ──────────────────────────────────────────
+# Unified validation: all checks (SP1, S1, R1, X1, E1, M1) across modules 01-14
+$PYTHON scripts/validate_all_modules.py
+
+# Single module
+$PYTHON scripts/validate_all_modules.py --module 14_advanced_python_2026
+
+# Legacy module-14-only script (still usable)
+$PYTHON 14_advanced_python_2026/validate_module14.py
+```
+
+**Expected output when all gates pass:**
+```
+Module 01_python_fundamentals  S1✅ R1✅ X1✅ E1✅ M1✅ L1✅
+Module 02_intermediate_python  S1✅ R1✅ X1✅ E1✅ M1✅ L1✅
+...
+SUMMARY: 14/14 modules — all checks passed
+```
+
 ## Quality Gates (must pass)
 
 - All topic directories are in English.
@@ -218,9 +273,10 @@ The workflow ensures:
   - No `TODO` markers in examples.
   - Examples execute successfully in module validation.
 - **Exercise quality gate (NEW)**:
-  - Every `exercises/exercise_01.py` is English-only and free of placeholders.
+  - Every `exercises/exercise_01.py` is English-only and free of placeholders — **in both repos**.
   - No `TODO` markers in exercises.
   - Exercise statements are complete and usable without translation follow-up.
+  - *Known technical debt*: exercises in `training-py` modules 01–13 may still contain Spanish docstrings from before this policy was enforced. Treat as tech debt; fix incrementally per module.
 - **References quality gate (NEW)**:
   - Every `references/links.md` contains at least 3 real `https://` URLs.
   - No placeholder-only references files (e.g., `Add relevant documentation links here.` stubs).

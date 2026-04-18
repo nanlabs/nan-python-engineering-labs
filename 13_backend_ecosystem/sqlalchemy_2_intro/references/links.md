@@ -1,10 +1,10 @@
-# SQLAlchemy 2 Introduction - References
+# Sqlalchemy 2 Intro — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [SQLAlchemy 2.0 — Official Documentation](https://docs.sqlalchemy.org/en/20/)
+- [SQLAlchemy 2.0 — ORM Quickstart](https://docs.sqlalchemy.org/en/20/orm/quickstart.html)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Alembic — Migrations](https://alembic.sqlalchemy.org/en/latest/)

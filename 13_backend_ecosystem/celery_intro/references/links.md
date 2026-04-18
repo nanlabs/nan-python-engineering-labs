@@ -1,10 +1,10 @@
-# Celery Introduction - References
+# Celery Intro — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Celery — Official Documentation](https://docs.celeryq.dev/en/stable/)
+- [Celery — First Steps](https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Redis — Celery Broker/Backend](https://redis.io/)

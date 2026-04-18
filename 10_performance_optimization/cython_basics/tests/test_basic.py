@@ -1,5 +1,5 @@
 """
-Tests para cython basics
+Tests for cython basics
 """
 
 import pytest
@@ -12,26 +12,26 @@ sys.path.insert(0, str(parent_dir))
 
 
 class TestCythonBasics:
-    """Suite de tests para cython basics."""
+    """Test suite for cython basics."""
     
     def test_basic_functionality(self):
-        """Test básico de funcionalidad."""
+        """Test basic functionality."""
         # TODO: Implement test básico
         pass
     
     def test_edge_cases(self):
-        """Test de casos límite."""
+        """Test edge cases."""
         # TODO: Implement tests de edge cases
         pass
     
     def test_error_handling(self):
-        """Test de manejo de errores."""
+        """Test error handling."""
         # TODO: Implement tests de errores
         pass
 
 
 def test_imports():
-    """Verifica que los imports funcionan."""
+    """Verify imports work correctly."""
     assert True  # Placeholder
 
 

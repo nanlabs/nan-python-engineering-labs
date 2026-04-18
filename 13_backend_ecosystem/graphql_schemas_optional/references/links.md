@@ -1,10 +1,10 @@
-# GraphQL Schemas (Optional) - References
+# Graphql Schemas Optional — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Strawberry — GraphQL for Python](https://strawberry.rocks/)
+- [GraphQL — Schema Language](https://graphql.org/learn/schema/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [Ariadne — Schema-First GraphQL](https://ariadnegraphql.org/)

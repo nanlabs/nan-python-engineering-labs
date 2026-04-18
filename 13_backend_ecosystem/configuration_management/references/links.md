@@ -1,10 +1,10 @@
-# Configuration Management - References
+# Configuration Management — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Pydantic Settings — Configuration](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
+- [12-Factor App — Config](https://12factor.net/config)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [python-decouple — Settings Separation](https://python-decouple.readthedocs.io/en/latest/)

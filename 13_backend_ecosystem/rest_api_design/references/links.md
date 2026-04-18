@@ -1,10 +1,10 @@
-# REST API Design - References
+# Rest Api Design — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [RESTful API Design Guidelines](https://restfulapi.net/)
+- [HTTP Working Group — HTTP Specifications](https://httpwg.org/specs/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [RFC 7231 — HTTP/1.1 Semantics](https://www.rfc-editor.org/rfc/rfc7231)

@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Testing](https://fastapi.tiangolo.com/tutorial/testing/)
+- [pytest — Official Documentation](https://docs.pytest.org/en/stable/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Testing Fastapi.
+- [Starlette — TestClient](https://www.starlette.io/testclient/)

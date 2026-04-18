@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Request Files](https://fastapi.tiangolo.com/tutorial/request-files/)
+- [FastAPI — Forms and Files](https://fastapi.tiangolo.com/tutorial/request-forms-and-files/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to File Uploads.
+- [MDN — HTTP POST / multipart](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)

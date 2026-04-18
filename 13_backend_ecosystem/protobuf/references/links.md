@@ -1,10 +1,10 @@
-# Protocol Buffers - References
+# Protobuf — References
 
 ## Official Documentation
 
-- [Python Documentation](https://docs.python.org/3/)
-- [Topic Index](https://github.com/topics/backend)
+- [Protocol Buffers — Official Documentation](https://protobuf.dev/)
+- [Protobuf — Python Tutorial](https://protobuf.dev/getting-started/pythontutorial/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for additional curated references.
+- [gRPC — Python (uses Protobuf)](https://grpc.io/docs/languages/python/)

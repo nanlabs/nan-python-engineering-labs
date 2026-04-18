@@ -2,9 +2,9 @@
 
 ## Official Documentation
 
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [FastAPI — Metadata and Docs URLs](https://fastapi.tiangolo.com/tutorial/metadata/)
+- [FastAPI — Extending OpenAPI](https://fastapi.tiangolo.com/advanced/extending-openapi/)
 
-## Related Topics
+## Articles and Guides
 
-- See `README.md` for curated resources specific to Openapi Customization.
+- [OpenAPI Specification — Reference](https://swagger.io/specification/)
