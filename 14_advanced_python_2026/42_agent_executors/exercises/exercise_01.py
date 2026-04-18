@@ -1,27 +1,21 @@
 """
 Exercise: 42 Agent Executors
 
-Objetivo: Implementar y practicar 42_agent_executors
+Goal: Practice and implement the core concepts of 42_agent_executors.
 
-Instrucciones:
-1. Lee atentamente los requisitos
-2. Implementa las funciones/clases marcadas con TODO
-3. Ejecuta los tests: pytest tests/
-4. Tu solución debe ir en my_solution/
+Instructions:
+1. Read the requirements carefully.
+2. Implement the requested logic in your own working file under my_solution/.
+3. Run tests with: pytest tests/
+4. Keep this file as the original exercise statement.
 
-NO MODIFIQUES ESTE ARCHIVO. Copia a my_solution/ y trabaja allí.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implementa tu solución aquí
-# Sigue las especificaciones de los docstrings
 
-
-def main():
-    """
-    Función principal para probar tu implementación.
-    Añade tus propios casos de prueba.
-    """
-    # TODO: Añade código de prueba aquí
+def main() -> None:
+    """Entry point for trying your own implementation ideas."""
+    # Add your trial code here after copying this file to my_solution/.
     pass
 
 

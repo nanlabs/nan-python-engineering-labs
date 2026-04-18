@@ -131,6 +131,17 @@ The workflow ensures:
 - Each example must contain runnable concept-specific logic and meaningful output.
 - Avoid trivial no-op stubs as final examples.
 
+5.2 Exercise language + completeness lock (NEW - strict)
+- Every `exercises/exercise_01.py` in `nan-python-engineering-labs` must be English-only in comments, docstrings, instructions, and task descriptions.
+- Disallow placeholders in exercises:
+  - No `TODO`
+  - No template comments in Spanish (for example: "Implementa", "Añade", "Resuelve")
+  - No incomplete scaffolding intended to be translated later
+- Keep the exercise statement stable and learner-safe:
+  - Include clear English goal and instructions
+  - Preserve the "copy to `my_solution/`" workflow
+  - Avoid deleting learner workspace content
+
 6. Sync to original repo
 - Copy generated/approved examples from NaNLABS module to matching module in `training-py`.
 - Preserve topic slug mapping exactly.
@@ -159,6 +170,11 @@ The workflow ensures:
   - Fail if any example contains placeholder markers (`TODO`, template text, incomplete scaffolding).
   - Fail if any comments/docstrings/messages in examples are Spanish.
   - Execute every example and require zero runtime failures.
+- **Exercise completeness + language check (NEW)**:
+  - Scan every `exercises/exercise_01.py` in the processed module.
+  - Fail if any exercise contains Spanish comments/docstrings/instructions.
+  - Fail if any exercise contains placeholder markers (`TODO`, template scaffolding, untranslated helper comments).
+  - Require all exercise files to exist and be syntactically valid Python.
 
 8. Commit hygiene
 - Show `git status --short` for both repos.
@@ -182,6 +198,10 @@ The workflow ensures:
   - Every `examples/example_basic.py` is English-only and free of placeholders.
   - No `TODO` markers in examples.
   - Examples execute successfully in module validation.
+- **Exercise quality gate (NEW)**:
+  - Every `exercises/exercise_01.py` is English-only and free of placeholders.
+  - No `TODO` markers in exercises.
+  - Exercise statements are complete and usable without translation follow-up.
 - No broken internal links in module readmes/references.
 - `examples/example_basic.py` files are identical in both repos.
 - Validation result is 100% passing for the target module.
@@ -220,6 +240,7 @@ Implement a language check before final commit to NaN repo:
 - All `references/links.md` files
 - All `tests/test_*.py` files (comments/docstrings)
 - All `examples/example_basic.py` files (comments/docstrings/print messages)
+- All `exercises/exercise_01.py` files for placeholder markers (`TODO`, Spanish scaffolding text)
 - Any `.md` or `.py` files in topics
 
 **Action if Spanish found**:
