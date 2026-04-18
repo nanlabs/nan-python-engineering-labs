@@ -1,0 +1,45 @@
+name: Validate All Modules
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate-all-modules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run validation (advisory)
+        id: run-validation
+        shell: bash
+        run: |
+          python scripts/validate_all_modules.py 2>&1 | tee validation_output.txt
+          exit_code=${PIPESTATUS[0]}
+          echo "exit_code=${exit_code}" >> "$GITHUB_OUTPUT"
+          echo "Validation exit code: ${exit_code}"
+
+      - name: Upload validation output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nan-python-engineering-labs-validate-all-modules
+          path: validation_output.txt
+
+      - name: Print summary
+        if: always()
+        shell: bash
+        run: |
+          grep -E "^(✅|❌)|^SUMMARY|^Note" validation_output.txt || true
+          if [ "${{ steps.run-validation.outputs.exit_code }}" != "0" ]; then
+            echo "::warning::Validation reported failing modules (expected while technical debt in exercises remains)."
+          fi
