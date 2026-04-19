@@ -53,7 +53,7 @@ def create_topic(base_path: Path, topic_name: str) -> None:
     topic_path = base_path / topic_name
     topic_path.mkdir(parents=True, exist_ok=True)
     
-    for folder in ["examples", "exercises", "tests", "my_solution", "references"]:
+    for folder in ["examples", "exercise", "tests", "references"]:
         (topic_path / folder).mkdir(exist_ok=True)
     
     display_name = topic_name[3:].replace('_', ' ').title()

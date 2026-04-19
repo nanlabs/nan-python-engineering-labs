@@ -145,9 +145,8 @@ def create_pattern_structure(base_path: Path, pattern_name: str) -> None:
     
     # Crear subcarpetas
     (pattern_path / "examples").mkdir(exist_ok=True)
-    (pattern_path / "exercises").mkdir(exist_ok=True)
+    (pattern_path / "exercise").mkdir(exist_ok=True)
     (pattern_path / "tests").mkdir(exist_ok=True)
-    (pattern_path / "my_solution").mkdir(exist_ok=True)
     (pattern_path / "references").mkdir(exist_ok=True)
     
     # Crear README

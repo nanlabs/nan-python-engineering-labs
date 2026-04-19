@@ -268,9 +268,8 @@ def create_topic_structure(base_path: Path, topic_name: str) -> None:
 
     # Create subdirectories
     (topic_path / "examples").mkdir(exist_ok=True)
-    (topic_path / "exercises").mkdir(exist_ok=True)
+    (topic_path / "exercise").mkdir(exist_ok=True)
     (topic_path / "tests").mkdir(exist_ok=True)
-    (topic_path / "my_solution").mkdir(exist_ok=True)
     (topic_path / "references").mkdir(exist_ok=True)
 
     # Create basic README

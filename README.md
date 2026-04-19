@@ -54,7 +54,7 @@ nan-python-engineering-labs/
 Suggested flow per topic:
 
 ```text
-topic README → examples → exercises → my_solution → tests → reflection
+topic README → examples → exercise → tests → reflection
 ```
 
 ---

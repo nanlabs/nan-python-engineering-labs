@@ -34,10 +34,9 @@ PYTHON = sys.executable  # Use the same python running this script
 CANONICAL_FILES = [
     "README.md",
     "examples/example_basic.py",
-    "exercises/exercise_01.py",
+    "exercise/exercise_01.py",
     "tests/test_basic.py",
     "references/links.md",
-    "my_solution/.gitkeep",
 ]
 
 SPANISH_KEYWORDS_RE = re.compile(
