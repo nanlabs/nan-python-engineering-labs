@@ -27,8 +27,8 @@ The table below is the **authoritative source** for language and content rules p
 
 | File / Asset | `training-py` | `nan-python-engineering-labs` |
 |---|---|---|
-| `README.md` | **Spanish** content + 18-heading schema | **English** content + 18-heading schema |
-| `exercises/exercise_01.py` | **English** instructions, goal, comments | **English** instructions, goal, comments |
+| `README.md` | **Spanish** content + 17-heading schema | **English** content + 17-heading schema |
+| `exercise/exercise_01.py` | **English** instructions, goal, comments | **English** instructions, goal, comments |
 | `references/links.md` | Spanish section headers OK; real `https://` URLs | **English** section headers; real `https://` URLs |
 | `examples/example_basic.py` | **English** comments, docstrings, output | **English** comments, docstrings, output |
 | `tests/test_basic.py` | **English** docstrings and comments | **English** docstrings and comments |
@@ -53,7 +53,7 @@ The table below is the **authoritative source** for language and content rules p
 - Inspect every topic directory in the source module.
 - If any topic is missing standard lab folders, create or restore them before proceeding:
   - `examples/`
-  - `exercises/`
+  - `exercise/`
   - `tests/`
   - `references/`
   - `my_solution/`
@@ -64,7 +64,7 @@ The table below is the **authoritative source** for language and content rules p
 - Create target module in NaNLABS repo with standard lab layout per topic:
   - `README.md`
   - `examples/example_basic.py`
-  - `exercises/exercise_01.py`
+  - `exercise/exercise_01.py`
   - `tests/test_basic.py`
   - `references/links.md`
   - `my_solution/.gitkeep`
@@ -75,7 +75,7 @@ The table below is the **authoritative source** for language and content rules p
   - `nan-python-engineering-labs`: keep or translate documentation to English.
 - For NaN repo, translate ALL files to English (not just README, but also exercises, references, tests):
   - `README.md` (module and all topic READMEs)
-  - `exercises/exercise_01.py` (instructions and comments)
+  - `exercise/exercise_01.py` (instructions and comments)
   - `references/links.md` (documentation and descriptions)
   - `tests/test_basic.py` (docstrings and comments)
   - Any other markdown or documentation files
@@ -147,7 +147,7 @@ The table below is the **authoritative source** for language and content rules p
 - Avoid trivial no-op stubs as final examples.
 
 5.2 Exercise language + completeness lock (NEW - strict)
-- Every `exercises/exercise_01.py` in **both repos** must be English-only in comments, docstrings, instructions, and task descriptions.
+- Every `exercise/exercise_01.py` in **both repos** must be English-only in comments, docstrings, instructions, and task descriptions.
 - This applies equally to `training-py` and `nan-python-engineering-labs`. Only `README.md` files stay in Spanish for `training-py`; exercises are English in both.
 - Disallow placeholders in exercises:
   - No `TODO`
@@ -200,7 +200,7 @@ The table below is the **authoritative source** for language and content rules p
   - Fail if any comments/docstrings/messages in examples are Spanish.
   - Execute every example and require zero runtime failures.
 - **Exercise completeness + language check (NEW)**:
-  - Scan every `exercises/exercise_01.py` in the processed module.
+  - Scan every `exercise/exercise_01.py` in the processed module.
   - Fail if any exercise contains Spanish comments/docstrings/instructions.
   - Fail if any exercise contains placeholder markers (`TODO`, template scaffolding, untranslated helper comments).
   - Require all exercise files to exist and be syntactically valid Python.
@@ -273,7 +273,7 @@ SUMMARY: 14/14 modules — all checks passed
   - No `TODO` markers in examples.
   - Examples execute successfully in module validation.
 - **Exercise quality gate (NEW)**:
-  - Every `exercises/exercise_01.py` is English-only and free of placeholders — **in both repos**.
+  - Every `exercise/exercise_01.py` is English-only and free of placeholders — **in both repos**.
   - No `TODO` markers in exercises.
   - Exercise statements are complete and usable without translation follow-up.
   - *Known technical debt*: exercises in `training-py` modules 01–13 may still contain Spanish docstrings from before this policy was enforced. Treat as tech debt; fix incrementally per module.
@@ -320,7 +320,7 @@ Implement a language check before final commit to NaN repo:
 - All `references/links.md` files
 - All `tests/test_*.py` files (comments/docstrings)
 - All `examples/example_basic.py` files (comments/docstrings/print messages)
-- All `exercises/exercise_01.py` files for placeholder markers (`TODO`, Spanish scaffolding text)
+- All `exercise/exercise_01.py` files for placeholder markers (`TODO`, Spanish scaffolding text)
 - Any `.md` or `.py` files in topics
 
 **Action if Spanish found**:
