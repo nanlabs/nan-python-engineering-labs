@@ -6,12 +6,16 @@ def greet(name: str, role: str = "Developer") -> str:
     return f"Hello, {name}. Your current role is {role}."
 
 
-def calculate_price(base: float, discount: float = 0.0, tax: float = 0.21) -> float:
+def calculate_price(
+        base: float, discount: float = 0.0, tax: float = 0.21) -> float:
     """Calculate a final price by encapsulating reusable logic."""
     return round(base * (1 - discount) * (1 + tax), 2)
 
 
 def main() -> None:
+    """
+    Call the functions to demonstrate their behavior.
+    """
     print(greet("Lin"))
     print(calculate_price(100.0, discount=0.1))
 
