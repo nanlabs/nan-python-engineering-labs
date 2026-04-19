@@ -106,7 +106,6 @@ addopts = [
     "--cov-report=term-missing:skip-covered",
     "--cov-report=html",
 ]
-asyncio_mode = "auto"
 
 [tool.coverage.run]
 source = ["my_solution"]
