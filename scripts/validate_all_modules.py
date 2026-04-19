@@ -6,7 +6,7 @@ Checks per module (NaN repo):
   S1  Structure — 6 canonical files exist in every topic
   R1  References — references/links.md has ≥3 real https:// URLs, no placeholder
   X1  Examples  — examples/example_basic.py executes without error
-  E1  Exercises — exercises/exercise_01.py has no TODO / no Spanish keywords
+  E1  Exercises — exercise/exercise_01.py has no TODO / no Spanish keywords
   M1  README    — topic README has ≥18 headings
 
 Exit code 0 if all checks pass, 1 if any fail.
@@ -112,20 +112,20 @@ def iter_modules(repo_root: Path, only_module: str | None) -> list[Path]:
 
 
 def detect_topic_dirs(module_dir: Path) -> list[Path]:
-    """Return all topic dirs: direct children with README.md + examples/ OR exercises/."""
+    """Return all topic dirs: direct children with README.md + examples/ OR exercise/."""
     topics: list[Path] = []
     for path in sorted(module_dir.iterdir()):
         if not path.is_dir():
             continue
         if (path / "README.md").exists() and (
-            (path / "examples").exists() or (path / "exercises").exists()
+            (path / "examples").exists() or (path / "exercise").exists()
         ):
             topics.append(path)
         else:
             # Nested structure: look one level deeper (e.g. 07_design_patterns/01_basic_gof/singleton)
             for sub in sorted(path.iterdir()):
                 if sub.is_dir() and (sub / "README.md").exists() and (
-                    (sub / "examples").exists() or (sub / "exercises").exists()
+                    (sub / "examples").exists() or (sub / "exercise").exists()
                 ):
                     topics.append(sub)
     return topics
@@ -228,9 +228,9 @@ TODO_RE = re.compile(r"\bTODO\b", re.IGNORECASE)
 
 
 def check_e1_exercise(topic_dir: Path) -> CheckResult:
-    exercise = topic_dir / "exercises" / "exercise_01.py"
+    exercise = topic_dir / "exercise" / "exercise_01.py"
     if not exercise.exists():
-        return CheckResult(False, ["  exercises/exercise_01.py not found"])
+        return CheckResult(False, ["  exercise/exercise_01.py not found"])
 
     content = exercise.read_text(encoding="utf-8", errors="ignore")
     issues: list[str] = []
