@@ -120,9 +120,8 @@ For each topic:
 
 1. **Read README.md** → Understand definition, application, motivation
 2. **Study examples/** → Run demonstration code
-3. **Attempt exercises/** → Start with basic, progress through levels
-4. **Write in my_solution/** → Your implementation
-5. **Validate with tests** → `pytest tests/`
+3. **Attempt exercise/** → Implement the topic solution in `exercise/exercise_01.py`
+4. **Validate with tests** → Run the topic test file against your exercise
 6. **Reflect** → Complete the "My Personal Analysis" section
 7. **Commit** → Pre-commit hook updates progress automatically
 
@@ -130,14 +129,30 @@ For each topic:
 # View current progress
 python scripts/progress.py
 
-# Run tests for a topic
-pytest 11_modern_tooling_2026/01_uv_intro/tests/
+# Run tests for a single topic (recommended)
+python scripts/run_topic_tests.py 11_modern_tooling_2026/01_uv_introduction
+
+# Run tests for a whole module
+python scripts/run_topic_tests.py 16_modern_security
+
+# Run all topic tests sequentially
+python scripts/run_topic_tests.py
+
+# Direct pytest for one topic only
+python -m pytest -o addopts='' 11_modern_tooling_2026/01_uv_introduction/tests/test_basic.py
 
 # Commit (updates progress automatically)
 git add .
 git commit -m "Completed: uv introduction"
 # → Pre-commit runs Ruff, BasedPyright, progress.py
 ```
+
+### Manual Test Execution Notes
+
+- Use `python scripts/run_topic_tests.py ...` when you want a stable manual runner.
+- The helper executes one `tests/test_basic.py` at a time, which avoids collisions caused by many files sharing the same name.
+- If you call pytest directly, run a single file and override repo addopts with `-o addopts=''`.
+- The generated tests validate `exercise/exercise_01.py`, so failures usually mean the exercise still has TODOs, import errors, or no user-defined API yet.
 
 ---
 

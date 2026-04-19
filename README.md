@@ -113,6 +113,7 @@ cat README.md
 - [GETTING_STARTED.md](GETTING_STARTED.md): installation and setup
 - [STATUS.md](STATUS.md): progress tracking
 - [scripts/progress.py](scripts/progress.py): automatic progress report
+- [scripts/run_topic_tests.py](scripts/run_topic_tests.py): sequential pytest runner for exercise-based topic tests
 - [pyproject.toml](pyproject.toml): environment and tooling configuration
 
 ---
