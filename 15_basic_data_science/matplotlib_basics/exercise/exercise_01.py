@@ -1,32 +1,27 @@
-"""Exercise: Matplotlib Basics.
+"""
+Exercise: Matplotlib Basics
 
-Goal: Build a clean line chart that can be reused in reports.
+Goal: Implement and practice matplotlib_basics
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Return the Figure object so tests can inspect it.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Use a non-interactive backend when experimenting locally.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import matplotlib
-
-matplotlib.use('Agg')
-
-from matplotlib.figure import Figure
-
-
-def build_sales_figure(months: list[str], sales: list[float]) -> Figure:
-    """Return a Figure with a single monthly sales line."""
-    raise NotImplementedError('Implement build_sales_figure in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for matplotlib_basics."""
+    return "matplotlib_basics implementation"
 
 
 def main() -> None:
-    """Use this entry point to prototype your chart design."""
-    print('Copy this file into my_solution/ and build a figure for a monthly sales trend.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

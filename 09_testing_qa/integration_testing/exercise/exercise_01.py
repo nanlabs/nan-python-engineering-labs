@@ -1,13 +1,27 @@
-"""Exercise: Integration Testing.
-
-Goal:
-Create `my_solution/sqlite_user_repository.py`.
-
-Requirements:
-- Create the schema if it does not exist.
-- Insert users by email.
-- Return users sorted by email.
-- Reject duplicate emails with a meaningful exception.
-
-This exercise is intentionally close to a real dependency boundary.
 """
+Exercise: Integration Testing
+
+Goal: Implement and practice integration_testing
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for integration_testing."""
+    return "integration_testing implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

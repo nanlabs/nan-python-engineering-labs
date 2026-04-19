@@ -1,13 +1,27 @@
-"""Exercise: Contract Testing.
-
-Goal:
-Create `my_solution/payment_contract.py`.
-
-Requirements:
-- `validate_payment_response(payload)` ensures required fields exist.
-- Required keys: `payment_id`, `status`, `amount`, `currency`.
-- Return a normalized copy of the payload with lowercase status.
-- Raise `ValueError` when keys are missing.
-
-The baseline tests model a consumer-side contract.
 """
+Exercise: Contract Testing
+
+Goal: Implement and practice contract_testing
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for contract_testing."""
+    return "contract_testing implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

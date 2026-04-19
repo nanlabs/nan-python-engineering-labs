@@ -1,28 +1,27 @@
-"""Exercise: Pandas Operations.
+"""
+Exercise: Pandas Operations
 
-Goal: Join order and customer tables, then compute segment-level metrics.
+Goal: Implement and practice pandas_operations
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Preserve the requested output column names.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Prefer clear Pandas operations over nested loops.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import pandas as pd
-
-
-def summarize_orders(orders_df: pd.DataFrame, customers_df: pd.DataFrame) -> pd.DataFrame:
-    """Return revenue and average order value per customer segment."""
-    raise NotImplementedError('Implement summarize_orders in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for pandas_operations."""
+    return "pandas_operations implementation"
 
 
 def main() -> None:
-    """Use this entry point to prototype your transformation pipeline."""
-    print('Copy this file into my_solution/ and join a small orders/customers dataset.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

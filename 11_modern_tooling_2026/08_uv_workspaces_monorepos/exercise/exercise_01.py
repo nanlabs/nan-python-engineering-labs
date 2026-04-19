@@ -1,28 +1,26 @@
 """
-Exercise: uv Workspaces and Monorepos
+Exercise: 08 Uv Workspaces Monorepos
 
-Objective: Implement and practice 08_uv_workspaces_monorepos
+Goal: Implement and practice 08_uv_workspaces_monorepos
 
 Instructions:
 1. Read the requirements carefully
-2. Implement the functions/classes marked with TODO
-3. Run the tests: pytest tests/
-4. Your solution should go in my_solution/
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement your solution here
-# Follow the specifications in the docstrings
+
+def example_function() -> str:
+    """Example function for 08_uv_workspaces_monorepos."""
+    return "08_uv_workspaces_monorepos implementation"
 
 
 def main() -> None:
-    """
-    Main function to test your implementtion.
-    Add your own test cases.
-    """
-    # TODO: Add test code here
-    pass
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":

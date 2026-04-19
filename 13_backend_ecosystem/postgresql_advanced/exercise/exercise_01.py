@@ -1,20 +1,27 @@
 """
-Exercise: PostgreSQL Advanced
+Exercise: Postgresql Advanced
 
-Objective: Build a practical implementation for postgresql advanced that includes
-input validation, one realistic edge case, and clear runtime output.
+Goal: Implement and practice postgresql_advanced
 
 Instructions:
-1. Read the requirements carefully.
-2. Implement your solution in my_solution/.
-3. Run the tests: pytest tests/
-4. Compare your output with examples/example_basic.py.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE. Copy it to my_solution/ and work there.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-def main():
-    pass
+
+def example_function() -> str:
+    """Example function for postgresql_advanced."""
+    return "postgresql_advanced implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
 
 if __name__ == "__main__":
     main()

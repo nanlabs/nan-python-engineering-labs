@@ -1,28 +1,27 @@
-"""Exercise: Polars Intro.
+"""
+Exercise: Polars Intro
 
-Goal: Summarize shipment metrics by warehouse using Polars expressions.
+Goal: Implement and practice polars_intro
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Keep the output sorted by total items descending.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Use Polars expressions instead of manual loops.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import polars as pl
-
-
-def summarize_shipments(frame: pl.DataFrame) -> pl.DataFrame:
-    """Return total items and average shipping cost per warehouse."""
-    raise NotImplementedError('Implement summarize_shipments in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for polars_intro."""
+    return "polars_intro implementation"
 
 
 def main() -> None:
-    """Use this entry point to prototype a Polars aggregation locally."""
-    print('Copy this file into my_solution/ and summarize shipments per warehouse.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

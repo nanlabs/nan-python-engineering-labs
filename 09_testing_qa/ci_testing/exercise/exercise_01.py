@@ -1,12 +1,27 @@
-"""Exercise: CI Testing.
-
-Goal:
-Create `my_solution/quality_gate.py`.
-
-Requirements:
-- `validate_test_report(report)` requires `passed`, `failed`, and `skipped` keys.
-- It returns `True` only when at least one test passed and zero failed.
-- `should_publish_artifacts(report, coverage)` returns `True` only when the report is valid and coverage is at least 85.
-
-This is the kind of logic a CI pipeline could enforce before deployment.
 """
+Exercise: Ci Testing
+
+Goal: Implement and practice ci_testing
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for ci_testing."""
+    return "ci_testing implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

@@ -1,21 +1,26 @@
 """
 Exercise: Graphql Optional
 
-Instructions:
-1. Read the requirements carefully.
-2. Implement the functions/classes marked with TODO.
-3. Run the tests: pytest tests/
-4. Put your solution in my_solution/.
+Goal: Implement and practice graphql_optional
 
-DO NOT MODIFY THIS FILE. Copy it to my_solution/ and work there.
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement your solution following the topic README.
+
+def example_function() -> str:
+    """Example function for graphql_optional."""
+    return "graphql_optional implementation"
 
 
-def main():
-    """Run a local check of your implementation."""
-    pass
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":

@@ -1,28 +1,26 @@
 """
-Exercise: Ruff as Formatter: Black Replacement
+Exercise: 12 Ruff Formatter Black
 
-Objective: Implement and practice 12_ruff_formatter_black
+Goal: Implement and practice 12_ruff_formatter_black
 
 Instructions:
 1. Read the requirements carefully
-2. Implement the functions/classes marked with TODO
-3. Run the tests: pytest tests/
-4. Your solution should go in my_solution/
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement your solution here
-# Follow the specifications in the docstrings
+
+def example_function() -> str:
+    """Example function for 12_ruff_formatter_black."""
+    return "12_ruff_formatter_black implementation"
 
 
 def main() -> None:
-    """
-    Main function to test your implementtion.
-    Add your own test cases.
-    """
-    # TODO: Add test code here
-    pass
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":

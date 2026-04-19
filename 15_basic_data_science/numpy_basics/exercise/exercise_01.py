@@ -1,34 +1,27 @@
-"""Exercise: NumPy Basics.
+"""
+Exercise: Numpy Basics
 
-Goal: Implement reusable NumPy helpers for normalization and smoothing.
+Goal: Implement and practice numpy_basics
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Implement both functions using vectorized NumPy operations.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Keep edge cases explicit and documented.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import numpy as np
-
-
-def normalize_scores(values: np.ndarray) -> np.ndarray:
-    """Return the z-score normalized version of a one-dimensional array."""
-    raise NotImplementedError('Implement normalize_scores in my_solution/exercise_01.py')
-
-
-def moving_average(values: np.ndarray, window: int) -> np.ndarray:
-    """Return the moving average for the provided window size."""
-    raise NotImplementedError('Implement moving_average in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for numpy_basics."""
+    return "numpy_basics implementation"
 
 
 def main() -> None:
-    """Use this entry point to try local experiments in your own copy."""
-    sample = np.array([10.0, 12.0, 14.0, 16.0])
-    print('Copy this file into my_solution/ and experiment with:', sample.tolist())
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

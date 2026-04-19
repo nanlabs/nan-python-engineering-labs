@@ -1,12 +1,27 @@
-"""Exercise: Mutation Testing.
-
-Goal:
-Create `my_solution/pricing.py`.
-
-Requirements:
-- `apply_tax(amount, tax_rate)` returns a rounded monetary result.
-- `apply_discount(amount, discount_rate)` returns a rounded monetary result.
-- `final_price(amount, tax_rate, discount_rate)` applies discount first and then tax.
-
-If a mutant changed `+` to `-` or swapped the order of operations, your tests should fail.
 """
+Exercise: Mutation Testing
+
+Goal: Implement and practice mutation_testing
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for mutation_testing."""
+    return "mutation_testing implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

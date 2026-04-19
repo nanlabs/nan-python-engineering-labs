@@ -1,12 +1,27 @@
-"""Exercise: Coverage Analysis.
-
-Goal:
-Create `my_solution/discount_rules.py`.
-
-Requirements:
-- `loyalty_discount(subtotal, tier)` returns the discounted subtotal.
-- `shipping_cost(subtotal, expedited)` returns `0`, `5`, or `12` depending on the rules.
-- `final_amount(subtotal, tier, expedited)` composes both pieces.
-
-The test file focuses on representative scenarios. Extend it if your own coverage report reveals missing branches.
 """
+Exercise: Coverage Analysis
+
+Goal: Implement and practice coverage_analysis
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for coverage_analysis."""
+    return "coverage_analysis implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

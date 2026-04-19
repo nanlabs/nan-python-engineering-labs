@@ -1,12 +1,27 @@
-"""Exercise: Test Organization.
-
-Goal:
-Create `my_solution/user_service.py`.
-
-Requirements:
-- `create_user(email)` stores and returns a user object.
-- `deactivate_user(email)` marks a user as inactive and raises `LookupError` when missing.
-- `active_emails()` returns active emails sorted alphabetically.
-
-Think about how you would split the tests if this topic evolved into a larger module.
 """
+Exercise: Test Organization
+
+Goal: Implement and practice test_organization
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for test_organization."""
+    return "test_organization implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

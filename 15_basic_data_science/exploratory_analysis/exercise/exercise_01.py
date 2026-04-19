@@ -1,28 +1,27 @@
-"""Exercise: Exploratory Analysis.
+"""
+Exercise: Exploratory Analysis
 
-Goal: Produce a compact EDA report with key numeric and categorical signals.
+Goal: Implement and practice exploratory_analysis
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Return plain Python objects where requested.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Keep the report small but interpretable.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import pandas as pd
-
-
-def compute_eda_report(df: pd.DataFrame) -> dict[str, object]:
-    """Return a compact exploratory analysis report for the dataset."""
-    raise NotImplementedError('Implement compute_eda_report in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for exploratory_analysis."""
+    return "exploratory_analysis implementation"
 
 
 def main() -> None:
-    """Use this entry point to inspect a small report locally."""
-    print('Copy this file into my_solution/ and produce a compact EDA report.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

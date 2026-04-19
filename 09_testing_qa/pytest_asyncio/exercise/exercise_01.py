@@ -1,12 +1,27 @@
-"""Exercise: pytest-asyncio.
-
-Goal:
-Create `my_solution/async_cache.py`.
-
-Requirements:
-- Create `AsyncCache` with an internal dictionary.
-- `get_or_set(key, loader)` must await the loader once per missing key and cache the result.
-- Return the cached value for repeated requests.
-
-The provided tests use `pytest.mark.asyncio` to verify behavior.
 """
+Exercise: Pytest Asyncio
+
+Goal: Implement and practice pytest_asyncio
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for pytest_asyncio."""
+    return "pytest_asyncio implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

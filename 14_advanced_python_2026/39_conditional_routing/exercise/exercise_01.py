@@ -1,22 +1,26 @@
 """
 Exercise: 39 Conditional Routing
 
-Goal: Practice and implement the core concepts of 39_conditional_routing.
+Goal: Implement and practice 39_conditional_routing
 
 Instructions:
-1. Read the requirements carefully.
-2. Implement the requested logic in your own working file under my_solution/.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Keep this file as the original exercise statement.
+4. Your solution should live under my_solution/
 
 DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
 
+def example_function() -> str:
+    """Example function for 39_conditional_routing."""
+    return "39_conditional_routing implementation"
+
+
 def main() -> None:
-    """Entry point for trying your own implementation ideas."""
-    # Add your trial code here after copying this file to my_solution/.
-    pass
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":

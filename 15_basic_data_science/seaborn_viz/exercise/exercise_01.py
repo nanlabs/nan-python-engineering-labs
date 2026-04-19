@@ -1,33 +1,27 @@
-"""Exercise: Seaborn Visualization.
+"""
+Exercise: Seaborn Viz
 
-Goal: Build a Seaborn bar chart that compares average revenue by segment.
+Goal: Implement and practice seaborn_viz
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Return the Figure object so tests can inspect the result.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Keep labels and chart titles explicit.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import matplotlib
-
-matplotlib.use('Agg')
-
-from matplotlib.figure import Figure
-import pandas as pd
-
-
-def build_segment_chart(df: pd.DataFrame) -> Figure:
-    """Return a Figure that compares average revenue by segment."""
-    raise NotImplementedError('Implement build_segment_chart in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for seaborn_viz."""
+    return "seaborn_viz implementation"
 
 
 def main() -> None:
-    """Use this entry point to experiment with your chart design."""
-    print('Copy this file into my_solution/ and build a Seaborn bar chart.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

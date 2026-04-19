@@ -5,21 +5,23 @@ Goal: Implement and practice iterator
 
 Instructions:
 1. Read the requirements carefully
-2. Implement the functions/classes marked with TODO
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Keep your solution in my_solution/
+4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE. Copy it to my_solution/ and work there.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement your solution here
+
+def example_function() -> str:
+    """Example function for iterator."""
+    return "iterator implementation"
 
 
 def main() -> None:
-    """Run quick checks for your own solution."""
-    # TODO: Add test code here
-    pass
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

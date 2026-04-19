@@ -1,31 +1,27 @@
-"""Exercise: Jupyter Notebooks (Optional).
+"""
+Exercise: Jupyter Notebooks Optional
 
-Goal: Build a notebook outline that separates markdown narrative from executable code cells.
+Goal: Implement and practice jupyter_notebooks_optional
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Keep the output compatible with the notebook JSON schema.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Favor clarity over adding many optional metadata fields.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-
-def build_notebook_outline(title: str, sections: list[str]) -> dict[str, object]:
-    """Return a minimal notebook dictionary with markdown and code cells."""
-    raise NotImplementedError('Implement build_notebook_outline in my_solution/exercise_01.py')
-
-
-def count_code_cells(notebook: dict[str, object]) -> int:
-    """Return the number of code cells in the notebook structure."""
-    raise NotImplementedError('Implement count_code_cells in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for jupyter_notebooks_optional."""
+    return "jupyter_notebooks_optional implementation"
 
 
 def main() -> None:
-    """Use this entry point to inspect the expected notebook shape."""
-    print('Copy this file into my_solution/ and build a small notebook outline.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

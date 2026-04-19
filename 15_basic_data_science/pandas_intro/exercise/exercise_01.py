@@ -1,33 +1,27 @@
-"""Exercise: Pandas Intro.
+"""
+Exercise: Pandas Intro
 
-Goal: Build a tidy sales DataFrame and aggregate monthly revenue.
+Goal: Implement and practice pandas_intro
 
 Instructions:
-1. Copy this file into my_solution/ before editing it.
-2. Keep the implementation readable and column-oriented.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
 3. Run tests with: pytest tests/
-4. Return Pandas objects instead of raw dicts where requested.
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-import pandas as pd
-
-
-def build_sales_dataframe(records: list[dict[str, object]]) -> pd.DataFrame:
-    """Create a DataFrame with a derived revenue column."""
-    raise NotImplementedError('Implement build_sales_dataframe in my_solution/exercise_01.py')
-
-
-def monthly_revenue(df: pd.DataFrame) -> pd.Series:
-    """Return total revenue indexed by month."""
-    raise NotImplementedError('Implement monthly_revenue in my_solution/exercise_01.py')
+def example_function() -> str:
+    """Example function for pandas_intro."""
+    return "pandas_intro implementation"
 
 
 def main() -> None:
-    """Use this entry point to explore the expected inputs."""
-    print('Copy this file into my_solution/ and experiment with a few sales records.')
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,13 +1,27 @@
-"""Exercise: BDD with behave (optional).
-
-Goal:
-Create `my_solution/shopping_cart.py`.
-
-Requirements:
-- `add_item(name, price)` appends an item.
-- `total()` returns the rounded total.
-- `clear()` removes all items.
-
-Optional extension:
-Write a short Gherkin scenario describing the cart behavior after your Python implementation works.
 """
+Exercise: Bdd Behave Optional
+
+Goal: Implement and practice bdd_behave_optional
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
+"""
+
+
+def example_function() -> str:
+    """Example function for bdd_behave_optional."""
+    return "bdd_behave_optional implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
+
+if __name__ == "__main__":
+    main()

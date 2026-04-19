@@ -1,28 +1,26 @@
 """
 Exercise: Benchmarking Timeit
 
-Objective: Implement and practice benchmarking_timeit
+Goal: Implement and practice benchmarking_timeit
 
 Instructions:
 1. Read the requirements carefully
-2. Implement the functions/classes marked with TODO
-3. Run tests: pytest tests/
-4. Your solution must go in my_solution/
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE. Copy to my_solution/ and work there.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement your solution here
-# Follow the specifications in the docstrings
+
+def example_function() -> str:
+    """Example function for benchmarking_timeit."""
+    return "benchmarking_timeit implementation"
 
 
-def main():
-    """
-    Main function to test your implementation.
-    Add your own test cases.
-    """
-    # TODO: Add test code here
-    pass
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":

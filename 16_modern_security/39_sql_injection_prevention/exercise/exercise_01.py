@@ -1,46 +1,26 @@
-"""Exercise 01 for SQL Injection Prevention.
+"""
+Exercise: 39 Sql Injection Prevention
 
-Goal:
-- Implement a small validation pipeline for security-relevant input.
-- Produce structured output that can be inspected by tests.
+Goal: Implement and practice 39_sql_injection_prevention
+
+Instructions:
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
+
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-from __future__ import annotations
 
-from dataclasses import dataclass
-
-
-@dataclass
-class ValidationResult:
-    """Represents the result of input validation."""
-
-    accepted: bool
-    reason: str
-
-
-def validate_input(candidate: str) -> ValidationResult:
-    """Validate a candidate string using simple defensive rules.
-
-    Rules:
-    - Candidate must not be empty after trimming.
-    - Candidate length must be between 3 and 80 characters.
-    - Candidate must contain at least one alphabetic character.
-    """
-    normalized = candidate.strip()
-    if not normalized:
-        return ValidationResult(False, "Input is empty")
-    if not 3 <= len(normalized) <= 80:
-        return ValidationResult(False, "Input length is outside allowed range")
-    if not any(ch.isalpha() for ch in normalized):
-        return ValidationResult(False, "Input must include alphabetic characters")
-    return ValidationResult(True, "Input accepted")
+def example_function() -> str:
+    """Example function for 39_sql_injection_prevention."""
+    return "39_sql_injection_prevention implementation"
 
 
 def main() -> None:
-    samples = ["", "42", "valid-sample"]
-    for sample in samples:
-        result = validate_input(sample)
-        print(f"sample={sample!r} accepted={result.accepted} reason={result.reason}")
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":

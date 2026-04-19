@@ -1,34 +1,27 @@
 """
 Exercise: Inversion Control
 
-Objective: Implement and practice inversion_control
+Goal: Implement and practice inversion_control
 
 Instructions:
 1. Read the requirements carefully
-2. Implement the functions/classes marked with TODO
-3. Run the tests:
-   pytest tests/test_basic.py -v
-4. Verify all tests pass
-5. Add any additional test cases in my_solution/
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
 
-Requirements:
-- Follow the patterns from examples/example_basic.py
-- Use type hints in your implementation
-- Add docstrings to functions and classes
-- Use descriptive variable names
-
-Hints:
-- Start with the simplest implementation
-- Test incrementally as you code
-- Review the example before starting
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement the inversion_control pattern
-# Use the concepts from example_basic.py as a reference
 
-def main():
-    """Main implementation goes here."""
-    pass
+def example_function() -> str:
+    """Example function for inversion_control."""
+    return "inversion_control implementation"
+
+
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
+
 
 if __name__ == "__main__":
     main()

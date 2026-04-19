@@ -1,20 +1,26 @@
 """
-Exercise: dependency injection
+Exercise: Dependency Injection
+
+Goal: Implement and practice dependency_injection
 
 Instructions:
-1. Read the requirements carefully.
-2. Implement the functions/classes marked with TODO.
-3. Run the tests: pytest tests/
-4. Put your solution in my_solution/.
+1. Read the requirements carefully
+2. Implement the requested functions/classes in your copy
+3. Run tests with: pytest tests/
+4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE. Copy it to my_solution/ and work there.
+DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
-# TODO: Implement your solution following the topic README.
+
+def example_function() -> str:
+    """Example function for dependency_injection."""
+    return "dependency_injection implementation"
 
 
-def main():
-    pass
+def main() -> None:
+    """Entry point to try your implementation."""
+    print(example_function())
 
 
 if __name__ == "__main__":
