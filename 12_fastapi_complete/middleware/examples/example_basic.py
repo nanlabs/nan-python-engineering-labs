@@ -17,18 +17,13 @@ Run:
     Visit http://localhost:8000/docs
 """
 
+import logging
 import time
 import uuid
-import json
-import logging
-from datetime import datetime
-from typing import Callable
+from collections.abc import Callable
 
 from fastapi import FastAPI, Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.types import ASGIApp
-from pydantic import BaseModel
-
 
 # =============================================================================
 # LOGGING SETUP

@@ -13,10 +13,11 @@ def even_squares(values):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     pipeline = even_squares(source(20))
     first_five = [next(pipeline) for _ in range(5)]
     print(f"First lazy results: {first_five}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

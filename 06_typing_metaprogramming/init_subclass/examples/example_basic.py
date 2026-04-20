@@ -15,6 +15,7 @@ class ChildB(Base):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     pairs = [(cls.__name__, cls.role) for cls in Base.registry]
     print(pairs)
 

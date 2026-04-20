@@ -9,11 +9,12 @@ def schedule_next_review(start: datetime, days: int) -> datetime:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     start = datetime(2026, 4, 13, 10, 30)
     next_review = schedule_next_review(start, 7)
     print(start.isoformat())
     print(next_review.isoformat())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,8 +1,7 @@
 """Pyright/BasedPyright: strict type narrowing example."""
-from typing import Union
 
 
-def process(value: Union[int, str, None]) -> str:
+def process(value: int | str | None) -> str:
     if value is None:
         return "empty"
     if isinstance(value, int):
@@ -10,11 +9,12 @@ def process(value: Union[int, str, None]) -> str:
     return f"string: {value.upper()}"
 
 
-def batch_process(items: list[Union[int, str, None]]) -> list[str]:
+def batch_process(items: list[int | str | None]) -> list[str]:
     return [process(item) for item in items]
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     results = batch_process([1, "hello", None, 42, "world"])
     for r in results:
         print(r)

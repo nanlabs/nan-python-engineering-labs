@@ -1,6 +1,6 @@
 # Locks and Semaphores
 
-Estimated time: 2-3 hours**
+Estimated time: 2-3 hours\*\*
 
 ## 1. Definition
 
@@ -20,8 +20,8 @@ In practice, this topic gives you a clear way to model behavior, reason about tr
 ### Use Cases
 
 1. **Application development**: apply locks semaphores patterns in backend services and internal tools.
-2. **Library design**: implement reusable building blocks with predictable behavior.
-3. **Automation workflows**: make scripts and jobs easier to evolve and verify over time.
+1. **Library design**: implement reusable building blocks with predictable behavior.
+1. **Automation workflows**: make scripts and jobs easier to evolve and verify over time.
 
 ### Code Example
 

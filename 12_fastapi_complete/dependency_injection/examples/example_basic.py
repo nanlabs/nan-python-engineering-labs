@@ -17,12 +17,11 @@ Run:
     Visit http://localhost:8000/docs
 """
 
-from fastapi import FastAPI, Depends, HTTPException, Header, Query, status
-from pydantic import BaseModel
-from typing import Optional, List, Annotated
-from dataclasses import dataclass, field
-from contextlib import asynccontextmanager
+from dataclasses import dataclass
+from typing import Annotated
 
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, status
+from pydantic import BaseModel
 
 # =============================================================================
 # MODELS
@@ -56,7 +55,7 @@ FAKE_TOKENS = {
     "token-bob": User(id=2, username="bob", role="viewer"),
 }
 
-ITEMS_DB: List[Item] = [
+ITEMS_DB: list[Item] = [
     Item(id=i, name=f"Item {i}", owner_id=(i % 2) + 1, price=round(i * 9.99, 2))
     for i in range(1, 11)
 ]
@@ -138,11 +137,11 @@ class ItemFilter:
     FastAPI instantiates this per request.
     """
 
-    min_price: Optional[float] = Query(None, ge=0, description="Minimum price")
-    max_price: Optional[float] = Query(None, ge=0, description="Maximum price")
-    owner_id: Optional[int] = Query(None, ge=1, description="Filter by owner")
+    min_price: float | None = Query(None, ge=0, description="Minimum price")
+    max_price: float | None = Query(None, ge=0, description="Maximum price")
+    owner_id: int | None = Query(None, ge=1, description="Filter by owner")
 
-    def apply(self, items: List[Item]) -> List[Item]:
+    def apply(self, items: list[Item]) -> list[Item]:
         result = items
         if self.min_price is not None:
             result = [i for i in result if i.price >= self.min_price]
@@ -161,7 +160,7 @@ class FakeDbSession:
 
     def __init__(self):
         self.active = True
-        self._log: List[str] = []
+        self._log: list[str] = []
 
     def query(self, table: str) -> str:
         if not self.active:
@@ -200,7 +199,7 @@ async def root():
     return {"message": "Dependency Injection Demo", "docs": "/docs"}
 
 
-@app.get("/items", response_model=List[Item])
+@app.get("/items", response_model=list[Item])
 async def list_items(
     pagination: PaginationParams = Depends(get_pagination),
     item_filter: ItemFilter = Depends(ItemFilter),
@@ -214,7 +213,7 @@ async def list_items(
     return filtered[pagination.skip : pagination.skip + pagination.limit]
 
 
-@app.get("/items/mine", response_model=List[Item])
+@app.get("/items/mine", response_model=list[Item])
 async def list_my_items(
     current_user: User = Depends(get_current_user),
     pagination: PaginationParams = Depends(get_pagination),

@@ -16,6 +16,7 @@ def entry_point(module: str, func: str) -> dict[str, str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(script_header(["httpx>=0.27", "rich>=13"]))
     print()
     ep = entry_point("report", "main")

@@ -40,7 +40,9 @@ def _public_user_symbols(module) -> list[str]:
     for name, obj in vars(module).items():
         if name.startswith("_") or name == "main":
             continue
-        if (inspect.isfunction(obj) or inspect.isclass(obj)) and getattr(obj, "__module__", "") == module.__name__:
+        if (inspect.isfunction(obj) or inspect.isclass(obj)) and getattr(
+            obj, "__module__", ""
+        ) == module.__name__:
             symbols.append(name)
     return symbols
 

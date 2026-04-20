@@ -21,10 +21,9 @@ Run:
 import time
 import uuid
 from datetime import datetime
-from typing import List, Optional
-from fastapi import FastAPI, BackgroundTasks, HTTPException, Depends
-from pydantic import BaseModel, EmailStr
 
+from fastapi import BackgroundTasks, FastAPI, HTTPException
+from pydantic import BaseModel
 
 # =============================================================================
 # MODELS
@@ -39,7 +38,7 @@ class EmailRequest(BaseModel):
 
 class OrderRequest(BaseModel):
     customer_email: str
-    items: List[str]
+    items: list[str]
     total: float
 
 
@@ -48,8 +47,8 @@ class TaskLog(BaseModel):
     task_type: str
     status: str
     started_at: datetime
-    finished_at: Optional[datetime] = None
-    result: Optional[str] = None
+    finished_at: datetime | None = None
+    result: str | None = None
 
 
 # =============================================================================
@@ -235,7 +234,7 @@ async def get_task_status(task_id: str):
     return task_registry[task_id]
 
 
-@app.get("/tasks", response_model=List[TaskLog])
+@app.get("/tasks", response_model=list[TaskLog])
 async def list_tasks():
     """List all tracked background tasks."""
     return list(task_registry.values())

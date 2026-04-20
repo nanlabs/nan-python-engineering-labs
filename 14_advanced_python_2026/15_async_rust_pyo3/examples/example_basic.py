@@ -5,10 +5,12 @@ Demonstrates async/await patterns.
 
 import asyncio
 
+
 async def async_fetch_data(delay: float) -> str:
     """Simulate async data fetch."""
     await asyncio.sleep(delay)
     return "Data fetched"
+
 
 def run_async_function():
     """Helper to run async function."""
@@ -19,6 +21,7 @@ def run_async_function():
         return result
     finally:
         loop.close()
+
 
 if __name__ == "__main__":
     print("Async result:", run_async_function())

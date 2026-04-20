@@ -3,11 +3,11 @@
 
 def tool_commands() -> list[tuple[str, str]]:
     return [
-        ("uv tool install ruff",      "global install of ruff"),
-        ("uv tool install mypy",      "global install of mypy"),
-        ("uv tool run ruff check .",  "run ruff without installing"),
-        ("uv tool list",              "show installed global tools"),
-        ("uv tool uninstall ruff",    "remove a global tool"),
+        ("uv tool install ruff", "global install of ruff"),
+        ("uv tool install mypy", "global install of mypy"),
+        ("uv tool run ruff check .", "run ruff without installing"),
+        ("uv tool list", "show installed global tools"),
+        ("uv tool uninstall ruff", "remove a global tool"),
     ]
 
 
@@ -16,6 +16,7 @@ def isolation_benefit() -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for cmd, desc in tool_commands():
         print(f"  $ {cmd}  # {desc}")
     print()

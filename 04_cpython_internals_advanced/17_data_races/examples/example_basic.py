@@ -18,6 +18,7 @@ def run_without_lock() -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(f"Final value (race-prone): {run_without_lock()}")
 
 

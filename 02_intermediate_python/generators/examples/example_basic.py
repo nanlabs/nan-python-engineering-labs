@@ -10,8 +10,9 @@ def rolling_average(values: list[int]):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(list(rolling_average([10, 20, 15, 25])))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -3,7 +3,7 @@
 ## Official Documentation
 
 - [PyO3 — Parallelism and the GIL](https://pyo3.rs/latest/parallelism.html)
-- [PyO3 — Python<'py> Token (GIL Marker)](https://docs.rs/pyo3/latest/pyo3/struct.Python.html)
+- [PyO3 — Python\<'py> Token (GIL Marker)](https://docs.rs/pyo3/latest/pyo3/struct.Python.html)
 
 ## Articles and Guides
 

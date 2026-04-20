@@ -18,8 +18,8 @@ Matplotlib Basics covers core plotting with explicit control over figures, axes,
 ### Use Cases
 
 1. Plotting monthly sales or traffic trends.
-2. Annotating outliers or milestones in a time series.
-3. Exporting charts for automated reporting.
+1. Annotating outliers or milestones in a time series.
+1. Exporting charts for automated reporting.
 
 ### Code Example
 

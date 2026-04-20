@@ -1,6 +1,5 @@
 import threading
 
-
 storage = threading.local()
 
 
@@ -10,6 +9,7 @@ def set_value(value: str) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(set_value("main-thread"))
 
 

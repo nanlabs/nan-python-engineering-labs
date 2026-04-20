@@ -1,13 +1,17 @@
 """Message queue example: producer and consumer coordinated by Queue."""
+
 from __future__ import annotations
+
 import queue
 import threading
 from dataclasses import dataclass
+
 
 @dataclass
 class Event:
     event_type: str
     payload: str
+
 
 def consumer(event_queue: queue.Queue[Event | None]) -> None:
     while True:
@@ -20,7 +24,9 @@ def consumer(event_queue: queue.Queue[Event | None]) -> None:
         finally:
             event_queue.task_done()
 
+
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     event_queue: queue.Queue[Event | None] = queue.Queue()
     worker = threading.Thread(target=consumer, args=(event_queue,), daemon=True)
     worker.start()
@@ -34,6 +40,7 @@ def main() -> None:
     event_queue.join()
     worker.join(timeout=1)
     print("All events processed")
+
 
 if __name__ == "__main__":
     main()

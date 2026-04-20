@@ -14,10 +14,11 @@ def integrate_trapezoid(steps: int) -> float:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     result = integrate_trapezoid(200000)
     print(f"Integral approximation of x^2 in [0,1]: {result:.8f}")
-    print('This loop-oriented function can benefit from numba.njit.')
+    print("This loop-oriented function can benefit from numba.njit.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

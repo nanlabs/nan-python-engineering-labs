@@ -1,5 +1,5 @@
-from queue import Queue
 import threading
+from queue import Queue
 
 
 class ActiveObject:
@@ -19,12 +19,13 @@ class ActiveObject:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     out: list[str] = []
     ao = ActiveObject()
-    ao.submit(lambda: out.append('done'))
+    ao.submit(lambda: out.append("done"))
     ao.queue.join()
     print(out)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

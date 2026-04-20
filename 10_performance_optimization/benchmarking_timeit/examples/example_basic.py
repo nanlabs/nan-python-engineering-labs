@@ -15,12 +15,13 @@ def with_loop() -> list[int]:
 
 
 def main() -> None:
-    comp = timeit.timeit('with_comprehension()', globals=globals(), number=5000)
-    loop = timeit.timeit('with_loop()', globals=globals(), number=5000)
+    """Entry point to demonstrate the implementation."""
+    comp = timeit.timeit("with_comprehension()", globals=globals(), number=5000)
+    loop = timeit.timeit("with_loop()", globals=globals(), number=5000)
 
     print(f"Comprehension: {comp:.4f}s")
     print(f"Loop:          {loop:.4f}s")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

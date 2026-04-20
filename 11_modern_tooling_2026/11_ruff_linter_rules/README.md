@@ -18,8 +18,8 @@ Ruff supports hundreds of rules organized by category (E, W, F, I, S, B, ANN, C9
 ### Use Cases
 
 1. Automating repetitive developer tasks in Python projects
-2. Enforcing code quality and consistency across teams
-3. Speeding up CI/CD pipelines with faster tooling
+1. Enforcing code quality and consistency across teams
+1. Speeding up CI/CD pipelines with faster tooling
 
 ### Code Example
 

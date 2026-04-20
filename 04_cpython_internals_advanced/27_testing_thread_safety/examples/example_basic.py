@@ -20,6 +20,7 @@ def thread_safe_increment(iterations: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(thread_safe_increment(1000))
 
 

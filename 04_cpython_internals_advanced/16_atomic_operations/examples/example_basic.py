@@ -16,6 +16,7 @@ class Counter:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     counter = Counter()
     for _ in range(1000):
         counter.increment()

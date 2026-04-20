@@ -8,10 +8,11 @@ class UserEntity:
 
 
 def main() -> None:
-    user = UserEntity(1, 'a@example.com')
-    user.change_email('b@example.com')
+    """Entry point to demonstrate the implementation."""
+    user = UserEntity(1, "a@example.com")
+    user.change_email("b@example.com")
     print(user.user_id, user.email)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -26,6 +26,7 @@ pydantic = ">=2"
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     parsed = parse_pyproject_snippet(SAMPLE)
     for section, lines in parsed.items():
         print(f"{section}")

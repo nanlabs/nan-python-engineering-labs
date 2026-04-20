@@ -21,6 +21,7 @@ async def build_value() -> str:
 
 
 async def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cache = AsyncCache()
     print("pytest-asyncio example")
     first = await cache.get_or_set("answer", build_value)

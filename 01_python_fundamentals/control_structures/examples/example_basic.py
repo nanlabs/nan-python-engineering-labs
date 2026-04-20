@@ -23,6 +23,7 @@ def average_valid_scores(scores: list[int | None]) -> float:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(f"18C -> {classify_temperature(18)}")
     print(f"Valid average: {average_valid_scores([10, None, 8, 9])}")
 

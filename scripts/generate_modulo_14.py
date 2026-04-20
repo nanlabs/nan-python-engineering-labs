@@ -58,20 +58,25 @@ TEMAS_MODULO_14 = {
     ],
     "devcontainers": [
         # Ya están en ai_development, solo referencia
-    ]
+    ],
 }
+
 
 def create_topic(base_path: Path, topic_name: str) -> None:
     """Crea estructura de un tema."""
     topic_path = base_path / topic_name
     topic_path.mkdir(parents=True, exist_ok=True)
-    
+
     for folder in ["examples", "exercise", "tests", "references"]:
         (topic_path / folder).mkdir(exist_ok=True)
-    
+
     # README básico
-    display_name = topic_name[3:].replace('_', ' ').title() if topic_name[0].isdigit() else topic_name.replace('_', ' ').title()
-    
+    display_name = (
+        topic_name[3:].replace("_", " ").title()
+        if topic_name[0].isdigit()
+        else topic_name.replace("_", " ").title()
+    )
+
     readme = f"""# {display_name}
 
 ⏱️ **Tiempo estimado: 2-3 horas**
@@ -83,9 +88,9 @@ def create_topic(base_path: Path, topic_name: str) -> None:
 ## 2. 💡 Aplicación Práctica
 
 ### Casos de Uso
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ### Código Ejemplo
 
@@ -123,9 +128,9 @@ def create_topic(base_path: Path, topic_name: str) -> None:
 
 > ✍️ Escribe aquí tu reflexión...
 """
-    
+
     (topic_path / "README.md").write_text(readme)
-    
+
     # references/links.md
     links = f"""# Referencias: {display_name}
 
@@ -139,17 +144,18 @@ def create_topic(base_path: Path, topic_name: str) -> None:
 ## Videos
 - *[Por añadir]*
 """
-    
+
     (topic_path / "references" / "links.md").write_text(links)
+
 
 def main():
     """Genera módulo 14."""
     base_path = Path(__file__).parent.parent / "14_python_avanzado_2026"
     base_path.mkdir(parents=True, exist_ok=True)
-    
+
     print("🚀 Generando Módulo 14: Python Avanzado 2026...")
     print()
-    
+
     # README del módulo
     readme_module = """# Módulo 14: Python Avanzado 2026 🚀
 
@@ -186,9 +192,9 @@ LangChain, LangGraph, RAG, agentes autónomos.
 - [LangChain Documentation](https://python.langchain.com/)
 - [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
 """
-    
+
     (base_path / "README.md").write_text(readme_module)
-    
+
     # Crear todos los temas
     count = 0
     for category, topics in TEMAS_MODULO_14.items():
@@ -200,9 +206,10 @@ LangChain, LangGraph, RAG, agentes autónomos.
             count += 1
             if count % 10 == 0:
                 print(f"  ✓ {count} temas creados...")
-    
+
     print()
     print(f"✅ Módulo 14 generado: {count} temas")
+
 
 if __name__ == "__main__":
     main()

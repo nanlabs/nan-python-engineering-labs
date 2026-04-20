@@ -1,18 +1,20 @@
 """Advanced pytest: fixture factory and parametrize demo."""
-from typing import Callable
+
+from collections.abc import Callable
 
 
 def make_adder(base: int) -> Callable[[int], int]:
     def adder(x: int) -> int:
         return base + x
+
     return adder
 
 
 def parametrize_cases() -> list[tuple[int, int, int]]:
     return [
-        (0,  5,  5),
-        (10, 3,  13),
-        (-1, 1,  0),
+        (0, 5, 5),
+        (10, 3, 13),
+        (-1, 1, 0),
         (100, 0, 100),
     ]
 
@@ -24,6 +26,7 @@ def run_parametrized_test(base: int, x: int, expected: int) -> bool:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cases = parametrize_cases()
     passed = [c for c in cases if run_parametrized_test(*c)]
     print(f"Passed {len(passed)}/{len(cases)} parametrized cases")

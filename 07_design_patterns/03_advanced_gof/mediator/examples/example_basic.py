@@ -3,7 +3,7 @@ class ChatMediator:
         self.logs: list[str] = []
 
     def send(self, sender: str, msg: str) -> None:
-        self.logs.append(f'{sender}:{msg}')
+        self.logs.append(f"{sender}:{msg}")
 
 
 class User:
@@ -16,10 +16,11 @@ class User:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     med = ChatMediator()
-    User('a', med).say('hello')
+    User("a", med).say("hello")
     print(med.logs)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

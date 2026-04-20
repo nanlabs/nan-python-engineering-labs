@@ -15,21 +15,21 @@ Master Python testing with pytest and the surrounding quality ecosystem. This mo
 ## Content (16 Topics)
 
 1. [Pytest Basics](pytest_basics/)
-2. [Fixtures](fixtures/)
-3. [Parametrize](parametrize/)
-4. [Mocking with unittest.mock](mocking_unittest/)
-5. [pytest-mock](pytest_mock/)
-6. [Coverage Analysis](coverage_analysis/)
-7. [Hypothesis Introduction](hypothesis_intro/)
-8. [Property-Based Testing](property_based_testing/)
-9. [Mutation Testing](mutation_testing/)
-10. [pytest-asyncio](pytest_asyncio/)
-11. [Integration Testing](integration_testing/)
-12. [Contract Testing](contract_testing/)
-13. [TDD Basics](tdd_basics/)
-14. [BDD with behave (optional)](bdd_behave_optional/)
-15. [Test Organization](test_organization/)
-16. [CI Testing](ci_testing/)
+1. [Fixtures](fixtures/)
+1. [Parametrize](parametrize/)
+1. [Mocking with unittest.mock](mocking_unittest/)
+1. [pytest-mock](pytest_mock/)
+1. [Coverage Analysis](coverage_analysis/)
+1. [Hypothesis Introduction](hypothesis_intro/)
+1. [Property-Based Testing](property_based_testing/)
+1. [Mutation Testing](mutation_testing/)
+1. [pytest-asyncio](pytest_asyncio/)
+1. [Integration Testing](integration_testing/)
+1. [Contract Testing](contract_testing/)
+1. [TDD Basics](tdd_basics/)
+1. [BDD with behave (optional)](bdd_behave_optional/)
+1. [Test Organization](test_organization/)
+1. [CI Testing](ci_testing/)
 
 ## Estimated Total Time
 
@@ -38,4 +38,3 @@ Master Python testing with pytest and the surrounding quality ecosystem. This mo
 ## Recommended Order
 
 Follow the numbered list to move from the testing basics to more specialized validation strategies.
-

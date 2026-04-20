@@ -21,15 +21,12 @@ Test upload with curl:
          -F "file=@/path/to/yourfile.jpg"
 """
 
-import os
 import hashlib
 import mimetypes
 from pathlib import Path
-from typing import List
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, status
+from fastapi import FastAPI, File, HTTPException, UploadFile, status
 from pydantic import BaseModel
-
 
 # =============================================================================
 # CONFIG
@@ -65,8 +62,8 @@ class UploadSummary(BaseModel):
 
     uploaded: int
     failed: int
-    files: List[FileMetadata]
-    errors: List[str]
+    files: list[FileMetadata]
+    errors: list[str]
 
 
 # =============================================================================
@@ -167,7 +164,7 @@ async def upload_document(file: UploadFile = File(...)):
 
 
 @app.post("/upload/multiple", response_model=UploadSummary, status_code=201)
-async def upload_multiple(files: List[UploadFile] = File(...)):
+async def upload_multiple(files: list[UploadFile] = File(...)):
     """
     Upload up to 10 files at once (images or documents).
 
@@ -178,8 +175,8 @@ async def upload_multiple(files: List[UploadFile] = File(...)):
         raise HTTPException(status_code=400, detail="Maximum 10 files per request")
 
     allowed = ALLOWED_IMAGE_TYPES | ALLOWED_DOCUMENT_TYPES
-    uploaded: List[FileMetadata] = []
-    errors: List[str] = []
+    uploaded: list[FileMetadata] = []
+    errors: list[str] = []
 
     for f in files:
         try:

@@ -18,8 +18,8 @@ Ruff benchmarks show 10-100x speedup vs Flake8/pylint on large codebases, enabli
 ### Use Cases
 
 1. Automating repetitive developer tasks in Python projects
-2. Enforcing code quality and consistency across teams
-3. Speeding up CI/CD pipelines with faster tooling
+1. Enforcing code quality and consistency across teams
+1. Speeding up CI/CD pipelines with faster tooling
 
 ### Code Example
 

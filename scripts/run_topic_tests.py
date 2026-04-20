@@ -13,7 +13,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -46,22 +45,17 @@ def run_test_file(test_file: Path, verbose: bool) -> int:
 
     cmd.extend(["-o", "addopts=", str(test_file)])
 
-    return subprocess.run(cmd, cwd=REPO_ROOT).returncode
+    return subprocess.run(cmd, cwd=REPO_ROOT).returncode  # noqa: S603
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description=(
-            "Run topic tests one file at a time to avoid pytest collisions."
-        ),
+        description=("Run topic tests one file at a time to avoid pytest collisions."),
     )
     parser.add_argument(
         "targets",
         nargs="*",
-        help=(
-            "Optional topic/module paths or specific "
-            "tests/test_basic.py files."
-        ),
+        help=("Optional topic/module paths or specific tests/test_basic.py files."),
     )
     parser.add_argument(
         "--fail-fast",
@@ -88,9 +82,7 @@ def main() -> int:
 
     unique_files = sorted({path.resolve() for path in files})
     if not unique_files:
-        print(
-            "ERROR: no tests/test_basic.py files found for the given target(s)"
-        )
+        print("ERROR: no tests/test_basic.py files found for the given target(s)")
         return 2
 
     failures = 0

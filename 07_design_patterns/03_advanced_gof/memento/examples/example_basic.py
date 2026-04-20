@@ -8,7 +8,7 @@ class Snapshot:
 
 class Editor:
     def __init__(self) -> None:
-        self.value = ''
+        self.value = ""
 
     def save(self) -> Snapshot:
         return Snapshot(self.value)
@@ -18,13 +18,14 @@ class Editor:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     editor = Editor()
-    editor.value = 'draft'
+    editor.value = "draft"
     snap = editor.save()
-    editor.value = 'modified'
+    editor.value = "modified"
     editor.restore(snap)
     print(editor.value)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -18,10 +18,11 @@ class Circle:
     radius: float
 
     def area(self) -> float:
-        return pi * self.radius ** 2
+        return pi * self.radius**2
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     shapes = [Rectangle(4, 5), Circle(2), Rectangle(3, 1.5)]
     print([round(s.area(), 2) for s in shapes])
 

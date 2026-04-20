@@ -7,6 +7,7 @@ def detect_gil_env() -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print("Free-threading activation relies on build/runtime flags.")
     print(detect_gil_env())
 

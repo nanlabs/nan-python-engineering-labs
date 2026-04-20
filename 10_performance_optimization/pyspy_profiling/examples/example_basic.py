@@ -17,10 +17,11 @@ def compute_primes(limit: int) -> list[int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     primes = compute_primes(10000)
     print(f"Prime count: {len(primes)}")
-    print('Tip: run this file with py-spy to inspect sampling output.')
+    print("Tip: run this file with py-spy to inspect sampling output.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

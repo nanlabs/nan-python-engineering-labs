@@ -14,6 +14,7 @@ def summarize_module(module: ModuleType, attrs: list[str]) -> dict[str, bool]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     json_module = load_serializer("json")
     print(json_module.dumps({"topic": "modules", "status": "ready"}))
     print(summarize_module(json_module, ["dumps", "loads", "missing_attr"]))

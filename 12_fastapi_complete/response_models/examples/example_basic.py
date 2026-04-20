@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
 import json
+from dataclasses import asdict, dataclass
+from datetime import UTC, datetime
 
 
 @dataclass
@@ -18,13 +18,13 @@ class ItemResponse:
     created_at: str
 
     @classmethod
-    def from_payload(cls, payload: dict) -> "ItemResponse":
+    def from_payload(cls, payload: dict) -> ItemResponse:
         if payload.get("price", 0) < 0:
             raise ValueError("price must be non-negative")
         if not payload.get("name"):
             raise ValueError("name is required")
 
-        timestamp = datetime.now(tz=timezone.utc).isoformat()
+        timestamp = datetime.now(tz=UTC).isoformat()
         return cls(
             item_id=int(payload["item_id"]),
             name=str(payload["name"]).strip(),
@@ -35,6 +35,7 @@ class ItemResponse:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     raw_payload = {
         "item_id": "101",
         "name": "Mechanical Keyboard",

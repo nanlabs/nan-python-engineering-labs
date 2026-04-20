@@ -16,10 +16,11 @@ def aggregate_events(count: int) -> dict[int, int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     totals = aggregate_events(50000)
     print(f"Users aggregated: {len(totals)}")
     print(f"Sample user 10 total: {totals.get(10, 0)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

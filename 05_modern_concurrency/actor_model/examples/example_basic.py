@@ -11,11 +11,12 @@ class Actor:
 
 
 def main() -> None:
-    actor = Actor('worker')
-    actor.send('start')
-    actor.send('stop')
+    """Entry point to demonstrate the implementation."""
+    actor = Actor("worker")
+    actor.send("start")
+    actor.send("stop")
     print(actor.mailbox)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -18,8 +18,8 @@ Pylyzer is an experimental Rust-based Python type checker with very fast analysi
 ### Use Cases
 
 1. Automating repetitive developer tasks in Python projects
-2. Enforcing code quality and consistency across teams
-3. Speeding up CI/CD pipelines with faster tooling
+1. Enforcing code quality and consistency across teams
+1. Speeding up CI/CD pipelines with faster tooling
 
 ### Code Example
 

@@ -1,5 +1,5 @@
-from statistics import mean
 import time
+from statistics import mean
 
 
 def time_call(fn, *args) -> float:
@@ -13,6 +13,7 @@ def compute(limit: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     runs = [time_call(compute, 150_000) for _ in range(5)]
     print(f"avg={mean(runs):.6f}s")
 

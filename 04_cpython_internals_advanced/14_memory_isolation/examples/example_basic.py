@@ -5,6 +5,7 @@ def isolated_namespaces() -> tuple[dict[str, int], dict[str, int]]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     first, second = isolated_namespaces()
     first["counter"] += 1
     print(first, second)

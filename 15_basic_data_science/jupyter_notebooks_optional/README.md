@@ -18,8 +18,8 @@ Jupyter Notebooks (Optional) introduces notebook structure and how to document i
 ### Use Cases
 
 1. Documenting exploratory findings for a mixed team.
-2. Prototyping analysis before moving it into scripts or pipelines.
-3. Sharing a step-by-step educational sequence.
+1. Prototyping analysis before moving it into scripts or pipelines.
+1. Sharing a step-by-step educational sequence.
 
 ### Code Example
 

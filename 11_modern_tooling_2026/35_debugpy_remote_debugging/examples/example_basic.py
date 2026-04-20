@@ -20,6 +20,7 @@ def launch_snippet(port: int = 5678) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cfg = attach_config()
     print("VS Code launch.json snippet:")
     for k, v in cfg.items():

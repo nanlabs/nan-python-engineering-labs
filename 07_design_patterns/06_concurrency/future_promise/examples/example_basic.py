@@ -6,10 +6,11 @@ def compute() -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     with ThreadPoolExecutor(max_workers=1) as pool:
         future = pool.submit(compute)
         print(future.result())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

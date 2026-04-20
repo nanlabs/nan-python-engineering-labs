@@ -16,6 +16,7 @@ def build_components() -> list[RuntimeComponent]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for component in build_components():
         print(f"{component.name}: {component.responsibility}")
 

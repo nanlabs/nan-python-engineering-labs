@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
+import time
 from dataclasses import dataclass
 from queue import Empty, Queue
 from threading import Thread
-import time
 
 
 @dataclass
@@ -41,6 +41,7 @@ class Worker(Thread):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     tasks: Queue[Task] = Queue()
     results: Queue[str] = Queue()
     worker = Worker(tasks, results)

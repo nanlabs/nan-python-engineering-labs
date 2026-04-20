@@ -1,6 +1,6 @@
 class EmailClient:
     def send(self, text: str) -> str:
-        return f'sent:{text}'
+        return f"sent:{text}"
 
 
 class NotificationService:
@@ -12,9 +12,10 @@ class NotificationService:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     service = NotificationService(EmailClient())
-    print(service.notify('build complete'))
+    print(service.notify("build complete"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

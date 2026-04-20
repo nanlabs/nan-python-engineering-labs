@@ -4,7 +4,7 @@ class TemperatureController:
 
     def set_target(self, value: float) -> None:
         if value < 16 or value > 30:
-            raise ValueError('Target out of range')
+            raise ValueError("Target out of range")
         self.__target = value
 
     def get_target(self) -> float:
@@ -12,10 +12,11 @@ class TemperatureController:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     controller = TemperatureController()
     controller.set_target(24.5)
     print(controller.get_target())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

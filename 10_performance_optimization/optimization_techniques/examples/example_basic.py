@@ -15,6 +15,7 @@ def optimized_lookup(values: list[int], targets: list[int]) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     values = list(range(20000))
     targets = list(range(15000, 26000))
 
@@ -22,5 +23,5 @@ def main() -> None:
     print(f"Optimized found: {optimized_lookup(values, targets)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

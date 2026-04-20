@@ -14,12 +14,13 @@ def workspace_layout() -> list[str]:
 
 def workspace_commands() -> list[tuple[str, str]]:
     return [
-        ("uv sync",             "install all workspace packages"),
+        ("uv sync", "install all workspace packages"),
         ("uv run -p api tests", "run tests in a specific member"),
     ]
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print("Workspace layout:")
     for line in workspace_layout():
         print(f"  {line}")

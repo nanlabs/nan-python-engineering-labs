@@ -1,16 +1,20 @@
 """Scheduler example: run delayed tasks using a dedicated worker thread."""
+
 from __future__ import annotations
+
 import heapq
 import threading
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Callable
+
 
 @dataclass(order=True)
 class ScheduledTask:
     run_at: float
     name: str = field(compare=False)
     action: Callable[[], None] = field(compare=False)
+
 
 class TaskScheduler:
     def __init__(self) -> None:
@@ -46,16 +50,21 @@ class TaskScheduler:
             self._condition.notify_all()
         self._worker.join(timeout=2)
 
+
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     scheduler = TaskScheduler()
     start = time.time()
+
     def log(name: str) -> None:
         print(f"{name} executed at +{time.time() - start:.2f}s")
+
     scheduler.schedule(0.2, "refresh-cache", lambda: log("refresh-cache"))
     scheduler.schedule(0.05, "send-heartbeat", lambda: log("send-heartbeat"))
     scheduler.schedule(0.35, "rotate-logs", lambda: log("rotate-logs"))
     time.sleep(0.6)
     scheduler.shutdown()
+
 
 if __name__ == "__main__":
     main()

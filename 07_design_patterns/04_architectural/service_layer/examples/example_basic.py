@@ -12,8 +12,9 @@ class BillingService:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(BillingService(TaxService()).invoice_total(100))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

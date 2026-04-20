@@ -8,6 +8,7 @@ def evaluate_many(expressions: list[str]) -> list[int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     batch = ["2 + 3 * 4", "10 - 2", "8 // 2"]
     print(evaluate_many(batch))
 

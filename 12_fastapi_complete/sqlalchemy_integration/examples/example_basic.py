@@ -51,11 +51,14 @@ class BookRepository:
 
     def find_all(self) -> list[Book]:
         with self._connect() as conn:
-            rows = conn.execute("SELECT book_id, title, author FROM books ORDER BY book_id").fetchall()
+            rows = conn.execute(
+                "SELECT book_id, title, author FROM books ORDER BY book_id"
+            ).fetchall()
             return [Book(**dict(row)) for row in rows]
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     db_path = Path(__file__).with_name("library.db")
     if db_path.exists():
         db_path.unlink()

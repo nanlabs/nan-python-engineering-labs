@@ -25,16 +25,13 @@ import asyncio
 import gzip
 import json
 import time
-import functools
+from collections.abc import AsyncGenerator
 from datetime import datetime, timedelta
-from typing import List, Optional, AsyncGenerator
 from threading import Lock
 
 from fastapi import FastAPI
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
-
 
 # =============================================================================
 # 1. TTL CACHE — avoids repeated expensive computations
@@ -87,7 +84,7 @@ async def fetch_user_from_db(user_id: int) -> dict:
     return {"id": user_id, "name": f"User {user_id}", "email": f"user{user_id}@example.com"}
 
 
-async def fetch_many_users(user_ids: List[int]) -> List[dict]:
+async def fetch_many_users(user_ids: list[int]) -> list[dict]:
     """
     Fetch multiple users concurrently using asyncio.gather.
 
@@ -281,6 +278,7 @@ async def root():
 
 
 def main():
+    """Entry point to demonstrate the implementation."""
     print("=" * 55)
     print("FASTAPI PERFORMANCE — DEMO")
     print("=" * 55)

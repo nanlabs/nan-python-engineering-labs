@@ -6,28 +6,29 @@ class CircuitBreaker:
 
     def call(self, fn, *args):
         if self.open:
-            return 'fallback'
+            return "fallback"
         try:
             return fn(*args)
         except Exception:
             self.failures += 1
             if self.failures >= self.threshold:
                 self.open = True
-            return 'error'
+            return "error"
 
 
 def unstable(flag: bool) -> str:
     if flag:
-        raise RuntimeError('boom')
-    return 'ok'
+        raise RuntimeError("boom")
+    return "ok"
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cb = CircuitBreaker(2)
     print(cb.call(unstable, True))
     print(cb.call(unstable, True))
     print(cb.call(unstable, False))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

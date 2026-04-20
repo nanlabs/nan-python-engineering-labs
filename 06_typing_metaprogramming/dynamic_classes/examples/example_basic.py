@@ -14,6 +14,7 @@ def build_product_class():
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     Product = build_product_class()
     item = Product("Mechanical Keyboard", "Accessories")
     print(item.describe())

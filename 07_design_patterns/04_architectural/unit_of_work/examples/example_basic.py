@@ -12,11 +12,12 @@ class UnitOfWork:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     uow = UnitOfWork()
-    uow.register('insert user')
-    uow.register('insert order')
+    uow.register("insert user")
+    uow.register("insert order")
     print(uow.commit())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

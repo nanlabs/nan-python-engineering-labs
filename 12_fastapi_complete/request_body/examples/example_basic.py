@@ -17,11 +17,10 @@ Run:
     Visit http://localhost:8000/docs
 """
 
-from fastapi import FastAPI, Body, HTTPException, status
-from pydantic import BaseModel, Field, model_validator
-from typing import Optional, List
 from datetime import datetime
 
+from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel, Field, model_validator
 
 # =============================================================================
 # MODELS
@@ -59,9 +58,9 @@ class CreateOrderRequest(BaseModel):
     customer_name: str = Field(..., min_length=1, max_length=100)
     customer_email: str = Field(..., pattern=r"^[^@]+@[^@]+\.[^@]+$")
     shipping_address: Address
-    items: List[OrderItem] = Field(..., min_length=1)
-    coupon_code: Optional[str] = Field(None, pattern=r"^[A-Z0-9]{6,12}$")
-    notes: Optional[str] = Field(None, max_length=500)
+    items: list[OrderItem] = Field(..., min_length=1)
+    coupon_code: str | None = Field(None, pattern=r"^[A-Z0-9]{6,12}$")
+    notes: str | None = Field(None, max_length=500)
 
     @model_validator(mode="after")
     def check_items_not_duplicate(self) -> "CreateOrderRequest":
@@ -107,9 +106,9 @@ class OrderResponse(BaseModel):
 class PatchOrderRequest(BaseModel):
     """Partial update model — all fields are optional."""
 
-    shipping_address: Optional[Address] = None
-    notes: Optional[str] = Field(None, max_length=500)
-    coupon_code: Optional[str] = Field(None, pattern=r"^[A-Z0-9]{6,12}$")
+    shipping_address: Address | None = None
+    notes: str | None = Field(None, max_length=500)
+    coupon_code: str | None = Field(None, pattern=r"^[A-Z0-9]{6,12}$")
 
 
 # =============================================================================

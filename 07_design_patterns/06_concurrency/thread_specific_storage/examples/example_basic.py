@@ -1,6 +1,5 @@
 import threading
 
-
 local_data = threading.local()
 
 
@@ -10,8 +9,9 @@ def assign(value: str) -> str:
 
 
 def main() -> None:
-    print(assign('main-token'))
+    """Entry point to demonstrate the implementation."""
+    print(assign("main-token"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

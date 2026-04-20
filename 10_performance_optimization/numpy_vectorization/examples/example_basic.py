@@ -13,10 +13,11 @@ def vector_like_transform(values: list[int]) -> list[int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     values = list(range(20))
     print(f"Scalar first 5:    {scalar_transform(values)[:5]}")
     print(f"Vector-like first 5: {vector_like_transform(values)[:5]}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

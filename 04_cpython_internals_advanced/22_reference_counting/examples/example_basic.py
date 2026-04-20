@@ -6,6 +6,7 @@ def refcount_of(value: object) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     sample: list[int] = [1, 2, 3]
     before = refcount_of(sample)
     alias = sample

@@ -6,15 +6,12 @@ def allocate_data(n: int) -> list[dict[str, object]]:
 
 
 def estimate_memory(items: list[dict[str, object]]) -> dict[str, int]:
-    item_bytes = sum(
-        len(str(k)) + len(str(v))
-        for item in items
-        for k, v in item.items()
-    )
+    item_bytes = sum(len(str(k)) + len(str(v)) for item in items for k, v in item.items())
     return {"items": len(items), "estimated_bytes": item_bytes, "estimated_kb": item_bytes // 1024}
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     data = allocate_data(1_000)
     stats = estimate_memory(data)
     print(stats)

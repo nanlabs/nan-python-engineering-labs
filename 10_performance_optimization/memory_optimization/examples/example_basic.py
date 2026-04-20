@@ -10,7 +10,7 @@ class RegularPoint:
 
 
 class SlottedPoint:
-    __slots__ = ('x', 'y')
+    __slots__ = ("x", "y")
 
     def __init__(self, x: int, y: int) -> None:
         self.x = x
@@ -18,11 +18,12 @@ class SlottedPoint:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     regular = RegularPoint(1, 2)
     slotted = SlottedPoint(1, 2)
     print(f"Regular object size: {sys.getsizeof(regular)}")
     print(f"Slotted object size: {sys.getsizeof(slotted)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

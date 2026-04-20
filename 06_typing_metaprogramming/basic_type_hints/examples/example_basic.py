@@ -8,6 +8,7 @@ def describe_total(a: int, b: int) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(describe_total(2, 3))
 
 

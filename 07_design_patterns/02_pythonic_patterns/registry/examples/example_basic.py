@@ -9,14 +9,15 @@ def register(name: str):
     return deco
 
 
-@register('ping')
+@register("ping")
 def ping() -> str:
-    return 'pong'
+    return "pong"
 
 
 def main() -> None:
-    print(HANDLERS['ping']())
+    """Entry point to demonstrate the implementation."""
+    print(HANDLERS["ping"]())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

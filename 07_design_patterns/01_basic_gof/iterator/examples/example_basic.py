@@ -8,9 +8,10 @@ class Backlog:
 
 
 def main() -> None:
-    for task in Backlog(['design', 'build', 'test']):
+    """Entry point to demonstrate the implementation."""
+    for task in Backlog(["design", "build", "test"]):
         print(task)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,19 +1,24 @@
 """Request-reply example: synchronous style over asynchronous queues."""
+
 from __future__ import annotations
+
 import queue
 import threading
 import uuid
 from dataclasses import dataclass
+
 
 @dataclass
 class Request:
     correlation_id: str
     number: int
 
+
 @dataclass
 class Reply:
     correlation_id: str
     result: int
+
 
 def worker(requests: queue.Queue[Request | None], replies: queue.Queue[Reply]) -> None:
     while True:
@@ -25,7 +30,10 @@ def worker(requests: queue.Queue[Request | None], replies: queue.Queue[Reply]) -
         finally:
             requests.task_done()
 
-def rpc_square(number: int, requests: queue.Queue[Request | None], replies: queue.Queue[Reply]) -> int:
+
+def rpc_square(
+    number: int, requests: queue.Queue[Request | None], replies: queue.Queue[Reply]
+) -> int:
     correlation_id = str(uuid.uuid4())
     requests.put(Request(correlation_id, number))
     while True:
@@ -36,7 +44,9 @@ def rpc_square(number: int, requests: queue.Queue[Request | None], replies: queu
         finally:
             replies.task_done()
 
+
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     requests: queue.Queue[Request | None] = queue.Queue()
     replies: queue.Queue[Reply] = queue.Queue()
     thread = threading.Thread(target=worker, args=(requests, replies), daemon=True)
@@ -46,6 +56,7 @@ def main() -> None:
     requests.put(None)
     requests.join()
     thread.join(timeout=1)
+
 
 if __name__ == "__main__":
     main()

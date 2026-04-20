@@ -15,6 +15,7 @@ def compare_modes() -> list[RuntimeMode]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for mode in compare_modes():
         print(f"{mode.name}: parallel_bytecode={mode.parallel_bytecode}")
 

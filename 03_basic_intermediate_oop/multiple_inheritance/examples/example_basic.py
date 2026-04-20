@@ -14,6 +14,7 @@ class ReportService(Printer, Saver):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     service = ReportService()
     for action in service.publish("Q1 Results"):
         print(action)

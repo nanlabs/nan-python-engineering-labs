@@ -26,15 +26,13 @@ Run:
 """
 
 import os
-from datetime import datetime, timedelta, timezone
-from typing import Optional, List
+from datetime import UTC, datetime, timedelta
 
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
-
 
 # =============================================================================
 # SECURITY CONFIGURATION
@@ -61,7 +59,7 @@ revoked_tokens: set[str] = set()
 class User(BaseModel):
     username: str
     email: str
-    roles: List[str] = ["user"]
+    roles: list[str] = ["user"]
     disabled: bool = False
 
 
@@ -77,8 +75,8 @@ class TokenResponse(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: Optional[str] = None
-    roles: List[str] = []
+    username: str | None = None
+    roles: list[str] = []
 
 
 class RefreshRequest(BaseModel):
@@ -110,19 +108,17 @@ USERS_DB: dict[str, UserInDB] = {
 # =============================================================================
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     """Create a signed JWT access token with an expiration claim."""
     to_encode = data.copy()
-    expire = datetime.now(timezone.utc) + (
-        expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
+    expire = datetime.now(UTC) + (expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     to_encode.update({"exp": expire, "type": "access"})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
 def create_refresh_token(username: str) -> str:
     """Create a long-lived refresh token."""
-    expire = datetime.now(timezone.utc) + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
+    expire = datetime.now(UTC) + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
     return jwt.encode(
         {"sub": username, "exp": expire, "type": "refresh"},
         SECRET_KEY,
@@ -138,7 +134,7 @@ def decode_token(token: str, expected_type: str = "access") -> TokenData:
     """Decode and validate a JWT, returning the embedded claims."""
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: Optional[str] = payload.get("sub")
+        username: str | None = payload.get("sub")
         token_type: str = payload.get("type", "")
         if username is None or token_type != expected_type:
             raise ValueError("Invalid token structure")
@@ -198,9 +194,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    access_token = create_access_token(
-        data={"sub": user.username, "roles": user.roles}
-    )
+    access_token = create_access_token(data={"sub": user.username, "roles": user.roles})
     refresh_token = create_refresh_token(user.username)
 
     return TokenResponse(

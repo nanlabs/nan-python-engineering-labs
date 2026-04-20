@@ -10,6 +10,7 @@ def receive_message(channel: Queue[str]) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     channel: Queue[str] = Queue()
     send_message(channel, "ready")
     print(receive_message(channel))

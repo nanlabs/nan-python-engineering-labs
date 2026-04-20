@@ -18,6 +18,7 @@ def generate_test_cases() -> list[list[int]]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cases = generate_test_cases()
     for case in cases:
         involution = check_reverse_involution(case)

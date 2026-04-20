@@ -1,4 +1,5 @@
 """Repository pattern: isolate persistence behind a collection-like interface."""
+
 from abc import ABC, abstractmethod
 
 

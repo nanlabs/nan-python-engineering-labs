@@ -3,7 +3,7 @@
 
 def parse_csv_line(raw_line: str) -> tuple[str, int, str]:
     """Transform a simple comma-separated line into typed values."""
-    name, age, city = [part.strip() for part in raw_line.split(",")]
+    name, age, city = (part.strip() for part in raw_line.split(","))
     return name, int(age), city
 
 
@@ -13,6 +13,7 @@ def format_receipt(name: str, total: float) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     customer = parse_csv_line("Grace Hopper, 37, New York")
     print(customer)
     print(format_receipt(customer[0], 149.99))

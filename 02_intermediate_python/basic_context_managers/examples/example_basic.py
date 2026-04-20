@@ -16,9 +16,10 @@ def measure_block(label: str):
 
 
 def main() -> None:
-    with measure_block('sum block'):
+    """Entry point to demonstrate the implementation."""
+    with measure_block("sum block"):
         print(sum(range(1000)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

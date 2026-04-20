@@ -17,10 +17,11 @@ def benchmark(iterations: int = 300) -> tuple[float, int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     avg, last = benchmark()
     print(f"Average time per call: {avg * 1e6:.2f} us")
     print(f"Last result: {last}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -2,6 +2,7 @@
 LangChain fundamentals.
 """
 
+
 def create_chain_simple(prompt: str) -> str:
     """Simple chain simulation."""
     steps = [
@@ -10,6 +11,7 @@ def create_chain_simple(prompt: str) -> str:
         "3. Format response",
     ]
     return f"Chain for '{prompt}': {steps}"
+
 
 def chain_composition(input_text: str) -> dict:
     """Compose multiple chains."""
@@ -20,9 +22,10 @@ def chain_composition(input_text: str) -> dict:
         "final_output": "final_result",
     }
 
+
 if __name__ == "__main__":
     result = create_chain_simple("What is AI?")
     print(result)
-    
+
     composed = chain_composition("test")
     print(f"Composition: {composed}")

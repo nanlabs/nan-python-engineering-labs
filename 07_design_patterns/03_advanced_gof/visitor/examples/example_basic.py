@@ -16,11 +16,12 @@ class SumVisitor:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     visitor = SumVisitor()
     for n in [Number(1), Number(4), Number(5)]:
         n.accept(visitor)
     print(visitor.total)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

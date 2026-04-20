@@ -11,6 +11,7 @@ def plan_jobs() -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(run_in_subinterpreter("print('hello from subinterpreter')"))
     print(plan_jobs())
 

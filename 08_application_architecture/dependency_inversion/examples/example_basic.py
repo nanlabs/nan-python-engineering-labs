@@ -1,4 +1,5 @@
 """Dependency Inversion: high-level policies depend on abstractions."""
+
 from abc import ABC, abstractmethod
 
 

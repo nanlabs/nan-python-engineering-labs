@@ -16,6 +16,7 @@ def average_positive(values: list[int]) -> float:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(average_positive([10, -5, 20, 15]))
 
 

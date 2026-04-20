@@ -7,6 +7,7 @@ def increment_shared(shared: Array) -> None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     shared = Array("i", [1, 2, 3])
     increment_shared(shared)
     print(list(shared))

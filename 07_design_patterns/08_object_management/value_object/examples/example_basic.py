@@ -8,8 +8,9 @@ class Money:
 
 
 def main() -> None:
-    print(Money(100, 'USD') == Money(100, 'USD'))
+    """Entry point to demonstrate the implementation."""
+    print(Money(100, "USD") == Money(100, "USD"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,6 +1,6 @@
 class JsonMixin:
     def to_json(self) -> str:
-        return '{' + ', '.join(f'"{k}": "{v}"' for k, v in self.__dict__.items()) + '}'
+        return "{" + ", ".join(f'"{k}": "{v}"' for k, v in self.__dict__.items()) + "}"
 
 
 class Customer(JsonMixin):
@@ -9,8 +9,9 @@ class Customer(JsonMixin):
 
 
 def main() -> None:
-    print(Customer('Lin').to_json())
+    """Entry point to demonstrate the implementation."""
+    print(Customer("Lin").to_json())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

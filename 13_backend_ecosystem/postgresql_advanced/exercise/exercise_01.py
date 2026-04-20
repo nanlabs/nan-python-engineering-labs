@@ -9,7 +9,6 @@ Instructions:
 3. Run tests with: pytest tests/
 4. Your solution should live under my_solution/
 
-DO NOT MODIFY THIS FILE DIRECTLY. Copy it into my_solution/ and work there.
 """
 
 

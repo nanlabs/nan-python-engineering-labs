@@ -7,6 +7,7 @@ def update_region(region: str) -> None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(EagerConfig.instance)
     update_region("eu-west-1")
     print(EagerConfig.instance)

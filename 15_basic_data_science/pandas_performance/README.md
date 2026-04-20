@@ -18,8 +18,8 @@ Pandas Performance shows when to vectorize transformations, measure runtimes, an
 ### Use Cases
 
 1. Speeding up discount or revenue calculation pipelines.
-2. Reducing preprocessing time before model training.
-3. Making informed decisions about when to migrate to Polars.
+1. Reducing preprocessing time before model training.
+1. Making informed decisions about when to migrate to Polars.
 
 ### Code Example
 

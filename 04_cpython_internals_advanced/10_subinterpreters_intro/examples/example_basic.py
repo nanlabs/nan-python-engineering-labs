@@ -12,6 +12,7 @@ def create_subinterpreters(count: int) -> list[Subinterpreter]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for sub in create_subinterpreters(3):
         print(sub)
 

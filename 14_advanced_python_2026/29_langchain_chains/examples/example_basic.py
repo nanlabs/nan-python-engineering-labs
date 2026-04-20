@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 
 @dataclass
@@ -41,6 +41,7 @@ def build_chain() -> SimpleChain:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     chain = build_chain()
     prompt = "Task: Explain why caching helps API response times in backend systems."
     result = chain.run(prompt)

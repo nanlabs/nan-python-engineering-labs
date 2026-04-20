@@ -1,6 +1,6 @@
 class Model:
     def __init__(self) -> None:
-        self.value = 'hello'
+        self.value = "hello"
 
 
 class View:
@@ -18,8 +18,9 @@ class Controller:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(Controller(Model(), View()).handle())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

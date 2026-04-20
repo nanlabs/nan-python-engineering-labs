@@ -2,6 +2,7 @@ import threading
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     counter = 0
     lock = threading.Lock()
 
@@ -19,5 +20,5 @@ def main() -> None:
     print(counter)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

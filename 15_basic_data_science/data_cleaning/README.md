@@ -18,8 +18,8 @@ Data Cleaning focuses on standardizing columns, handling missing values, and rem
 ### Use Cases
 
 1. Normalizing names and columns when importing varied CSV files.
-2. Filling missing revenue with a simple, documented strategy.
-3. Removing duplicates before calculating totals.
+1. Filling missing revenue with a simple, documented strategy.
+1. Removing duplicates before calculating totals.
 
 ### Code Example
 

@@ -17,9 +17,10 @@ class RateLimiter:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     limiter = RateLimiter(2, 1.0)
     print(limiter.allow(), limiter.allow(), limiter.allow())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

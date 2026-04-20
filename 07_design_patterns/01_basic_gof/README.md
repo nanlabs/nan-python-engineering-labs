@@ -7,16 +7,16 @@ This category focuses on 01 basic gof patterns and practical implementations in 
 ## Contents (11 patterns)
 
 1. [Adapter](adapter/)
-2. [Builder](builder/)
-3. [Command](command/)
-4. [Decorator Pattern](decorator_pattern/)
-5. [Facade](facade/)
-6. [Factory Method](factory_method/)
-7. [Iterator](iterator/)
-8. [Observer](observer/)
-9. [Singleton](singleton/)
-10. [Strategy](strategy/)
-11. [Template Method](template_method/)
+1. [Builder](builder/)
+1. [Command](command/)
+1. [Decorator Pattern](decorator_pattern/)
+1. [Facade](facade/)
+1. [Factory Method](factory_method/)
+1. [Iterator](iterator/)
+1. [Observer](observer/)
+1. [Singleton](singleton/)
+1. [Strategy](strategy/)
+1. [Template Method](template_method/)
 
 ## Practice Recommendation
 

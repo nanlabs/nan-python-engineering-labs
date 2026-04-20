@@ -6,8 +6,7 @@ def greet(name: str, role: str = "Developer") -> str:
     return f"Hello, {name}. Your current role is {role}."
 
 
-def calculate_price(
-        base: float, discount: float = 0.0, tax: float = 0.21) -> float:
+def calculate_price(base: float, discount: float = 0.0, tax: float = 0.21) -> float:
     """Calculate a final price by encapsulating reusable logic."""
     return round(base * (1 - discount) * (1 + tax), 2)
 

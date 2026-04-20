@@ -8,7 +8,7 @@ class SupportsClose(Protocol):
 
 class Connection:
     def close(self) -> str:
-        return 'closed'
+        return "closed"
 
 
 def shutdown(resource: SupportsClose) -> str:
@@ -16,8 +16,9 @@ def shutdown(resource: SupportsClose) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(shutdown(Connection()))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

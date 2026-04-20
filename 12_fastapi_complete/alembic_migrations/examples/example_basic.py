@@ -23,13 +23,9 @@ Run:
 """
 
 import os
-import sys
 import tempfile
-import textwrap
-from pathlib import Path
 
 from sqlalchemy import create_engine, inspect, text
-
 
 # =============================================================================
 # MIGRATION WORKFLOW EXPLANATION
@@ -130,23 +126,31 @@ def run_programmatic_demo():
         print()
         print("Step 1: Run initial migration (create users table)")
         with engine.begin() as conn:
-            conn.execute(text("""
+            conn.execute(
+                text(
+                    """
                 CREATE TABLE IF NOT EXISTS alembic_version (
                     version_num VARCHAR(32) NOT NULL,
                     CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
                 )
-            """))
-            conn.execute(text("""
+            """
+                )
+            )
+            conn.execute(
+                text(
+                    """
                 CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     username VARCHAR(50) NOT NULL,
                     email VARCHAR(200) UNIQUE NOT NULL,
                     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
                 )
-            """))
-            conn.execute(text(
-                "INSERT INTO alembic_version (version_num) VALUES ('001_create_users')"
-            ))
+            """
+                )
+            )
+            conn.execute(
+                text("INSERT INTO alembic_version (version_num) VALUES ('001_create_users')")
+            )
 
         # Verify
         with engine.connect() as conn:
@@ -185,11 +189,15 @@ def run_programmatic_demo():
         print()
         print("Step 4: Insert test data (migrations preserve data)")
         with engine.begin() as conn:
-            conn.execute(text("""
+            conn.execute(
+                text(
+                    """
                 INSERT INTO users (username, email, bio, is_active)
                 VALUES ('alice', 'alice@example.com', 'Engineer', 1),
                        ('bob', 'bob@example.com', NULL, 1)
-            """))
+            """
+                )
+            )
 
         with engine.connect() as conn:
             rows = conn.execute(text("SELECT id, username, email, bio FROM users")).fetchall()
@@ -232,7 +240,8 @@ def show_alembic_ini_example():
     print("─" * 65)
     print("alembic.ini (key settings):")
     print("─" * 65)
-    print("""
+    print(
+        """
 [alembic]
 script_location = alembic
 sqlalchemy.url = postgresql+asyncpg://user:pass@localhost/mydb
@@ -242,20 +251,23 @@ keys = root,sqlalchemy,alembic
 
 [handlers]
 keys = console
-""")
+"""
+    )
 
 
 def show_env_py_example():
     print("─" * 65)
     print("alembic/env.py (key lines to customize):")
     print("─" * 65)
-    print("""
+    print(
+        """
 from myapp.models import Base        # import your Base
 from myapp.database import DATABASE_URL
 
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
 target_metadata = Base.metadata      # enables --autogenerate
-""")
+"""
+    )
 
 
 # =============================================================================
@@ -264,6 +276,7 @@ target_metadata = Base.metadata      # enables --autogenerate
 
 
 def main():
+    """Entry point to demonstrate the implementation."""
     run_programmatic_demo()
     show_directory_structure()
     show_alembic_ini_example()
@@ -272,7 +285,8 @@ def main():
     print("=" * 65)
     print("QUICK REFERENCE")
     print("=" * 65)
-    print("""
+    print(
+        """
 Common commands:
   alembic init alembic                         # initialize
   alembic revision --autogenerate -m "msg"    # generate migration
@@ -283,7 +297,8 @@ Common commands:
   alembic current                              # show active revision
   alembic history --verbose                    # show all revisions
   alembic show <revision>                      # show a specific revision
-""")
+"""
+    )
 
 
 if __name__ == "__main__":

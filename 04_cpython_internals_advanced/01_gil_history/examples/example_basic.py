@@ -7,6 +7,7 @@ def summarize_gil_state() -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(f"Python: {sys.version.split()[0]}")
     print(summarize_gil_state())
 

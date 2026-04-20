@@ -1,6 +1,7 @@
 class Timer:
     def __enter__(self):
         import time
+
         self._time = time.perf_counter
         self._start = self._time()
         return self
@@ -10,10 +11,11 @@ class Timer:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     with Timer() as timer:
         sum(range(10000))
     print(round(timer.elapsed, 6))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

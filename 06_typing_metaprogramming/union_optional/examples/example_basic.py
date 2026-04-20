@@ -11,6 +11,7 @@ def normalize_quantities(values: list[str]) -> list[int | None]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for raw in ["42", "abc", " 7"]:
         print(raw, "->", parse_quantity(raw))
     print("batch:", normalize_quantities(["1", "x", "22"]))

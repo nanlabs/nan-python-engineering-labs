@@ -1,4 +1,4 @@
-from typing import TypedDict, NamedTuple
+from typing import NamedTuple, TypedDict
 
 
 class User(TypedDict):
@@ -12,10 +12,11 @@ class Point(NamedTuple):
 
 
 def main() -> None:
-    user: User = {'name': 'Ada', 'age': 32}
+    """Entry point to demonstrate the implementation."""
+    user: User = {"name": "Ada", "age": 32}
     point = Point(3, 5)
-    print(user['name'], point.x + point.y)
+    print(user["name"], point.x + point.y)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

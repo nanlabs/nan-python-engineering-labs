@@ -20,6 +20,7 @@ class WalletProcessor(PaymentProcessor):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for processor in [CardProcessor(), WalletProcessor()]:
         print(processor.process(19.99))
 

@@ -11,12 +11,13 @@ class EventBus:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     out: list[str] = []
     bus = EventBus()
-    bus.on('user_created', lambda x: out.append(x.upper()))
-    bus.emit('user_created', 'ada')
+    bus.on("user_created", lambda x: out.append(x.upper()))
+    bus.emit("user_created", "ada")
     print(out)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

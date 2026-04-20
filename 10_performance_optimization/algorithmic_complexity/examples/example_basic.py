@@ -20,11 +20,12 @@ def find_pair_hash(values: list[int], target: int) -> tuple[int, int] | None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     values = [4, 7, 1, 9, 3, 11]
     target = 10
     print(f"Bruteforce: {find_pair_bruteforce(values, target)}")
     print(f"Hash-based: {find_pair_hash(values, target)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

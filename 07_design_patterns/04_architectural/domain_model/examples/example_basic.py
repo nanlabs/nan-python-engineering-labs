@@ -19,10 +19,11 @@ class Cart:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cart = Cart()
     cart.add(CartItem(10.0, 2))
     print(cart.total())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

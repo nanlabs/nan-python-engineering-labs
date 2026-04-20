@@ -11,8 +11,9 @@ async def async_main() -> None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     asyncio.run(async_main())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

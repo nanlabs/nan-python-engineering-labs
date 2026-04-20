@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
@@ -12,8 +11,8 @@ class User:
 
     user_id: int
     name: str
-    email: Optional[str]
-    nickname: Optional[str]
+    email: str | None
+    nickname: str | None
 
 
 USERS = {
@@ -46,6 +45,7 @@ def parse_query(query: str) -> tuple[int, list[str]]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     query = "{ user(id: 2) { user_id name email nickname } }"
     user_id, fields = parse_query(query)
     payload = {"data": {"user": resolve_user(user_id, fields)}}

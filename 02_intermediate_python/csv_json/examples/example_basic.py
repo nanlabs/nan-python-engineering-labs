@@ -16,11 +16,12 @@ def sales_to_json(rows: list[dict[str, str]]) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     raw_csv = "name,amount\nAda,120\nLin,95\n"
     sales = load_sales_from_csv(raw_csv)
     print(sales)
     print(sales_to_json(sales))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

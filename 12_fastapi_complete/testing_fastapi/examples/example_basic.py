@@ -21,12 +21,11 @@ Dependencies:
     pip install pytest httpx fastapi
 """
 
+
 import pytest
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.testclient import TestClient
 from pydantic import BaseModel
-from typing import List, Optional
-
 
 # =============================================================================
 # APP UNDER TEST
@@ -66,7 +65,7 @@ def get_current_user(token: str = ""):
     return "test-user"
 
 
-@app.get("/items", response_model=List[ItemResponse])
+@app.get("/items", response_model=list[ItemResponse])
 def list_items():
     return list(_db.values())
 
@@ -104,10 +103,12 @@ def reset_db():
     """Reset the in-memory database before each test."""
     global _db, _next_id
     _db.clear()
-    _db.update({
-        1: {"id": 1, "name": "Widget A", "price": 9.99},
-        2: {"id": 2, "name": "Widget B", "price": 19.99},
-    })
+    _db.update(
+        {
+            1: {"id": 1, "name": "Widget A", "price": 9.99},
+            2: {"id": 2, "name": "Widget B", "price": 19.99},
+        }
+    )
     _next_id = 3
     yield
 

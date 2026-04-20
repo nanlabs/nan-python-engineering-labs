@@ -19,20 +19,18 @@ Demonstrates:
 8. From ORM objects (model_validate)
 """
 
-from pydantic import (
-    BaseModel,
-    Field,
-    field_validator,
-    model_validator,
-    computed_field,
-    EmailStr,
-    ConfigDict,
-)
-from typing import Optional, List
 from datetime import date, datetime
 from decimal import Decimal
 from enum import Enum
 
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    computed_field,
+    field_validator,
+    model_validator,
+)
 
 # =============================================================================
 # 1. BASIC MODEL WITH FIELD CONSTRAINTS
@@ -52,8 +50,8 @@ class User(BaseModel):
     username: str = Field(..., min_length=3, max_length=50, pattern=r"^[a-zA-Z0-9_]+$")
     email: str = Field(..., description="Must contain @")
     role: UserRole = Field(UserRole.VIEWER, description="User permission level")
-    age: Optional[int] = Field(None, ge=0, le=150)
-    tags: List[str] = Field(default_factory=list)
+    age: int | None = Field(None, ge=0, le=150)
+    tags: list[str] = Field(default_factory=list)
 
     @field_validator("email")
     @classmethod
@@ -80,7 +78,7 @@ class DateRange(BaseModel):
 
     start: date
     end: date
-    label: Optional[str] = None
+    label: str | None = None
 
     @model_validator(mode="after")
     def check_dates(self) -> "DateRange":
@@ -123,7 +121,7 @@ class BaseItem(BaseModel):
     """Shared fields for all item types."""
 
     name: str = Field(..., min_length=1)
-    description: Optional[str] = None
+    description: str | None = None
     created_at: datetime = Field(default_factory=datetime.now)
 
 
@@ -168,7 +166,7 @@ class Customer(BaseModel):
     full_name: str = Field(..., alias="name")
     address: Address
     email: str
-    tags: List[str] = Field(default_factory=list)
+    tags: list[str] = Field(default_factory=list)
 
 
 # =============================================================================
@@ -188,7 +186,13 @@ def demo():
     print("1. BASIC MODEL — User")
     print(separator)
 
-    user = User(id=1, username="alice_99", email="  Alice@Example.COM  ", role="admin", tags=["python", "fastapi", "python"])
+    user = User(
+        id=1,
+        username="alice_99",
+        email="  Alice@Example.COM  ",
+        role="admin",
+        tags=["python", "fastapi", "python"],
+    )
     print(f"  Parsed user : {user.model_dump()}")
     print(f"  Email normalized : {user.email}")
     print(f"  Tags deduplicated: {user.tags}")
@@ -231,7 +235,9 @@ def demo():
     book = PhysicalItem(name="Clean Code", weight_kg=0.45, dimensions_cm=(22.0, 15.0, 2.5))
     print(f"  Physical  : {book.name}  volume={book.volume_cm3} cm³  (computed)")
 
-    ebook = DigitalItem(name="Clean Code PDF", file_size_mb=12.5, download_url="https://example.com/dl/1")
+    ebook = DigitalItem(
+        name="Clean Code PDF", file_size_mb=12.5, download_url="https://example.com/dl/1"
+    )
     print(f"  Digital   : {ebook.name}  {ebook.file_size_mb} MB  license={ebook.license_type}")
 
     # ── 5. Nested models + serialization ────────────────────────

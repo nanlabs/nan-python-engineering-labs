@@ -14,11 +14,12 @@ def shipping_label(total: float, is_member: bool) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     total = calculate_total(48.0, 0.21, 5.0)
     print(f"Final total: {total}")
     print(f"Label: {shipping_label(total, is_member=False)}")
     print(f"7 in [3, 5, 7]: {7 in [3, 5, 7]}")
-    print(f"2 ** 5 = {2 ** 5}")
+    print(f"2 ** 5 = {2**5}")
 
 
 if __name__ == "__main__":

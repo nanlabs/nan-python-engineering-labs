@@ -8,6 +8,7 @@ def flatten(chunks: list[list[int]]) -> list[int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     chunks = list(chunked([1, 2, 3, 4, 5], 2))
     print(chunks)
     print(flatten(chunks))

@@ -21,11 +21,10 @@ Run:
     Visit http://localhost:8000/openapi.json
 """
 
-from typing import List, Optional
-from fastapi import FastAPI, Path, Body, HTTPException
+
+from fastapi import Body, FastAPI, HTTPException, Path
 from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel, Field
-
 
 # =============================================================================
 # MODELS WITH EMBEDDED EXAMPLES
@@ -78,7 +77,7 @@ class ProductResponse(BaseModel):
 class ErrorDetail(BaseModel):
     code: str
     message: str
-    field: Optional[str] = None
+    field: str | None = None
 
 
 # =============================================================================
@@ -89,8 +88,7 @@ TAGS_METADATA = [
     {
         "name": "Products",
         "description": (
-            "Operations on the product catalog. "
-            "Products can be listed, created, and archived."
+            "Operations on the product catalog. Products can be listed, created, and archived."
         ),
         "externalDocs": {
             "description": "Product schema documentation",
@@ -152,7 +150,9 @@ Read endpoints are public.
 # In-memory store
 products: dict[int, ProductResponse] = {
     1: ProductResponse(id=1, name="FastAPI Handbook", price=29.99, category="books", in_stock=True),
-    2: ProductResponse(id=2, name="Python Pro Bundle", price=49.99, category="courses", in_stock=True),
+    2: ProductResponse(
+        id=2, name="Python Pro Bundle", price=49.99, category="courses", in_stock=True
+    ),
 }
 _next_id = 3
 
@@ -177,16 +177,13 @@ async def health():
     "/products",
     tags=["Products"],
     summary="List all products",
-    description=(
-        "Returns all products in the catalog. "
-        "Filter by `category` or `in_stock` status."
-    ),
-    response_model=List[ProductResponse],
+    description=("Returns all products in the catalog. Filter by `category` or `in_stock` status."),
+    response_model=list[ProductResponse],
     response_description="A list of products matching the filter criteria",
 )
 async def list_products(
-    category: Optional[str] = None,
-    in_stock: Optional[bool] = None,
+    category: str | None = None,
+    in_stock: bool | None = None,
 ):
     results = list(products.values())
     if category:
@@ -278,11 +275,10 @@ async def delete_product(product_id: int):
     tags=["Legacy"],
     summary="[DEPRECATED] List products",
     description=(
-        "**This endpoint is deprecated.** "
-        "Use `GET /products` instead. Will be removed in v3.0."
+        "**This endpoint is deprecated.** Use `GET /products` instead. Will be removed in v3.0."
     ),
     deprecated=True,
-    response_model=List[ProductResponse],
+    response_model=list[ProductResponse],
 )
 async def legacy_catalog():
     return list(products.values())

@@ -1,4 +1,5 @@
 """Interface segregation: clients only depend on methods they use."""
+
 from abc import ABC, abstractmethod
 
 

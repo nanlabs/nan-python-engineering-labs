@@ -27,13 +27,14 @@ def render_toml(config: dict) -> list[str]:
             lines.append(f"[{section}.{subsection}]")
             for k, v in settings.items():
                 if isinstance(v, list):
-                    lines.append(f'{k} = {v}')
+                    lines.append(f"{k} = {v}")
                 else:
-                    lines.append(f'{k} = {v!r}')
+                    lines.append(f"{k} = {v!r}")
     return lines
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cfg = build_ruff_config(line_length=100, select=["E", "W", "F", "I", "S"])
     for line in render_toml(cfg):
         print(line)

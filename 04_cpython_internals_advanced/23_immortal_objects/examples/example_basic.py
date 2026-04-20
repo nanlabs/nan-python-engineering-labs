@@ -7,6 +7,7 @@ def classify_values(values: list[object]) -> list[tuple[object, bool]]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     sample = [None, True, 10, "", "python"]
     for candidate, immortal in classify_values(sample):
         print(candidate, immortal)

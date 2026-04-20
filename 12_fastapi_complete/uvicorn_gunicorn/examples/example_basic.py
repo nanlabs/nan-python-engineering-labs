@@ -16,10 +16,10 @@ Production commands shown in output:
     gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker
 """
 
-import os
 import multiprocessing
-from fastapi import FastAPI
+import os
 
+from fastapi import FastAPI
 
 # =============================================================================
 # THE APP (imported by uvicorn/gunicorn)
@@ -51,57 +51,48 @@ async def health():
 
 UVICORN_CONFIG = {
     # ── Binding ──────────────────────────────────────────────────────────────
-    "host": "0.0.0.0",           # Listen on all interfaces (0.0.0.0 for Docker)
-    "port": 8000,                 # Default port
-    "unix_socket": None,          # Or: "/tmp/app.sock" for nginx proxy
-
+    "host": "0.0.0.0",  # Listen on all interfaces (0.0.0.0 for Docker)
+    "port": 8000,  # Default port
+    "unix_socket": None,  # Or: "/tmp/app.sock" for nginx proxy
     # ── Workers ──────────────────────────────────────────────────────────────
-    "workers": 1,                 # Use gunicorn for multi-worker instead
-    "loop": "auto",               # asyncio (default) or uvloop (faster, install separately)
-    "http": "auto",               # h11 (default) or httptools (slightly faster)
-
+    "workers": 1,  # Use gunicorn for multi-worker instead
+    "loop": "auto",  # asyncio (default) or uvloop (faster, install separately)
+    "http": "auto",  # h11 (default) or httptools (slightly faster)
     # ── TLS (terminate at nginx in prod, or use here) ─────────────────────
-    "ssl_keyfile": None,          # Path to key file
-    "ssl_certfile": None,         # Path to cert file
-
+    "ssl_keyfile": None,  # Path to key file
+    "ssl_certfile": None,  # Path to cert file
     # ── Timeouts ─────────────────────────────────────────────────────────────
-    "timeout_keep_alive": 5,      # Seconds to keep idle connections open
-    "timeout_notify": 30,         # Time to wait for app startup
-
+    "timeout_keep_alive": 5,  # Seconds to keep idle connections open
+    "timeout_notify": 30,  # Time to wait for app startup
     # ── Logging ──────────────────────────────────────────────────────────────
-    "log_level": "info",          # debug / info / warning / error / critical
-    "access_log": True,           # Log every request
-    "use_colors": True,           # Colorize console output
-
+    "log_level": "info",  # debug / info / warning / error / critical
+    "access_log": True,  # Log every request
+    "use_colors": True,  # Colorize console output
     # ── Reload (development only) ────────────────────────────────────────────
-    "reload": False,              # Auto-reload on file change (dev only)
-    "reload_dirs": None,          # Which dirs to watch
+    "reload": False,  # Auto-reload on file change (dev only)
+    "reload_dirs": None,  # Which dirs to watch
 }
 
 
 GUNICORN_CONFIG = {
     # ── Workers ──────────────────────────────────────────────────────────────
-    "workers": 4,                 # Rule: (2 × CPU cores) + 1
+    "workers": 4,  # Rule: (2 × CPU cores) + 1
     "worker_class": "uvicorn.workers.UvicornWorker",  # ASGI worker
-    "threads": 1,                 # Threads per worker (UvicornWorker ignores this)
-
+    "threads": 1,  # Threads per worker (UvicornWorker ignores this)
     # ── Binding ──────────────────────────────────────────────────────────────
     "bind": "0.0.0.0:8000",
-    "backlog": 2048,              # Max pending connections in queue
-
+    "backlog": 2048,  # Max pending connections in queue
     # ── Timeouts ─────────────────────────────────────────────────────────────
-    "timeout": 30,                # Worker silent timeout (seconds)
-    "graceful_timeout": 30,       # Time to finish in-flight requests on reload
-    "keepalive": 2,               # Keep-alive connection timeout
-
+    "timeout": 30,  # Worker silent timeout (seconds)
+    "graceful_timeout": 30,  # Time to finish in-flight requests on reload
+    "keepalive": 2,  # Keep-alive connection timeout
     # ── Logging ──────────────────────────────────────────────────────────────
     "loglevel": "info",
-    "accesslog": "-",             # "-" = stdout
-    "errorlog": "-",              # "-" = stderr
-
+    "accesslog": "-",  # "-" = stdout
+    "errorlog": "-",  # "-" = stderr
     # ── Process management ──────────────────────────────────────────────────
-    "preload_app": True,          # Load app before forking workers (saves RAM)
-    "daemon": False,              # Never daemonize in Docker/Kubernetes
+    "preload_app": True,  # Load app before forking workers (saves RAM)
+    "daemon": False,  # Never daemonize in Docker/Kubernetes
 }
 
 
@@ -110,9 +101,7 @@ GUNICORN_CONFIG = {
 # =============================================================================
 
 COMMANDS = {
-    "development": (
-        "uvicorn example_basic:app --reload --host 127.0.0.1 --port 8000"
-    ),
+    "development": ("uvicorn example_basic:app --reload --host 127.0.0.1 --port 8000"),
     "production_uvicorn_only": (
         "uvicorn example_basic:app "
         "--host 0.0.0.0 --port 8000 "
@@ -129,9 +118,7 @@ COMMANDS = {
         "--preload "
         "--log-level info"
     ),
-    "gunicorn_config_file": (
-        "gunicorn example_basic:app -c gunicorn.conf.py"
-    ),
+    "gunicorn_config_file": ("gunicorn example_basic:app -c gunicorn.conf.py"),
 }
 
 
@@ -184,6 +171,7 @@ def programmatic_start():
     uvicorn.run() is equivalent to the CLI command.
     """
     import uvicorn  # type: ignore
+
     uvicorn.run(
         "example_basic:app",
         host="0.0.0.0",
@@ -199,6 +187,7 @@ def programmatic_start():
 
 
 def main():
+    """Entry point to demonstrate the implementation."""
     cpu_count = multiprocessing.cpu_count()
     recommended_workers = cpu_count * 2 + 1
 
@@ -246,11 +235,11 @@ def main():
     print("When to use what:")
     print("─" * 65)
     choices = [
-        ("Development",   "uvicorn --reload"),
+        ("Development", "uvicorn --reload"),
         ("Single server", "uvicorn --workers N"),
-        ("Production",    "gunicorn -k UvicornWorker (process supervisor)"),
-        ("Kubernetes",    "Single uvicorn process per pod (HPA handles scaling)"),
-        ("Docker Compose","gunicorn with 2-4 workers per container"),
+        ("Production", "gunicorn -k UvicornWorker (process supervisor)"),
+        ("Kubernetes", "Single uvicorn process per pod (HPA handles scaling)"),
+        ("Docker Compose", "gunicorn with 2-4 workers per container"),
     ]
     for scenario, choice in choices:
         print(f"  {scenario:<18} → {choice}")

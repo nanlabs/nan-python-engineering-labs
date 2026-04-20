@@ -48,16 +48,17 @@ TEMAS_MODULO_16 = [
     "40_xss_csrf_prevention",
 ]
 
+
 def create_topic(base_path: Path, topic_name: str) -> None:
     """Crea estructura de un tema de seguridad."""
     topic_path = base_path / topic_name
     topic_path.mkdir(parents=True, exist_ok=True)
-    
+
     for folder in ["examples", "exercise", "tests", "references"]:
         (topic_path / folder).mkdir(exist_ok=True)
-    
-    display_name = topic_name[3:].replace('_', ' ').title()
-    
+
+    display_name = topic_name[3:].replace("_", " ").title()
+
     readme = f"""# {display_name}
 
 ⏱️ **Tiempo estimado: 2-3 horas**
@@ -69,9 +70,9 @@ def create_topic(base_path: Path, topic_name: str) -> None:
 ## 2. 💡 Aplicación Práctica
 
 ### Casos de Uso
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ### Código Ejemplo
 
@@ -82,12 +83,12 @@ def create_topic(base_path: Path, topic_name: str) -> None:
 ## 3. 🤔 ¿Por Qué Es Importante?
 
 ### Riesgos
-- 
-- 
+-
+-
 
 ### Impacto de No Implementar
-- 
-- 
+-
+-
 
 ## 4. 🔗 Referencias
 
@@ -120,9 +121,9 @@ Crea sistema completo con auditoría de seguridad.
 > - ¿Qué vulnerabilidades has visto en producción?
 > - ¿Cómo implementarías esto en tu stack?
 """
-    
+
     (topic_path / "README.md").write_text(readme)
-    
+
     links = f"""# Referencias: {display_name}
 
 ## Estándares y Frameworks
@@ -144,17 +145,18 @@ Crea sistema completo con auditoría de seguridad.
 ## Artículos y Blogs
 - *[Añadir artículos relevantes]*
 """
-    
+
     (topic_path / "references" / "links.md").write_text(links)
+
 
 def main():
     """Genera módulo 16."""
     base_path = Path(__file__).parent.parent / "16_security_moderna"
     base_path.mkdir(parents=True, exist_ok=True)
-    
+
     print("🔒 Generando Módulo 16: Seguridad Moderna...")
     print()
-    
+
     readme_module = """# Módulo 16: Seguridad Moderna 🔒
 
 > Supply Chain, SBOM, Sigstore, SOPS, Vault, Container Security
@@ -209,17 +211,18 @@ Prevención de vulnerabilidades comunes.
 - [HashiCorp Vault](https://www.vaultproject.io/)
 - [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
 """
-    
+
     (base_path / "README.md").write_text(readme_module)
-    
+
     # Crear todos los temas
     for i, topic in enumerate(TEMAS_MODULO_16, 1):
         create_topic(base_path, topic)
         if i % 10 == 0:
             print(f"  ✓ {i} temas creados...")
-    
+
     print()
     print(f"✅ Módulo 16 generado: {len(TEMAS_MODULO_16)} temas")
+
 
 if __name__ == "__main__":
     main()

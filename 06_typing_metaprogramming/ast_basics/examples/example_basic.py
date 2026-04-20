@@ -13,6 +13,7 @@ class BinOpCounter(ast.NodeVisitor):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     code = "result = (a + b) * (c - d) / 2"
     tree = ast.parse(code)
     counter = BinOpCounter()

@@ -7,7 +7,6 @@ for all modules of the Python Engineering Labs project.
 """
 
 from pathlib import Path
-from typing import Dict
 
 # Definition of all modules and their topics
 MODULES = {
@@ -354,7 +353,7 @@ def create_topic_structure(base_path: Path, topic_name: str) -> None:
         links_path.write_text(links_content)
 
 
-def create_module(base_path: Path, module_name: str, module_info: Dict) -> None:
+def create_module(base_path: Path, module_name: str, module_info: dict) -> None:
     """Create the complete structure of a module."""
     module_path = base_path / module_name
     module_path.mkdir(parents=True, exist_ok=True)

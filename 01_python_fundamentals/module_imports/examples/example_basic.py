@@ -20,6 +20,9 @@ def estimate_iterations(values: list[int], chunk_size: int) -> int:
 
 
 def main() -> None:
+    """
+    Main function to demonstrate the usage of pathlib, math, and statistics modules.
+    """
     print(build_report_path("nan-python-engineering-labs", "01_python_fundamentals"))
     print(f"Estimated iterations: {estimate_iterations([10, 14, 12], 4)}")
 

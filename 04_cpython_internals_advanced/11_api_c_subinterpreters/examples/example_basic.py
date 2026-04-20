@@ -11,6 +11,7 @@ def describe_lifecycle(interpreter_id: int) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(build_c_api_call(2))
     for event in describe_lifecycle(2):
         print(event)

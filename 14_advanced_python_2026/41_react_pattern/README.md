@@ -20,8 +20,8 @@ In practice, this topic gives you a clear framework for modeling behavior, evalu
 ### Use Cases
 
 1. **Application development**: apply 41 41_react_pattern patterns in backend services and internal tools.
-2. **Library design**: implement reusable components with predictable behavior.
-3. **Automation workflows**: create scripts and processes easier to evolve and validate.
+1. **Library design**: implement reusable components with predictable behavior.
+1. **Automation workflows**: create scripts and processes easier to evolve and validate.
 
 ### Code Example
 

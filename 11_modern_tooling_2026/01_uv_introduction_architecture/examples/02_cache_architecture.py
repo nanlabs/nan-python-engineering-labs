@@ -2,6 +2,7 @@
 Example 2: Exploring the global uv cache
 Demonstrates how uv reuses packages across projects
 """
+
 import subprocess
 from pathlib import Path
 
@@ -9,29 +10,21 @@ from pathlib import Path
 def get_cache_info():
     """Get information about the uv cache."""
     print("📦 uv Global Cache Information\n")
-    
+
     # Cache directory
-    result = subprocess.run(
-        ["uv", "cache", "dir"],
-        capture_output=True,
-        text=True,
-        check=True
-    )
+    result = subprocess.run(["uv", "cache", "dir"], capture_output=True, text=True, check=True)
     cache_dir = Path(result.stdout.strip())
     print(f"📁 Location: {cache_dir}")
-    
+
     # Cache size if it exists
     if cache_dir.exists():
         result = subprocess.run(
-            ["du", "-sh", str(cache_dir)],
-            capture_output=True,
-            text=True,
-            check=False
+            ["du", "-sh", str(cache_dir)], capture_output=True, text=True, check=False
         )
         if result.returncode == 0:
             size = result.stdout.split()[0]
             print(f"💾 Size: {size}")
-    
+
     # List some cached packages
     wheels_dir = cache_dir / "wheels-v1"
     if wheels_dir.exists():
@@ -44,51 +37,61 @@ def get_cache_info():
 
 def demonstrate_cache_reuse():
     """Demonstrate cache reuse across projects."""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("🔄 Cache Reuse Demonstration")
-    print("="*60)
-    
+    print("=" * 60)
+
     projects = [
         Path("/tmp/uv_project_1"),
         Path("/tmp/uv_project_2"),
     ]
-    
+
     # Clean up previous projects
     for project in projects:
         if project.exists():
             subprocess.run(["rm", "-rf", str(project)], check=False)
         project.mkdir(parents=True)
-    
+
     # Project 1: First installation (download)
     print("\n1️⃣  Project 1: First requests installation")
     subprocess.run(["uv", "venv", str(projects[0] / ".venv")], check=True)
-    
+
     result = subprocess.run(
-        ["uv", "pip", "install", 
-         "--python", str(projects[0] / ".venv" / "bin" / "python"),
-         "requests==2.31.0"],
+        [
+            "uv",
+            "pip",
+            "install",
+            "--python",
+            str(projects[0] / ".venv" / "bin" / "python"),
+            "requests==2.31.0",
+        ],
         capture_output=True,
         text=True,
-        check=True
+        check=True,
     )
     print(result.stdout)
-    
+
     # Project 2: Second installation (from cache)
     print("\n2️⃣  Project 2: Requests installation (from cache)")
     subprocess.run(["uv", "venv", str(projects[1] / ".venv")], check=True)
-    
+
     result = subprocess.run(
-        ["uv", "pip", "install",
-         "--python", str(projects[1] / ".venv" / "bin" / "python"),
-         "requests==2.31.0"],
+        [
+            "uv",
+            "pip",
+            "install",
+            "--python",
+            str(projects[1] / ".venv" / "bin" / "python"),
+            "requests==2.31.0",
+        ],
         capture_output=True,
         text=True,
-        check=True
+        check=True,
     )
     print(result.stdout)
-    
+
     print("\n✓ Note: The second installation is instant thanks to cache reuse")
-    
+
     # Cleanup
     for project in projects:
         subprocess.run(["rm", "-rf", str(project)], check=False)
@@ -96,11 +99,12 @@ def demonstrate_cache_reuse():
 
 def show_pubgrub_example():
     """Show a conceptual example of the PubGrub algorithm."""
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("🧮 PubGrub Algorithm - Conceptual Example")
-    print("="*60)
-    
-    print("""
+    print("=" * 60)
+
+    print(
+        """
 PubGrub builds a decision graph incrementally:
 
 Suppose we install a package with these dependencies:
@@ -124,23 +128,24 @@ Advantages vs Backtracking (pip):
 ✓ Produces clearer error messages
 ✓ Avoids costly backtracking steps
 ✓ Faster on complex dependency graphs
-""")
+"""
+    )
 
 
 if __name__ == "__main__":
     print("🏗️  uv: Architecture and Cache\n")
-    
+
     # Verify installation
     try:
         subprocess.run(["uv", "version"], capture_output=True, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError):
         print("❌ uv is not installed.")
         exit(1)
-    
+
     get_cache_info()
     show_pubgrub_example()
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     response = input("Demonstrate cache reuse? (y/n): ")
-    if response.lower() == 'y':
+    if response.lower() == "y":
         demonstrate_cache_reuse()

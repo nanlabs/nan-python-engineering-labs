@@ -24,6 +24,7 @@ def synchronized_sum(values: list[int]) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(synchronized_sum(list(range(1, 101))))
 
 

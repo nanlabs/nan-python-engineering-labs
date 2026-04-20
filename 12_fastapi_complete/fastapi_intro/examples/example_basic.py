@@ -24,12 +24,11 @@ Then visit:
     - http://localhost:8000/redoc  (ReDoc)
 """
 
-from fastapi import FastAPI, HTTPException, Query, Path, Body, status
-from pydantic import BaseModel, Field
-from typing import Optional, List
 from datetime import datetime
 from enum import Enum
 
+from fastapi import Body, FastAPI, HTTPException, Path, Query, status
+from pydantic import BaseModel, Field
 
 # =============================================================================
 # CREATE FASTAPI APPLICATION
@@ -62,11 +61,11 @@ class Item(BaseModel):
     """Model for an item."""
 
     name: str = Field(..., min_length=1, max_length=100, description="Item name")
-    description: Optional[str] = Field(None, max_length=500, description="Item description")
+    description: str | None = Field(None, max_length=500, description="Item description")
     price: float = Field(..., gt=0, description="Item price (must be > 0)")
     category: ItemCategory = Field(..., description="Item category")
     in_stock: bool = Field(True, description="Whether the item is in stock")
-    tags: List[str] = Field(default_factory=list, description="Item tags")
+    tags: list[str] = Field(default_factory=list, description="Item tags")
 
     model_config = {
         "json_schema_extra": {
@@ -119,12 +118,12 @@ async def health_check():
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
 
-@app.get("/items", response_model=List[ItemResponse])
+@app.get("/items", response_model=list[ItemResponse])
 async def get_items(
     skip: int = Query(0, ge=0, description="Number of items to skip"),
     limit: int = Query(10, ge=1, le=100, description="Maximum number of items to return"),
-    category: Optional[ItemCategory] = Query(None, description="Filter by category"),
-    in_stock: Optional[bool] = Query(None, description="Filter by availability"),
+    category: ItemCategory | None = Query(None, description="Filter by category"),
+    in_stock: bool | None = Query(None, description="Filter by availability"),
 ):
     """Return a paginated, optionally filtered list of items."""
     items = list(items_db.values())
@@ -220,9 +219,7 @@ async def get_stats():
     return {
         "total_items": len(items_db),
         "items_by_category": {
-            category.value: sum(
-                1 for i in items_db.values() if i.item.category == category
-            )
+            category.value: sum(1 for i in items_db.values() if i.item.category == category)
             for category in ItemCategory
         },
         "in_stock": sum(1 for i in items_db.values() if i.item.in_stock),

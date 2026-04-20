@@ -25,6 +25,7 @@ class ReportService:
 
 
 if __name__ == "__main__":
+
     class FakeClock:
         def today(self):
             return date(2026, 4, 1)

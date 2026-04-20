@@ -13,10 +13,11 @@ def compute(limit: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     result, elapsed = timed_run(compute, 100_000)
     print(result)
-    print(f'{elapsed:.6f}s')
+    print(f"{elapsed:.6f}s")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

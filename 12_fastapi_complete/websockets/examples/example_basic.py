@@ -42,6 +42,7 @@ async def consume(client_name: str, queue: asyncio.Queue[Message], count: int) -
 
 
 async def main() -> None:
+    """Entry point to demonstrate the implementation."""
     hub = InMemoryWebSocketHub()
     alice_q = await hub.connect("alice")
     bob_q = await hub.connect("bob")

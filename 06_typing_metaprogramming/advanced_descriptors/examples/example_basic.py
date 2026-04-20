@@ -1,13 +1,13 @@
 class Positive:
     def __set_name__(self, owner: type, name: str) -> None:
-        self.name = f'_{name}'
+        self.name = f"_{name}"
 
     def __get__(self, instance, owner=None):
         return getattr(instance, self.name)
 
     def __set__(self, instance, value: int) -> None:
         if value <= 0:
-            raise ValueError('value must be positive')
+            raise ValueError("value must be positive")
         setattr(instance, self.name, value)
 
 
@@ -19,8 +19,9 @@ class Product:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(Product(10).stock)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,17 +15,17 @@ Master Object-Oriented Programming in Python. From classes and objects to inheri
 ## Contents (12 Topics)
 
 1. [Classes and Objects](classes_objects/)
-2. [Attributes and Methods](attributes_methods/)
-3. [Init and Self](init_self/)
-4. [Basic Inheritance](basic_inheritance/)
-5. [Multiple Inheritance](multiple_inheritance/)
-6. [Polymorphism](polymorphism/)
-7. [Encapsulation](encapsulation/)
-8. [Special Methods](special_methods/)
-9. [Properties](properties/)
-10. [Basic Descriptors](basic_descriptors/)
-11. [Composition vs Inheritance](composition_vs_inheritance/)
-12. [Dataclasses Optional](dataclasses_optional/)
+1. [Attributes and Methods](attributes_methods/)
+1. [Init and Self](init_self/)
+1. [Basic Inheritance](basic_inheritance/)
+1. [Multiple Inheritance](multiple_inheritance/)
+1. [Polymorphism](polymorphism/)
+1. [Encapsulation](encapsulation/)
+1. [Special Methods](special_methods/)
+1. [Properties](properties/)
+1. [Basic Descriptors](basic_descriptors/)
+1. [Composition vs Inheritance](composition_vs_inheritance/)
+1. [Dataclasses Optional](dataclasses_optional/)
 
 ## Total Estimated Time
 

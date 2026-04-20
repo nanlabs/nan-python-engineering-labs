@@ -15,6 +15,7 @@ def compare_install_time(packages: list[str]) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(uv_summary())
     print(compare_install_time(["requests", "fastapi", "pydantic"]))
 

@@ -19,6 +19,7 @@ def parse_port(raw_value: str) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(safe_divide(10, 2))
     print(safe_divide(10, 0))
     try:

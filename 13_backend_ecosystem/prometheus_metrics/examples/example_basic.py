@@ -1,4 +1,5 @@
 """Basic example: counters and histogram buckets exposition."""
+
 import random
 
 req_total = 0
@@ -15,9 +16,9 @@ for i in range(10):
             buckets[b] += 1
             break
 
-print('# TYPE app_requests_total counter')
-print(f'app_requests_total {req_total}')
-print('# TYPE app_errors_total counter')
-print(f'app_errors_total {err_total}')
+print("# TYPE app_requests_total counter")
+print(f"app_requests_total {req_total}")
+print("# TYPE app_errors_total counter")
+print(f"app_errors_total {err_total}")
 for b, c in buckets.items():
     print(f'app_request_latency_seconds_bucket{{le="{b}"}} {c}')

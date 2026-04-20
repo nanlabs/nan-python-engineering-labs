@@ -9,15 +9,14 @@ from __future__ import annotations
 
 import argparse
 import re
-import sys
 from pathlib import Path
 
 SPANISH_KEYWORDS = re.compile(
-    r"\b(" \
-    r"módulo|descripcion|descripción|objetivo|ejercicio|instrucciones|" \
-    r"referencias|enlaces|recursos|aprende|diseña|debes|requisitos|" \
-    r"ejemplo|solución|practica|práctica|implementa|función|" \
-    r"resolución|contribuciones|útiles" \
+    r"\b("
+    r"módulo|descripcion|descripción|objetivo|ejercicio|instrucciones|"
+    r"referencias|enlaces|recursos|aprende|diseña|debes|requisitos|"
+    r"ejemplo|solución|practica|práctica|implementa|función|"
+    r"resolución|contribuciones|útiles"
     r")\b",
     re.IGNORECASE,
 )

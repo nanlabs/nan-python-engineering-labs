@@ -7,13 +7,14 @@ async def fetch_value(delay: float, value: str) -> str:
 
 
 async def async_main() -> None:
-    result = await fetch_value(0.01, 'ready')
+    result = await fetch_value(0.01, "ready")
     print(result)
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     asyncio.run(async_main())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

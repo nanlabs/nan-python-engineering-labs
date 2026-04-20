@@ -25,11 +25,10 @@ Run:
     Click "Authorize" and enter: alice / password123
 """
 
-from datetime import datetime, timedelta, timezone
-from typing import List, Optional
 import os
+from datetime import UTC, datetime, timedelta
 
-from fastapi import FastAPI, Depends, HTTPException, Security, status
+from fastapi import Depends, FastAPI, HTTPException, Security, status
 from fastapi.security import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
@@ -38,7 +37,6 @@ from fastapi.security import (
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel, ValidationError
-
 
 # =============================================================================
 # CONFIG
@@ -81,19 +79,19 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str
-    scopes: List[str] = []
+    scopes: list[str] = []
 
 
 class UserBase(BaseModel):
     username: str
     email: str
-    full_name: Optional[str] = None
+    full_name: str | None = None
     disabled: bool = False
 
 
 class UserInDB(UserBase):
     hashed_password: str
-    scopes: List[str] = []
+    scopes: list[str] = []
 
 
 class Item(BaseModel):
@@ -139,18 +137,16 @@ def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
 
 
-def authenticate_user(username: str, password: str) -> Optional[UserInDB]:
+def authenticate_user(username: str, password: str) -> UserInDB | None:
     user = USERS_DB.get(username)
     if not user or not verify_password(password, user.hashed_password):
         return None
     return user
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     to_encode = data.copy()
-    expire = datetime.now(timezone.utc) + (
-        expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
+    expire = datetime.now(UTC) + (expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
@@ -184,7 +180,7 @@ async def get_current_user(
 
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: Optional[str] = payload.get("sub")
+        username: str | None = payload.get("sub")
         if username is None:
             raise credentials_exception
         token_scopes = payload.get("scopes", [])
@@ -208,7 +204,7 @@ async def get_current_user(
 
 
 async def get_current_active_user(
-    current_user: UserInDB = Security(get_current_user, scopes=["me"])
+    current_user: UserInDB = Security(get_current_user, scopes=["me"]),
 ) -> UserInDB:
     """Shortcut dependency for routes that just need any authenticated user."""
     return current_user
@@ -252,9 +248,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     requested_scopes = form_data.scopes or user.scopes
     granted_scopes = [s for s in requested_scopes if s in user.scopes]
 
-    access_token = create_access_token(
-        data={"sub": user.username, "scopes": granted_scopes}
-    )
+    access_token = create_access_token(data={"sub": user.username, "scopes": granted_scopes})
     return Token(
         access_token=access_token,
         token_type="bearer",
@@ -267,17 +261,13 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 
 @app.get("/users/me", response_model=UserBase)
-async def read_users_me(
-    current_user: UserInDB = Security(get_current_user, scopes=["me"])
-):
+async def read_users_me(current_user: UserInDB = Security(get_current_user, scopes=["me"])):
     """Return the authenticated user's profile. Requires 'me' scope."""
     return current_user
 
 
-@app.get("/items", response_model=List[Item])
-async def read_items(
-    current_user: UserInDB = Security(get_current_user, scopes=["items:read"])
-):
+@app.get("/items", response_model=list[Item])
+async def read_items(current_user: UserInDB = Security(get_current_user, scopes=["items:read"])):
     """List all items. Requires 'items:read' scope."""
     return ITEMS_DB
 
@@ -293,10 +283,8 @@ async def create_item(
     return new_item
 
 
-@app.get("/admin/users", response_model=List[UserBase])
-async def admin_list_users(
-    current_user: UserInDB = Security(get_current_user, scopes=["admin"])
-):
+@app.get("/admin/users", response_model=list[UserBase])
+async def admin_list_users(current_user: UserInDB = Security(get_current_user, scopes=["admin"])):
     """List all users. Requires 'admin' scope."""
     return list(USERS_DB.values())
 
@@ -308,7 +296,11 @@ async def root():
         "docs": "/docs",
         "token_endpoint": "/token",
         "test_credentials": [
-            {"username": "alice", "password": "password123", "scopes": "me items:read items:write admin"},
+            {
+                "username": "alice",
+                "password": "password123",
+                "scopes": "me items:read items:write admin",
+            },
             {"username": "bob", "password": "password456", "scopes": "me items:read"},
         ],
     }

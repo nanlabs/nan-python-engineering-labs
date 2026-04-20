@@ -1,4 +1,5 @@
 """Open/Closed: extend behavior without modifying existing code."""
+
 from abc import ABC, abstractmethod
 
 

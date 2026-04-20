@@ -8,6 +8,7 @@ def expensive_step(data: list[int]) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     data = list(range(20000))
 
     t0 = perf_counter()
@@ -22,5 +23,5 @@ def main() -> None:
     print(f"Result: {result}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

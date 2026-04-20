@@ -3,6 +3,7 @@ import threading
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     q: queue.Queue[int] = queue.Queue()
     out: list[int] = []
 
@@ -20,9 +21,12 @@ def main() -> None:
 
     tp = threading.Thread(target=producer)
     tc = threading.Thread(target=consumer)
-    tp.start(); tc.start(); tp.join(); tc.join()
+    tp.start()
+    tc.start()
+    tp.join()
+    tc.join()
     print(out)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

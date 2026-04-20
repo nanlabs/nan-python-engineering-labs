@@ -13,6 +13,7 @@ def process_jobs(jobs: list[str]) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(process_jobs(["build", "test", "deploy"]))
 
 

@@ -8,9 +8,10 @@ class Student:
 
 
 def main() -> None:
-    student = Student('Ada', '2026-A')
+    """Entry point to demonstrate the implementation."""
+    student = Student("Ada", "2026-A")
     print(student.summary())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

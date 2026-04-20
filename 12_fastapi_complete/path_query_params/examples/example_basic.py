@@ -17,12 +17,10 @@ Run:
     Visit http://localhost:8000/docs
 """
 
-from fastapi import FastAPI, Query, Path, HTTPException, status
-from pydantic import BaseModel
-from typing import Optional, List
-from enum import Enum
 import math
+from enum import Enum
 
+from fastapi import FastAPI, HTTPException, Path, Query
 
 # =============================================================================
 # ENUMS
@@ -46,7 +44,13 @@ class ProductCategory(str, Enum):
 # =============================================================================
 
 PRODUCTS = [
-    {"id": i, "name": f"Product {i}", "price": round(10 + i * 7.5, 2), "category": list(ProductCategory)[i % 4].value, "rating": round(3 + (i % 3) * 0.5, 1)}
+    {
+        "id": i,
+        "name": f"Product {i}",
+        "price": round(10 + i * 7.5, 2),
+        "category": list(ProductCategory)[i % 4].value,
+        "rating": round(3 + (i % 3) * 0.5, 1),
+    }
     for i in range(1, 21)
 ]
 
@@ -74,7 +78,7 @@ async def get_product(
         le=1000,
         title="Product ID",
         description="Unique identifier for the product",
-    )
+    ),
 ):
     """
     Fetch a product by its ID.
@@ -99,11 +103,13 @@ async def get_products_by_category(
     - `category` is validated against the ProductCategory enum.
     - `min_rating` is a query parameter with a default of 0.0.
     """
-    results = [
-        p for p in PRODUCTS
-        if p["category"] == category.value and p["rating"] >= min_rating
-    ]
-    return {"category": category.value, "min_rating": min_rating, "count": len(results), "products": results}
+    results = [p for p in PRODUCTS if p["category"] == category.value and p["rating"] >= min_rating]
+    return {
+        "category": category.value,
+        "min_rating": min_rating,
+        "count": len(results),
+        "products": results,
+    }
 
 
 # ── Query parameters ─────────────────────────────────────────────────────────
@@ -115,9 +121,9 @@ async def list_products(
     limit: int = Query(5, ge=1, le=20, description="Max number of products to return"),
     sort_by: str = Query("id", pattern="^(id|price|rating)$", description="Sort field"),
     order: SortOrder = Query(SortOrder.ASC, description="Sort direction"),
-    min_price: Optional[float] = Query(None, ge=0, description="Minimum price filter"),
-    max_price: Optional[float] = Query(None, ge=0, description="Maximum price filter"),
-    q: Optional[str] = Query(None, min_length=1, max_length=50, description="Search query"),
+    min_price: float | None = Query(None, ge=0, description="Minimum price filter"),
+    max_price: float | None = Query(None, ge=0, description="Maximum price filter"),
+    q: str | None = Query(None, min_length=1, max_length=50, description="Search query"),
 ):
     """
     List products with full pagination, sorting, and filtering.

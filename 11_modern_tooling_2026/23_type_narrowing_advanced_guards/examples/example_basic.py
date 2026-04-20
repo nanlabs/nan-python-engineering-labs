@@ -1,12 +1,13 @@
 """Advanced type narrowing with TypeGuard and isinstance chains."""
-from typing import TypeGuard, Union
+
+from typing import TypeGuard
 
 
 def is_string_list(val: list[object]) -> TypeGuard[list[str]]:
     return all(isinstance(item, str) for item in val)
 
 
-def process_items(items: list[Union[int, str]]) -> tuple[list[int], list[str]]:
+def process_items(items: list[int | str]) -> tuple[list[int], list[str]]:
     ints: list[int] = []
     strs: list[str] = []
     for item in items:
@@ -18,7 +19,8 @@ def process_items(items: list[Union[int, str]]) -> tuple[list[int], list[str]]:
 
 
 def main() -> None:
-    mixed: list[Union[int, str]] = [1, "a", 2, "b", 3]
+    """Entry point to demonstrate the implementation."""
+    mixed: list[int | str] = [1, "a", 2, "b", 3]
     integers, strings = process_items(mixed)
     print(f"integers={integers}")
     print(f"strings={strings}")

@@ -1,6 +1,6 @@
 class Descriptor:
     def __set_name__(self, owner: type, name: str) -> None:
-        self.private_name = f'_{name}'
+        self.private_name = f"_{name}"
 
     def __get__(self, instance, owner=None):
         if instance is None:
@@ -16,10 +16,11 @@ class Model:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     item = Model()
-    item.field = 'value'
+    item.field = "value"
     print(item.field)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

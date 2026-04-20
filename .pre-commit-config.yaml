@@ -15,7 +15,17 @@ repos:
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
+        files: '^(my_solution|scripts)/.*\.py$'
       - id: ruff-format
+        files: '^(my_solution|scripts)/.*\.py$'
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.21
+    hooks:
+      - id: mdformat
+        exclude: '^README\.md$'
+        additional_dependencies:
+          - mdformat-gfm
 
   - repo: https://github.com/DetachHead/basedpyright
     rev: v1.10.0
@@ -35,7 +45,7 @@ repos:
     hooks:
       - id: update-progress
         name: Update learning progress
-        entry: python scripts/progress.py
+        entry: python3 scripts/progress.py
         language: system
         pass_filenames: false
         always_run: true

@@ -17,11 +17,10 @@ Run:
     Visit http://localhost:8000/docs
 """
 
-from fastapi import FastAPI, APIRouter, HTTPException, status, Depends
-from pydantic import BaseModel, Field
-from typing import Optional, List
 from datetime import datetime
 
+from fastapi import APIRouter, FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 # =============================================================================
 # PYDANTIC MODELS
@@ -56,7 +55,7 @@ class ProductCreate(BaseModel):
 class Order(BaseModel):
     id: int
     user_id: int
-    product_ids: List[int]
+    product_ids: list[int]
     total: float
     created_at: datetime
 
@@ -86,7 +85,7 @@ _order_counter = 1
 users_router = APIRouter(prefix="/users", tags=["users"])
 
 
-@users_router.get("/", response_model=List[User])
+@users_router.get("/", response_model=list[User])
 async def list_users(active_only: bool = False):
     """List all users, optionally filtered to active ones."""
     users = list(users_db.values())
@@ -126,8 +125,8 @@ async def delete_user(user_id: int):
 products_router = APIRouter(prefix="/products", tags=["products"])
 
 
-@products_router.get("/", response_model=List[Product])
-async def list_products(category: Optional[str] = None):
+@products_router.get("/", response_model=list[Product])
+async def list_products(category: str | None = None):
     """List products, optionally filtered by category."""
     prods = list(products_db.values())
     if category:
@@ -165,7 +164,7 @@ async def create_product(payload: ProductCreate):
 orders_router = APIRouter(prefix="/{user_id}/orders", tags=["orders"])
 
 
-@orders_router.get("/", response_model=List[Order])
+@orders_router.get("/", response_model=list[Order])
 async def list_user_orders(user_id: int):
     """List all orders for a given user."""
     if user_id not in users_db:
@@ -174,7 +173,7 @@ async def list_user_orders(user_id: int):
 
 
 @orders_router.post("/", response_model=Order, status_code=201)
-async def create_order(user_id: int, product_ids: List[int]):
+async def create_order(user_id: int, product_ids: list[int]):
     """Create an order for a user."""
     global _order_counter
     if user_id not in users_db:

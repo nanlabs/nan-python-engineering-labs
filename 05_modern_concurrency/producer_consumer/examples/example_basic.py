@@ -2,6 +2,7 @@ from queue import Queue
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     queue: Queue[int] = Queue()
     for number in [1, 2, 3]:
         queue.put(number)
@@ -11,5 +12,5 @@ def main() -> None:
     print(values)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

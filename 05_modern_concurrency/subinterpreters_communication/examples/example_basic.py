@@ -11,6 +11,7 @@ def receive_all(channel: Queue[str], total: int) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     channel: Queue[str] = Queue()
     messages = ["task-1", "task-2", "done"]
     send_messages(channel, messages)

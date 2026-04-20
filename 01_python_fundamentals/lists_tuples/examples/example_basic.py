@@ -13,6 +13,7 @@ def format_point(point: tuple[int, int]) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     tasks = ["read", "practice", "review"]
     print(rotate_tasks(tasks))
     print(format_point((3, 7)))

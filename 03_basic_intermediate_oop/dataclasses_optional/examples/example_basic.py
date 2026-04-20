@@ -9,9 +9,10 @@ class Ticket:
 
 
 def main() -> None:
-    ticket = Ticket(101, 'Fix login bug')
+    """Entry point to demonstrate the implementation."""
+    ticket = Ticket(101, "Fix login bug")
     print(ticket)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -12,6 +12,7 @@ def classify_extension(name: str, gil_safe: bool) -> ExtensionCheck:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     checks = [
         classify_extension("numpy", True),
         classify_extension("legacy_ext", False),

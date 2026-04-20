@@ -10,10 +10,11 @@ class PluginRegistry:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     registry = PluginRegistry()
-    registry.register('upper', str.upper)
-    print(registry.run('upper', 'hello'))
+    registry.register("upper", str.upper)
+    print(registry.run("upper", "hello"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

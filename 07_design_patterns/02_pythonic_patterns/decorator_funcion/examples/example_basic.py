@@ -17,8 +17,9 @@ def area(w: int, h: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     area(4, 5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

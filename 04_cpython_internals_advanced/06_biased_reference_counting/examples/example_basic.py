@@ -7,6 +7,7 @@ def update_bias(local: int, shared: int, delta: int) -> tuple[int, int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     local, shared = 5, 10
     local, shared = update_bias(local, shared, -7)
     print(f"local={local}, shared={shared}")

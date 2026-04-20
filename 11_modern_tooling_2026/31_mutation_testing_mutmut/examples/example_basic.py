@@ -11,16 +11,24 @@ def run_test_suite() -> list[dict[str, object]]:
     cases = [
         (100.0, 0.1, 90.0),
         (200.0, 0.0, 200.0),
-        (50.0,  0.5, 25.0),
+        (50.0, 0.5, 25.0),
     ]
     results = []
     for price, rate, expected in cases:
         actual = discount(price, rate)
-        results.append({"input": (price, rate), "expected": expected, "actual": actual, "pass": actual == expected})
+        results.append(
+            {
+                "input": (price, rate),
+                "expected": expected,
+                "actual": actual,
+                "pass": actual == expected,
+            }
+        )
     return results
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     results = run_test_suite()
     passed = sum(1 for r in results if r["pass"])
     for r in results:

@@ -1,5 +1,5 @@
-from dataclasses import dataclass
 import sys
+from dataclasses import dataclass
 
 
 @dataclass
@@ -8,6 +8,7 @@ class Node:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     data = [Node(i) for i in range(5)]
     sizes = [sys.getsizeof(item) for item in data]
     print(f"min={min(sizes)}, max={max(sizes)}")

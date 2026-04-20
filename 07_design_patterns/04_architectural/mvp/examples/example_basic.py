@@ -8,12 +8,13 @@ class Presenter:
         self.view = view
 
     def present(self, data: str) -> str:
-        return self.view.show(f'presented:{data}')
+        return self.view.show(f"presented:{data}")
 
 
 def main() -> None:
-    print(Presenter(View()).present('stats'))
+    """Entry point to demonstrate the implementation."""
+    print(Presenter(View()).present("stats"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

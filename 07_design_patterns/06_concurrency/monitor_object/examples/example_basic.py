@@ -16,10 +16,12 @@ class CounterMonitor:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     monitor = CounterMonitor()
-    monitor.increment(); monitor.increment()
+    monitor.increment()
+    monitor.increment()
     print(monitor.value())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

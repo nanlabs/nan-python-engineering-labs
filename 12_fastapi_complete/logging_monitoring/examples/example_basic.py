@@ -22,13 +22,11 @@ import json
 import logging
 import time
 import uuid
+from collections.abc import Callable
 from contextvars import ContextVar
 from datetime import datetime
-from typing import Callable, Optional
 
 from fastapi import FastAPI, Request, Response
-from pydantic import BaseModel
-
 
 # =============================================================================
 # 1. CORRELATION ID — thread/async context variable
@@ -72,11 +70,27 @@ class JSONFormatter(logging.Formatter):
         # Include extra fields passed via extra={} in the logging call
         for key, value in record.__dict__.items():
             if key.startswith("_") or key in (
-                "args", "created", "exc_info", "exc_text", "filename",
-                "funcName", "levelname", "levelno", "lineno", "message",
-                "module", "msecs", "msg", "name", "pathname",
-                "process", "processName", "relativeCreated",
-                "stack_info", "thread", "threadName",
+                "args",
+                "created",
+                "exc_info",
+                "exc_text",
+                "filename",
+                "funcName",
+                "levelname",
+                "levelno",
+                "lineno",
+                "message",
+                "module",
+                "msecs",
+                "msg",
+                "name",
+                "pathname",
+                "process",
+                "processName",
+                "relativeCreated",
+                "stack_info",
+                "thread",
+                "threadName",
             ):
                 continue
             if key not in ("asctime",):
@@ -244,6 +258,7 @@ async def get_item(item_id: int):
             extra={"item_id": item_id, "reason": "id_out_of_range"},
         )
         from fastapi import HTTPException
+
         raise HTTPException(status_code=404, detail=f"Item {item_id} not found")
 
     logger.info("Item fetched", extra={"item_id": item_id})
@@ -270,8 +285,7 @@ async def get_metrics():
         "request_count": metrics.request_count,
         "error_count": metrics.error_count,
         "error_rate": (
-            round(metrics.error_count / metrics.request_count, 4)
-            if metrics.request_count else 0
+            round(metrics.error_count / metrics.request_count, 4) if metrics.request_count else 0
         ),
         "avg_latency_ms": metrics.avg_latency_ms,
         "p95_latency_ms": metrics.p95_latency_ms,

@@ -6,8 +6,9 @@ def worker(name: str, output: list[str]) -> None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     results: list[str] = []
-    threads = [threading.Thread(target=worker, args=(f't{i}', results)) for i in range(3)]
+    threads = [threading.Thread(target=worker, args=(f"t{i}", results)) for i in range(3)]
     for thread in threads:
         thread.start()
     for thread in threads:
@@ -15,5 +16,5 @@ def main() -> None:
     print(sorted(results))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

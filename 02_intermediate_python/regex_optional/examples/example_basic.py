@@ -2,7 +2,7 @@
 
 import re
 
-EMAIL_PATTERN = re.compile(r'[\w.-]+@[\w.-]+')
+EMAIL_PATTERN = re.compile(r"[\w.-]+@[\w.-]+")
 
 
 def extract_emails(text: str) -> list[str]:
@@ -12,14 +12,15 @@ def extract_emails(text: str) -> list[str]:
 
 def anonymize_emails(text: str) -> str:
     """Replace email addresses with a masked marker."""
-    return EMAIL_PATTERN.sub('[hidden-email]', text)
+    return EMAIL_PATTERN.sub("[hidden-email]", text)
 
 
 def main() -> None:
-    sample = 'Contact ada@example.com and lin@test.dev for details.'
+    """Entry point to demonstrate the implementation."""
+    sample = "Contact ada@example.com and lin@test.dev for details."
     print(extract_emails(sample))
     print(anonymize_emails(sample))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

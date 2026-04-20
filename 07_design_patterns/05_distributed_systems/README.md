@@ -7,17 +7,17 @@ This category focuses on 05 distributed systems patterns and practical implement
 ## Contents (12 patterns)
 
 1. [Backend For Frontend](backend_for_frontend/)
-2. [Bulkhead](bulkhead/)
-3. [Cache Aside](cache_aside/)
-4. [Circuit Breaker](circuit_breaker/)
-5. [CQRS](cqrs/)
-6. [Event Driven](event_driven/)
-7. [Event Sourcing](event_sourcing/)
-8. [Rate Limiter](rate_limiter/)
-9. [Retry Pattern](retry_pattern/)
-10. [Saga](saga/)
-11. [Sidecar](sidecar/)
-12. [Timeout](timeout/)
+1. [Bulkhead](bulkhead/)
+1. [Cache Aside](cache_aside/)
+1. [Circuit Breaker](circuit_breaker/)
+1. [CQRS](cqrs/)
+1. [Event Driven](event_driven/)
+1. [Event Sourcing](event_sourcing/)
+1. [Rate Limiter](rate_limiter/)
+1. [Retry Pattern](retry_pattern/)
+1. [Saga](saga/)
+1. [Sidecar](sidecar/)
+1. [Timeout](timeout/)
 
 ## Practice Recommendation
 

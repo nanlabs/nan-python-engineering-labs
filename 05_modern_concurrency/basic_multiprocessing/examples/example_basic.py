@@ -6,6 +6,7 @@ def worker(queue: Queue, value: int) -> None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     queue: Queue = Queue()
     process = Process(target=worker, args=(queue, 21))
     process.start()
@@ -13,5 +14,5 @@ def main() -> None:
     print(queue.get())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -21,17 +21,15 @@ Test errors:
     curl http://localhost:8000/trigger-500        → 500 (safely handled)
 """
 
-import traceback
 import logging
+import traceback
 from datetime import datetime
-from typing import Optional, List
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException, Request, status
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, field_validator
-
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -87,7 +85,7 @@ class ErrorResponse(BaseModel):
     code: str
     message: str
     timestamp: datetime
-    details: Optional[List[dict]] = None
+    details: list[dict] | None = None
 
     @classmethod
     def from_app_error(cls, exc: AppError) -> "ErrorResponse":
@@ -195,11 +193,13 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
     """
     details = []
     for error in exc.errors():
-        details.append({
-            "field": " → ".join(str(loc) for loc in error["loc"]),
-            "message": error["msg"],
-            "type": error["type"],
-        })
+        details.append(
+            {
+                "field": " → ".join(str(loc) for loc in error["loc"]),
+                "message": error["msg"],
+                "type": error["type"],
+            }
+        )
 
     response = ErrorResponse(
         error_id=str(uuid4())[:8],

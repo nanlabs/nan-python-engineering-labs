@@ -15,13 +15,13 @@ This module covers design patterns relevant to Python, from classic GoF patterns
 ## Contents (88 Patterns)
 
 1. [01 Basic GoF](01_basic_gof/) (11 patterns)
-2. [02 Pythonic Patterns](02_pythonic_patterns/) (14 patterns)
-3. [03 Advanced GoF](03_advanced_gof/) (12 patterns)
-4. [04 Architectural](04_architectural/) (13 patterns)
-5. [05 Distributed Systems](05_distributed_systems/) (12 patterns)
-6. [06 Concurrency](06_concurrency/) (14 patterns)
-7. [07 Messaging](07_messaging/) (4 patterns)
-8. [08 Object Management](08_object_management/) (8 patterns)
+1. [02 Pythonic Patterns](02_pythonic_patterns/) (14 patterns)
+1. [03 Advanced GoF](03_advanced_gof/) (12 patterns)
+1. [04 Architectural](04_architectural/) (13 patterns)
+1. [05 Distributed Systems](05_distributed_systems/) (12 patterns)
+1. [06 Concurrency](06_concurrency/) (14 patterns)
+1. [07 Messaging](07_messaging/) (4 patterns)
+1. [08 Object Management](08_object_management/) (8 patterns)
 
 ## Total Estimated Time
 

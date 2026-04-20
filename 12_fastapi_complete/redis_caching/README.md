@@ -48,7 +48,7 @@ Repeated DB aggregations for the same data on every request waste DB resources a
 
 ### Solution and Benefits
 
-A cache hit takes <1ms. The same query at 100 req/s now runs once per TTL window (e.g. every 30 seconds) instead of 100 times per second — a 3,000× reduction in DB load.
+A cache hit takes \<1ms. The same query at 100 req/s now runs once per TTL window (e.g. every 30 seconds) instead of 100 times per second — a 3,000× reduction in DB load.
 
 ## 4. References
 
@@ -74,7 +74,7 @@ Connect to a real Redis instance (or use `fakeredis`). Add `GET /cache/stats` th
 ### Success Criteria
 
 - First `GET /products/1`: MISS (~50ms simulated).
-- Second `GET /products/1` within TTL: HIT (<1ms).
+- Second `GET /products/1` within TTL: HIT (\<1ms).
 - After `PUT /products/1`: next GET is MISS again.
 
 ## 6. Summary

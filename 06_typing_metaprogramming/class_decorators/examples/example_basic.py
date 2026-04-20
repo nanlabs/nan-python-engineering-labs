@@ -1,6 +1,6 @@
 def add_repr(cls):
     def __repr__(self):
-        attrs = ', '.join(f"{k}={v!r}" for k, v in self.__dict__.items())
+        attrs = ", ".join(f"{k}={v!r}" for k, v in self.__dict__.items())
         return f"{cls.__name__}({attrs})"
 
     cls.__repr__ = __repr__
@@ -14,8 +14,9 @@ class Config:
 
 
 def main() -> None:
-    print(Config('dev'))
+    """Entry point to demonstrate the implementation."""
+    print(Config("dev"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

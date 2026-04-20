@@ -24,10 +24,9 @@ Run:
     Visit http://localhost:8000/graphql  (GraphiQL playground)
 """
 
-import strawberry
-from typing import List, Optional
 from datetime import datetime
 
+import strawberry
 
 # =============================================================================
 # 1. STRAWBERRY TYPES
@@ -41,7 +40,7 @@ class Author:
     id: int
     name: str
     email: str
-    bio: Optional[str] = None
+    bio: str | None = None
 
 
 @strawberry.type
@@ -72,9 +71,9 @@ class CreateBookInput:
 class UpdateBookInput:
     """Input type for updating a book — all fields optional."""
 
-    title: Optional[str] = None
-    price: Optional[float] = None
-    in_stock: Optional[bool] = None
+    title: str | None = None
+    price: float | None = None
+    in_stock: bool | None = None
 
 
 @strawberry.type
@@ -96,18 +95,30 @@ _authors: dict[int, Author] = {
 
 _books: dict[int, Book] = {
     1: Book(
-        id=1, title="FastAPI Mastery", isbn="978-0000000001",
-        price=29.99, in_stock=True, author=_authors[1],
+        id=1,
+        title="FastAPI Mastery",
+        isbn="978-0000000001",
+        price=29.99,
+        in_stock=True,
+        author=_authors[1],
         published_at=datetime(2023, 6, 15),
     ),
     2: Book(
-        id=2, title="Python Async Deep Dive", isbn="978-0000000002",
-        price=39.99, in_stock=True, author=_authors[1],
+        id=2,
+        title="Python Async Deep Dive",
+        isbn="978-0000000002",
+        price=39.99,
+        in_stock=True,
+        author=_authors[1],
         published_at=datetime(2024, 1, 10),
     ),
     3: Book(
-        id=3, title="Clean Architecture", isbn="978-0000000003",
-        price=19.99, in_stock=False, author=_authors[2],
+        id=3,
+        title="Clean Architecture",
+        isbn="978-0000000003",
+        price=19.99,
+        in_stock=False,
+        author=_authors[2],
         published_at=datetime(2022, 11, 1),
     ),
 }
@@ -126,9 +137,9 @@ class Query:
     @strawberry.field
     def books(
         self,
-        in_stock: Optional[bool] = None,
-        author_id: Optional[int] = None,
-    ) -> List[Book]:
+        in_stock: bool | None = None,
+        author_id: int | None = None,
+    ) -> list[Book]:
         """
         List books with optional filters.
 
@@ -148,7 +159,7 @@ class Query:
         return results
 
     @strawberry.field
-    def book(self, id: int) -> Optional[Book]:
+    def book(self, id: int) -> Book | None:
         """
         Get a single book by ID.
 
@@ -162,12 +173,12 @@ class Query:
         return _books.get(id)
 
     @strawberry.field
-    def authors(self) -> List[Author]:
+    def authors(self) -> list[Author]:
         """List all authors."""
         return list(_authors.values())
 
     @strawberry.field
-    def author(self, id: int) -> Optional[Author]:
+    def author(self, id: int) -> Author | None:
         """Get a single author by ID."""
         return _authors.get(id)
 
@@ -236,7 +247,7 @@ class Mutation:
         return book
 
     @strawberry.mutation
-    def update_book(self, id: int, input: UpdateBookInput) -> Optional[Book]:
+    def update_book(self, id: int, input: UpdateBookInput) -> Book | None:
         """
         Partially update a book.
 
@@ -316,6 +327,7 @@ def create_app():
 
 try:
     from fastapi import FastAPI
+
     app = create_app()
 except (ImportError, TypeError):
     # Fallback for environments where strawberry FastAPI integration is unavailable
@@ -345,14 +357,16 @@ def demo():
     print()
     print("Schema introspection:")
     introspection = schema.execute_sync("{ __schema { types { name } } }")
-    type_names = [t["name"] for t in introspection.data["__schema"]["types"]
-                  if not t["name"].startswith("__")]
+    type_names = [
+        t["name"] for t in introspection.data["__schema"]["types"] if not t["name"].startswith("__")
+    ]
     print("  Types:", ", ".join(type_names))
     print()
 
     # Execute a query
     print("Query: books(inStock: true) { id title price }")
-    result = schema.execute_sync("""
+    result = schema.execute_sync(
+        """
         {
           books(inStock: true) {
             id
@@ -360,7 +374,8 @@ def demo():
             price
           }
         }
-    """)
+    """
+    )
     if result.data:
         for book in result.data["books"]:
             print(f"  {book}")
@@ -368,7 +383,8 @@ def demo():
 
     # Execute a mutation
     print("Mutation: createBook(...)")
-    result = schema.execute_sync("""
+    result = schema.execute_sync(
+        """
         mutation {
           createBook(input: {
             title: "New Demo Book"
@@ -379,7 +395,8 @@ def demo():
             id title price
           }
         }
-    """)
+    """
+    )
     if result.data:
         print(f"  Created: {result.data['createBook']}")
     print()

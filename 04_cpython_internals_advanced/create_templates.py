@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
 ---
 
-**Tema anterior**: [{prev_topic}](../{prev_folder}/)  
+**Tema anterior**: [{prev_topic}](../{prev_folder}/)
 **Próximo tema**: [{next_topic}](../{next_folder}/)
 """
 
@@ -90,7 +90,7 @@ topics_data = [
         "prev_topic": "03 - PEP 703: Free-Threading",
         "prev_folder": "03_pep_703_free_threading",
         "next_topic": "05 - Arquitectura interna sin GIL",
-        "next_folder": "05_gil_free_architecture"
+        "next_folder": "05_gil_free_architecture",
     },
     {
         "folder": "05_gil_free_architecture",
@@ -111,20 +111,20 @@ topics_data = [
         "prev_topic": "04 - Activación de free-threading",
         "prev_folder": "04_free_threading_activation",
         "next_topic": "06 - Biased reference counting",
-        "next_folder": "06_biased_reference_counting"
-    }
+        "next_folder": "06_biased_reference_counting",
+    },
 ]
 
 # Generar READMEs
 for topic in topics_data:
     folder = topic["folder"]
     os.makedirs(folder, exist_ok=True)
-    
+
     readme_content = readme_template.format(**topic)
-    
+
     with open(f"{folder}/README.md", "w") as f:
         f.write(readme_content)
-    
+
     print(f"✅ Created: {folder}/README.md")
 
 print(f"\n✅ Generated {len(topics_data)} README templates")

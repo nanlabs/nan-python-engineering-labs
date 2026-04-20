@@ -63,7 +63,7 @@ Compare sequential vs concurrent fetches for 10 items using `asyncio.gather`. Pr
 
 ### Intermediate Level
 
-Add a TTL cache for `GET /stats` with a 30-second TTL. Verify that the second call within the TTL window is <1ms while the first is ~50ms.
+Add a TTL cache for `GET /stats` with a 30-second TTL. Verify that the second call within the TTL window is \<1ms while the first is ~50ms.
 
 ### Advanced Level
 

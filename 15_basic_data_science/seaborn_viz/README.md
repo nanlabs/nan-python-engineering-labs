@@ -18,8 +18,8 @@ Seaborn Visualization adds a declarative layer on top of Matplotlib for statisti
 ### Use Cases
 
 1. Comparing revenue by customer segment.
-2. Visualizing metric distributions across products.
-3. Generating exploratory charts with a consistent aesthetic.
+1. Visualizing metric distributions across products.
+1. Generating exploratory charts with a consistent aesthetic.
 
 ### Code Example
 

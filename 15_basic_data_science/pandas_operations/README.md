@@ -18,8 +18,8 @@ Pandas Operations focuses on merges, groupby workflows, column transformations, 
 ### Use Cases
 
 1. Joining orders with customers to segment revenue.
-2. Aggregating metrics by product category.
-3. Building summary tables before visualizing results.
+1. Aggregating metrics by product category.
+1. Building summary tables before visualizing results.
 
 ### Code Example
 

@@ -131,7 +131,9 @@ def count_spanish_file_names(files: list[Path]) -> int:
 
 def count_spanish_dir_names(module_dir: Path) -> int:
     dirs = {
-        path for path in module_dir.rglob("*") if path.is_dir() and SPANISH_NAME_RE.search(path.name)
+        path
+        for path in module_dir.rglob("*")
+        if path.is_dir() and SPANISH_NAME_RE.search(path.name)
     }
     return len(dirs)
 
@@ -155,7 +157,9 @@ def detect_topic_dirs(module_dir: Path) -> list[Path]:
             continue
         if path == module_dir:
             continue
-        if (path / "README.md").exists() and any((path / seg).exists() for seg in ["examples", "exercises", "tests"]):
+        if (path / "README.md").exists() and any(
+            (path / seg).exists() for seg in ["examples", "exercises", "tests"]
+        ):
             topics.append(path)
     return sorted(set(topics))
 

@@ -20,6 +20,7 @@ def benchmark(threads: int, iterations: int) -> float:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     one = benchmark(1, 500_000)
     four = benchmark(4, 500_000)
     print(f"1 thread: {one:.4f}s")

@@ -6,7 +6,6 @@ import re
 from statistics import mean
 from time import perf_counter
 
-
 LOG_LINES = [
     "2026-01-05T10:00:00Z level=INFO user=alice latency_ms=12 endpoint=/health",
     "2026-01-05T10:00:01Z level=INFO user=bob latency_ms=35 endpoint=/orders",
@@ -30,6 +29,7 @@ def parse_line(line: str) -> dict[str, str | int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     t0 = perf_counter()
     parsed = [parse_line(line) for line in LOG_LINES]
     elapsed_us = (perf_counter() - t0) * 1_000_000

@@ -7,7 +7,7 @@ class NonEmpty:
 
     def __set__(self, instance, value: str):
         if not value.strip():
-            raise ValueError('empty value')
+            raise ValueError("empty value")
         setattr(instance, self.key, value)
 
 
@@ -19,8 +19,9 @@ class Article:
 
 
 def main() -> None:
-    print(Article('Patterns').title)
+    """Entry point to demonstrate the implementation."""
+    print(Article("Patterns").title)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

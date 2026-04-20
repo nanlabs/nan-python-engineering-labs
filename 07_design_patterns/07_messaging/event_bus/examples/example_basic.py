@@ -11,12 +11,13 @@ class EventBus:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     out: list[str] = []
     bus = EventBus()
-    bus.subscribe('build', lambda x: out.append(x))
-    bus.publish('build', 'ok')
+    bus.subscribe("build", lambda x: out.append(x))
+    bus.publish("build", "ok")
     print(out)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -10,6 +10,7 @@ def inspect_object(obj: object) -> dict[str, int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     info = inspect_object({"key": "value"})
     print(info)
 

@@ -1,6 +1,7 @@
 # Exercise 2: Deep Architecture
 
 ## Objective
+
 Investigate and understand uv internal architecture and compare it with other tools.
 
 ## Parte 1: Análisis del Binario (20 min)
@@ -8,21 +9,25 @@ Investigate and understand uv internal architecture and compare it with other to
 ### Investigación del Binario
 
 1. Encuentra la ubicación del binario de uv:
+
    ```bash
    which uv
    ```
 
-2. Verify it is a compiled binary (not Python):
+1. Verify it is a compiled binary (not Python):
+
    ```bash
    file $(which uv)
    ```
 
-3. Verify binary size:
+1. Verify binary size:
+
    ```bash
    ls -lh $(which uv)
    ```
 
-4. Compara con pip (que es Python):
+1. Compara con pip (que es Python):
+
    ```bash
    which pip
    file $(which pip)
@@ -33,19 +38,22 @@ Investigate and understand uv internal architecture and compare it with other to
 ### Cache Structure
 
 5. Explore the cache directory structure:
+
    ```bash
    tree -L 2 $(uv cache dir)
    # O si no tienes tree:
    find $(uv cache dir) -maxdepth 2 -type d
    ```
 
-6. Identifica los diferentes tipos de artefactos cacheados:
-   - wheels-v1/
-   - built-wheels-v*/
-   - archive-v*/
-   - flat-index-v*/
+1. Identifica los diferentes tipos de artefactos cacheados:
 
-7. Inspecciona un wheel cacheado:
+   - wheels-v1/
+   - built-wheels-v\*/
+   - archive-v\*/
+   - flat-index-v\*/
+
+1. Inspecciona un wheel cacheado:
+
    ```bash
    # Encuentra un wheel
    find $(uv cache dir) -name "*.whl" | head -1
@@ -58,6 +66,7 @@ Investigate and understand uv internal architecture and compare it with other to
 ### Create Complex Scenario
 
 8. Create a `requirements.txt` file with complex dependencies:
+
    ```
    django>=4.0,<5.0
    celery>=5.0
@@ -66,40 +75,46 @@ Investigate and understand uv internal architecture and compare it with other to
    psycopg2-binary>=2.9
    ```
 
-9. Resolve with pip (without installing):
+1. Resolve with pip (without installing):
+
    ```bash
    mkdir /tmp/pip-resolve && cd /tmp/pip-resolve
    python3 -m venv .venv
    time .venv/bin/pip download -r requirements.txt --dry-run 2>&1 | tee pip-output.txt
    ```
 
-10. Solve with uv:
-    ```bash
-    mkdir /tmp/uv-resolve && cd /tmp/uv-resolve
-    uv venv
-    time uv pip compile requirements.txt -o resolved.txt 2>&1 | tee uv-output.txt
-    ```
+1. Solve with uv:
 
-11. Compara:
-    - Resolution time
-    - Claridad de mensajes
-    - Order of resolved dependencies
+   ```bash
+   mkdir /tmp/uv-resolve && cd /tmp/uv-resolve
+   uv venv
+   time uv pip compile requirements.txt -o resolved.txt 2>&1 | tee uv-output.txt
+   ```
+
+1. Compara:
+
+   - Resolution time
+   - Claridad de mensajes
+   - Order of resolved dependencies
 
 ## Parte 4: Implementción en Rust (25 min)
 
 ### Code Investigation
 
 12. Clona el repositorio de uv (opcional):
+
     ```bash
     git clone https://github.com/astral-sh/uv /tmp/uv-repo
     cd /tmp/uv-repo
     ```
 
-13. Explore the project structure:
+01. Explore the project structure:
+
     - ¿Qué crates (librerías Rust) se utilizan?
     - How is the code organized?
 
-14. Lee sobre las optimizaciones:
+01. Lee sobre las optimizaciones:
+
     - Visita: https://astral.sh/blog/uv
     - Identifica 3 optimizaciones técnicas clave
 
@@ -149,14 +164,15 @@ Genera un grafo con graphviz o similar
 ## Advanced Questions
 
 1. Why is Rust better than Python for a package manager?
-2. ¿Qué trade-offs tiene el algoritmo PubGrub?
-3. ¿Cómo maneja uv las plataformas cruzadas (wheels)?
-4. ¿Qué estrategia usa uv para paralelizar descargas?
-5. ¿Es posible que uv reemplace completamente a pip? ¿Por qué sí o no?
+1. ¿Qué trade-offs tiene el algoritmo PubGrub?
+1. ¿Cómo maneja uv las plataformas cruzadas (wheels)?
+1. ¿Qué estrategia usa uv para paralelizar descargas?
+1. ¿Es posible que uv reemplace completamente a pip? ¿Por qué sí o no?
 
 ## Entregables
 
 En `my_solution/`:
+
 - `cache_analyzer.py` - Script funcional
 - `benchmark.py` - Script funcional
 - `dep_graph.py` - Script funcional

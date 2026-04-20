@@ -19,8 +19,9 @@ class DashboardFacade:
 
 
 def main() -> None:
-    print(DashboardFacade().load('ada'))
+    """Entry point to demonstrate the implementation."""
+    print(DashboardFacade().load("ada"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

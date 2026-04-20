@@ -6,10 +6,11 @@ def double(value: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     with ProcessPoolExecutor(max_workers=2) as executor:
         results = list(executor.map(double, [1, 2, 3]))
     print(results)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

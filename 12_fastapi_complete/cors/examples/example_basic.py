@@ -23,12 +23,10 @@ Test with curl:
          -X OPTIONS http://localhost:8000/api/strict/data -v
 """
 
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from typing import List
-
 
 # =============================================================================
 # CORS CONFIGURATION PROFILES

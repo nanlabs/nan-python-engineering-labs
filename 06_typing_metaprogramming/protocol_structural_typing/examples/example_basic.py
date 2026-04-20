@@ -2,7 +2,8 @@ from typing import Protocol
 
 
 class SupportsLen(Protocol):
-    def __len__(self) -> int: ...
+    def __len__(self) -> int:
+        ...
 
 
 def size_of(value: SupportsLen) -> int:
@@ -10,8 +11,9 @@ def size_of(value: SupportsLen) -> int:
 
 
 def main() -> None:
-    print(size_of('hello'))
+    """Entry point to demonstrate the implementation."""
+    print(size_of("hello"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

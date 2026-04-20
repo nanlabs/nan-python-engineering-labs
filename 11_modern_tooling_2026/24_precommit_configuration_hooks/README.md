@@ -18,8 +18,8 @@ pre-commit manages Git hooks declaratively via .pre-commit-config.yaml, running 
 ### Use Cases
 
 1. Automating repetitive developer tasks in Python projects
-2. Enforcing code quality and consistency across teams
-3. Speeding up CI/CD pipelines with faster tooling
+1. Enforcing code quality and consistency across teams
+1. Speeding up CI/CD pipelines with faster tooling
 
 ### Code Example
 

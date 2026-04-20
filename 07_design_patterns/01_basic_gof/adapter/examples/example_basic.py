@@ -12,9 +12,10 @@ class CelsiusSensorAdapter:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     sensor = CelsiusSensorAdapter(LegacyTemperatureSensor())
     print(round(sensor.read_celsius(), 2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

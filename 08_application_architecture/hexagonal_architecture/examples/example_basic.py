@@ -1,4 +1,5 @@
 """Hexagonal architecture: domain logic does not depend on adapters."""
+
 from abc import ABC, abstractmethod
 
 

@@ -13,12 +13,12 @@ class Vector2D:
     y: float
 
     def magnitude(self) -> float:
-        return (self.x ** 2 + self.y ** 2) ** 0.5
+        return (self.x**2 + self.y**2) ** 0.5
 
-    def dot(self, other: "Vector2D") -> float:
+    def dot(self, other: Vector2D) -> float:
         return self.x * other.x + self.y * other.y
 
-    def normalized(self) -> "Vector2D":
+    def normalized(self) -> Vector2D:
         mag = self.magnitude()
         if mag == 0:
             raise ValueError("Cannot normalize zero vector")
@@ -26,6 +26,7 @@ class Vector2D:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     a = Vector2D(3.0, 4.0)
     b = Vector2D(1.5, -2.0)
 

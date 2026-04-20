@@ -18,6 +18,9 @@ def format_progress(module: str, completed: int, total: int) -> str:
 
 
 def main() -> None:
+    """
+    Run examples of advanced string manipulation.
+    """
     print(build_slug("  Python Fundamentals Module  "))
     print(highlight_keyword("python makes automation fun", "automation"))
     print(format_progress("Module 01", 4, 12))

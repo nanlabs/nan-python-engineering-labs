@@ -19,13 +19,14 @@ class JsonFormatter(logging.Formatter):
             "timestamp": self.formatTime(record, self.datefmt),
         }
         if hasattr(record, "event"):
-            payload["event"] = getattr(record, "event")
+            payload["event"] = record.event
         if hasattr(record, "duration_ms"):
-            payload["duration_ms"] = getattr(record, "duration_ms")
+            payload["duration_ms"] = record.duration_ms
         return json.dumps(payload, sort_keys=True)
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     logger = logging.getLogger("structured-demo")
     logger.setLevel(logging.INFO)
 

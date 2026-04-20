@@ -18,8 +18,8 @@ Pandas Intro shows how to represent tabular data with DataFrames and Series for 
 ### Use Cases
 
 1. Building simple sales dashboards from record lists.
-2. Filtering orders by region or product line.
-3. Creating monthly summaries for stakeholders.
+1. Filtering orders by region or product line.
+1. Creating monthly summaries for stakeholders.
 
 ### Code Example
 

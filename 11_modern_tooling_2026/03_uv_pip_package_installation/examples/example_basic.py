@@ -13,6 +13,7 @@ def resolution_log(packages: list[str]) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     packages = ["requests==2.31.0", "httpx>=0.27", "pydantic>=2"]
     print("Resolution:")
     for step in resolution_log(packages):

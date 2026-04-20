@@ -31,89 +31,88 @@ Success criteria:
 Estimated time: 45-60 minutes
 """
 
-import threading
 import multiprocessing as mp
-import time
-from typing import List, Tuple
-import math
+
 
 def is_prime(n: int) -> bool:
     """
     TODO: Implement an efficient function to check whether n is prime.
-    
+
     Hints:
     - Numbers smaller than 2 are not prime
     - You only need to check up to sqrt(n)
     - Optimization: check only odd divisors after 2
-    
+
     Args:
         n: Number to check
-        
+
     Returns:
         True if n is prime, False otherwise
     """
     pass  # YOUR CODE HERE
 
 
-def find_primes_in_range(start: int, end: int) -> List[int]:
+def find_primes_in_range(start: int, end: int) -> list[int]:
     """
     TODO: Find all prime numbers in the range [start, end).
-    
+
     Args:
         start: Start of the range (inclusive)
         end: End of the range (exclusive)
-        
+
     Returns:
         List of prime numbers in the range
     """
     pass  # YOUR CODE HERE
 
 
-def sequential_execution(ranges: List[Tuple[int, int]]) -> Tuple[List[int], float]:
+def sequential_execution(ranges: list[tuple[int, int]]) -> tuple[list[int], float]:
     """
     TODO: Run prime searching sequentially.
-    
+
     Args:
         ranges: List of tuples (start, end) to search for primes
-        
+
     Returns:
         Tuple (list_of_primes, execution_time)
     """
     pass  # YOUR CODE HERE
 
 
-def threading_execution(ranges: List[Tuple[int, int]], num_threads: int) -> Tuple[List[int], float]:
+def threading_execution(ranges: list[tuple[int, int]], num_threads: int) -> tuple[list[int], float]:
     """
     TODO: Run prime searching using threading.
-    
+
     Hints:
     - Create one Thread per range
     - Use a shared list for results (with a lock if needed)
     - Join all threads before returning
-    
+
     Args:
         ranges: List of tuples (start, end) to search for primes
         num_threads: Number of threads to use
-        
+
     Returns:
         Tuple (list_of_primes, execution_time)
     """
     pass  # YOUR CODE HERE
 
 
-def multiprocessing_execution(ranges: List[Tuple[int, int]], num_processes: int) -> Tuple[List[int], float]:
+def multiprocessing_execution(
+    ranges: list[tuple[int, int]], num_processes: int
+) -> tuple[list[int], float]:
     """
     TODO: Run prime searching using multiprocessing.
-    
+
     Hints:
     - Use multiprocessing.Pool
     - Use pool.starmap() to pass multiple arguments
     - Do not forget to close and join the pool
-    
+
     Args:
         ranges: List of tuples (start, end) to search for primes
         num_processes: Number of processes to use
-        
+
     Returns:
         Tuple (list_of_primes, execution_time)
     """

@@ -3,11 +3,13 @@
 ## Official Documentation
 
 ### Principal
+
 - [uv Documentation](https://docs.astral.sh/uv/) - Complete official documentation
 - [uv GitHub Repository](https://github.com/astral-sh/uv) - Source code and issues
 - [Astral Blog - Announcing uv](https://astral.sh/blog/uv) - Anuncio original con detalles técnicos
 
 ### Guías y Tutoriales
+
 - [uv Quick Start](https://docs.astral.sh/uv/getting-started/) - Guía de inicio rápido
 - [uv vs pip](https://docs.astral.sh/uv/pip/compatibility/) - Compatibility and differences
 - [uv Configuration](https://docs.astral.sh/uv/configuration/) - Configuration options
@@ -45,11 +47,13 @@
 ## Related Tools
 
 ### Other Python Package Managers
+
 - [Poetry](https://python-poetry.org/) - Traditional dependency manager
 - [Pipenv](https://pipenv.pypa.io/) - Wrapper de pip y virtualenv
 - [PDM](https://pdm.fming.dev/) - Modern manager following PEPs
 
 ### Astral Tools
+
 - [Ruff](https://docs.astral.sh/ruff/) - Linter y formatter ultrarrápido
 - [Ruff LSP](https://github.com/astral-sh/ruff-lsp) - Language Server Protocol
 
@@ -88,8 +92,8 @@
 - [Conda vs pip](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) - Key differences
 - [The State of Python Packaging](https://packaging.python.org/en/latest/discussions/the-state-of-packaging/) - General overview
 
----
+______________________________________________________________________
 
-**Last updated:** January 2026  
-**Maintained by:** py-erudito community  
+**Last updated:** January 2026
+**Maintained by:** py-erudito community
 **Contributions:** Open a PR to add useful references

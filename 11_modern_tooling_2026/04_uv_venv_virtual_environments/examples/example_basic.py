@@ -3,10 +3,10 @@
 
 def venv_lifecycle() -> list[tuple[str, str]]:
     return [
-        ("uv venv .venv",                    "create venv at .venv"),
-        ("source .venv/bin/activate",         "activate on Unix"),
-        (".venv\\Scripts\\activate",       "activate on Windows"),
-        ("uv pip install -r requirements.txt","install into venv"),
+        ("uv venv .venv", "create venv at .venv"),
+        ("source .venv/bin/activate", "activate on Unix"),
+        (".venv\\Scripts\\activate", "activate on Windows"),
+        ("uv pip install -r requirements.txt", "install into venv"),
     ]
 
 
@@ -20,6 +20,7 @@ def inspect_venv(path: str) -> dict[str, str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for cmd, desc in venv_lifecycle():
         print(f"  $ {cmd}  # {desc}")
     print()

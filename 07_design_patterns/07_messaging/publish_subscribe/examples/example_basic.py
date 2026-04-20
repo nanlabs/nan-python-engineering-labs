@@ -11,12 +11,13 @@ class PubSub:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     out: list[str] = []
     ps = PubSub()
     ps.subscribe(lambda m: out.append(m.upper()))
-    ps.publish('event')
+    ps.publish("event")
     print(out)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,5 +1,5 @@
 class LoggerMultiton:
-    _instances: dict[str, 'LoggerMultiton'] = {}
+    _instances: dict[str, "LoggerMultiton"] = {}
 
     def __new__(cls, channel: str):
         if channel not in cls._instances:
@@ -10,11 +10,12 @@ class LoggerMultiton:
 
 
 def main() -> None:
-    a = LoggerMultiton('api')
-    b = LoggerMultiton('api')
-    c = LoggerMultiton('worker')
+    """Entry point to demonstrate the implementation."""
+    a = LoggerMultiton("api")
+    b = LoggerMultiton("api")
+    c = LoggerMultiton("worker")
     print(a is b, a is c)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

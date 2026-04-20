@@ -11,13 +11,14 @@ class Topic:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     events: list[str] = []
     topic = Topic()
-    topic.subscribe(lambda e: events.append(f'a:{e}'))
-    topic.subscribe(lambda e: events.append(f'b:{e}'))
-    topic.notify('build_done')
+    topic.subscribe(lambda e: events.append(f"a:{e}"))
+    topic.subscribe(lambda e: events.append(f"b:{e}"))
+    topic.notify("build_done")
     print(events)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

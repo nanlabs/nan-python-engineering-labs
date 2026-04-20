@@ -3,22 +3,23 @@ class Account:
         self.events: list[tuple[str, int]] = []
 
     def deposit(self, amount: int) -> None:
-        self.events.append(('deposit', amount))
+        self.events.append(("deposit", amount))
 
     def balance(self) -> int:
         total = 0
         for kind, amount in self.events:
-            if kind == 'deposit':
+            if kind == "deposit":
                 total += amount
         return total
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     acc = Account()
     acc.deposit(10)
     acc.deposit(15)
     print(acc.balance())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

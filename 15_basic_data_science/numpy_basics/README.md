@@ -18,8 +18,8 @@ NumPy Basics introduces multidimensional arrays, broadcasting, and vectorized op
 ### Use Cases
 
 1. Normalizing metrics before training a simple model.
-2. Computing daily KPIs from sales or traffic series.
-3. Preparing numerical features for exploratory analysis.
+1. Computing daily KPIs from sales or traffic series.
+1. Preparing numerical features for exploratory analysis.
 
 ### Code Example
 

@@ -7,17 +7,17 @@ This category focuses on 03 advanced gof patterns and practical implementations 
 ## Contents (12 patterns)
 
 1. [Abstract Factory](abstract_factory/)
-2. [Bridge](bridge/)
-3. [Chain Of Responsibility](chain_of_responsibility/)
-4. [Composite](composite/)
-5. [Flyweight](flyweight/)
-6. [Interpreter](interpreter/)
-7. [Mediator](mediator/)
-8. [Memento](memento/)
-9. [Prototype](prototype/)
-10. [Proxy](proxy/)
-11. [State](state/)
-12. [Visitor](visitor/)
+1. [Bridge](bridge/)
+1. [Chain Of Responsibility](chain_of_responsibility/)
+1. [Composite](composite/)
+1. [Flyweight](flyweight/)
+1. [Interpreter](interpreter/)
+1. [Mediator](mediator/)
+1. [Memento](memento/)
+1. [Prototype](prototype/)
+1. [Proxy](proxy/)
+1. [State](state/)
+1. [Visitor](visitor/)
 
 ## Practice Recommendation
 

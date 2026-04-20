@@ -16,6 +16,7 @@ def compute_coverage(executed_branches: set[str], total_branches: set[str]) -> f
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     tests = [-5, 0, 10]
     results = [covered_branch(v) for v in tests]
     print(results)

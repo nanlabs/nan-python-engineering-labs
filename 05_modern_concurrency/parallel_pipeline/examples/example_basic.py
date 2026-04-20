@@ -7,9 +7,10 @@ def stage_two(values: list[int]) -> list[int]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     values = stage_one([1, 2, 3])
     print(stage_two(values))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

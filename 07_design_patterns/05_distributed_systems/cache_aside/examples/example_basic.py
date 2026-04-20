@@ -5,7 +5,7 @@ class Cache:
 
 class Store:
     def get(self, key: str) -> str:
-        return f'db:{key}'
+        return f"db:{key}"
 
 
 def load(key: str, cache: Cache, store: Store) -> str:
@@ -15,10 +15,11 @@ def load(key: str, cache: Cache, store: Store) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     cache = Cache()
     store = Store()
-    print(load('u1', cache, store), load('u1', cache, store))
+    print(load("u1", cache, store), load("u1", cache, store))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

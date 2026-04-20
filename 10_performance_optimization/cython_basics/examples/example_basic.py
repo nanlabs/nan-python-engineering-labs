@@ -6,11 +6,12 @@ def dot_product(a: list[float], b: list[float]) -> float:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     a = [float(i) for i in range(1, 1001)]
     b = [float(i) / 3.0 for i in range(1, 1001)]
     print(f"Dot product baseline: {dot_product(a, b):.2f}")
-    print('This function is a good candidate for Cython acceleration.')
+    print("This function is a good candidate for Cython acceleration.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

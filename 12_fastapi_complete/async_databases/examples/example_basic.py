@@ -68,6 +68,7 @@ class AsyncSQLiteRepo:
 
 
 async def main() -> None:
+    """Entry point to demonstrate the implementation."""
     db_path = Path(__file__).with_name("async_users.db")
     if db_path.exists():
         db_path.unlink()

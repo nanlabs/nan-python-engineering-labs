@@ -36,30 +36,33 @@ Success criteria:
 - Report written in results.md
 """
 
+
 def measure_install_time(tool: str, requirements_file: str) -> float:
     """
     Measure package installation time.
-    
+
     Args:
         tool: "pip" or "uv"
         requirements_file: Path to requirements.txt
-    
+
     Returns:
         Time in seconds
     """
     # TODO: Implement
     pass
 
+
 def generate_report(pip_time: float, uv_time: float) -> None:
     """
     Generate a markdown report with benchmark results.
-    
+
     Args:
         pip_time: pip time in seconds
         uv_time: uv time in seconds
     """
     # TODO: Implement
     pass
+
 
 if __name__ == "__main__":
     # TODO: Implement the main workflow

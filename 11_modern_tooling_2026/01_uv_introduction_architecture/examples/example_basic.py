@@ -19,6 +19,7 @@ def uv_commands() -> list[tuple[str, str]]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for layer, desc in describe_architecture().items():
         print(f"[{layer}] {desc}")
     for cmd, desc in uv_commands():

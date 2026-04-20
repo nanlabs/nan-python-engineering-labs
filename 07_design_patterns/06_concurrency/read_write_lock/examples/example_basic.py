@@ -4,7 +4,7 @@ import threading
 class SharedDoc:
     def __init__(self) -> None:
         self._lock = threading.Lock()
-        self.text = 'v1'
+        self.text = "v1"
 
     def read(self) -> str:
         with self._lock:
@@ -16,10 +16,11 @@ class SharedDoc:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     doc = SharedDoc()
-    doc.write('v2')
+    doc.write("v2")
     print(doc.read())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

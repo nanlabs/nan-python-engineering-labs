@@ -9,11 +9,12 @@ class Report:
 
 
 def main() -> None:
-    base = Report('weekly', ['ops'])
+    """Entry point to demonstrate the implementation."""
+    base = Report("weekly", ["ops"])
     clone = copy.deepcopy(base)
-    clone.tags.append('infra')
+    clone.tags.append("infra")
     print(base.tags, clone.tags)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

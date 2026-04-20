@@ -13,10 +13,11 @@ def run_pipeline(hooks: list[dict[str, str]]) -> list[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     pipeline = [
-        precommit_hook("ruff-lint",   "ruff check ."),
+        precommit_hook("ruff-lint", "ruff check ."),
         precommit_hook("ruff-format", "ruff format --check ."),
-        precommit_hook("mypy",        "mypy src/"),
+        precommit_hook("mypy", "mypy src/"),
     ]
     for result in run_pipeline(pipeline):
         print(result)

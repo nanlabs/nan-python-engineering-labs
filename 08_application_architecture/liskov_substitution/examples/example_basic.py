@@ -1,4 +1,5 @@
 """Liskov substitution: every subtype can replace the base contract."""
+
 from abc import ABC, abstractmethod
 
 

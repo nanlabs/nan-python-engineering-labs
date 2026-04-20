@@ -9,15 +9,16 @@ class Account:
     @balance.setter
     def balance(self, value: float) -> None:
         if value < 0:
-            raise ValueError('negative balance')
+            raise ValueError("negative balance")
         self._balance = value
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     acc = Account()
     acc.balance = 10.5
     print(acc.balance)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

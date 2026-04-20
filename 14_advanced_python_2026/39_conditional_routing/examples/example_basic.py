@@ -2,6 +2,7 @@
 Conditional routing in LangGraph.
 """
 
+
 def route_based_on_condition(value: int) -> str:
     """Route based on condition."""
     if value < 10:
@@ -10,6 +11,7 @@ def route_based_on_condition(value: int) -> str:
         return "medium_priority"
     else:
         return "high_priority"
+
 
 def create_conditional_router() -> dict:
     """Create routing configuration."""
@@ -21,6 +23,7 @@ def create_conditional_router() -> dict:
             {"threshold": 100, "path": "high"},
         ],
     }
+
 
 if __name__ == "__main__":
     print(route_based_on_condition(5))

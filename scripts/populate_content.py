@@ -10,9 +10,8 @@ Genera:
 - Tests
 """
 
-from pathlib import Path
-from typing import Dict, List
 import re
+from pathlib import Path
 
 # Base de conocimiento para generar contenido
 PYTHON_DOCS_BASE = "https://docs.python.org/3/"
@@ -26,26 +25,21 @@ TOPIC_RESOURCES = {
     "subinterpreters": {"pep": "0684", "docs": "c-api/init.html#sub-interpreter-support"},
     "gil": {"docs": "glossary.html#term-global-interpreter-lock"},
     "immortal": {"pep": "0683"},
-    
     # Type hints
     "type_hints": {"pep": "0484", "docs": "library/typing.html"},
     "generics": {"pep": "0484", "docs": "library/typing.html#generics"},
     "protocol": {"pep": "0544", "docs": "library/typing.html#typing.Protocol"},
     "typeddict": {"pep": "0589", "docs": "library/typing.html#typing.TypedDict"},
-    
     # Async
     "asyncio": {"docs": "library/asyncio.html"},
     "coroutines": {"pep": "0492", "docs": "library/asyncio-task.html"},
     "taskgroup": {"docs": "library/asyncio-task.html#task-groups"},
-    
     # Data structures
     "dataclass": {"pep": "0557", "docs": "library/dataclasses.html"},
     "namedtuple": {"docs": "library/collections.html#collections.namedtuple"},
-    
     # Testing
     "pytest": {"url": "https://docs.pytest.org/"},
     "unittest": {"docs": "library/unittest.html"},
-    
     # Modern tools
     "uv": {"url": "https://github.com/astral-sh/uv"},
     "ruff": {"url": "https://docs.astral.sh/ruff/"},
@@ -58,7 +52,7 @@ CONTENT_TEMPLATES = {
         "default": """
 {topic_title} es un concepto/herramienta fundamental en Python que permite {purpose}.
 
-Introducido en Python {version}, este mecanismo proporciona una forma {approach} de {goal}. 
+Introducido en Python {version}, este mecanismo proporciona una forma {approach} de {goal}.
 Su diseño se basa en {design_principle} y ofrece ventajas significativas en términos de {benefits}.
 
 Características principales:
@@ -66,11 +60,10 @@ Características principales:
 - {feature_2}
 - {feature_3}
 
-La implementación interna utiliza {implementation_detail}, lo que garantiza {guarantee}. 
+La implementación interna utiliza {implementation_detail}, lo que garantiza {guarantee}.
 En comparación con alternativas tradicionales, {topic_title} ofrece {comparison}.
 """,
     },
-    
     "references": {
         "python_module": """# Referencias: {topic_title}
 
@@ -95,14 +88,14 @@ En comparación con alternativas tradicionales, {topic_title} ofrece {comparison
 - Python Enhancement Proposals (PEPs) relacionados
 - Blog posts de core developers
 """,
-    }
+    },
 }
 
 
 def detect_topic_category(topic_path: Path) -> str:
     """Detecta la categoría del tema basado en su path."""
     path_str = str(topic_path)
-    
+
     if "fundamentos" in path_str or "python_intermedio" in path_str:
         return "basic"
     elif "poo" in path_str:
@@ -139,25 +132,25 @@ def detect_topic_category(topic_path: Path) -> str:
 
 def generate_references_content(topic_name: str, category: str) -> str:
     """Genera contenido de referencias basado en el tema."""
-    topic_slug = topic_name.lower().replace(' ', '-')
-    topic_key = topic_slug.replace('-', '_')
-    
+    topic_slug = topic_name.lower().replace(" ", "-")
+    topic_key = topic_slug.replace("-", "_")
+
     # Detectar si hay recursos específicos
     resource_info = {}
     for key, value in TOPIC_RESOURCES.items():
         if key in topic_key:
             resource_info = value
             break
-    
+
     # Construir URLs
     docs_url = PYTHON_DOCS_BASE
     if "docs" in resource_info:
         docs_url += resource_info["docs"]
-    
+
     pep_section = ""
     if "pep" in resource_info:
         pep_section = f"\n- [PEP {resource_info['pep']}]({PEP_BASE}{resource_info['pep']}/) - Especificación oficial"
-    
+
     # Referencias por categoría
     category_refs = {
         "internals": f"""# Referencias: {topic_name}
@@ -183,7 +176,6 @@ def generate_references_content(topic_name: str, category: str) -> str:
 - [CPython Source]( https://github.com/python/cpython)
 - Ejemplos de implementación
 """,
-        
         "typing": f"""# Referencias: {topic_name}
 
 ## Documentación Oficial
@@ -207,12 +199,11 @@ def generate_references_content(topic_name: str, category: str) -> str:
 - [typeshed](https://github.com/python/typeshed) - Type stubs
 - Proyectos typed en GitHub
 """,
-        
         "tooling": f"""# Referencias: {topic_name}
 
 ## Documentación Oficial
-- [Astral: uv]({TOPIC_RESOURCES.get('uv', {}).get('url', 'https://github.com/astral-sh/uv')})
-- [Ruff Documentation]({TOPIC_RESOURCES.get('ruff', {}).get('url', 'https://docs.astral.sh/ruff/')})
+- [Astral: uv]({TOPIC_RESOURCES.get("uv", {}).get("url", "https://github.com/astral-sh/uv")})
+- [Ruff Documentation]({TOPIC_RESOURCES.get("ruff", {}).get("url", "https://docs.astral.sh/ruff/")})
 
 ## Guías de Uso
 - Official User Guides
@@ -230,7 +221,6 @@ def generate_references_content(topic_name: str, category: str) -> str:
 - GitHub Discussions
 - Discord/Slack communities
 """,
-        
         "patterns": f"""# Referencias: {topic_name}
 
 ## Libros Clásicos
@@ -256,8 +246,10 @@ def generate_references_content(topic_name: str, category: str) -> str:
 - Medium: Python design patterns
 """,
     }
-    
-    return category_refs.get(category, f"""# Referencias: {topic_name}
+
+    return category_refs.get(
+        category,
+        f"""# Referencias: {topic_name}
 
 ## Documentación Oficial de Python
 - [Python Documentation]({docs_url})
@@ -278,17 +270,18 @@ def generate_references_content(topic_name: str, category: str) -> str:
 ## Artículos
 - Blog posts técnicos
 - Python Weekly
-""")
+""",
+    )
 
 
 def populate_topic_content(topic_path: Path) -> None:
     """Pobla contenido completo de un tema."""
-    topic_name = topic_path.name.replace('_', ' ').title()
+    topic_name = topic_path.name.replace("_", " ").title()
     # Remover números del principio si existen
-    topic_name = re.sub(r'^\d+\s*', '', topic_name)
-    
+    topic_name = re.sub(r"^\d+\s*", "", topic_name)
+
     category = detect_topic_category(topic_path)
-    
+
     # 1. Actualizar references/links.md
     refs_file = topic_path / "references" / "links.md"
     if refs_file.exists():
@@ -302,39 +295,36 @@ def populate_topic_content(topic_path: Path) -> None:
 def main():
     """Procesa todos los temas."""
     base_path = Path(__file__).parent.parent
-    
+
     print("🚀 Poblando contenido en todos los temas...")
     print("📝 Esto puede tomar varios minutos...\n")
-    
+
     # Buscar todos los directorios de temas
-    module_dirs = sorted([d for d in base_path.iterdir() 
-                         if d.is_dir() and d.name[0].isdigit()])
-    
+    module_dirs = sorted([d for d in base_path.iterdir() if d.is_dir() and d.name[0].isdigit()])
+
     total_updated = 0
-    
+
     for module_dir in module_dirs:
         print(f"\n📁 Módulo: {module_dir.name}")
-        
+
         # Buscar temas en el módulo
         if "patrones_diseno" in module_dir.name:
             # Patrones tiene subcategorías
             subcats = [d for d in module_dir.iterdir() if d.is_dir()]
             for subcat in subcats:
-                topics = [t for t in subcat.iterdir() 
-                         if t.is_dir() and (t / "README.md").exists()]
+                topics = [t for t in subcat.iterdir() if t.is_dir() and (t / "README.md").exists()]
                 for topic in topics:
                     populate_topic_content(topic)
                     total_updated += 1
         else:
-            topics = [t for t in module_dir.iterdir() 
-                     if t.is_dir() and (t / "README.md").exists()]
+            topics = [t for t in module_dir.iterdir() if t.is_dir() and (t / "README.md").exists()]
             for topic in topics:
                 populate_topic_content(topic)
                 total_updated += 1
-    
-    print(f"\n\n✅ Completado!")
+
+    print("\n\n✅ Completado!")
     print(f"📊 Temas actualizados: {total_updated}")
-    print(f"\n💡 Próximo: Ejecutar script para poblar READMEs y ejemplos")
+    print("\n💡 Próximo: Ejecutar script para poblar READMEs y ejemplos")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@
 Comparing LangChain chains vs LangGraph graphs.
 """
 
+
 def explain_chains() -> dict:
     """Chains: Sequential, linear flow."""
     return {
@@ -11,6 +12,7 @@ def explain_chains() -> dict:
         "use_case": "Simple sequential processing",
     }
 
+
 def explain_graphs() -> dict:
     """Graphs: Complex, non-linear flow."""
     return {
@@ -19,6 +21,7 @@ def explain_graphs() -> dict:
         "branching": True,
         "use_case": "Complex workflows with decisions",
     }
+
 
 if __name__ == "__main__":
     chain_info = explain_chains()

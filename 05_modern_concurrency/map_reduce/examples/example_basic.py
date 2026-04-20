@@ -13,9 +13,10 @@ def reduce_counts(pairs: list[tuple[str, int]]) -> dict[str, int]:
 
 
 def main() -> None:
-    pairs = map_words(['a', 'b', 'a'])
+    """Entry point to demonstrate the implementation."""
+    pairs = map_words(["a", "b", "a"])
     print(reduce_counts(pairs))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

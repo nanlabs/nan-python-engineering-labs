@@ -18,8 +18,8 @@ Exploratory Analysis organizes the first pass through a dataset to detect patter
 ### Use Cases
 
 1. Reviewing sales behavior by region and channel.
-2. Detecting unusual ranges before training a model.
-3. Prioritizing questions for downstream visualization.
+1. Detecting unusual ranges before training a model.
+1. Prioritizing questions for downstream visualization.
 
 ### Code Example
 

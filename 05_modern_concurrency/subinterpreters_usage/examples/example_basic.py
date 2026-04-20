@@ -1,15 +1,16 @@
 def describe_subinterpreters() -> list[str]:
     return [
-        'Isolated runtime state',
-        'Separate module imports',
-        'Useful for runtime isolation',
+        "Isolated runtime state",
+        "Separate module imports",
+        "Useful for runtime isolation",
     ]
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     for line in describe_subinterpreters():
         print(line)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

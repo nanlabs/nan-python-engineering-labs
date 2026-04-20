@@ -4,15 +4,16 @@ class Report:
 
     @property
     def total(self) -> int:
-        if not hasattr(self, '_cached_total'):
+        if not hasattr(self, "_cached_total"):
             self._cached_total = sum(self.raw)
         return self._cached_total
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     report = Report([1, 2, 3])
     print(report.total, report.total)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -23,11 +23,9 @@ Run:
 import os
 from contextlib import asynccontextmanager
 from enum import Enum
-from typing import Optional
 
-from pydantic import field_validator, SecretStr
+from pydantic import SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
 
 # =============================================================================
 # 1. SETTINGS — pydantic-settings reads from env vars or .env file
@@ -81,8 +79,8 @@ class Settings(BaseSettings):
     cors_origins: list[str] = ["http://localhost:3000"]
 
     # ── External Services ─────────────────────────────────────────────────────
-    redis_url: Optional[str] = None
-    smtp_host: Optional[str] = None
+    redis_url: str | None = None
+    smtp_host: str | None = None
     smtp_port: int = 587
 
     @field_validator("secret_key")
@@ -272,7 +270,7 @@ app = FastAPI(
     version=settings.app_version,
     debug=settings.is_development,
     lifespan=lifespan,
-    docs_url="/docs" if settings.is_development else None,    # hide docs in prod
+    docs_url="/docs" if settings.is_development else None,  # hide docs in prod
     redoc_url="/redoc" if settings.is_development else None,
 )
 
@@ -328,6 +326,7 @@ async def show_config():
 
 
 def main():
+    """Entry point to demonstrate the implementation."""
     print("=" * 65)
     print("DEPLOYMENT — DEMO")
     print("=" * 65)

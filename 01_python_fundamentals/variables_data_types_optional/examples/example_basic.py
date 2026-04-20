@@ -29,11 +29,15 @@ def describe_profile(profile: Profile) -> str:
     skills = ", ".join(profile["skills"])
     return (
         f"{profile['name']} ({profile['age']} years old) | "
-        f"active={profile['active']} | score={profile['score']} | skills={skills}"
+        f"active={profile['active']} | score={profile['score']} | "
+        f"skills={skills}"
     )
 
 
 def main() -> None:
+    """
+    Run examples of basic variables and data types.
+    """
     profile = build_profile("Ada", 32, True)
     print(describe_profile(profile))
     print({key: type(value).__name__ for key, value in profile.items()})

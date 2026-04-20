@@ -10,11 +10,12 @@ class OrderAggregate:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     order = OrderAggregate()
     order.add_item(10)
     order.add_item(5)
     print(order.total())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -25,12 +25,8 @@ Stress test:
 import time
 from collections import defaultdict, deque
 from threading import Lock
-from typing import Optional
 
-from fastapi import FastAPI, Request, HTTPException, Depends, status
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 
 # =============================================================================
 # 1. FIXED-WINDOW RATE LIMITER
@@ -233,6 +229,7 @@ async def expensive_operation():
         for i in {1..8}; do curl -s http://localhost:8000/api/expensive | jq .request; done
     """
     import time as t
+
     t.sleep(0.05)  # Simulate work
     return {"result": "computed", "limit": "5 req/10s"}
 

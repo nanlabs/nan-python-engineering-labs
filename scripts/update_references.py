@@ -3,16 +3,16 @@
 Actualiza todas las referencias/links.md con contenido real.
 """
 
-from pathlib import Path
 import re
+from pathlib import Path
+
 
 def generate_references(topic_name: str, module_name: str) -> str:
     """Genera contenido de referencias basado en tema y módulo."""
-    
-    clean_name = re.sub(r'^\d+_', '', topic_name).replace('_', ' ').title()
-    topic_slug = topic_name.lower().replace('_', '-')
-    module_slug = module_name.lower().replace('_', '-')
-    
+
+    clean_name = re.sub(r"^\d+_", "", topic_name).replace("_", " ").title()
+    topic_slug = topic_name.lower().replace("_", "-")
+
     # Detectar categoría del módulo
     if "fundamentos" in module_name or "intermedio" in module_name:
         return f"""# Referencias: {clean_name}
@@ -47,7 +47,7 @@ def generate_references(topic_name: str, module_name: str) -> str:
 - [Python Discord](https://discord.gg/python)
 - [Stack Overflow - Python Tag](https://stackoverflow.com/questions/tagged/python)
 """
-    
+
     elif "poo" in module_name or "oop" in module_name:
         return f"""# Referencias: {clean_name}
 
@@ -314,7 +314,7 @@ def generate_references(topic_name: str, module_name: str) -> str:
             articles = """- [Secure Python Development](https://realpython.com/tutorials/security/)
 - [Python Security Best Practices](https://snyk.io/blog/python-security-best-practices-cheat-sheet/)
 - [Writing Secure Python Code](https://www.oreilly.com/library/view/secure-coding-in/9781449316686/)"""
-        
+
         return f"""# Referencias: {clean_name}
 
 ## Estándares y Frameworks
@@ -395,13 +395,13 @@ def generate_references(topic_name: str, module_name: str) -> str:
 
 def update_references(base_path: Path):
     """Actualiza todos los archivos references/links.md."""
-    
+
     updated = 0
     modules = sorted([d for d in base_path.iterdir() if d.is_dir() and d.name[0].isdigit()])
-    
+
     for module in modules:
         module_name = module.name
-        
+
         # Patrones tiene subcategorías
         if "patrones" in module_name:
             subcats = [d for d in module.iterdir() if d.is_dir()]
@@ -427,7 +427,7 @@ def update_references(base_path: Path):
                         refs_file.write_text(new_content)
                         updated += 1
                         print(f"✓ {module.name}/{topic.name}")
-    
+
     return updated
 
 

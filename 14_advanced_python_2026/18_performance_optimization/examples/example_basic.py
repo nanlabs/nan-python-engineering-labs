@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from functools import lru_cache
 import time
+from functools import cache
 
 
 def fibonacci_plain(n: int) -> int:
@@ -12,7 +12,7 @@ def fibonacci_plain(n: int) -> int:
     return fibonacci_plain(n - 1) + fibonacci_plain(n - 2)
 
 
-@lru_cache(maxsize=None)
+@cache
 def fibonacci_cached(n: int) -> int:
     if n < 2:
         return n
@@ -27,6 +27,7 @@ def timed_call(func, n: int) -> tuple[int, float]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     n = 32
     plain_result, plain_ms = timed_call(fibonacci_plain, n)
     cached_result, cached_ms = timed_call(fibonacci_cached, n)

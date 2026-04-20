@@ -3,18 +3,19 @@ class Employee:
         self.name = name
 
     def role(self) -> str:
-        return 'Employee'
+        return "Employee"
 
 
 class Manager(Employee):
     def role(self) -> str:
-        return 'Manager'
+        return "Manager"
 
 
 def main() -> None:
-    person = Manager('Grace')
+    """Entry point to demonstrate the implementation."""
+    person = Manager("Grace")
     print(person.name, person.role())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

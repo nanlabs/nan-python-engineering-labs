@@ -1,5 +1,5 @@
-from typing import Callable, Iterable, TypeVar
-
+from collections.abc import Callable, Iterable
+from typing import TypeVar
 
 T = TypeVar("T")
 
@@ -9,6 +9,7 @@ def apply_all(values: Iterable[T], fn: Callable[[T], T]) -> list[T]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     doubled = apply_all([1, 2, 3], lambda x: x * 2)
     upper = apply_all(["a", "b"], lambda s: s.upper())
     print(doubled)

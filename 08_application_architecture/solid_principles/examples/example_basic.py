@@ -1,4 +1,5 @@
 """SOLID mini-demo: SRP + DIP with swappable payment providers."""
+
 from abc import ABC, abstractmethod
 
 

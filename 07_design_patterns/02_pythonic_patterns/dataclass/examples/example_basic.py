@@ -9,8 +9,9 @@ class User:
 
 
 def main() -> None:
-    print(User(1, 'Ada'))
+    """Entry point to demonstrate the implementation."""
+    print(User(1, "Ada"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

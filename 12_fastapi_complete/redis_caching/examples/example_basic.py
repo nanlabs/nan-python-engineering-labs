@@ -28,11 +28,10 @@ Run:
 import json
 import time
 from datetime import datetime
-from typing import Optional, Any
+from typing import Any
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-
 
 # =============================================================================
 # 1. MOCK REDIS (same interface as redis.Redis)
@@ -48,14 +47,14 @@ class MockRedis:
     """
 
     def __init__(self):
-        self._store: dict[str, tuple[Any, Optional[float]]] = {}
+        self._store: dict[str, tuple[Any, float | None]] = {}
 
-    def set(self, key: str, value: str, ex: Optional[int] = None) -> bool:
+    def set(self, key: str, value: str, ex: int | None = None) -> bool:
         expires_at = time.time() + ex if ex else None
         self._store[key] = (value, expires_at)
         return True
 
-    def get(self, key: str) -> Optional[str]:
+    def get(self, key: str) -> str | None:
         entry = self._store.get(key)
         if entry is None:
             return None
@@ -78,6 +77,7 @@ class MockRedis:
 
     def keys(self, pattern: str = "*") -> list[str]:
         import fnmatch
+
         all_keys = list(self._store.keys())
         if pattern == "*":
             return all_keys
@@ -102,10 +102,12 @@ class MockRedis:
 # 2. CACHE CLIENT SETUP
 # =============================================================================
 
+
 # Try to connect to a real Redis; fall back to the mock
 def get_redis_client():
     try:
         import redis
+
         client = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
         client.ping()  # raises ConnectionError if not available
         print("[redis] Connected to real Redis at localhost:6379")
@@ -131,7 +133,7 @@ def cache_key(*parts: str) -> str:
     return f"{CACHE_PREFIX}:{':'.join(parts)}"
 
 
-def cache_get(key: str) -> Optional[Any]:
+def cache_get(key: str) -> Any | None:
     """Deserialize a cached JSON value."""
     raw = redis_client.get(key)
     if raw is None:
@@ -170,9 +172,9 @@ class Product(BaseModel):
 
 
 class ProductUpdate(BaseModel):
-    name: Optional[str] = None
-    price: Optional[float] = None
-    stock: Optional[int] = None
+    name: str | None = None
+    price: float | None = None
+    stock: int | None = None
 
 
 _db: dict[int, Product] = {
@@ -274,10 +276,12 @@ async def cache_stats():
     keys = redis_client.keys(f"{CACHE_PREFIX}:*")
     stats = []
     for key in keys:
-        stats.append({
-            "key": key,
-            "ttl_seconds": redis_client.ttl(key),
-        })
+        stats.append(
+            {
+                "key": key,
+                "ttl_seconds": redis_client.ttl(key),
+            }
+        )
     return {"entries": stats, "count": len(stats)}
 
 

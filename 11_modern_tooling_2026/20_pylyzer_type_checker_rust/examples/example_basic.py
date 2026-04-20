@@ -15,6 +15,7 @@ def safe_divide(numerator: int, denominator: int) -> float | None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     result = annotated_pipeline([1, 2, 3, 4], 1.5)
     print(result)
     print(safe_divide(10, 2))

@@ -11,11 +11,11 @@ Implement three functions with complete type hints:
 1. add_book(title: str, author: str, year: int) -> Dict[str, str | int]
    - Create a dictionary with the book information
    - Keys: "title", "author", "year"
-   
+
 2. search_books(books: List[Dict[str, str | int]], keyword: str) -> List[Dict[str, str | int]]
    - Search books where the keyword appears in title or author (case-insensitive)
    - Return a list of matching books
-   
+
 3. get_books_by_year(books: List[Dict[str, str | int]], year: int) -> Optional[List[Dict[str, str | int]]]
    - Return books published in a specific year
    - Return None if there are no books for that year
@@ -26,25 +26,23 @@ USAGE EXAMPLE:
 >>> book2 = add_book("Animal Farm", "George Orwell", 1945)
 >>> books = [book1, book2]
 >>> search_books(books, "orwell")
-[{'title': '1984', 'author': 'George Orwell', 'year': 1949}, 
+[{'title': '1984', 'author': 'George Orwell', 'year': 1949},
  {'title': 'Animal Farm', 'author': 'George Orwell', 'year': 1945}]
 """
 
-from typing import Dict, List, Optional
 
-
-def add_book(title: str, author: str, year: int) -> Dict[str, str | int]:
+def add_book(title: str, author: str, year: int) -> dict[str, str | int]:
     """
     Create a dictionary representing a book.
-    
+
     Args:
         title: Book title
         author: Book author
         year: Publication year
-        
+
     Returns:
         Dictionary with keys "title", "author", "year"
-    
+
     Examples:
         >>> add_book("1984", "George Orwell", 1949)
         {'title': '1984', 'author': 'George Orwell', 'year': 1949}
@@ -54,22 +52,19 @@ def add_book(title: str, author: str, year: int) -> Dict[str, str | int]:
     pass
 
 
-def search_books(
-    books: List[Dict[str, str | int]], 
-    keyword: str
-) -> List[Dict[str, str | int]]:
+def search_books(books: list[dict[str, str | int]], keyword: str) -> list[dict[str, str | int]]:
     """
     Search books by keyword in title or author.
-    
+
     The search must be case-insensitive.
-    
+
     Args:
         books: List of book dictionaries
         keyword: Word to search in title or author
-        
+
     Returns:
         List of books containing the keyword in title or author
-    
+
     Examples:
         >>> books = [
         ...     {'title': '1984', 'author': 'George Orwell', 'year': 1949},
@@ -88,21 +83,20 @@ def search_books(
 
 
 def get_books_by_year(
-    books: List[Dict[str, str | int]], 
-    year: int
-) -> Optional[List[Dict[str, str | int]]]:
+    books: list[dict[str, str | int]], year: int
+) -> list[dict[str, str | int]] | None:
     """
     Get books published in a specific year.
-    
+
     Args:
         books: List of book dictionaries
         year: Publication year to filter by
-        
+
     Returns:
         List of books from the specified year.
         None if there are no books from that year.
         Empty list [] if books is empty.
-    
+
     Examples:
         >>> books = [
         ...     {'title': '1984', 'author': 'George Orwell', 'year': 1949},
@@ -124,28 +118,28 @@ def get_books_by_year(
 
 if __name__ == "__main__":
     # Manual tests - uncomment to test your implementation
-    
+
     # # Create books
     # book1 = add_book("1984", "George Orwell", 1949)
     # book2 = add_book("Animal Farm", "George Orwell", 1945)
     # book3 = add_book("Dune", "Frank Herbert", 1965)
     # book4 = add_book("Foundation", "Isaac Asimov", 1951)
-    # 
+    #
     # books = [book1, book2, book3, book4]
-    # 
+    #
     # # Search by author
     # print("Orwell books:")
     # print(search_books(books, "orwell"))
-    # 
+    #
     # # Search by title
     # print("\nBooks with 'Dune' in the title:")
     # print(search_books(books, "dune"))
-    # 
+    #
     # # Search by year
     # print("\nBooks from 1949:")
     # print(get_books_by_year(books, 1949))
-    # 
+    #
     # print("\nBooks from 2000:")
     # print(get_books_by_year(books, 2000))
-    
+
     pass

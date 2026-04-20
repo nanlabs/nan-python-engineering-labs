@@ -11,6 +11,7 @@ def format_log(level: LogLevel, message: str) -> str:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(format_log("info", "Server started"))
 
 

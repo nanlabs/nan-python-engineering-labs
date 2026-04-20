@@ -9,7 +9,7 @@ class PositiveNumber:
 
     def __set__(self, instance: object, value: float) -> None:
         if value <= 0:
-            raise ValueError('Value must be positive')
+            raise ValueError("Value must be positive")
         setattr(instance, self.private_name, value)
 
 
@@ -21,9 +21,10 @@ class Invoice:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     invoice = Invoice(250.0)
     print(invoice.amount)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

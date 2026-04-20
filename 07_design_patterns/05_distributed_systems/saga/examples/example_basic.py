@@ -11,20 +11,21 @@ class Saga:
             for action, compensation in self.steps:
                 action()
                 done.append(compensation)
-            return 'committed'
+            return "committed"
         except Exception:
             for comp in reversed(done):
                 comp()
-            return 'compensated'
+            return "compensated"
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     events: list[str] = []
     saga = Saga()
-    saga.add(lambda: events.append('reserve'), lambda: events.append('undo_reserve'))
-    saga.add(lambda: events.append('charge'), lambda: events.append('refund'))
+    saga.add(lambda: events.append("reserve"), lambda: events.append("undo_reserve"))
+    saga.add(lambda: events.append("charge"), lambda: events.append("refund"))
     print(saga.run(), events)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

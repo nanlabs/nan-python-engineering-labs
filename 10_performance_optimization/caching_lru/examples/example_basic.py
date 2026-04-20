@@ -11,9 +11,10 @@ def fibonacci(n: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(f"fib(35) = {fibonacci(35)}")
     print(f"Cache stats: {fibonacci.cache_info()}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

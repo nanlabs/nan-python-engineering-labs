@@ -14,10 +14,11 @@ class UserRecord:
 
 
 def main() -> None:
-    user = UserRecord(1, 'Ada')
+    """Entry point to demonstrate the implementation."""
+    user = UserRecord(1, "Ada")
     user.save()
     print(UserRecord.find(1))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

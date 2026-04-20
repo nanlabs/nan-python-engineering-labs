@@ -7,6 +7,7 @@ def worker(queue: SimpleQueue[int], number: int) -> None:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     queue: SimpleQueue[int] = SimpleQueue()
     threads = [threading.Thread(target=worker, args=(queue, i)) for i in range(5)]
     for t in threads:

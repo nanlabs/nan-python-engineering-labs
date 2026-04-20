@@ -12,15 +12,16 @@ def build_report(n: int) -> int:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     profiler = cProfile.Profile()
     profiler.enable()
     value = build_report(2000)
     profiler.disable()
 
     print(f"Computed value: {value}")
-    stats = pstats.Stats(profiler).strip_dirs().sort_stats('cumtime')
+    stats = pstats.Stats(profiler).strip_dirs().sort_stats("cumtime")
     stats.print_stats(5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

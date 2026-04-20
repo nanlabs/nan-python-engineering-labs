@@ -10,10 +10,11 @@ class Reactor:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     reactor = Reactor()
-    reactor.register('read', lambda p: f'read:{p}')
-    print(reactor.dispatch('read', 'socket-1'))
+    reactor.register("read", lambda p: f"read:{p}")
+    print(reactor.dispatch("read", "socket-1"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

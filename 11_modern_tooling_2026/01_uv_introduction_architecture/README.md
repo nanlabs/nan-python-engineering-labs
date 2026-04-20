@@ -18,8 +18,8 @@ uv uses a PubGrub dependency resolver, content-addressed global cache, and layer
 ### Use Cases
 
 1. Automating repetitive developer tasks in Python projects
-2. Enforcing code quality and consistency across teams
-3. Speeding up CI/CD pipelines with faster tooling
+1. Enforcing code quality and consistency across teams
+1. Speeding up CI/CD pipelines with faster tooling
 
 ### Code Example
 

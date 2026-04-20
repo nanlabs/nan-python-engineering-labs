@@ -17,6 +17,7 @@ class Service(Base):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     summary = {name: cls.kind for name, cls in RegistryMeta.registry.items()}
     print(summary)
 

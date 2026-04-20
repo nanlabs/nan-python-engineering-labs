@@ -15,17 +15,17 @@ This module covers the essential fundamentals of Python, from variables and data
 ## Contents (12 Topics)
 
 1. [Variables Data Types Optional](variables_data_types_optional/)
-2. [Operators Expressions Optional](operators_expressions_optional/)
-3. [Control Structures](control_structures/)
-4. [Lists Tuples](lists_tuples/)
-5. [Dictionaries Sets](dictionaries_sets/)
-6. [Basic Functions](basic_functions/)
-7. [Comprehensions](comprehensions/)
-8. [Advanced Strings](advanced_strings/)
-9. [Input Output Optional](input_output_optional/)
-10. [Module Imports](module_imports/)
-11. [Basic Error Handling](basic_error_handling/)
-12. [Basic Debugging Optional](basic_debugging_optional/)
+1. [Operators Expressions Optional](operators_expressions_optional/)
+1. [Control Structures](control_structures/)
+1. [Lists Tuples](lists_tuples/)
+1. [Dictionaries Sets](dictionaries_sets/)
+1. [Basic Functions](basic_functions/)
+1. [Comprehensions](comprehensions/)
+1. [Advanced Strings](advanced_strings/)
+1. [Input Output Optional](input_output_optional/)
+1. [Module Imports](module_imports/)
+1. [Basic Error Handling](basic_error_handling/)
+1. [Basic Debugging Optional](basic_debugging_optional/)
 
 ## Total Estimated Time
 

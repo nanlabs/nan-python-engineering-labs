@@ -6,7 +6,7 @@ def lint_snippet(code: str) -> list[str]:
     for i, line in enumerate(code.splitlines(), 1):
         if "	" in line:
             issues.append(f"W191 line:{i} indentation contains tabs")
-        if "==" in line and "if" not in line and "==" != line.strip():
+        if "==" in line and "if" not in line and line.strip() != "==":
             pass  # simplified heuristic only
         if len(line) > 88:
             issues.append(f"E501 line:{i} too long ({len(line)} > 88 chars)")
@@ -19,6 +19,7 @@ SAMPLE_CODE = """def add(a,b):
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(f"Linting snippet ({len(SAMPLE_CODE.splitlines())} lines):")
     for issue in lint_snippet(SAMPLE_CODE):
         print(f"  {issue}")

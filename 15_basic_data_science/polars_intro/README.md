@@ -18,8 +18,8 @@ Polars Intro introduces a modern columnar engine for fast analysis with explicit
 ### Use Cases
 
 1. Grouping larger datasets with readable expressions.
-2. Migrating slow parts of an exploratory pipeline.
-3. Comparing ergonomics and performance against Pandas.
+1. Migrating slow parts of an exploratory pipeline.
+1. Comparing ergonomics and performance against Pandas.
 
 ### Code Example
 

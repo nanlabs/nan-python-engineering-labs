@@ -19,8 +19,8 @@ Estimated time: 2–3 hours
 ### Use Cases
 
 1. **REST API backends**: build CRUD APIs for web and mobile applications.
-2. **Microservices**: create lightweight, independent services with clear contracts.
-3. **Data science APIs**: expose ML models or data processing pipelines as HTTP endpoints.
+1. **Microservices**: create lightweight, independent services with clear contracts.
+1. **Data science APIs**: expose ML models or data processing pipelines as HTTP endpoints.
 
 ### Code Example
 
@@ -29,6 +29,7 @@ Estimated time: 2–3 hours
 ```
 
 Run the server with:
+
 ```bash
 uvicorn example_basic:app --reload
 ```

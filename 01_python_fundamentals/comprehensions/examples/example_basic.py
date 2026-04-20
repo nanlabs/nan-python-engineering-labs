@@ -17,6 +17,7 @@ def normalized_initials(words: list[str]) -> set[str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     words = ["python", "pytest", "pydantic"]
     print(even_squares([1, 2, 3, 4, 5, 6]))
     print(word_lengths(words))

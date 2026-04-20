@@ -1,6 +1,6 @@
 class Text:
     def render(self) -> str:
-        return 'report'
+        return "report"
 
 
 class BoldDecorator:
@@ -20,9 +20,10 @@ class UpperDecorator:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     decorated = UpperDecorator(BoldDecorator(Text()))
     print(decorated.render())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

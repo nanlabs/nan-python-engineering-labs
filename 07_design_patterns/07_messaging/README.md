@@ -7,9 +7,9 @@ This category focuses on 07 messaging patterns and practical implementations in 
 ## Contents (4 patterns)
 
 1. [Event Bus](event_bus/)
-2. [Message Queue](message_queue/)
-3. [Publish Subscribe](publish_subscribe/)
-4. [Request Reply](request_reply/)
+1. [Message Queue](message_queue/)
+1. [Publish Subscribe](publish_subscribe/)
+1. [Request Reply](request_reply/)
 
 ## Practice Recommendation
 

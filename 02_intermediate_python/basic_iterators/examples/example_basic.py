@@ -19,8 +19,9 @@ class Countdown:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     print(list(Countdown(5)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

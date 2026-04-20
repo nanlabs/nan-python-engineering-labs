@@ -1,6 +1,6 @@
 class Engine:
     def start(self) -> str:
-        return 'Engine started'
+        return "Engine started"
 
 
 class Car:
@@ -12,9 +12,10 @@ class Car:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     car = Car(Engine())
     print(car.drive())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

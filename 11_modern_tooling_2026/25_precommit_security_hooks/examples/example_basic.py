@@ -22,7 +22,8 @@ def bandit_check(code_lines: list[str]) -> list[str]:
 
 
 def main() -> None:
-    sample = ['api_key = "hardcoded_key_12345"', 'result = eval(user_input)', 'name = "Alice"']
+    """Entry point to demonstrate the implementation."""
+    sample = ['api_key = "hardcoded_key_12345"', "result = eval(user_input)", 'name = "Alice"']
     print("Secret scan:")
     for line in scan_for_secrets(sample):
         print(line)

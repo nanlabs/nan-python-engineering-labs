@@ -12,6 +12,7 @@ def pep_703_summary() -> PEPFact:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     summary = pep_703_summary()
     print(f"PEP {summary.number}: {summary.topic}")
 

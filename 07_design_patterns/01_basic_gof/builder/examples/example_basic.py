@@ -10,19 +10,19 @@ class HttpRequest:
 
 class RequestBuilder:
     def __init__(self) -> None:
-        self._method = 'GET'
-        self._path = '/'
+        self._method = "GET"
+        self._path = "/"
         self._headers: dict[str, str] = {}
 
-    def method(self, value: str) -> 'RequestBuilder':
+    def method(self, value: str) -> "RequestBuilder":
         self._method = value
         return self
 
-    def path(self, value: str) -> 'RequestBuilder':
+    def path(self, value: str) -> "RequestBuilder":
         self._path = value
         return self
 
-    def header(self, key: str, value: str) -> 'RequestBuilder':
+    def header(self, key: str, value: str) -> "RequestBuilder":
         self._headers[key] = value
         return self
 
@@ -31,9 +31,10 @@ class RequestBuilder:
 
 
 def main() -> None:
-    req = RequestBuilder().method('POST').path('/users').header('x-id', '42').build()
+    """Entry point to demonstrate the implementation."""
+    req = RequestBuilder().method("POST").path("/users").header("x-id", "42").build()
     print(req)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -18,13 +18,14 @@ def format_differences(original: str, formatted: str) -> list[str]:
     orig_lines = original.splitlines()
     fmt_lines = formatted.splitlines()
     diffs = []
-    for i, (o, f) in enumerate(zip(orig_lines, fmt_lines)):
+    for i, (o, f) in enumerate(zip(orig_lines, fmt_lines, strict=False)):
         if o != f:
-            diffs.append(f"line {i+1}: {o!r} → {f!r}")
+            diffs.append(f"line {i + 1}: {o!r} → {f!r}")
     return diffs
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     normalized = normalize_code(MESSY)
     diffs = format_differences(MESSY, normalized)
     print(f"Original: {MESSY!r}")

@@ -36,6 +36,7 @@ def build_security_headers() -> dict[str, str]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     salt, digest = hash_password("MyS3cure!Password")
     print("password verified:", verify_password("MyS3cure!Password", salt, digest))
     print("password rejected:", verify_password("wrong", salt, digest))

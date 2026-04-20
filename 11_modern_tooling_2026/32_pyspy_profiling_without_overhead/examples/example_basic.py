@@ -1,9 +1,11 @@
 """py-spy: sampling profiler concepts demo."""
+
 import time
 
 
 def cpu_intensive(n: int) -> float:
     import math
+
     return sum(math.log(i + 1) for i in range(n))
 
 
@@ -15,6 +17,7 @@ def profile_function(fn, *args) -> dict[str, object]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     report = profile_function(cpu_intensive, 50_000)
     print(f"Result: {report['result']}")
     print(f"Elapsed: {report['elapsed_ms']} ms")

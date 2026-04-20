@@ -51,7 +51,7 @@ build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 100
-target-version = "py313"
+target-version = "py312"
 fix = true
 
 [tool.ruff.lint]
@@ -83,6 +83,7 @@ ignore = [
 "exercises/**/*.py" = ["T201", "S101"]
 "my_solution/**/*.py" = ["T201", "S101"]
 "tests/**/*.py" = ["S101"]
+"scripts/validate_all_modules.py" = ["S603"]
 
 [tool.basedpyright]
 typeCheckingMode = "standard"

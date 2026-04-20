@@ -1,5 +1,4 @@
 """Ruff performance: simulate timing comparison against legacy tools."""
-import time
 
 
 def fake_check(tool: str, files: int, ms_per_file: float) -> dict[str, object]:
@@ -9,10 +8,10 @@ def fake_check(tool: str, files: int, ms_per_file: float) -> dict[str, object]:
 
 def benchmark_tools(files: int = 1000) -> list[dict[str, object]]:
     return [
-        fake_check("flake8",  files, 3.0),
-        fake_check("pylint",  files, 12.0),
-        fake_check("mypy",    files, 8.0),
-        fake_check("ruff",    files, 0.03),
+        fake_check("flake8", files, 3.0),
+        fake_check("pylint", files, 12.0),
+        fake_check("mypy", files, 8.0),
+        fake_check("ruff", files, 0.03),
     ]
 
 
@@ -21,6 +20,7 @@ def speedup(baseline: dict, fast: dict) -> float:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     results = benchmark_tools(files=1000)
     ruff = results[-1]
     print(f"{'Tool':<10} {'Files':>6} {'Time (s)':>10}")

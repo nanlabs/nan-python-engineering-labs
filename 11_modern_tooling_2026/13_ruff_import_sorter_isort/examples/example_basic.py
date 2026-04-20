@@ -19,9 +19,14 @@ def sort_imports(imports: list[str]) -> dict[str, list[str]]:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     imports = [
-        "import os", "import httpx", "from myapp import models",
-        "import sys", "from . import utils", "import pydantic",
+        "import os",
+        "import httpx",
+        "from myapp import models",
+        "import sys",
+        "from . import utils",
+        "import pydantic",
     ]
     grouped = sort_imports(imports)
     for section, lines in grouped.items():

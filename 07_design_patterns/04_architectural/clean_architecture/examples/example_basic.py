@@ -9,7 +9,7 @@ class User:
 
 class UserRepo:
     def find(self, user_id: int) -> User:
-        return User(user_id, 'Ada')
+        return User(user_id, "Ada")
 
 
 class GetUserUseCase:
@@ -21,9 +21,10 @@ class GetUserUseCase:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     use_case = GetUserUseCase(UserRepo())
     print(use_case.execute(7))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

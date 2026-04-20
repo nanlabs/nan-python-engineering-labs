@@ -14,6 +14,7 @@ def can_access_dashboard(user: User) -> bool:
 
 
 def main() -> None:
+    """Entry point to demonstrate the implementation."""
     user: User = {"username": "ana", "age": 28, "active": True}
     print(can_access_dashboard(user))
 
