@@ -50,6 +50,7 @@ def benchmark_uv(requirements_file: Path) -> float:
     result = subprocess.run(
         ["uv", "pip", "install", "-r", str(requirements_file)], capture_output=True, text=True
     )
+    print(result.stdout)
     elapsed = time.perf_counter() - start
 
     # Cleanup

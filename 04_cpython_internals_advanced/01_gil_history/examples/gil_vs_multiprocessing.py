@@ -29,6 +29,8 @@ def benchmark_sequential(func: Callable, data_chunks: list[list[int]]) -> float:
     start = time.perf_counter()
     results = [func(chunk) for chunk in data_chunks]
     end = time.perf_counter()
+    # Results are not used here, but could be printed or returned if needed
+    print(f"   Results: {results}")
     return end - start
 
 
@@ -60,15 +62,19 @@ def benchmark_multiprocessing(func: Callable, data_chunks: list[list[int]]) -> f
     start = time.perf_counter()
 
     with mp.Pool(processes=len(data_chunks)) as pool:
-        results = pool.map(func, data_chunks)
+        pool.map(func, data_chunks)
 
     end = time.perf_counter()
     return end - start
 
 
 def main():
+    """
+    Comprehensive comparison of threading vs multiprocessing
+    for CPU-bound tasks.
+    """
     print("=" * 70)
-    print("COMPARACIÓN: THREADING (GIL) VS MULTIPROCESSING")
+    print("THREADING (GIL) VS MULTIPROCESSING")
     print("=" * 70)
     print(f"Python: {sys.version}")
     print(f"CPU cores: {mp.cpu_count()}")
@@ -81,19 +87,19 @@ def main():
     num_workers = 4
     data_chunks = [[n] for n in test_numbers]
 
-    print(f"\nTarea: Calcular fibonacci({test_numbers})")
+    print(f"\nTask: Calculate fibonacci({test_numbers})")
     print(f"Workers: {num_workers}")
     print("\n" + "-" * 70)
 
-    # Benchmark 1: Secuencial (baseline)
-    print("\n1️⃣  EJECUCIÓN SECUENCIAL (Baseline)")
+    # Benchmark 1: Sequential (baseline)
+    print("\n1️⃣  SEQUENTIAL EXECUTION (Baseline)")
     print("-" * 70)
     time_seq = benchmark_sequential(heavy_computation, data_chunks)
     print(f"   Time: {time_seq:.4f}s")
     print("   Speedup: 1.00x (baseline)")
 
     # Benchmark 2: Threading
-    print("\n2️⃣  THREADING (Afectado por GIL)")
+    print("\n2️⃣  THREADING (Affected by GIL)")
     print("-" * 70)
     time_threading = benchmark_threading(heavy_computation, data_chunks)
     speedup_threading = time_seq / time_threading
@@ -106,7 +112,7 @@ def main():
         print("   ⚠️  Unexpected improvement - this may be system variability")
 
     # Benchmark 3: Multiprocessing
-    print("\n3️⃣  MULTIPROCESSING (Sin GIL)")
+    print("\n3️⃣  MULTIPROCESSING (Without GIL)")
     print("-" * 70)
     time_mp = benchmark_multiprocessing(heavy_computation, data_chunks)
     speedup_mp = time_seq / time_mp
@@ -125,14 +131,14 @@ def main():
 
     print(
         f"""
-    Secuencial:        {time_seq:.4f}s (1.00x)
+    Sequential:        {time_seq:.4f}s (1.00x)
     Threading:         {time_threading:.4f}s ({speedup_threading:.2f}x)
     Multiprocessing:   {time_mp:.4f}s ({speedup_mp:.2f}x)
 
-    Eficiencia de Threading:        {speedup_threading / num_workers * 100:.1f}%
-    Eficiencia de Multiprocessing:  {speedup_mp / num_workers * 100:.1f}%
+    Threading Efficiency:        {speedup_threading / num_workers * 100:.1f}%
+    Multiprocessing Efficiency:  {speedup_mp / num_workers * 100:.1f}%
 
-    🎯 RECOMENDACIÓN:
+    🎯 RECOMMENDATION:
     """
     )
 

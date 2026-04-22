@@ -2,7 +2,11 @@
   "[python]": {
     "editor.rulers": [72, 79, 100]
   },
-  "editor.rulers": [100],
+  "editor.rulers": [80, 100],
+  "workbench.colorCustomizations": {
+    // Un color naranja sutil para que las líneas no distraigan
+    "editorRuler.foreground": "#ffb70044"
+  },
   "python.analysis.typeCheckingMode": "standard",
   "ruff.lineLength": 100
 }

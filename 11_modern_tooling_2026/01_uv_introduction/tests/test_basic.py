@@ -73,7 +73,9 @@ def test_exercise_defines_user_api() -> None:
 
 
 def test_main_runs_if_present() -> None:
-    """If main() exists with no required args, it should run without exceptions."""
+    """
+    If main() exists with no required args, it should run without exceptions.
+    """
     module = _load_exercise_module()
     main_func = getattr(module, "main", None)
 

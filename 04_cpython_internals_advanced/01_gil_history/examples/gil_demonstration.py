@@ -69,7 +69,7 @@ def cpu_intensive_work(iterations: int, monitor: GILMonitor):
         result += math.sqrt(i) * math.sin(i) * math.cos(i)
 
         # Python switches the GIL about every ~5ms or ~100 instructions
-        # of bytecode (check_interval in Python 2, switchinterval in Python 3)
+        # of bytecode (check_interval in Python 2, switch interval in Python 3)
         if i % 10000 == 0:
             # Force a checkpoint where Python could switch the GIL
             pass
@@ -219,7 +219,7 @@ def main():
     Run the full set of tests to demonstrate the GIL.
     """
     print("=" * 60)
-    print("DEMOSTRACIÓN DEL GLOBAL INTERPRETER LOCK (GIL)")
+    print("DEMONSTRATION OF THE GLOBAL INTERPRETER LOCK (GIL)")
     print("=" * 60)
     print(f"Python version: {sys.version}")
     print(f"Thread switching interval: {sys.getswitchinterval()}s")
@@ -227,7 +227,10 @@ def main():
     # Check if free-threading is enabled (Python 3.13+)
     gil_status = "Enabled (Legacy)"
     if hasattr(sys, "_is_gil_enabled"):
-        gil_status = "Disabled (Free-threaded)" if not sys._is_gil_enabled() else "Enabled"
+        if not sys._is_gil_enabled():
+            gil_status = "Free-threading enabled (Python 3.13+)"
+        else:
+            gil_status = "GIL enabled (Python 3.13+)"
     print(f"GIL Status: {gil_status}")
 
     # Test 1: CPU-bound with increasing threads
@@ -257,17 +260,19 @@ def main():
     for num_threads in [1, 2, 4]:
         run_mixed_test(num_threads)
 
-    # Conclusiones
     print("\n" + "=" * 60)
-    print("CONCLUSIONES")
+    print("RESULTS")
     print("=" * 60)
     print(
         """
-    1. CPU-bound: The GIL serializes execution. There is no real speedup with threading.
+    1. CPU-bound: The GIL serializes execution.
+        There is no real speedup with threading.
        ➜ Solution: Use multiprocessing or C extensions that release the GIL.
 
-    2. I/O-bound: The GIL is released during I/O operations. Threading is effective.
-       ➜ Solution: Threading is appropriate. asyncio is also a good alternative.
+    2. I/O-bound: The GIL is released during I/O operations.
+        Threading is effective.
+       ➜ Solution: Threading is appropriate.
+       ➜ asyncio is also a good alternative.
 
     3. Mixed: Intermediate behavior. Benefit depends on the CPU/IO ratio.
        ➜ Solution: Analyze the workload and choose the best strategy.

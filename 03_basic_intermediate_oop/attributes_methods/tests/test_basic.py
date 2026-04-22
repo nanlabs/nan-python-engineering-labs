@@ -54,16 +54,23 @@ def test_exercise_file_exists() -> None:
 
 def test_exercise_has_no_todo_placeholders() -> None:
     """Exercise should be completed (no TODO placeholders)."""
-    assert not _has_todo_placeholder(), "exercise_01.py still contains TODO placeholders"
+    msg = "Found TODO placeholders in exercise_01.py."
+    msg += " Please complete the implementation."
+    assert not _has_todo_placeholder(), msg
 
 
 def test_exercise_imports_without_errors() -> None:
-    """Exercise module should import without syntax/runtime errors on import."""
+    """
+    Exercise module should import without syntax/runtime errors on import.
+    """
     _load_exercise_module()
 
 
 def test_exercise_defines_user_api() -> None:
-    """Exercise should expose at least one user-defined function/class besides main."""
+    """
+    Exercise should expose at least one user-defined
+    function/class besides main.
+    """
     module = _load_exercise_module()
     symbols = _public_user_symbols(module)
     assert symbols, (
@@ -73,7 +80,10 @@ def test_exercise_defines_user_api() -> None:
 
 
 def test_main_runs_if_present() -> None:
-    """If main() exists with no required args, it should run without exceptions."""
+    """
+    If main() exists with no required args,
+    it should run without exceptions.
+    """
     module = _load_exercise_module()
     main_func = getattr(module, "main", None)
 
@@ -92,10 +102,13 @@ def test_main_runs_if_present() -> None:
     if required:
         pytest.skip("main() requires positional args; skipping execution")
 
-    if inspect.iscoroutinefunction(main_func):
-        asyncio.run(main_func())
-    else:
-        main_func()
+    try:
+        if inspect.iscoroutinefunction(main_func):
+            asyncio.run(main_func())
+        else:
+            main_func()
+    except TypeError:
+        pytest.fail("main() is not callable")
 
 
 if __name__ == "__main__":
