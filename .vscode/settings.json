@@ -1,0 +1,8 @@
+{
+  "[python]": {
+    "editor.rulers": [72, 79, 100]
+  },
+  "editor.rulers": [100],
+  "python.analysis.typeCheckingMode": "standard",
+  "ruff.lineLength": 100
+}
