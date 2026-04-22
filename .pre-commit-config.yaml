@@ -17,7 +17,6 @@ repos:
         args: [--fix, --exit-non-zero-on-fix]
         files: '^(my_solution|scripts)/.*\.py$'
       - id: ruff-format
-        files: '^(my_solution|scripts)/.*\.py$'
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.21
