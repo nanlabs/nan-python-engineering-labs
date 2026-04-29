@@ -1,10 +1,10 @@
-# Decorator Funcion
+# Decorator Function
 
 Estimated time: 1-2 hours\*\*
 
 ## 1. Definition
 
-**Decorator Funcion** is an important Python topic for building maintainable, testable, and production-ready systems.
+**Decorator Function** is an important Python topic for building maintainable, testable, and production-ready systems.
 
 In practice, this topic gives you a clear way to model behavior, reason about trade-offs, and implement reliable code.
 
@@ -19,7 +19,7 @@ In practice, this topic gives you a clear way to model behavior, reason about tr
 
 ### Use Cases
 
-1. **Application development**: apply decorator funcion patterns in backend services and internal tools.
+1. **Application development**: apply decorator function patterns in backend services and internal tools.
 1. **Library design**: implement reusable building blocks with predictable behavior.
 1. **Automation workflows**: make scripts and jobs easier to evolve and verify over time.
 
@@ -27,7 +27,7 @@ In practice, this topic gives you a clear way to model behavior, reason about tr
 
 ```python
 # See examples/example_basic.py for executable code
-# related to decorator funcion
+# related to decorator function
 ```
 
 Run `examples/example_basic.py` to inspect the baseline behavior before solving the exercise.
@@ -36,7 +36,7 @@ Run `examples/example_basic.py` to inspect the baseline behavior before solving 
 
 ### Problem It Solves
 
-Without a clear approach to decorator funcion, teams often face:
+Without a clear approach to decorator function, teams often face:
 
 - hidden assumptions and fragile behavior,
 - difficult refactors,
@@ -44,7 +44,7 @@ Without a clear approach to decorator funcion, teams often face:
 
 ### Solution and Benefits
 
-Working with **Decorator Funcion** helps teams achieve:
+Working with **Decorator Function** helps teams achieve:
 
 - cleaner code organization,
 - faster debugging and onboarding,
@@ -82,7 +82,7 @@ Use `exercises/exercise_01.py` as the main task entry point.
 
 ## 6. Summary
 
-- Decorator Funcion strengthens your Python engineering fundamentals.
+- Decorator Function strengthens your Python engineering fundamentals.
 - It improves code quality, testability, and maintainability.
 - It is directly applicable to real-world backend and automation work.
 

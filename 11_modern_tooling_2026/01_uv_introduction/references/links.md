@@ -99,7 +99,7 @@
 
 - [uv Discussions](https://github.com/astral-sh/uv/discussions)
 
-  - Foro oficial
+  - Official forum
   - Q&A
   - Feature requests
 

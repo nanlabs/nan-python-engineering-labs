@@ -1,4 +1,4 @@
-# References: Decorator Funcion
+# References: Decorator Function
 
 ## Official Documentation
 

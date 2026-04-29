@@ -25,10 +25,10 @@ SPANISH_CONTENT_RE = re.compile(
     r"\b("
     r"m[oó]dulo|descripci[oó]n|objetivo|ejercicio|instrucciones|"
     r"referencias|documentaci[oó]n|configuraci[oó]n|instalaci[oó]n|"
-    r"verificaci[oó]n|avanzad[oa]s?|paraleli[sz]aci[oó]n|"
+    r"verificaci[oó]n|avanzad[oa]s?|parallelization|"
     r"entornos|herramientas|soluci[oó]n|a[ñn]adir|"
     r"lee atentamente|tu solution|debe ir|directorio padre|"
-    r"documentaci[oó]n oficial|implementar y practicar"
+    r"official documentation|implementar y practicar"
     r")\b",
     re.IGNORECASE,
 )

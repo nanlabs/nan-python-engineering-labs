@@ -1,5 +1,5 @@
 """
-Exercise: Decorator Funcion
+Exercise: Decorator Function
 
 Goal: Implement and practice decorator_funcion
 

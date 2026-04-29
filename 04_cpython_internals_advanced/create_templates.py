@@ -35,9 +35,9 @@ if __name__ == "__main__":
 
 {importance}
 
-## Referencias
+## References
 
-### Documentación Oficial
+### Official Documentation
 - [Python 3.13 Documentation](https://docs.python.org/3.13/)
 - [PEP 703 – Free-Threading](https://peps.python.org/pep-0703/)
 - {specific_refs}
@@ -81,11 +81,11 @@ topics_data = [
         "importance": "Dominar la compilación e instalación es el primer paso práctico para experimentar con free-threading. Sin una instalación correcta, no puedes aprovechar PEP 703.",
         "specific_refs": "[Building Python from Source](https://devguide.python.org/getting-started/setup-building/)",
         "basic_task": "Compile Python 3.13+ with --disable-gil. Verify with sys._is_gil_enabled(). Run the basic test suite.",
-        "intermediate_task": "Crear script de instalación automatizada que compile Python free-threaded, configure venvs, e instale dependencies comunes.",
-        "advanced_task": "Configurar CI/CD pipeline que teste código en ambos modos (GIL/no-GIL) automáticamente.",
+        "intermediate_task": "Create automated installation script that compiles Python free-threaded, configures venvs, and installs common dependencies.",
+        "advanced_task": "Configure CI/CD pipeline that tests code in both modes (GIL/no-GIL) automatically.",
         "summary_point_1": "🔧 Python 3.13+ se compila con --disable-gil flag durante ./configure",
         "summary_point_2": "✅ sys._is_gil_enabled() verifica si free-threading está activo",
-        "summary_point_3": "⚠️ Requiere compilación desde source; binaries oficiales tienen GIL enabled por defecto",
+        "summary_point_3": "⚠️ Requires compilation from source; official binaries have GIL enabled by default",
         "time_estimate": "2-3 horas",
         "prev_topic": "03 - PEP 703: Free-Threading",
         "prev_folder": "03_pep_703_free_threading",
@@ -97,9 +97,9 @@ topics_data = [
         "title": "Arquitectura interna sin GIL",
         "description": "Exploración profunda de los cambios arquitectónicos en CPython para soportar free-threading. Incluye: nuevas estructuras de datos thread-safe, per-object locking scheme, memory barriers, y coordinación entre threads sin GIL global.",
         "use_case_1": "Entender cómo CPython gestiona concurrencia sin GIL",
-        "use_case_2": "Diseñar extensiones C compatibles con arquitectura no-GIL",
+        "use_case_2": "Diseñar C extensions compatible con arquitectura no-GIL",
         "use_case_3": "Debugging de race conditions a nivel de intérprete",
-        "importance": "Conocer la arquitectura interna es crucial para escribir código performante y thread-safe, y para contribuir al desarrollo de CPython o extensiones complejas.",
+        "importance": "Conocer la arquitectura interna es crucial para escribir código performante y thread-safe, y para contribuir al desarrollo de CPython o complex extensions.",
         "specific_refs": "[CPython Source: Include/internal/pycore_lock.h](https://github.com/python/cpython)",
         "basic_task": "Read Python source code in Python/ceval.c and Python/lock.c. Document differences vs the GIL-enabled version.",
         "intermediate_task": "Implement a 'mini-interpreter' that simulates per-object locking and demonstrates how multiple threads access objects safely.",

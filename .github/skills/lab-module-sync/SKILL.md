@@ -177,7 +177,7 @@ The table below is the **authoritative source** for language and content rules p
   - No files with a title-only header and no links
 - Required structure:
   - A title heading (`# References: <Topic>` or `# Referencias: <Topic>`)
-  - At least one `## Official Documentation` / `## Documentación Oficial` section
+  - At least one `## Official Documentation` / `## Documentación Official` section
   - At least 2 links in the official section
   - At least 1 article/guide link
 - Links must be topic-specific (not the same generic set for every topic in the module).
