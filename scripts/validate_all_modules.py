@@ -43,7 +43,7 @@ SPANISH_KEYWORDS_RE = re.compile(
     r"\b("
     r"m[oó]dulo|descripci[oó]n|objetivo|ejercicio|instrucciones|"
     r"referencias|documentaci[oó]n|configuraci[oó]n|instalaci[oó]n|"
-    r"verificaci[oó]n|avanzad[oa]s?|parallelization|"
+    r"verificaci[oó]n|avanzad[oa]s?|"
     r"entornos|herramientas|soluci[oó]n|a[ñn]adir|"
     r"implementar y practicar|lee atentamente|tu solution|"
     r"debe ir|directorio padre|implementa|añade|resuelve|"
