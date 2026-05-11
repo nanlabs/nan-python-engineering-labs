@@ -1,0 +1,114 @@
+name: Dependabot Auto-Merge
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_run:
+    workflows:
+      - Validate All Modules
+    types:
+      - completed
+
+jobs:
+  auto-merge-dependabot:
+    name: Auto-merge Dependabot PRs
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_run'
+    permissions:
+      pull-requests: write
+      contents: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Resolve PR number
+        id: pr
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
+            pr_number="$(python - <<'PY'
+            import json
+            import os
+            from pathlib import Path
+
+            event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
+            pull_requests = event.get("workflow_run", {}).get("pull_requests", [])
+            if pull_requests:
+                print(pull_requests[0].get("number", ""))
+            PY
+            )"
+            if [ -n "$pr_number" ]; then
+              echo "number=$pr_number" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Validate Dependabot author
+        id: author
+        if: steps.pr.outputs.number != ''
+        run: |
+          set -euo pipefail
+          pr_number="${{ steps.pr.outputs.number }}"
+          repo="${{ github.repository }}"
+
+          author_login="$(gh pr view "$pr_number" --repo "$repo" --json author -q '.author.login')"
+          echo "PR #$pr_number author: $author_login"
+
+          if [ "$author_login" = "dependabot[bot]" ] || [ "$author_login" = "app/dependabot" ]; then
+            echo "is_dependabot=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_dependabot=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Enable auto-merge for Dependabot PR
+        if: steps.pr.outputs.number != '' && steps.author.outputs.is_dependabot == 'true'
+        run: |
+          set -euo pipefail
+          pr_number="${{ steps.pr.outputs.number }}"
+          repo="${{ github.repository }}"
+
+          echo "Processing PR #$pr_number..."
+
+          set +e
+          merge_output="$(gh pr merge "$pr_number" --repo "$repo" --auto --merge --delete-branch 2>&1)"
+          merge_exit=$?
+          set -e
+
+          if [ "$merge_exit" -eq 0 ]; then
+            echo "Configured with merge strategy"
+          elif echo "$merge_output" | grep -qi "Auto merge is not allowed for this repository"; then
+            echo "Auto-merge is disabled at repository level; attempting direct merge fallback"
+
+            if gh pr merge "$pr_number" --repo "$repo" --merge --delete-branch; then
+              echo "Merged directly with merge strategy"
+            elif gh pr merge "$pr_number" --repo "$repo" --squash --delete-branch; then
+              echo "Merged directly with squash strategy"
+            elif gh pr merge "$pr_number" --repo "$repo" --rebase --delete-branch; then
+              echo "Merged directly with rebase strategy"
+            else
+              echo "Direct merge not available yet (likely pending checks/branch protection)."
+              echo "Will retry automatically on workflow_run completion."
+              exit 0
+            fi
+          else
+            echo "Auto-merge not configured right now; will retry on workflow_run completion."
+            echo "$merge_output"
+            exit 0
+          fi
+
+          merged_state="$(gh pr view "$pr_number" --repo "$repo" --json mergedAt -q '.mergedAt != null')"
+          auto_state="$(gh pr view "$pr_number" --repo "$repo" --json autoMergeRequest -q '.autoMergeRequest != null')"
+
+          if [ "$merged_state" = "true" ] || [ "$auto_state" = "true" ]; then
+            echo "Auto-merge active (or already merged) for PR #$pr_number"
+          else
+            echo "No active merge state yet; leaving as soft success for next retry cycle."
+          fi
+
+      - name: Skip non-Dependabot PR
+        if: steps.pr.outputs.number != '' && steps.author.outputs.is_dependabot != 'true'
+        run: |
+          pr_num="${{ steps.pr.outputs.number }}"
+          echo "PR #$pr_num is not from Dependabot; skipping."

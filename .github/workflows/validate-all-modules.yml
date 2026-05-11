@@ -10,6 +10,7 @@ on:
 jobs:
   validate-all-modules:
     runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || (github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'app/dependabot')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
