@@ -73,3 +73,6 @@ docs/_build/
 # **/README.md
 # But keep the structure:
 # !**/README.md
+
+# SQLite databases (generated artifacts)
+*.db
