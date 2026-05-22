@@ -22,10 +22,10 @@ nan-python-engineering-labs/
 ├── README.md                        # Main documentation
 └── scripts/
     ├── progress.py                  # Automatic progress tracking
-    ├── generate_structure.py       # Basic module generator
-    ├── generate_patrones.py        # 88 patterns generator
-    ├── generate_modulo_14.py       # PyO3/AI module generator
-    └── generate_modulo_16.py       # Security module generator
+    ├── generate_structure.py        # Basic module generator
+    ├── validate_all_modules.py      # Module validator (CI gate)
+    ├── validate_ci_gate.py          # Gold-quality validator
+    └── link_check.py                # External-link checker
 ```
 
 ### Modules Created (16 modules, 379 topics)
