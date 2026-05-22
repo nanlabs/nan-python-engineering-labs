@@ -6,9 +6,16 @@ This file defines agent behavior for this repository.
 
 ## Source of Truth
 
-1. Follow this file first.
+1. **Upstream contract**: [`docs/CHARTER.md`](docs/CHARTER.md) (NaNLABS Lab Charter v1).
+1. Follow this file for agent-specific behavior within this repo.
 1. Follow `.github/skills/lab-module-sync/SKILL.md` for module sync and validation rules.
 1. If instructions conflict, prefer this file for agent behavior and the SKILL file for content rules.
+
+## Sibling Labs
+
+- [`nanlabs/nan-ai-engineering-labs`](https://github.com/nanlabs/nan-ai-engineering-labs)
+- [`nanlabs/nan-data-engineering-labs`](https://github.com/nanlabs/nan-data-engineering-labs)
+- [`nanlabs/nan-ai-native-engineering-labs`](https://github.com/nanlabs/nan-ai-native-engineering-labs)
 
 ## Repository Conventions
 
@@ -28,12 +35,20 @@ This file defines agent behavior for this repository.
 
 ## Validation Commands
 
-Use project venv explicitly:
+Use the project virtual environment:
 
 ```bash
-PYTHON=/media/nquiroga/SSDedo/Documents/projects/NanLabs/labs/.venv/bin/python
-$PYTHON scripts/validate_all_modules.py
-$PYTHON scripts/run_topic_tests.py
+# Activate the project venv and run validators
+source .venv/bin/activate
+python scripts/validate_all_modules.py
+python scripts/run_topic_tests.py
+```
+
+Or with `uv run` (does not require manual activation):
+
+```bash
+uv run scripts/validate_all_modules.py
+uv run scripts/run_topic_tests.py
 ```
 
 ## Safety

@@ -1,27 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Install uv (ultra-fast Python package manager)
+echo "==> Installing uv"
 curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
-# Install maturin for PyO3 development
+echo "==> Installing maturin for PyO3 development"
 pip install maturin
 
-# Create virtual environment with uv
+echo "==> Creating virtualenv and installing dev deps"
 uv venv
+# shellcheck disable=SC1091
+source .venv/bin/activate
+uv pip install -e ".[dev,profiling,ai,pyo3,security,data]"
 
-# Install project dependencies
-uv pip install -e ".[dev,profiling,ai,pyo3,security]"
+echo "==> Installing pre-commit hooks"
+pre-commit install || true
 
-# Install pre-commit hooks
-pre-commit install
-
-# Verify installations
-echo "✅ uv version: $(uv --version)"
-echo "✅ ruff version: $(ruff --version)"
-echo "✅ basedpyright version: $(basedpyright --version)"
-echo "✅ pytest version: $(pytest --version)"
-echo "✅ maturin version: $(maturin --version)"
-echo ""
-echo "🚀 DevContainer setup complete!"
-echo "📚 Start learning with: uv run scripts/progress.py"
+echo "==> Done. Run: uv run scripts/progress.py"

@@ -1,0 +1,32 @@
+name: Content improvement
+description: Existing topic content needs to be improved (theory, examples, exercises, evals)
+labels: ["content"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic path
+      placeholder: "e.g. 05_modern_concurrency/async_patterns"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - README
+        - theory.md
+        - example_basic.py
+        - exercise
+        - rubric / eval_cases
+        - references
+        - tests
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Proposed improvement
+    validations:
+      required: true

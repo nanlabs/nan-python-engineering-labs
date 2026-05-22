@@ -164,19 +164,19 @@ Genera un grafo con graphviz o similar
 ## Advanced Questions
 
 1. Why is Rust better than Python for a package manager?
-1. ¿Qué trade-offs tiene el algoritmo PubGrub?
-1. ¿Cómo maneja uv las plataformas cruzadas (wheels)?
-1. ¿Qué estrategia usa uv para paralelizar descargas?
-1. ¿Es posible que uv reemplace completamente a pip? ¿Por qué sí o no?
+1. What trade-offs does the PubGrub algorithm have?
+1. How does uv handle cross-platform wheels?
+1. What strategy does uv use to parallelize downloads?
+1. Is it possible for uv to completely replace pip? Why or why not?
 
 ## Entregables
 
-En `my_solution/`:
+In `my_solution/`:
 
-- `cache_analyzer.py` - Script funcional
-- `benchmark.py` - Script funcional
-- `dep_graph.py` - Script funcional
-- `ANALISIS.md` - Documento con:
+- `cache_analyzer.py` - Functional script
+- `benchmark.py` - Functional script
+- `dep_graph.py` - Functional script
+- `ANALYSIS.md` - Document with:
   - Resultados de comparaciones
   - Answers to advanced questions
   - uv architecture diagram

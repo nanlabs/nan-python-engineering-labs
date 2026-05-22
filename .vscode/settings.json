@@ -1,0 +1,19 @@
+{
+  "editor.rulers": [
+    {
+      "color": "#ffb70044",
+      "column": 79
+    },
+    {
+      "color": "#ffb70044",
+      "column": 100
+    },
+    {
+      "color": "#ffb70044",
+      "column": 72
+    }
+  ],
+  "workbench.colorTheme": "Dark+",
+  "python.analysis.typeCheckingMode": "standard",
+  "ruff.lineLength": 100
+}

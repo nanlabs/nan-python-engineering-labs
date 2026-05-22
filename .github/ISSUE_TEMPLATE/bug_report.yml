@@ -1,0 +1,29 @@
+name: Bug report
+description: Something is broken in this repository (script, doc, CI, content)
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is broken?
+      description: Concrete description with file paths.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: Commands or steps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "e.g. devcontainer, macOS local, Linux uv"

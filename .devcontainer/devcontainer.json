@@ -1,6 +1,6 @@
 {
-  "name": "Python Engineering Labs",
-  "image": "mcr.microsoft.com/devcontainers/python:3.13",
+  "name": "nan-python-engineering-labs",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.13-bookworm",
 
   "features": {
     "ghcr.io/devcontainers-contrib/features/rust-apt-get:1": {

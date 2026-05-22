@@ -10,7 +10,7 @@ This category focuses on 02 pythonic patterns patterns and practical implementat
 1. [Context Manager](context_manager/)
 1. [Coroutine](coroutine/)
 1. [Dataclass](dataclass/)
-1. [Decorator Funcion](decorator_funcion/)
+1. [Decorator Function](decorator_funcion/)
 1. [Descriptor](descriptor/)
 1. [Generator](generator/)
 1. [Lazy Property](lazy_property/)

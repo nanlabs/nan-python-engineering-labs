@@ -123,6 +123,16 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
+## Sibling Labs
+
+This repository is part of the NaNLABS learning lab ecosystem:
+
+- [nan-ai-engineering-labs](https://github.com/nanlabs/nan-ai-engineering-labs) — AI/ML engineering fundamentals and applied techniques
+- [nan-data-engineering-labs](https://github.com/nanlabs/nan-data-engineering-labs) — Data engineering pipelines, warehousing, and orchestration
+- [nan-ai-native-engineering-labs](https://github.com/nanlabs/nan-ai-native-engineering-labs) — AI-native development with prompt engineering and agents
+
+______________________________________________________________________
+
 ## Full Program Details
 
 ## Description
@@ -285,3 +295,9 @@ NumPy, Pandas, Matplotlib, Polars, practical statistics for data engineering.
 Supply chain security, SBOM, Sigstore (keyless signing), SOPS/Vault (secrets management), runtime hardening.
 
 **Topics**: 40 | **Estimated time**: 30-45 hours
+
+______________________________________________________________________
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
