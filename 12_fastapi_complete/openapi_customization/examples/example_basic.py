@@ -21,6 +21,7 @@ Run:
     Visit http://localhost:8000/openapi.json
 """
 
+
 from fastapi import Body, FastAPI, HTTPException, Path
 from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel, Field

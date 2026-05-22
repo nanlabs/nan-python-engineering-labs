@@ -21,6 +21,7 @@ Dependencies:
     pip install pytest httpx fastapi
 """
 
+
 import pytest
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.testclient import TestClient
