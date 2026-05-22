@@ -1,0 +1,28 @@
+name: link-check
+
+on:
+  pull_request:
+    paths:
+      - "**/references/links.md"
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Install deps
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          uv venv
+          uv pip install -e ".[dev]"
+      - name: Link check
+        run: |
+          source .venv/bin/activate
+          python scripts/link_check.py --quiet

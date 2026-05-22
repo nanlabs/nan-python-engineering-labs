@@ -56,12 +56,19 @@ Each topic must include:
 
 ## Validation Commands
 
-Use the project venv explicitly:
+Use the project venv:
 
 ```bash
-PYTHON=/media/nquiroga/SSDedo/Documents/projects/NanLabs/labs/.venv/bin/python
-$PYTHON scripts/validate_all_modules.py
-$PYTHON scripts/run_topic_tests.py
+source .venv/bin/activate
+python scripts/validate_all_modules.py
+python scripts/run_topic_tests.py
+```
+
+Or using `uv run`:
+
+```bash
+uv run scripts/validate_all_modules.py
+uv run scripts/run_topic_tests.py
 ```
 
 ## Quality Gates (must pass)

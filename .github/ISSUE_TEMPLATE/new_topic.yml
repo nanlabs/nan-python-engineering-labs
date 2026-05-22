@@ -1,0 +1,34 @@
+name: New topic request
+description: Propose a new topic inside an existing module
+labels: ["new-topic"]
+body:
+  - type: input
+    id: module
+    attributes:
+      label: Target module
+      placeholder: "e.g. 05_modern_concurrency"
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Proposed topic title
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Learning outcome
+      description: What the learner can do after this topic.
+    validations:
+      required: true
+  - type: textarea
+    id: prereq
+    attributes:
+      label: Prerequisites
+  - type: textarea
+    id: refs
+    attributes:
+      label: At least 3 authoritative references (https URLs)
+    validations:
+      required: true

@@ -16,9 +16,16 @@
 Run from repo root:
 
 ```bash
-PYTHON=/media/nquiroga/SSDedo/Documents/projects/NanLabs/labs/.venv/bin/python
-$PYTHON scripts/validate_all_modules.py
-$PYTHON scripts/run_topic_tests.py 01_python_fundamentals/advanced_strings
+source .venv/bin/activate
+python scripts/validate_all_modules.py
+python scripts/run_topic_tests.py 01_python_fundamentals/advanced_strings
+```
+
+Or using `uv run`:
+
+```bash
+uv run scripts/validate_all_modules.py
+uv run scripts/run_topic_tests.py 01_python_fundamentals/advanced_strings
 ```
 
 ## Pull Requests
