@@ -29,17 +29,7 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "workflow_run" ]; then
-            pr_number="$(python - <<'PY'
-            import json
-            import os
-            from pathlib import Path
-
-            event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
-            pull_requests = event.get("workflow_run", {}).get("pull_requests", [])
-            if pull_requests:
-                print(pull_requests[0].get("number", ""))
-            PY
-            )"
+            pr_number="$(python3 -c "import json,os,pathlib; e=json.loads(pathlib.Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8')); prs=e.get('workflow_run',{}).get('pull_requests',[]); print(prs[0]['number'] if prs else '')")"
             if [ -n "$pr_number" ]; then
               echo "number=$pr_number" >> "$GITHUB_OUTPUT"
             fi
