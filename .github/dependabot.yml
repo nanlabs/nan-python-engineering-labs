@@ -12,3 +12,9 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "deps"
+    ignore:
+      # bcrypt 5.x is incompatible with passlib 1.7.x
+      # (passlib raises "(trapped) error reading bcrypt version" and fails X1).
+      # Keep pinned to <5 until passlib publishes a compatible release.
+      - dependency-name: "bcrypt"
+        versions: [">=5.0"]
