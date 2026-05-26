@@ -156,7 +156,7 @@ def main() -> None:
     base_path = Path(__file__).parent.parent
 
     print("🔍 Scanning modules and topics...")
-    progress = scan_modules(base_path)
+    progress = scan_modules(base_path / "modules")
 
     print("📝 Generating progress table...")
     progress_table = generate_progress_table(progress)

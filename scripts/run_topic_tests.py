@@ -21,9 +21,13 @@ def discover_test_files() -> list[Path]:
 
 
 def resolve_target(target: str) -> list[Path]:
-    path = (REPO_ROOT / target).resolve()
-    if not path.exists():
+    candidate = (REPO_ROOT / target).resolve()
+    if not candidate.exists():
+        # Fallback: try under modules/ (post-refactor layout)
+        candidate = (REPO_ROOT / "modules" / target).resolve()
+    if not candidate.exists():
         raise FileNotFoundError(f"Target not found: {target}")
+    path = candidate
 
     if path.is_file():
         if path.name != "test_basic.py":

@@ -100,8 +100,9 @@ class ModuleResult:
 
 
 def iter_modules(repo_root: Path, only_module: str | None) -> list[Path]:
+    modules_root = repo_root / "modules"
     all_modules = sorted(
-        p for p in repo_root.iterdir() if p.is_dir() and re.match(r"^\d{2}_", p.name)
+        p for p in modules_root.iterdir() if p.is_dir() and re.match(r"^\d{2}_", p.name)
     )
     if only_module:
         return [m for m in all_modules if m.name == only_module]

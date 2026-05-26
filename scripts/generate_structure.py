@@ -403,7 +403,7 @@ Follow the numerical order for a logical progression.
 
 def main() -> None:
     """Generate the complete project structure."""
-    base_path = Path(__file__).parent.parent
+    base_path = Path(__file__).parent.parent / "modules"
 
     print("🚀 Generating module structure...")
     print()

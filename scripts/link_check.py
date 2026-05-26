@@ -22,6 +22,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+MODULES_ROOT = ROOT / "modules"
 URL_RE = re.compile(r"https://[^\s)\"']+")
 TIMEOUT = 8
 
@@ -63,7 +64,7 @@ def main() -> int:
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
 
-    scope = ROOT / args.topic if args.topic else ROOT
+    scope = MODULES_ROOT / args.topic if args.topic else MODULES_ROOT
     if not scope.exists():
         print(f"scope not found: {scope}", file=sys.stderr)
         return 2

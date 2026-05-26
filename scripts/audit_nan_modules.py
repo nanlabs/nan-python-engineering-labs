@@ -76,8 +76,9 @@ class Hit:
 
 
 def iter_modules(repo_root: Path) -> list[Path]:
+    modules_root = repo_root / "modules"
     return sorted(
-        path for path in repo_root.iterdir() if path.is_dir() and re.match(r"^\d{2}_", path.name)
+        path for path in modules_root.iterdir() if path.is_dir() and re.match(r"^\d{2}_", path.name)
     )
 
 
