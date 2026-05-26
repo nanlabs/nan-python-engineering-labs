@@ -50,7 +50,7 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
-    module_path = repo_root / args.module
+    module_path = repo_root / "modules" / args.module
 
     if not module_path.exists():
         print(f"ERROR: module path not found: {module_path}")
