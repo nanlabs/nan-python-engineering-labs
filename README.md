@@ -98,7 +98,7 @@ ______________________________________________________________________
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv venv
 source .venv/bin/activate  # Linux/Mac
-# .venv\Scripts\activate  # Windows
+# .venv\Scriptsctivate  # Windows
 uv pip install -e ".[dev,profiling,ai,pyo3,security,data]"
 pre-commit install
 uv run scripts/progress.py
@@ -301,3 +301,11 @@ ______________________________________________________________________
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## 👥 Contributors
+
+<a href="https://github.com/nanlabs/nan-python-engineering-labs/contributors">
+  <img src="https://contrib.rocks/image?repo=nanlabs/nan-python-engineering-labs"/>
+</a>
+
+Made with [contributors-img](https://contrib.rocks).
